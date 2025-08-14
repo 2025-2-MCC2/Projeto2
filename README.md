@@ -24,8 +24,7 @@ CyberSirens é um projeto web desenvolvido dentro da iniciativa Lideranças Emp�
 <br><br>
 Através de suas funcionalidades, o projeto permite que usuários participem de campanhas, conheçam iniciativas sociais e se conectem com outras pessoas interessadas em fazer a diferença. O foco é criar experiências digitais que incentivem colaboração, empatia e conscientização sobre causas sociais.
 <br><br>
-May the force be with you!
-<br><br>
+
 
 ## 🛠 Estrutura de pastas
 
