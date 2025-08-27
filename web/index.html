@@ -1,28 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lideranças Empáticas - Página Inicial</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lideranças Empáticas</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-     <header>
-    <h1>Lideranças Empáticas</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="login.html">Login</a>
+  <!-- Header / Nav -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+     <img src="img/logo.png" alt="Logo Lideranças Empáticas" class="logo-img">
+      </div>
+      <div class="nav-actions">
+        <select class="language">
+          <option>Português BR</option>
+          <option>English</option>
+          <option>Español</option>
+        </select>
+        <div class="dropdown">
+          <button class="btn" id="btn-cadastro">Cadastre-se ▾</button>
+          <div class="dropdown-content" id="dropdown-menu">
+            <a href="volunteer.html">Aluno</a>
+            <a href="mentor.html">Mentor</a>
+          </div>
+      </div>
     </nav>
   </header>
-   <main>
-    <h2>Bem-vinda ao programa!</h2>
-    <p>Escolha sua área ao fazer login.</p>
+
+  <!-- Hero / Conteúdo central -->
+  <main class="content">
+    <div class="content-text">
+      <h1>Faça parte da mudança!</h1>
+      <p>Cadastre seu grupo e participe de ações que ajudam quem precisa, conectando voluntários, mentores e doações.</p>
+      <a href="#" class="btn-primary">Começar agora ▾</a>
+    </div>
+    <div class="hero-img">
+      <img src="img/imagem-impacto.png" alt="Imagem ilustrativa">
+    </div>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <p>©2025 Todos os direitos reservados</p>
+    <p>© 2025 Projeto Lideranças Empáticas</p>
+    <div class="footer-links">
+      <a href="#">Sobre</a> | <a href="#">Contato</a> | <a href="#">Suporte</a>
+    </div>
   </footer>
 
+  <script src="js/script.js"></script>
 </body>
 </html>

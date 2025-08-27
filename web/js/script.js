@@ -1,16 +1,12 @@
-// Login simples fake
-const formLogin = document.getElementById('formLogin');
-const mensagemLogin = document.getElementById('mensagemLogin');
+const btnCadastro = document.getElementById('btn-cadastro');
+const dropdownMenu = document.getElementById('dropdown-menu');
 
-if(formLogin){
-  formLogin.addEventListener('submit', function(e){
-    e.preventDefault();
-    const usuario = formLogin.usuario.value;
+btnCadastro.addEventListener('click', () => {
+  dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+});
 
-    if(usuario.toLowerCase().includes('mentor')){
-      window.location.href = 'mentor.html';
-    } else {
-      window.location.href = 'voluntario.html';
-    }
-  });
-}
+window.addEventListener('click', (e) => {
+  if (!btnCadastro.contains(e.target) && !dropdownMenu.contains(e.target)) {
+    dropdownMenu.style.display = 'none';
+  }
+});
