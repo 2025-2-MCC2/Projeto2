@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Reset básico */
 * {
   margin: 0;
@@ -148,3 +149,11 @@ footer {
     gap: 0.5rem;
   }
 }
+=======
+.video.html {
+width: 1548px;
+height: 1033px;
+flex-shrink: 0;
+aspect-ratio: 514/343;
+}
+>>>>>>> 0574058bc233ae9576d95400417ff2df8b141b55
