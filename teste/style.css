@@ -17,13 +17,23 @@ body {
   /* Caixa do formulário */
   .form-box {
     width: 420px;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.7);
     padding: 35px;
     border-radius: 25px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(2px);
   }
-  
+  .form-row {
+  display: grid;
+  gap: 15px; /* Espaçamento entre os inputs */
+  margin-bottom: 15px; /* Espaço abaixo da linha */
+}
+
+.input-group {
+  flex: 1; /* Faz os inputs dividirem o espaço igualmente */
+  display: flex;
+  flex-direction: column; /* Para o label ficar em cima do input */
+}
   /* Títulos */
   .form-box h3 {
     margin: 0;
@@ -33,10 +43,10 @@ body {
   }
   
   .form-box h1 {
-    color: #6a9c78;
+    color: #000000;
     margin: 15px 0;
     font-size: 28px;
-    text-align: center;
+    text-align: left;
   }
   
   /* Texto de login */
@@ -59,7 +69,7 @@ body {
   /* Labels */
   .form-box label {
     font-size: 14px;
-    color: #555;
+    color: #080606;
     margin-bottom: 5px;
     display: block;
   }
@@ -69,7 +79,7 @@ body {
     width: 100%;
     padding: 12px;
     margin-bottom: 18px;
-    border: 1px solid #ccc;
+    border: 2px solid #65cf95ab;
     border-radius: 12px;
     box-sizing: border-box;
     font-size: 14px;
