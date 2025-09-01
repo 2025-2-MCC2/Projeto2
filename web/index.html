@@ -1,136 +1,70 @@
-<!-- página inicial -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign up - Alvarista</title>
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: Poppins, Arial, sans-serif;
-    }
-
-    /* Inputs customizados */
-    .input-field {
-      width: 100%;
-      padding: 12px;
-      border-radius: 9px;
-      border: 1px solid #ADADAD;
-      font-size: 14px;
-      outline: none;
-      box-sizing: border-box;
-    }
-
-    .input-field:focus {
-      border: 1px solid #4285F4;
-    }
-
-    /* Botão verde */
-    .btn {
-      width: 236px;
-      height: 55px;
-      background: #248862;
-      box-shadow: 0px 4px 19px rgba(119, 147, 65, 0.30);
-      border-radius: 10px;
-      border: none;
-      color: white;
-      font-size: 16px;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background: #1d6d4f;
-    }
-  </style>
+  <title>Lideranças Empáticas</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div style="width: 100%; height: 100%; position: relative; overflow: hidden">
-    
-    <!-- 🎥 Vídeo de fundo -->
-<video autoplay muted loop playsinline 
-    style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: -2;">
-    <source src="imagens/video-background-sign-in-up.webm" type="video/webm">
-</video>
-
-    <!-- Overlay escuro -->
-    <div style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: black; opacity: 0.34; z-index: -1;"></div>
-
-    <!-- Card transparente -->
-    <div style="width: 539px; height: auto; left: 800px; top: 128px; position: absolute; background: rgba(255, 255, 255, 0.85); border-radius: 40px; padding: 40px;">
-
-      <!-- Cabeçalho -->
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <div style="color: black; font-size: 21px; font-weight: 400;">Bem vindo, Alvarista!</div>
-        <div style="font-size: 13px;">
-          <span style="color: #8D8D8D;">Já tem uma conta? </span>
-          <a href="login.html" style="color: #248862; text-decoration: none;">Sign in</a>
+  <!-- Header / Nav -->
+<header>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="imagens/LOGO-Lideranças.avif" alt="Logo Lideranças Empáticas" class="logo-img">
+    </div>
+    <div class="nav-actions">
+      <select class="language">
+        <option>Português-BR</option>
+        <option>English</option>
+        <option>Español</option>
+      </select>
+      <div class="dropdown">
+        <div class="button">Cadastre-se ▾
+          <span class="button-border"></span>
+        </div>
+        <div class="dropdown-content">
+          <a href="volunteer.html">Aluno</a>
+          <a href="mentor.html">Mentor</a>
         </div>
       </div>
-
-      <h2 style="color: #2B8665; font-size: 55px; margin: 20px 0;">Sign up</h2>
-
-      <!-- Formulário -->
-      <form id="signupForm">
-
-        <!-- Email -->
-        <label style="font-size: 16px; color: black;">Insira o email do representante do grupo</label>
-        <input type="email" id="email" class="input-field" placeholder="Email do líder do grupo" required>
-
-        <!-- Nome do grupo + Turma -->
-        <div style="display: flex; gap: 10px; margin-top: 20px;">
-          <div style="flex: 1;">
-            <label style="font-size: 16px; color: black;">Nome do grupo</label>
-            <input type="text" id="grupo" class="input-field" placeholder="Nome do grupo aqui!" required>
-          </div>
-          <div style="flex: 1;">
-            <label style="font-size: 16px; color: black;">Turma</label>
-            <input type="text" id="turma" class="input-field" placeholder="Turma aqui!" required>
-          </div>
-        </div>
-
-        <!-- Período + Senha -->
-        <div style="display: flex; gap: 10px; margin-top: 20px;">
-          <div style="flex: 1;">
-            <label style="font-size: 16px; color: black;">Período</label>
-            <input type="text" id="periodo" class="input-field" placeholder="Período aqui!" required>
-          </div>
-          <div style="flex: 1;">
-            <label style="font-size: 16px; color: black;">Crie uma senha</label>
-            <input type="password" id="senha" class="input-field" placeholder="Password" required>
-          </div>
-        </div>
-
-        <!-- Botão -->
-        <div style="text-align: center; margin-top: 40px;">
-          <button type="submit" class="btn">Sign up</button>
-        </div>
-      </form>
     </div>
-  </div>
+  </nav>
+ </header>
 
-  <script>
-    const form = document.getElementById("signupForm");
 
-    form.addEventListener("submit", function(event) {
-      event.preventDefault();
+  <!-- Content principal -->
+  <main class="content">
+    <div class="content-text">
+      <h1>Faça parte da mudança!</h1>
+      <p>Cadastre seu grupo e participe de ações que ajudam quem precisa, conectando voluntários, mentores e doações.</p>
+      <!-- Botões para acesso a página de cadastro -->
+    <div class="botoes-acoes">
+     <button class = "btn-acao">
+      <span class="button_top">Aluno</span>
+     </button>
+     <button class = "btn-acao">
+      <span class="button_top">Mentor</span>
+     </button>
+     <button class = "btn-acao">
+      <span class="button_top">Doador</span>
+     </button>
+    </div>
+    </div>
+    <div class="content-img">
+      <img src="imagens/imagem1.jpg" alt="Imagem ilustrativa">
+    </div>
+  </main>
 
-      const email = document.getElementById("email").value;
-      const grupo = document.getElementById("grupo").value;
-      const turma = document.getElementById("turma").value;
-      const periodo = document.getElementById("periodo").value;
-      const senha = document.getElementById("senha").value;
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Projeto Lideranças Empáticas</p>
+    <div class="footer-links">
+      <a href="#">Sobre</a> | <a href="#">Contato</a> | <a href="#">Política de Privacidade</a>
+    </div>
+  </footer>
 
-      if(email && grupo && turma && periodo && senha){
-        alert("Cadastro realizado com sucesso!");
-        window.location.href = "dashboard.html"; // Redireciona depois do cadastro
-      } else {
-        alert("Por favor, preencha todos os campos!");
-      }
-    });
-  </script>
+  <script src="js/script.js"></script>
 </body>
 </html>
+
