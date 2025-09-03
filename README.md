@@ -31,19 +31,29 @@ O foco é criar experiências digitais que incentivem colaboração, empatia e c
 
 ## 🛠 Estrutura de pastas
 
--Raiz<br>
+├──-Raiz<br>
 |<br>
-|-->documentos<br>
-  &emsp;|-->antigos<br>
-  &emsp;|Documentação.docx<br>
-|-->executáveis<br>
-  &emsp;|-->windows<br>
-  &emsp;|-->android<br>
-  &emsp;|-->HTML<br>
-|-->imagens<br>
-|-->src<br>
-  &emsp;|-->Backend<br>
-  &emsp;|-->Frontend<br>
+├──>documentos<br>
+  &emsp;├──>Entrega 1<br>
+              ├── Entrega Cálculo 2
+              ├── Entrega Desenvolvimento Web Full Stack
+              ├── Entrega Gestão Empresarial e Dinâmicas das Organizações
+              ├── Entrega Projetos em Banco de Dados
+              └── Entrega Projeto Interdisciplinar: Programação Web
+  &emsp;├──>Entrega 2<br>
+              ├── Entrega Cálculo 2
+              ├── Entrega Desenvolvimento Web Full Stack
+              ├── Entrega Gestão Empresarial e Dinâmicas das Organizações
+              ├── Entrega Projetos em Banco de Dados
+              └── Entrega Projeto Interdisciplinar: Programação Web
+  &emsp;├──>Documento - Projeto de Extensão<br>
+  ├──>imagens<br>
+  ├──>src<br>
+  &emsp;├──>Backend<br>
+  &emsp;├──>Frontend<br>
+  ├──>executáveis<br>
+  &emsp;├──>windows<br>
+  &emsp;├──>HTML<br>
 |readme.md<br>
 
 A pasta raiz contem dois arquivos que devem ser alterados:
@@ -60,19 +70,10 @@ Há também 4 pastas que seguem da seguinte forma:
 
 ## 🛠 Instalação
 
-<b>Android:</b>
-
-Faça o Download do JOGO.apk no seu celular.
-Execute o APK e siga as instruções de seu telefone.
-
-```sh
-Coloque código do prompt de comnando se for necessário
-```
-
 <b>Windows:</b>
 
 Não há instalação! Apenas executável!
-Encontre o JOGO.exe na pasta executáveis e execute-o como qualquer outro programa.
+Encontre o Lideranças Empáticas.exe na pasta executáveis e execute-o como qualquer outro programa.
 
 ```sh
 Coloque código do prompt de comnando se for necessário
