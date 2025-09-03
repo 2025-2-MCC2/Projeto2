@@ -31,29 +31,30 @@ O foco é criar experiências digitais que incentivem colaboração, empatia e c
 
 ## 🛠 Estrutura de pastas
 
-├──Raiz<br>
-├──>documentos<br>
-│  &emsp;├──>Entrega 1<br>
-│  &emsp;│&emsp;├── Entrega Cálculo 2<br>
-│  &emsp;│&emsp;├── Entrega Desenvolvimento Web Full Stack<br>
-│  &emsp;│&emsp;├── Entrega Gestão Empresarial e Dinâmicas das Organizações<br>
-│  &emsp;│&emsp;├── Entrega Projetos em Banco de Dados<br>
-│  &emsp;│&emsp;└── Entrega Projeto Interdisciplinar: Programação Web<br>
-│  &emsp;└──>Entrega 2<br>
-│         &emsp;├── Entrega Cálculo 2<br>
-│         &emsp;├── Entrega Desenvolvimento Web Full Stack<br>
-│         &emsp;├── Entrega Gestão Empresarial e Dinâmicas das Organizações<br>
-│         &emsp;├── Entrega Projetos em Banco de Dados<br>
-│         &emsp;└── Entrega Projeto Interdisciplinar: Programação Web<br>
-│  &emsp;├──>Documento - Projeto de Extensão<br>
-├──>imagens<br>
-├──>src<br>
-│     &emsp;├──>Backend<br>
-│     &emsp;├──>Frontend<br>
-├──>executáveis<br>
-│     &emsp;├──>windows<br>
-│     &emsp;├──>HTML<br>
-└── readme.md<br>
+Raiz
+├── documentos
+│   ├── Entrega 1
+│   │      ├── Entrega Cálculo 2
+│   │      ├── Entrega Desenvolvimento Web Full Stack
+│   │      ├── Entrega Gestão Empresarial e Dinâmicas das Organizações
+│   │      ├── Entrega Projetos em Banco de Dados
+│   │      └── Entrega Projeto Interdisciplinar: Programação Web
+│   ├── Entrega 2
+│   │      ├── Entrega Cálculo 2
+│   │      ├── Entrega Desenvolvimento Web Full Stack
+│   │      ├── Entrega Gestão Empresarial e Dinâmicas das Organizações
+│   │      ├── Entrega Projetos em Banco de Dados
+│   │      └── Entrega Projeto Interdisciplinar: Programação Web
+│   └── Documento - Projeto de Extensão
+├── imagens
+├── src
+│   ├── Backend
+│   └── Frontend
+├── executáveis
+│   ├── windows
+│   └── HTML
+└── readme.md
+
 
 A pasta raiz contem dois arquivos que devem ser alterados:
 
