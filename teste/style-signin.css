@@ -35,7 +35,7 @@ body {
   }
   
   .form-box h1 {
-    color: #2d9b5b;
+    color: #000000;
     margin: 15px 0;
     font-size: 28px;
     text-align: left;
@@ -44,12 +44,12 @@ body {
   /* Texto de cadastro */
   .signup-text {
     text-align: right;
-    margin: 0;
+    margin: 5px;
     font-size: 14px;
   }
   
   .signup-text a {
-    color: #2d9b5b;
+    color: #6a9c78;
     font-weight: bold;
     text-decoration: none;
   }
@@ -58,7 +58,7 @@ body {
     text-decoration: underline;
   }
   
-  /* Labels */
+  
   .form-box label {
     font-size: 14px;
     color: #000000;
@@ -71,7 +71,7 @@ body {
     width: 100%;
     padding: 12px;
     margin-bottom: 18px;
-    border: 1px solid #ccc;
+    border: 2px solid #6a9c78;
     border-radius: 12px;
     box-sizing: border-box;
     font-size: 14px;
@@ -79,16 +79,16 @@ body {
   }
   
   .form-box input:focus {
-    border-color: #2d9b5b;
+    border-color: #6a9c78;
     outline: none;
-    box-shadow: 0 0 6px rgba(45,155,91,0.4);
+    box-shadow: 0 0 6px #6A9C7866;
   }
   
   /* Botão */
   .form-box button {
     width: 100%;
     padding: 12px;
-    background-color: #2d9b5b;
+    background-color: #6a9c78;
     color: white;
     font-size: 16px;
     border: none;
@@ -97,7 +97,8 @@ body {
     transition: 0.3s;
   }
   
+  
   .form-box button:hover {
-    background-color: #238046;
+    background-color: #6a9c78;
   }
   

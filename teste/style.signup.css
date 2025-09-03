@@ -11,29 +11,32 @@ body {
     justify-content: flex-end;
     align-items: center;
     height: 100vh;
-    padding-right: 50px;
+    padding-right: 100px;
   }
   
   /* Caixa do formulário */
   .form-box {
-    width: 420px;
+    width: 400px;
     background: rgba(255, 255, 255, 0.7);
     padding: 35px;
     border-radius: 25px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     backdrop-filter: blur(2px);
+
   }
   .form-row {
-  display: grid;
-  gap: 15px; /* Espaçamento entre os inputs */
-  margin-bottom: 15px; /* Espaço abaixo da linha */
-}
+    display: flex;
+    gap: 10px; /* Espaço entre os campos */
+  }
+  
+  .input-group {
+    flex: 1; /* Cada input ocupa metade do espaço */
+  }
+  
+  .form-box input {
+    width: 100%; /* Agora vai respeitar só o espaço do .input-group */
+  }
 
-.input-group {
-  flex: 1; /* Faz os inputs dividirem o espaço igualmente */
-  display: flex;
-  flex-direction: column; /* Para o label ficar em cima do input */
-}
   /* Títulos */
   .form-box h3 {
     margin: 0;
@@ -44,7 +47,7 @@ body {
   
   .form-box h1 {
     color: #000000;
-    margin: 15px 0;
+    margin: 15px;
     font-size: 28px;
     text-align: left;
   }
@@ -52,7 +55,7 @@ body {
   /* Texto de login */
   .signin-text {
     text-align: right;
-    margin: 0;
+    margin: 5px;
     font-size: 14px;
   }
   
@@ -77,8 +80,8 @@ body {
   /* Inputs */
   .form-box input {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 18px;
+    padding: 15px;
+    margin-bottom: 25px;
     border: 2px solid #65cf95ab;
     border-radius: 12px;
     box-sizing: border-box;
@@ -89,7 +92,7 @@ body {
   .form-box input:focus {
     border-color: #6a9c78;
     outline: none;
-    box-shadow: 0 0 6px rgba(106,156,120,0.4);
+    box-shadow: 0 0 6px #6A9C7866;
   }
   
   /* Botão */
@@ -106,6 +109,6 @@ body {
   }
   
   .form-box button:hover {
-    background-color: #558765;
+    background-color: 6a9c78;
   }
   
