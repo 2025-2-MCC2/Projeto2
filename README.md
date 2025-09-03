@@ -30,7 +30,7 @@ O foco é criar experiências digitais que incentivem colaboração, empatia e c
 
 
 ## 🛠 Estrutura de pastas
-
+````text
 Raiz
 ├── documentos
 │   ├── Entrega 1
@@ -54,7 +54,7 @@ Raiz
 │   ├── windows
 │   └── HTML
 └── readme.md
-
+````
 
 A pasta raiz contem dois arquivos que devem ser alterados:
 
