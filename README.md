@@ -31,21 +31,21 @@ O foco é criar experiências digitais que incentivem colaboração, empatia e c
 
 ## 🛠 Estrutura de pastas
 
-├──-Raiz<br>
+├──Raiz<br>
 |<br>
 ├──>documentos<br>
   &emsp;├──>Entrega 1<br>
-              ├── Entrega Cálculo 2<br>
-              ├── Entrega Desenvolvimento Web Full Stack<br>
-              ├── Entrega Gestão Empresarial e Dinâmicas das Organizações<br>
-              ├── Entrega Projetos em Banco de Dados<br>
-              └── Entrega Projeto Interdisciplinar: Programação Web<br>
+             &emsp;├── Entrega Cálculo 2<br>
+             &emsp;├── Entrega Desenvolvimento Web Full Stack<br>
+             &emsp;├── Entrega Gestão Empresarial e Dinâmicas das Organizações<br>
+             &emsp;├── Entrega Projetos em Banco de Dados<br>
+             &emsp;└── Entrega Projeto Interdisciplinar: Programação Web<br>
   &emsp;├──>Entrega 2<br>
-              ├── Entrega Cálculo 2<br>
-              ├── Entrega Desenvolvimento Web Full Stack<br>
-              ├── Entrega Gestão Empresarial e Dinâmicas das Organizações<br>
-              ├── Entrega Projetos em Banco de Dados<br>
-              └── Entrega Projeto Interdisciplinar: Programação Web<br>
+             &emsp;├── Entrega Cálculo 2<br>
+             &emsp;├── Entrega Desenvolvimento Web Full Stack<br>
+             &emsp;├── Entrega Gestão Empresarial e Dinâmicas das Organizações<br>
+             &emsp;├── Entrega Projetos em Banco de Dados<br>
+             &emsp;└── Entrega Projeto Interdisciplinar: Programação Web<br>
   &emsp;├──>Documento - Projeto de Extensão<br>
   ├──>imagens<br>
   ├──>src<br>
