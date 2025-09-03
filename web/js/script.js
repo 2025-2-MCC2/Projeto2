@@ -1,25 +1,22 @@
-// script.js
-
-// Exemplo: mensagem no console só pra confirmar que está funcionando
-console.log("Script carregado! 🚀");
-
-// Caso queira deixar o dropdown abrir só ao clicar (em vez de hover)
+// Dropdowns
 document.addEventListener("DOMContentLoaded", () => {
-  const dropdownBtn = document.querySelector(".dropdown .btn");
-  const dropdownContent = document.querySelector(".dropdown-content");
+  const langArrow = document.querySelector(".language-dropdown .arrow");
+  const langOptions = document.querySelector(".language-options");
 
-  if (dropdownBtn && dropdownContent) {
-    dropdownBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      dropdownContent.classList.toggle("show");
-    });
+  langArrow.addEventListener("click", () => {
+      langOptions.classList.toggle("show");
+  });
 
-    // Fecha o dropdown se clicar fora
-    document.addEventListener("click", (e) => {
-      if (!dropdownBtn.contains(e.target) && !dropdownContent.contains(e.target)) {
-        dropdownContent.classList.remove("show");
-      }
-    });
-  }
+  const signupArrow = document.querySelector(".signup-dropdown .arrow");
+  const signupOptions = document.querySelector(".signup-options");
+
+  signupArrow.addEventListener("click", () => {
+      signupOptions.classList.toggle("show");
+  });
+
+  // Fecha ao clicar fora
+  document.addEventListener("click", (e) => {
+      if (!e.target.closest(".language-dropdown")) langOptions.classList.remove("show");
+      if (!e.target.closest(".signup-dropdown")) signupOptions.classList.remove("show");
+  });
 });
-
