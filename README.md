@@ -8,7 +8,7 @@
 
 ## CyberSirens
 
-## Integrantes: <a href="https://www.linkedin.com/in/ana-clara-keiko-ribeiro-hagiwara-da-silva-970063341/">Ana Clara Keiko</a>, <a href="https://www.linkedin.com/in/felipe-mathey-47772b357/">Felipe Mathey</a>, <a href="https://www.linkedin.com/in/gustavo-miranda-162b5835b/">Gustavo Miranda</a>, <a href="https://www.linkedin.com/in/katiê-prado-388129312/">Katiê Prado</a>,<a href="https://www.linkedin.com/in/polianny-santos-6193a8324/">Polianny Santos</a>, <a href="https://www.linkedin.com/in/rafaelamorais0906/">Rafaela Morais</a>
+## Integrantes: <a href="https://www.linkedin.com/in/ana-clara-keiko-ribeiro-hagiwara-da-silva-970063341/">Ana Clara Keiko</a>, <a href="https://www.linkedin.com/in/felipe-mathey-47772b357/">Felipe Mathey</a>, <a href="https://www.linkedin.com/in/gustavo-miranda-162b5835b/">Gustavo Miranda</a>, <a href="https://www.linkedin.com/in/katiê-prado-388129312/">Katiê Prado</a>, <a href="https://www.linkedin.com/in/polianny-santos-6193a8324/">Polianny Santos</a>, <a href="https://www.linkedin.com/in/rafaelamorais0906/">Rafaela Morais</a>
 
 ## Professores Orientadores: <a href="https://www.linkedin.com/in/cristina-machado-corrêa-leite-630309160/">Cristina Machado Corrêa Leite</a>, <a href="https://www.linkedin.com/in/dolemes/">David de Oliveira Lemes</a>, <a href="https://www.linkedin.com/in/francisco-escobar/">Francisco Escobar</a>, <a href="https://www.linkedin.com/in/katia-bossi/">Katia M. Lara Bossi</a>, <a href="https://www.linkedin.com/in/leonardo-fabris-lugoboni-a3369416/">Leonardo Fabris Lugoboni</a>
 
@@ -98,7 +98,9 @@ Coloque código do prompt de comnando se for necessário
 ```
 
 ## 📋 Licença/License
-<a href="https://github.com/2025-2-MCC2">CyberSirens</a> © 2025 by <a href="https://github.com/2025-2-MCC2">Rafaela Morais, Katiê Prado, Felipe Mathey, Polianny Santos, Ana Clara Keiko, Gustavo Miranda</a> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="width: 0.8em;height:0.8em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="width: 0.8em;height:0.8em;margin-left: .2em;">
+<a href="https://github.com/2025-2-MCC2">CyberSirens</a> © 2025 by <a href="https://github.com/2025-2-MCC2">Rafaela Morais, Katiê Prado, Felipe Mathey, Polianny Santos, Ana Clara Keiko, Gustavo Miranda</a> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="width: 0.6em;height:0.6em;margin-left: 0.2em;">
+<img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="width: 0.6em;height:0.6em;margin-left: 0.2em;">
 
 ## 🎓 Referências
 
