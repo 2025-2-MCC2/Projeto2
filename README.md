@@ -8,21 +8,24 @@
 
 ## CyberSirens
 
-## Integrantes: <a href="https://www.linkedin.com/in/ana-clara-keiko-ribeiro-hagiwara-da-silva-970063341/">Ana Clara Keiko</a>, <a href="https://www.linkedin.com/in/felipe-mathey-47772b357/">Felipe Mathey</a>, <a href="https://www.linkedin.com/in/gustavo-miranda-162b5835b/">Gustavo Miranda</a>, <a href="https://www.linkedin.com/in/katiê-prado-388129312/">Katiê Prado</a>, <a href="https://www.linkedin.com/in/rafaelamorais0906/">Rafaela Morais</a>
+## Integrantes: <a href="https://www.linkedin.com/in/ana-clara-keiko-ribeiro-hagiwara-da-silva-970063341/">Ana Clara Keiko</a>, <a href="https://www.linkedin.com/in/felipe-mathey-47772b357/">Felipe Mathey</a>, <a href="https://www.linkedin.com/in/gustavo-miranda-162b5835b/">Gustavo Miranda</a>, <a href="https://www.linkedin.com/in/katiê-prado-388129312/">Katiê Prado</a>,<a href="https://www.linkedin.com/in/polianny-santos-6193a8324/"</a>, <a href="https://www.linkedin.com/in/rafaelamorais0906/">Rafaela Morais</a>
 
 ## Professores Orientadores: <a href="https://www.linkedin.com/in/cristina-machado-corrêa-leite-630309160/">Cristina Machado Corrêa Leite</a>, <a href="https://www.linkedin.com/in/dolemes/">David de Oliveira Lemes</a>, <a href="https://www.linkedin.com/in/francisco-escobar/">Francisco Escobar</a>, <a href="https://www.linkedin.com/in/katia-bossi/">Katia M. Lara Bossi</a>, <a href="https://www.linkedin.com/in/leonardo-fabris-lugoboni-a3369416/">Leonardo Fabris Lugoboni</a>
 
 ## Descrição
 
 <p align="center">
-<img src="https://pix4free.org/assets/library/2021-01-20/originals/game.jpg" alt="NOME DO JOGO" border="0">
-  Game by <a href="http://www.nyphotographic.com/">Nick Youngson</a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a> <a href="http://pix4free.org/">Pix4free</a>
+<img src="https://pix4free.org/assets/library/2021-01-20/originals/game.jpg" alt="LOGO" border="0">
+  Game by <a href="http://www.nyphotographic.com/">Nick Youngson</a> <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY 4.0</a> <a href="http://pix4free.org/">Pix4free</a>
 </p>
 
 
-CyberSirens é um projeto web desenvolvido dentro da iniciativa Lideranças Empáticas, com o objetivo de unir tecnologia e impacto social. A plataforma busca aproximar pessoas, compartilhar informações e promover ações que gerem transformação positiva na comunidade, oferecendo um espaço interativo e intuitivo para engajamento.
+O CyberSirens é um projeto web desenvolvido dentro da iniciativa Lideranças Empáticas, criado para apoiar líderes na formação de equipes mais colaborativas, humanas e produtivas. A plataforma oferece recursos para organizar tarefas e metas, acompanhar o desempenho, estimular uma comunicação clara, promover feedbacks construtivos e fortalecer vínculos entre líderes e seus times.
 <br><br>
-Através de suas funcionalidades, o projeto permite que usuários participem de campanhas, conheçam iniciativas sociais e se conectem com outras pessoas interessadas em fazer a diferença. O foco é criar experiências digitais que incentivem colaboração, empatia e conscientização sobre causas sociais.
+Nosso propósito é unir gestão eficiente e relacionamento humano, incentivando uma cultura organizacional que valoriza tanto pessoas quanto resultados.
+<br><br>
+Além do gerenciamento, o projeto também busca promover impacto social. Através de suas funcionalidades, os usuários podem participar de campanhas, conhecer iniciativas sociais e se conectar com outras pessoas interessadas em transformar a realidade. O foco é criar experiências digitais que incentivem a colaboração, a empatia e a conscientização sobre causas sociais.
+O foco é criar experiências digitais que incentivem colaboração, empatia e conscientização sobre causas sociais.
 <br><br>
 
 
@@ -44,8 +47,6 @@ Através de suas funcionalidades, o projeto permite que usuários participem de 
 |readme.md<br>
 
 A pasta raiz contem dois arquivos que devem ser alterados:
-
-<b>README.MD</b>: Arquivo que serve como guia e explicação geral sobre seu projeto. O mesmo que você está lendo agora.
 
 Há também 4 pastas que seguem da seguinte forma:
 
@@ -97,15 +98,10 @@ Coloque código do prompt de comnando se for necessário
 ```
 
 ## 📋 Licença/License
-Utilize o link <https://chooser-beta.creativecommons.org/> para fazer uma licença CC BY 4.0.
+<a href="https://github.com/2025-2-MCC2">CyberSirens</a> © 2025 by <a href="https://github.com/2025-2-MCC2">Rafaela Morais, Katiê Prado, Felipe Mathey, Polianny Santos, Ana Clara Keiko, Gustavo Miranda</a> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
 
 ## 🎓 Referências
 
 Aqui estão as referências usadas no projeto.
-
-1. <https://github.com/iuricode/readme-template>
-2. <https://github.com/gabrieldejesus/readme-model>
-3. <https://chooser-beta.creativecommons.org/>
-4. <https://freesound.org/>
-5. <https://www.toptal.com/developers/gitignore>
-6. Músicas por: <a href="https://freesound.org/people/DaveJf/sounds/616544/"> DaveJf </a> e <a href="https://freesound.org/people/DRFX/sounds/338986/"> DRFX </a> ambas com Licença CC 0.
+1. <https://github.com/fecaphub/Template_PI>
+3. <https://creativecommons.org/chooser/>
