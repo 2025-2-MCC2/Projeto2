@@ -48,11 +48,11 @@ O foco é criar experiências digitais que incentivem colaboração, empatia e c
 │  &emsp;├──>Documento - Projeto de Extensão<br>
 ├──>imagens<br>
 ├──>src<br>
-&emsp;├──>Backend<br>
-&emsp;├──>Frontend<br>
+│     &emsp;├──>Backend<br>
+│     &emsp;├──>Frontend<br>
 ├──>executáveis<br>
- &emsp;├──>windows<br>
- &emsp;├──>HTML<br>
+│     &emsp;├──>windows<br>
+│     &emsp;├──>HTML<br>
 └── readme.md<br>
 
 A pasta raiz contem dois arquivos que devem ser alterados:
