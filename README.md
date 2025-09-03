@@ -32,7 +32,6 @@ O foco é criar experiências digitais que incentivem colaboração, empatia e c
 ## 🛠 Estrutura de pastas
 
 ├──Raiz<br>
-|<br>
 ├──>documentos<br>
   &emsp;├──>Entrega 1<br>
              &emsp;├── Entrega Cálculo 2<br>
