@@ -98,9 +98,9 @@ Coloque código do prompt de comnando se for necessário
 ```
 
 ## 📋 Licença/License
-<a href="https://github.com/2025-2-MCC2">CyberSirens</a> © 2025 by <a href="https://github.com/2025-2-MCC2">Rafaela Morais, Katiê Prado, Felipe Mathey, Polianny Santos, Ana Clara Keiko, Gustavo Miranda</a> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
-<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="width: 0.6em;height:0.6em;margin-left: 0.2em;">
-<img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="width: 0.6em;height:0.6em;margin-left: 0.2em;">
+[CyberSirens](https://github.com/2025-2-MCC2) © 2025 by [Rafaela Morais, Katiê Prado, Felipe Mathey, Polianny Santos, Ana Clara Keiko, Gustavo Miranda](https://github.com/2025-2-MCC2) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  
+[![CC BY 4.0](https://i.creativecommons.org/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
+
 
 ## 🎓 Referências
 
