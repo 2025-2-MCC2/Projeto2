@@ -7,32 +7,63 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <div class="language-dropdown">
-                <span>Português (Brasil)</span>
-                <div class="arrow">&#9662;</div>
-                <ul class="language-options">
-                    <li>Português (Brasil)</li>
-                    <li>English (US)</li>
-                </ul>
-            </div>
+    <div class="background-grid">
+        <div class="background-grid img">
+            <img src="imagens/imagem1.jpg" alt="imagem 1">
+            <img src="imagens/imagem2.jpg" alt="imagem 2">
+            <img src="imagens/imagem3.jpg" alt="imagem 3">
+            <img src="imagens/imagem4.jpg" alt="imagem 4">
+            <img src="imagens/imagem5.jpg" alt="imagem 5">
+            <img src="imagens/imagem6.jpg" alt="imagem 6">
+            <img src="imagens/imagem7.jpg" alt="imagem 7">
+            <img src="imagens/imagem8.avif" alt="imagem 8">
+            <img src="imagens/imagem9.jpg" alt="imagem 9">
+            <img src="imagens/imagem10.avif" alt="imagem 10">
+            <img src="imagens/imagem11.jpg" alt="imagem 11">
+            <img src="imagens/imagem12.jpg" alt="imagem 12">  
+            <img src="imagens/imagem13.jpg" alt="imagem 13">
+            <img src="imagens/imagem14.avif" alt="imagem 14">
+            <img src="imagens/imagem15.avif" alt="imagem 15">
+            <img src="imagens/imagem16.avif" alt="imagem 16">
+     </div>
+ </div>
+    <!-- Header/Nav -->
+    <header class="navbar">
+  <div class="container">
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="imagens/LOGO-Lideranças.avif" alt="Logo">
+    </div>
 
-            <div class="signup-dropdown">
-                <div class="signup-btn-wrapper">
-                    <button class="signup-btn">Cadastre-se</button>
-                    <div class="arrow">&#9662;</div>
-                </div>
-                <ul class="signup-options">
-                    <li>Aluno</li>
-                    <li>Mentor</li>
-                    <li>Doador</li>
-                </ul>
-            </div>
-        </div>
-    </header>
+    <!-- MENU DIREITO -->
+    <div class="nav-actions">
+      <!-- DROPDOWN DE IDIOMA -->
+      <div class="dropdown">
+        <button class="dropdown-btn">
+          Português (Brasil) <span class="arrow">▼</span>
+        </button>
+        <ul class="dropdown-content">
+          <li>Português (Brasil)</li>
+          <li>English</li>
+          <li>Español</li>
+        </ul>
+      </div>
 
+      <!-- BOTÃO CADASTRE-SE -->
+       <div class="dropdown signup-cadastro">
+         <button class="btn-cadastro">
+           Cadastre-se <span class="arrow">▼</span>
+         </button>
+         <ul class="dropdown-content">
+           <li>
+            <a href="signup aluno.html"><img src="imagens/icone aluno.png" alt="Aluno" class="icon">Aluno
+            </a></li>
+           <li>
+            <a href="signup mentor.html"><img src="imagens/icone mentor.png" alt="Mentor" class="icon">Mentor </a></li>
+         </ul>
+      </div>
+</header>
+    
     <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
@@ -40,26 +71,18 @@
             <p>Cadastre seu grupo e participe de ações que ajudam quem precisa, conectando voluntários, mentores e doações.</p>
             <p class="subtext">Cadastre-se agora e comece a contribuir como voluntário, mentor ou doador</p>
             <div class="hero-buttons">
-                <button class="btn-aluno">Aluno</button>
-                <button class="btn-mentor">Mentor</button>
-                <button class="btn-doador">Doador</button>
+                <button class="btn-aluno"><span class="button_top">Aluno</span></button>
+                <button class="btn-mentor"><span class="button_top">Mentor</span></button>
+                <button class="btn-doador"><span class="button_top">Doador</span></button>
+
             </div>
         </div>
-        <div class="hero-images">
-            <img src="https://placehold.co/360x256" alt="">
-            <img src="https://placehold.co/360x256" alt="">
-            <img src="https://placehold.co/360x256" alt="">
-            <img src="https://placehold.co/360x256" alt="">
-            <img src="https://placehold.co/360x256" alt="">
-            <img src="https://placehold.co/360x256" alt="">
-            <img src="https://placehold.co/360x256" alt="">
-            <img src="https://placehold.co/360x256" alt="">
-        </div>
     </section>
+    
 
     <!-- Footer -->
     <footer>
-        <p>© 2025 Projeto Voluntários. Todos os direitos reservados.</p>
+        <p>© 2025 Lideranças Empáticas. Todos os direitos reservados.</p>
     </footer>
 
     <script src="js/script.js"></script>

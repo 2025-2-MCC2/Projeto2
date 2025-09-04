@@ -1,22 +1,22 @@
-// Dropdowns
 document.addEventListener("DOMContentLoaded", () => {
-  const langArrow = document.querySelector(".language-dropdown .arrow");
-  const langOptions = document.querySelector(".language-options");
+  // Seleciona todos os dropdowns
+  const dropdowns = document.querySelectorAll(".dropdown");
 
-  langArrow.addEventListener("click", () => {
-      langOptions.classList.toggle("show");
+  dropdowns.forEach(drop => {
+    const btn = drop.querySelector("button");
+    const menu = drop.querySelector(".dropdown-content");
+
+    // Abre/fecha ao clicar no botão
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation(); // evita fechar imediatamente
+      menu.classList.toggle("show");
+    });
   });
 
-  const signupArrow = document.querySelector(".signup-dropdown .arrow");
-  const signupOptions = document.querySelector(".signup-options");
-
-  signupArrow.addEventListener("click", () => {
-      signupOptions.classList.toggle("show");
-  });
-
-  // Fecha ao clicar fora
-  document.addEventListener("click", (e) => {
-      if (!e.target.closest(".language-dropdown")) langOptions.classList.remove("show");
-      if (!e.target.closest(".signup-dropdown")) signupOptions.classList.remove("show");
+  // Fecha todos os dropdowns ao clicar fora
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".dropdown-content").forEach(menu => {
+      menu.classList.remove("show");
+    });
   });
 });

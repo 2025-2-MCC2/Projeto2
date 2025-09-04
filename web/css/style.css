@@ -1,130 +1,280 @@
-/* Reset */
+/* ==========================
+   RESET BÁSICO
+========================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+body{
   font-family: 'Poppins', sans-serif;
-  background: #000;
-  color: white;
+  width: 100%;
+  background: #000; 
+  color: #fff;
 }
 
-/* Header */
-header {
-  background: #0D1117;
-  border-bottom: 1px solid rgba(102,102,102,0.25);
-  padding: 15px 50px;
+/* HEADER/NAVBAR */
+.navbar {
+  position: sticky; 
+  top: 0;
+  background: transparent;
+  border-bottom: 1px solid rgba(102, 102, 102, 0.25);
+  padding: 16px 48px;
   display: flex;
-  justify-content: flex-end;
-}
-
-.header-container {
-  display: flex;
-  gap: 20px;
+  justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
-.language-dropdown, .signup-dropdown {
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/* LOGO */
+.logo img {
+  height: 50px;
+}
+
+/* DROPDOWN DE IDIOMA */
+.dropdown {
   position: relative;
-  cursor: pointer;
-}
-
-.language-dropdown .arrow, .signup-dropdown .arrow {
+  font-family: 'Poppins', sans-serif;
   display: inline-block;
-  margin-left: 5px;
-  font-size: 14px;
+  margin-left: 24px;
 }
 
-.language-options, .signup-options {
+.dropdown-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dropdown-btn .arrow {
+  font-size: 12px;
+}
+.btn-cadastro .arrow {
+  font-size: 12px;
+}
+.dropdown-btn .arrow {
+  transition: transform 0.3s ease;
+}
+
+.dropdown-content {
   display: none;
   position: absolute;
-  top: 30px;
-  left: 0;
-  background: #248862;
+  right: 0;
+  top: 120%;
+  background: #0D1117;
+  border-radius: 6px;
   list-style: none;
-  padding: 5px 0;
-  border-radius: 5px;
-  min-width: 120px;
-  z-index: 10;
+  padding: 8px 0;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 100;
 }
 
-.language-options li, .signup-options li {
-  padding: 8px 15px;
+.dropdown-content li {
+  padding: 8px 16px;
   color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.language-options.show, .signup-options.show {
+.dropdown-content li:hover {
+  background: #1e684b;
+}
+.dropdown-content li a {
+  display: flex;
+  align-items: center;
+  gap: 6px; 
+  color: white;
+  text-decoration: none;
+  padding: 4px 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.dropdown-content.show {
   display: block;
 }
 
-/* Hero */
+/*BOTÃO CADASTRE-SE*/
+.btn-cadastro {
+  margin-left: 24px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  color: #F4F0FF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  background: linear-gradient(180deg, rgba(8, 77, 126, 0) 0%, rgba(8, 77, 126, 0.42) 100%), #248862;
+  box-shadow: inset 0px 0px 12px rgba(151, 200, 255, 0.44);
+  transition: background 0.3s ease;
+}
+
+.btn-cadastro:hover {
+  background: linear-gradient(
+      180deg,
+      rgba(184, 238, 255, 0.24) 0%,
+      rgba(184, 238, 255, 0) 100%
+    ),
+    rgba(11, 53, 24, 0.9);
+}
 .hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  padding: 40px 0;
+  z-index: 1;
+  color: white;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
   text-align: center;
-  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.hero h1 {
-  font-size: 56px;
+.hero-content h1 {
+  font-size: 50px;
   font-weight: 600;
-  margin-bottom: 20px;
+  line-height: 0.5;
 }
 
-.hero p {
+.hero-content p {
   font-size: 24px;
   font-weight: 500;
-  max-width: 700px;
-  margin-bottom: 10px;
 }
 
-.hero .subtext {
+.hero-content .subtext {
   font-size: 22px;
-  margin-bottom: 40px;
+  font-weight: 400;
+  line-height: 0.5;
 }
 
+/* Botões do hero */
 .hero-buttons {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 16px;
   justify-content: center;
+  margin-top: 16px;
+  line-height: 0.5;
 }
 
-/* Botões hero */
-.btn-aluno, .btn-mentor, .btn-doador {
-  padding: 15px 40px;
-  border-radius: 12px;
+.hero-buttons button {
+  width: 230px;
+  height: 53px;
+  font-family: 'Roboto', sans-serif;
   font-size: 24px;
   font-weight: 700;
+  border-radius: 12.75px;
   border: 2px solid black;
   cursor: pointer;
 }
 
-.btn-aluno { background: #E8E8E8; color: black; }
-.btn-mentor { background: #2B8665; color: black; }
-.btn-doador { background: #E8E8E8; color: black; }
-
-/* Hero images grid */
-.hero-images {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 10px;
-  margin-top: 50px;
+button {
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.75em; /* raio arredondado */
+  background: transparent;
+  padding: 0;
 }
 
-.hero-images img {
+/* Camada superior que faz o efeito de clique */
+.button_top {
+  display: block;
+  box-sizing: border-box;
+  border-radius: 0.75em;
+  padding: 0.75em 1.5em;
+  transition: transform 0.1s ease;
+  transform: translateY(-0.2em);
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Hover: botão sobe */
+button:hover .button_top {
+  transform: translateY(-0.33em);
+}
+
+/* Ativo: botão é pressionado */
+button:active .button_top {
+  transform: translateY(0);
+}
+
+.btn-aluno .button_top {
+  background: #E8E8E8;
+  color: black;
+  border: 2px solid black;
+}
+
+.btn-mentor .button_top {
+  background: #2B8665;
+  color: black;
+  border: 2px solid black;
+}
+
+.btn-doador .button_top {
+  background: #E8E8E8;
+  color: black;
+  border: 2px solid black;
+}
+
+/* Container de fundo das imagens */
+.background-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  backdrop-filter: blur(4px);
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 0;
+  z-index: -1; 
+  opacity: 0.5;
 }
 
-/* Footer */
-footer {
-  margin-top: 80px;
-  padding: 20px;
-  text-align: center;
-  background: #0D1117;
+.background-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
+footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px 0;
+}
+
+

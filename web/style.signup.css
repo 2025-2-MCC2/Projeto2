@@ -1,0 +1,114 @@
+/* Reset básico */
+body {
+    margin: 0;
+    font-family: "Poppins", "Poppins", sans-serif;
+    background: url('fundo.jpg') no-repeat center center/cover;
+  }
+  
+  /* Container lateral direita */
+  .container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100vh;
+    padding-right: 100px;
+  }
+  
+  /* Caixa do formulário */
+  .form-box {
+    width: 400px;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    backdrop-filter: blur(2px);
+
+  }
+  .form-row {
+    display: flex;
+    gap: 10px; /* Espaço entre os campos */
+  }
+  
+  .input-group {
+    flex: 1; /* Cada input ocupa metade do espaço */
+  }
+  
+  .form-box input {
+    width: 100%; /* Agora vai respeitar só o espaço do .input-group */
+  }
+
+  /* Títulos */
+  .form-box h3 {
+    margin: 0;
+    font-weight: normal;
+    font-size: 18px;
+    color: #444;
+  }
+  
+  .form-box h1 {
+    color: #000000;
+    margin: 15px;
+    font-size: 28px;
+    text-align: left;
+  }
+  
+  /* Texto de login */
+  .signin-text {
+    text-align: right;
+    margin: 5px;
+    font-size: 14px;
+  }
+  
+  .signin-text a {
+    color: #6a9c78;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .signin-text a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Labels */
+  .form-box label {
+    font-size: 14px;
+    color: #080606;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  /* Inputs */
+  .form-box input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 25px;
+    border: 2px solid #65cf95ab;
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+  
+  .form-box input:focus {
+    border-color: #6a9c78;
+    outline: none;
+    box-shadow: 0 0 6px #6A9C7866;
+  }
+  
+  /* Botão */
+  .form-box button {
+    width: 100%;
+    padding: 12px;
+    background-color: #6a9c78;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .form-box button:hover {
+    background-color: 6a9c78;
+  }
+  
