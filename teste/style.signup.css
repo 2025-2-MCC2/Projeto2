@@ -16,9 +16,9 @@ body {
   
   /* Caixa do formulário */
   .form-box {
-    width: 400px;
+    width: 390px;
     background: rgba(255, 255, 255, 0.7);
-    padding: 35px;
+    padding: 13px;
     border-radius: 25px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     backdrop-filter: blur(2px);
@@ -47,14 +47,14 @@ body {
   
   .form-box h1 {
     color: #000000;
-    margin: 15px;
+    margin: 2px 3px 10px px;
     font-size: 28px;
     text-align: left;
   }
   
   /* Texto de login */
   .signin-text {
-    text-align: right;
+    text-align: center;
     margin: 5px;
     font-size: 14px;
   }
@@ -80,8 +80,8 @@ body {
   /* Inputs */
   .form-box input {
     width: 100%;
-    padding: 15px;
-    margin-bottom: 25px;
+    padding: 13px;
+    margin-bottom: 15px;
     border: 2px solid #65cf95ab;
     border-radius: 12px;
     box-sizing: border-box;
