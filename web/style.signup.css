@@ -2,11 +2,11 @@
 body {
     margin: 0;
     font-family: "Poppins", "Poppins", sans-serif;
-    background: url('fundo.jpg') no-repeat center center/cover;
+    background: url('imagens/Fundo de teste.png') center/cover no-repeat fixed;
   }
   
-  /* Container lateral direita */
-  .container {
+   /* Container lateral direita */
+   .container {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -16,13 +16,12 @@ body {
   
   /* Caixa do formulário */
   .form-box {
-    width: 400px;
-    background: rgba(255, 255, 255, 0.7);
-    padding: 35px;
+    width: 390px;
+    background: rgba(255, 255, 255, 0.521);
+    padding: 13px;
     border-radius: 25px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    backdrop-filter: blur(2px);
-
+    backdrop-filter: blur(1px);
   }
   .form-row {
     display: flex;
@@ -47,20 +46,20 @@ body {
   
   .form-box h1 {
     color: #000000;
-    margin: 15px;
+    margin: 2px 3px 10px px;
     font-size: 28px;
     text-align: left;
   }
   
   /* Texto de login */
   .signin-text {
-    text-align: right;
+    text-align: center;
     margin: 5px;
     font-size: 14px;
   }
   
   .signin-text a {
-    color: #6a9c78;
+    color: #0c461c;
     font-weight: bold;
     text-decoration: none;
   }
@@ -80,9 +79,9 @@ body {
   /* Inputs */
   .form-box input {
     width: 100%;
-    padding: 15px;
-    margin-bottom: 25px;
-    border: 2px solid #65cf95ab;
+    padding: 13px;
+    margin-bottom: 15px;
+    border: 0px solid #008024;
     border-radius: 12px;
     box-sizing: border-box;
     font-size: 14px;
@@ -90,7 +89,7 @@ body {
   }
   
   .form-box input:focus {
-    border-color: #6a9c78;
+    border-color: #0c461c;
     outline: none;
     box-shadow: 0 0 6px #6A9C7866;
   }
@@ -99,7 +98,7 @@ body {
   .form-box button {
     width: 100%;
     padding: 12px;
-    background-color: #6a9c78;
+    background-color: #0c461c;
     color: white;
     font-size: 16px;
     border: none;
