@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: "Poppins", Arial, sans-serif;
-    background: url('fundo-login.jpg') no-repeat center center/cover;
+    background: url('Fundo\ de\ teste.png') no-repeat center center/cover;
   }
   
   /* Container lateral direita */
@@ -11,19 +11,17 @@ body {
     justify-content: flex-end;
     align-items: center;
     height: 100vh;
-    padding-right: 50px;
+    padding-right: 100px;
   }
   
   /* Caixa do formulário */
   .form-box {
-    width: 420px;
-    background: rgba(255, 255, 255, 0.7);
-    padding: 35px;
+    width: 390px;
+    background: rgba(255, 255, 255, 0.521);
+    padding: 13px;
     border-radius: 25px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(2px);
- 
-   
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    backdrop-filter: blur(1px);
   }
   
   /* Títulos */
@@ -35,7 +33,7 @@ body {
   }
   
   .form-box h1 {
-    color: #000000;
+    color: #0c461c;
     margin: 15px 0;
     font-size: 28px;
     text-align: left;
@@ -46,10 +44,11 @@ body {
     text-align: right;
     margin: 5px;
     font-size: 14px;
+    text-align: center;
   }
   
   .signup-text a {
-    color: #6a9c78;
+    color: #0c461c;
     font-weight: bold;
     text-decoration: none;
   }
@@ -71,7 +70,7 @@ body {
     width: 100%;
     padding: 12px;
     margin-bottom: 18px;
-    border: 2px solid #6a9c78;
+    border: 0px solid #0c461c;
     border-radius: 12px;
     box-sizing: border-box;
     font-size: 14px;
@@ -79,7 +78,7 @@ body {
   }
   
   .form-box input:focus {
-    border-color: #6a9c78;
+    border-color: #0c461c;
     outline: none;
     box-shadow: 0 0 6px #6A9C7866;
   }
@@ -88,7 +87,7 @@ body {
   .form-box button {
     width: 100%;
     padding: 12px;
-    background-color: #6a9c78;
+    background-color: #0c461c;
     color: white;
     font-size: 16px;
     border: none;
@@ -99,6 +98,6 @@ body {
   
   
   .form-box button:hover {
-    background-color: #6a9c78;
+    background-color: #0c461c;
   }
   
