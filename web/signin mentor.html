@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cadastro Mentor</title>
+  <title>Login Mentor</title>
   <style>
     * {
       box-sizing: border-box;
@@ -132,25 +132,22 @@
       <div class="header-left">
         <h3>Bem-vindo</h3>
         <span>MENTOR!</span>
-        <div class="cadastre-text">Cadastre-se</div>
+        <div class="cadastre-text">Faça login</div>
       </div>
       <div class="header-right">
-        <p>Já tem uma conta?</p>
-        <a href="signin mentor.html">Login</a>
+        <p>Não tem uma conta?</p>
+        <a href="signup mentor.html">Cadastre-se</a>
       </div>
     </div>
 
-    <form onsubmit="event.preventDefault(); alert('Cadastro realizado com sucesso!');">
+    <form onsubmit="event.preventDefault(); alert('Login realizado com sucesso!');">
       <label for="mentorId">ID</label>
       <input type="text" id="mentorId" name="mentorId" placeholder="Digite seu ID" required />
 
-      <label for="email">E-mail</label>
-      <input type="email" id="email" name="email" placeholder="Digite seu email" required />
-
       <label for="senha">Senha</label>
-      <input type="password" id="senha" name="senha" placeholder="Crie a senha" required />
+      <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required />
 
-      <button type="submit">Cadastre-se</button>
+      <button type="submit">Entrar</button>
     </form>
   </div>
 </body>
