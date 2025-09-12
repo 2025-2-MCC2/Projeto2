@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro Mentor</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #2E5E3E, #1F3F2A);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .form-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 360px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .header-left {
+      text-align: left;
+    }
+
+    .header-left h3 {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .header-left span {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .cadastre-text {
+      font-size: 1.2rem;
+      color: #6A9C78;
+      font-weight: bold;
+      margin: 10px 0;
+      text-align: left;
+    }
+
+    .header-right {
+      text-align: right;
+    }
+
+    .header-right p {
+      font-size: 0.8rem;
+      color: #333;
+    }
+
+    .header-right a {
+      display: block;
+      color: #6A9C78;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.8rem;
+      margin-top: 2px;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+      display: block;
+      color: #444;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: #f9f9f9;
+      box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: #6A9C78;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #6A9C78;
+      color: #fff;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #558c63;
+    }
+
+    @media (max-width: 400px) {
+      .form-container {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <div class="header">
+      <div class="header-left">
+        <h3>Bem-vindo</h3>
+        <span>MENTOR!</span>
+        <div class="cadastre-text">Cadastre-se</div>
+      </div>
+      <div class="header-right">
+        <p>Já tem uma conta?</p>
+        <a href="signin.html">Login</a>
+      </div>
+    </div>
+
+    <form onsubmit="event.preventDefault(); alert('Cadastro realizado com sucesso!');">
+      <label for="mentorId">ID</label>
+      <input type="text" id="mentorId" name="mentorId" placeholder="Digite seu ID" required />
+
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" placeholder="Digite seu email" required />
+
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" name="senha" placeholder="Crie a senha" required />
+
+      <button type="submit">Cadastre-se</button>
+    </form>
+  </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Mentor</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #2E5E3E, #1F3F2A);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .form-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 360px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+
+    .header-left {
+      text-align: left;
+    }
+
+    .header-left h3 {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .header-left span {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .cadastre-text {
+      font-size: 1.2rem;
+      color: #6A9C78;
+      font-weight: bold;
+      margin: 10px 0;
+      text-align: left;
+    }
+
+    .header-right {
+      text-align: right;
+    }
+
+    .header-right p {
+      font-size: 0.8rem;
+      color: #333;
+    }
+
+    .header-right a {
+      display: block;
+      color: #6A9C78;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.8rem;
+      margin-top: 2px;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+      display: block;
+      color: #444;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: #f9f9f9;
+      box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
+      transition: border-color 0.3s;
+    }
+
+    input:focus {
+      border-color: #6A9C78;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #6A9C78;
+      color: #fff;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #558c63;
+    }
+
+    @media (max-width: 400px) {
+      .form-container {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <div class="header">
+      <div class="header-left">
+        <h3>Bem-vindo</h3>
+        <span>MENTOR!</span>
+        <div class="cadastre-text">Faça login</div>
+      </div>
+      <div class="header-right">
+        <p>Não tem uma conta?</p>
+        <a href="signup.html">Cadastre-se</a>
+      </div>
+    </div>
+
+    <form onsubmit="event.preventDefault(); alert('Login realizado com sucesso!');">
+      <label for="mentorId">ID</label>
+      <input type="text" id="mentorId" name="mentorId" placeholder="Digite seu ID" required />
+
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required />
+
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+</body>
+</html>
