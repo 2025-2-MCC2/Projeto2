@@ -1,12 +1,15 @@
  # FECAP - Fundação de Comércio Álvares Penteado
 
 <p align="center">
-<a href= "https://www.fecap.br/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhZPrRa89Kma0ZZogxm0pi-tCn_TLKeHGVxywp-LXAFGR3B1DPouAJYHgKZGV0XTEf4AE&usqp=CAU" alt="FECAP - Fundação de Comércio Álvares Penteado" border="0"></a>
+<a href= "https://www.fecap.br/"><img src="https://github.com/user-attachments/assets/179fcfab-99aa-477e-9200-a1728459d492" alt="FECAP - Fundação de Comércio Álvares Penteado" border="0"></a>
 </p>
 
 # Lideranças Empáticas
 
 ## CyberSirens
+<p align="center">
+<a href= "CyberSirens"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhZPrRa89Kma0ZZogxm0pi-tCn_TLKeHGVxywp-LXAFGR3B1DPouAJYHgKZGV0XTEf4AE&usqp=CAU" alt="CyberSirens" border="0"></a>
+</p>
 
 ## Integrantes: <a href="https://www.linkedin.com/in/ana-clara-keiko-ribeiro-hagiwara-da-silva-970063341/">Ana Clara Keiko</a>, <a href="https://www.linkedin.com/in/felipe-mathey-47772b357/">Felipe Mathey</a>, <a href="https://www.linkedin.com/in/gustavo-miranda-162b5835b/">Gustavo Miranda</a>, <a href="https://www.linkedin.com/in/katiê-prado-388129312/">Katiê Prado</a>, <a href="https://www.linkedin.com/in/polianny-santos-6193a8324/">Polianny Santos</a>, <a href="https://www.linkedin.com/in/rafaelamorais0906/">Rafaela Morais</a>
 
