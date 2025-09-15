@@ -8,9 +8,7 @@
 
 ## CyberSirens
 <p align="center">
-<a href= "CyberSirens"><img src="https://github.com/user-attachments/assets/239dc0ae-18b0-49f2-b5e6-47dafc5a0d97" />
-" />
-" alt="CyberSirens" border="0"></a>
+<a href= "CyberSirens"><img src="https://github.com/user-attachments/assets/239dc0ae-18b0-49f2-b5e6-47dafc5a0d97" alt="CyberSirens" ></a>
 </p>
 
 ## Integrantes: <a href="https://www.linkedin.com/in/ana-clara-keiko-ribeiro-hagiwara-da-silva-970063341/">Ana Clara Keiko</a>, <a href="https://www.linkedin.com/in/felipe-mathey-47772b357/">Felipe Mathey</a>, <a href="https://www.linkedin.com/in/gustavo-miranda-162b5835b/">Gustavo Miranda</a>, <a href="https://www.linkedin.com/in/katiê-prado-388129312/">Katiê Prado</a>, <a href="https://www.linkedin.com/in/polianny-santos-6193a8324/">Polianny Santos</a>, <a href="https://www.linkedin.com/in/rafaelamorais0906/">Rafaela Morais</a>
