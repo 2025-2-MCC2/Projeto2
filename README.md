@@ -15,7 +15,7 @@
 ## Descrição
 
 <p align="center">
-<a href= "CyberSirens"><img src="https://github.com/user-attachments/assets/239dc0ae-18b0-49f2-b5e6-47dafc5a0d97" alt="CyberSirens" ></a>
+<a href= "CyberSirens"><img src="https://github.com/user-attachments/assets/a3653801-d9ad-4cbb-9363-4176a2945ddc" alt="CyberSirens" ></a>
 </p>
 
 
