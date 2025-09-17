@@ -1,6 +1,6 @@
 import React from "react";
 import "../index.css";
-
+import imagem1 from ''
 const Hero = () => {
  
   const imagens = [
