@@ -1,8 +1,7 @@
 import React from "react";
 import "../index.css";
-import imagem1 from ''
+
 const Hero = () => {
- 
   const imagens = [
     "imagem1.jpg",
     "imagem2.jpg",
@@ -28,7 +27,7 @@ const Hero = () => {
     <section className="hero">
       <div className="background-grid">
         {imagens.map((img, i) => (
-          <img key={i} src={`/images/${img}`} alt={`imagem ${i + 1}`} />
+          <img key={i} src={`/imagens/${img}`} alt={`imagem ${i + 1}`} />
         ))}
       </div>
 
@@ -42,6 +41,7 @@ const Hero = () => {
           Cadastre-se agora e comece a contribuir como voluntário, mentor ou
           doador
         </p>
+
         <div className="hero-buttons">
           <button className="btn-aluno">
             <span className="button_top">Aluno</span>
