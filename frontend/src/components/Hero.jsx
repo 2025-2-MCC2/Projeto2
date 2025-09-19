@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 const Hero = () => {
   const { t } = useTranslation();
 
-const Hero = () => {
   const imagens = [
     "imagem1.jpg",
     "imagem2.jpg",
@@ -42,7 +41,8 @@ const Hero = () => {
           conectando voluntários, mentores e doações.
         </p>
         <p className="subtext">
-          Cadastre-se agora e comece a contribuir como voluntário, mentor ou doador
+          Cadastre-se agora e comece a contribuir como voluntário, mentor ou
+          doador
         </p>
         <div className="hero-buttons">
           <button className="btn-aluno">
@@ -58,6 +58,6 @@ const Hero = () => {
       </div>
     </section>
   );
-}};
+};
 
 export default Hero;

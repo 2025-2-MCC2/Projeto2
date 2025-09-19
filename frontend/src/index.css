@@ -272,38 +272,71 @@ button:active .button_top {
   display: block;
   opacity: 0.8;
 }
-footer {
-  background-color: #2B8665;
-  padding: 40px 0;
-  color: whitesmoke;
+.footer {
+  width: 100%;
+  background: #092A1E;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  padding: 20px 20px;
   position: relative;
   z-index: 10;
-  text-align: center;
 }
 
-.footer.container {
+.footer-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px; 
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 48px;
 }
 
-.footer-right {
+/* Navegação */
+.footer-navigation h3,
+.footer-contact h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.footer-navigation ul {
+  list-style: none;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.footer-navigation li {
+  margin-bottom: 4px;
+}
+
+/* Contato */
+.footer-contact p {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+/* Redes sociais */
+.footer-social {
   display: flex;
-  gap: 16px;
-  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-item {
+  display: flex;
   align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 500;
 }
 
-.footer-icon {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.3s ease;
-}
-
-.footer-icon:hover {
-  transform: scale(1.1);
+/* Copyright */
+.footer-copy {
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  margin-top: 20px;
 }
