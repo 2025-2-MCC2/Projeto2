@@ -1,6 +1,4 @@
-/* ==========================
-   RESET BÁSICO
-========================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -10,11 +8,11 @@
 body{
   font-family: 'Poppins', sans-serif;
   width: 100%;
-  background: #000; 
+  background: #111; 
   color: #fff;
 }
 
-/* HEADER/NAVBAR */
+/* header e navbar*/
 .navbar {
   position: sticky;
   top: 0;
@@ -24,10 +22,10 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 1000;
 }
 
-
+/* para centralizar o conteudo principal da página inicial*/
 .container {
   width: 100%;
   max-width: 1440px;
@@ -37,19 +35,19 @@ body{
   margin: 0 auto;
 }
 
-/* LOGO */
+/* logo */
 .logo img {
   height: 50px;
 }
 
-/* DROPDOWN DE IDIOMA */
+/*dropdown do idioma */
 .dropdown {
   position: relative;
   font-family: 'Poppins', sans-serif;
   display: inline-block;
   margin-left: 24px;
 }
-
+/* estilização do botão */
 .dropdown-btn {
   background: none;
   border: none;
@@ -61,7 +59,7 @@ body{
   align-items: center;
   gap: 4px;
 }
-
+/* seta do dropdown */
 .dropdown-btn .arrow {
   font-size: 12px;
 }
@@ -71,9 +69,9 @@ body{
 .dropdown-btn .arrow {
   transition: transform 0.3s ease;
 }
-
+/* seta gira ao abrir o dropdown */
 .dropdown-content {
-  display: none;
+  display: block;
   position: absolute;
   right: 0;
   top: 120%;
@@ -96,7 +94,7 @@ body{
   align-items: center;
   gap: 6px;
 }
-
+/* efeito para mudar de cor do dropdown de cadastre-se */
 .dropdown-content li:hover {
   background: #1e684b;
 }
@@ -116,7 +114,7 @@ body{
   display: block;
 }
 
-/*BOTÃO CADASTRE-SE*/
+/* botão cadastre-se */
 .btn-cadastro {
   margin-left: 24px;
   padding: 10px 24px;
@@ -140,6 +138,7 @@ body{
     ),
     rgba(11, 53, 24, 0.9);
 }
+/* parte principal da página inicial */
 .hero {
   position: relative;
   width: 100%;
@@ -155,7 +154,7 @@ body{
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 10;
   max-width: 900px;
   text-align: center;
   display: flex;
@@ -182,7 +181,7 @@ body{
   margin-top: 16px;
 }
 
-/* Botões do hero */
+/* botões principais de aluno, mentor e doador */
 .hero-buttons {
   display: flex;
   gap: 16px;
@@ -201,18 +200,18 @@ body{
   border: 2px solid black;
   cursor: pointer;
 }
-
+/* Estilização base do botão */
 button {
   font-size: 17px;
   font-weight: bold;
   border: none;
   cursor: pointer;
-  border-radius: 0.75em; /* raio arredondado */
+  border-radius: 2em; 
   background: transparent;
   padding: 0;
 }
 
-/* Camada superior que faz o efeito de clique */
+/* parte superior do botão */
 .button_top {
   display: block;
   box-sizing: border-box;
@@ -223,7 +222,7 @@ button {
   font-family: 'Roboto', sans-serif;
 }
 
-/* Hover: botão sobe */
+
 button:hover .button_top {
   transform: translateY(-0.33em);
 }
@@ -251,7 +250,7 @@ button:active .button_top {
   border: 2px solid black;
 }
 
-/* Container de fundo das imagens */
+/* imagens de fundo em grid */
 .background-grid {
   position: fixed;
   top: 0;
@@ -271,6 +270,7 @@ button:active .button_top {
   height: 100%;
   object-fit: cover;
   display: block;
+  opacity: 0.8;
 }
 footer {
   background-color: #2B8665;

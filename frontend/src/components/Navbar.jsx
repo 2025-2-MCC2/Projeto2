@@ -2,30 +2,39 @@ import React, { useState } from "react";
 import "../index.css";
 
 const Navbar = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownLanguageOpen, setDropdownLanguageOpen] = useState(false);
+  const [dropdownSignupOpen, setDropdownSignupOpen] = useState(false);
 
-  const toggleDropdown = (e) => {
+  const toggleLanguage = (e) => {
     e.stopPropagation();
-    setDropdownOpen(!dropdownOpen);
+    setDropdownLanguageOpen(!dropdownLanguageOpen);
   };
 
-  // Fecha dropdown ao clicar fora
-  document.addEventListener("click", () => setDropdownOpen(false));
+  const toggleSignup = (e) => {
+    e.stopPropagation();
+    setDropdownSignupOpen(!dropdownSignupOpen);
+  };
+
+  // Fecha dropdowns ao clicar fora
+  document.addEventListener("click", () => {
+    setDropdownLanguageOpen(false);
+    setDropdownSignupOpen(false);
+  });
 
   return (
     <header className="navbar">
       <div className="container">
         <div className="logo">
-          <img src="/images/LOGO-Lideranças.avif" alt="Logo" />
+          <img src="/imagens/LOGO-Lideranças.avif" alt="Logo" />
         </div>
 
         <div className="nav-actions">
           <div className="dropdown">
-            <button className="dropdown-btn" onClick={toggleDropdown}>
+            <button className="dropdown-btn" onClick={toggleLanguage}>
               Português (Brasil) <span className="arrow">▼</span>
             </button>
-            {dropdownOpen && (
-              <ul className="dropdown-content">
+            {dropdownLanguageOpen && (
+              <ul className="dropdown-content show">
                 <li>Português (Brasil)</li>
                 <li>English</li>
                 <li>Español</li>
@@ -34,20 +43,28 @@ const Navbar = () => {
           </div>
 
           <div className="dropdown signup-cadastro">
-            <button className="btn-cadastro" onClick={toggleDropdown}>
+            <button className="btn-cadastro" onClick={toggleSignup}>
               Cadastre-se <span className="arrow">▼</span>
             </button>
-            {dropdownOpen && (
-              <ul className="dropdown-content">
+            {dropdownSignupOpen && (
+              <ul className="dropdown-content show">
                 <li>
                   <a href="signup aluno.html">
-                    <img src="/images/icone aluno.png" alt="Aluno" className="icon" />
+                    <img
+                      src="/imagens/icone aluno.png"
+                      alt="Aluno"
+                      className="icon"
+                    />
                     Aluno
                   </a>
                 </li>
                 <li>
                   <a href="signup mentor.html">
-                    <img src="/images/icone mentor.png" alt="Mentor" className="icon" />
+                    <img
+                      src="/imagens/icone mentor.png"
+                      alt="Mentor"
+                      className="icon"
+                    />
                     Mentor
                   </a>
                 </li>
