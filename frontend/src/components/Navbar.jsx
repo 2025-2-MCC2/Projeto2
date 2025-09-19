@@ -47,7 +47,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <a href="signup mentor.html">
-                    <img src="/images/icone mentor.png" alt="Mentor" className="icon" />
+                    <img src="/imagens/icone.mentor.png" alt="Mentor" className="icon" />
                     Mentor
                   </a>
                 </li>

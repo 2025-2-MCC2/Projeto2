@@ -1,3 +1,4 @@
+// Footer.jsx
 import React from "react";
 import "../index.css";
 
@@ -5,8 +6,18 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-       
+        {/* Logo do canto esquerdo */}
+        <div className="footer-logo-left">
+          <img src="/imagens/logo-footer-left.png" alt="Logo" />
+        </div>
+
+        {/* Navegação */}
         <div className="footer-navigation">
+          <img
+            src="/imagens/logo-footer-top.png"
+            alt="Logo"
+            className="footer-logo-top"
+          />
           <h3>NAVEGAÇÃO</h3>
           <ul>
             <li>Início</li>
@@ -17,30 +28,29 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* Seção Contato */}
+        {/* Contato */}
         <div className="footer-contact">
           <h3>CONTATO</h3>
           <p>Avenida Liberdade, 552</p>
           <p>liderancasempaticas.com</p>
-        </div>
 
-        {/* Redes sociais */}
-        <div className="footer-social">
-          <div className="social-item">
-            <img src="/imagens/logo linkedin.png" alt="LinkedIn" />
-            <span>Linkedin</span>
-          </div>
-          <div className="social-item">
-            <img src="/imagens/logo insta.png" alt="Instagram" />
-            <span>Instagram</span>
+          <div className="footer-social">
+            <div className="social-item">
+              <img src="/imagens/linkedin.png" alt="Linkedin" />
+              Linkedin
+            </div>
+            <div className="social-item">
+              <img src="/imagens/instagram.png" alt="Instagram" />
+              Instagram
+            </div>
           </div>
         </div>
       </div>
 
       {/* Copyright */}
-      <p className="footer-copy">
+      <div className="footer-copy">
         © 2025 Lideranças Empáticas – Todos os direitos reservados
-      </p>
+      </div>
     </footer>
   );
 };
