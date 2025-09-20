@@ -272,71 +272,102 @@ button:active .button_top {
   display: block;
   opacity: 0.8;
 }
+/* Footer */
 .footer {
-  width: 100%;
-  background: #092A1E;
+  background-color: #0a3d2e; /* verde escuro sólido */
   color: white;
+  padding: 40px 20px 10px;
   font-family: 'Inter', sans-serif;
-  padding: 20px 20px;
   position: relative;
   z-index: 10;
 }
 
+/* Container do footer - linha única */
 .footer-container {
   display: flex;
-  flex-wrap: wrap;
+  align-items: flex-start; /* mantém alinhadas no topo */
   justify-content: space-between;
-  gap: 40px;
-  max-width: 1440px;
+  gap: 60px;
+  max-width: 1200px;
   margin: 0 auto;
+  flex-wrap: wrap; /* para telas menores */
 }
 
-/* Navegação */
-.footer-navigation h3,
-.footer-contact h3 {
+/* Seções internas do footer */
+.footer-section {
+  display: flex;
+  flex-direction: column; /* links empilhados verticalmente */
+  flex: 1; /* distribui espaço igualmente entre as seções */
+}
+
+.footer-section h3 {
   font-size: 20px;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
-.footer-navigation ul {
-  list-style: none;
+/* Links do footer */
+.footer-links {
+  display: flex;
+  flex-direction: column; /* links internos em coluna */
+  gap: 8px;
+  list-style: none; /* remove qualquer ponto de lista */
   padding: 0;
-  font-size: 18px;
-  font-weight: 400;
+  margin: 0;
 }
 
-.footer-navigation li {
-  margin-bottom: 4px;
+.footer-links a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  transition: color 0.3s ease;
 }
 
-/* Contato */
-.footer-contact p {
-  font-size: 18px;
-  font-weight: 400;
-  margin-bottom: 4px;
+.footer-links a:hover {
+  color: #9fe870; /* verde claro ao passar o mouse */
 }
 
 /* Redes sociais */
 .footer-social {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .social-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 18px;
-  font-weight: 500;
+}
+
+/* Logo no topo da navegação */
+.footer-logo-top {
+  width: 300px;
+  margin-bottom: 15px;
+}
+
+/* Logo da direita */
+.footer-logo-right {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1; /* garante que fique na mesma linha das seções */
+}
+
+.footer-logo-right img {
+  width: 300px;
+  height: auto;
 }
 
 /* Copyright */
 .footer-copy {
-  width: 100%;
   text-align: center;
-  font-size: 16px;
+  margin-top: 30px;
+  font-size: 14px;
   font-weight: 400;
-  margin-top: 20px;
 }
+
+
