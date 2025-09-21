@@ -2,25 +2,23 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../index.css";
 
-
 const Navbar = () => {
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [signupDropdownOpen, setSignupDropdownOpen] = useState(false);
-
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const toggleLangDropdown = (e) => {
     e.stopPropagation();
     setLangDropdownOpen(!langDropdownOpen);
-    setSignupDropdownOpen(false); // fecha o outro dropdown
+    setSignupDropdownOpen(false);
   };
-
 
   const toggleSignupDropdown = (e) => {
     e.stopPropagation();
     setSignupDropdownOpen(!signupDropdownOpen);
-    setLangDropdownOpen(false); // fecha o outro dropdown
+    setLangDropdownOpen(false);
   };
-
 
   // Fecha dropdowns ao clicar fora
   useEffect(() => {
@@ -34,16 +32,34 @@ const Navbar = () => {
     };
   }, []);
 
+  // Lógica para esconder/show Navbar no scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        // Scroll para baixo
+        setShowNavbar(false);
+      } else {
+        // Scroll para cima
+        setShowNavbar(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
 
   return (
-    <header className="navbar">
+    <header className={`navbar ${showNavbar ? "visible" : "hidden"}`}>
       <div className="container">
         <div className="logo">
           <Link to="/">
             <img src="/imagens/LOGO-Lideranças.avif" alt="Logo" />
           </Link>
         </div>
-
 
         <div className="nav-actions">
           {/* Dropdown de idioma */}
@@ -59,7 +75,6 @@ const Navbar = () => {
               </ul>
             )}
           </div>
-
 
           {/* Dropdown de cadastro */}
           <div className="dropdown signup-cadastro">
@@ -96,6 +111,5 @@ const Navbar = () => {
     </header>
   );
 };
-
 
 export default Navbar;
