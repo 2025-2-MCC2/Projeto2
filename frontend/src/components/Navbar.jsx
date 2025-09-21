@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../index.css";
+
 
 const Navbar = () => {
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [signupDropdownOpen, setSignupDropdownOpen] = useState(false);
+
 
   const toggleLangDropdown = (e) => {
     e.stopPropagation();
@@ -11,11 +14,13 @@ const Navbar = () => {
     setSignupDropdownOpen(false); // fecha o outro dropdown
   };
 
+
   const toggleSignupDropdown = (e) => {
     e.stopPropagation();
     setSignupDropdownOpen(!signupDropdownOpen);
     setLangDropdownOpen(false); // fecha o outro dropdown
   };
+
 
   // Fecha dropdowns ao clicar fora
   useEffect(() => {
@@ -29,12 +34,16 @@ const Navbar = () => {
     };
   }, []);
 
+
   return (
     <header className="navbar">
       <div className="container">
         <div className="logo">
-          <img src="/images/LOGO-Lideranças.avif" alt="Logo" />
+          <Link to="/">
+            <img src="/imagens/LOGO-Lideranças.avif" alt="Logo" />
+          </Link>
         </div>
+
 
         <div className="nav-actions">
           {/* Dropdown de idioma */}
@@ -51,6 +60,7 @@ const Navbar = () => {
             )}
           </div>
 
+
           {/* Dropdown de cadastro */}
           <div className="dropdown signup-cadastro">
             <button className="btn-cadastro" onClick={toggleSignupDropdown}>
@@ -59,24 +69,24 @@ const Navbar = () => {
             {signupDropdownOpen && (
               <ul className="dropdown-content">
                 <li>
-                  <a href="signup aluno.html">
+                  <Link to="/cadastro-aluno">
                     <img
                       src="/imagens/icone aluno.png"
                       alt="Aluno"
                       className="icon"
                     />
                     Aluno
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="signup mentor.html">
+                  <Link to="/cadastro-mentor">
                     <img
                       src="/imagens/icone mentor.png"
                       alt="Mentor"
                       className="icon"
                     />
                     Mentor
-                  </a>
+                  </Link>
                 </li>
               </ul>
             )}
@@ -86,5 +96,6 @@ const Navbar = () => {
     </header>
   );
 };
+
 
 export default Navbar;

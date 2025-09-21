@@ -1,16 +1,17 @@
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+
 body{
   font-family: 'Poppins', sans-serif;
   width: 100%;
-  background: #111; 
+  background: #111;
   color: #fff;
 }
+
 
 /* header e navbar*/
 .navbar {
@@ -24,6 +25,15 @@ body{
   align-items: center;
   z-index: 1000;
 }
+.navbar.hidden {
+  transform: translateY(-100%);
+}
+
+
+.navbar.visible {
+  transform: translateY(0);
+}
+
 
 /* para centralizar o conteudo principal da página inicial*/
 .container {
@@ -35,10 +45,12 @@ body{
   margin: 0 auto;
 }
 
+
 /* logo */
 .logo img {
   height: 50px;
 }
+
 
 /*dropdown do idioma */
 .dropdown {
@@ -84,6 +96,7 @@ body{
   z-index: 100;
 }
 
+
 .dropdown-content li {
   padding: 8px 16px;
   color: white;
@@ -101,7 +114,7 @@ body{
 .dropdown-content li a {
   display: flex;
   align-items: center;
-  gap: 6px; 
+  gap: 6px;
   color: white;
   text-decoration: none;
   padding: 4px 8px;
@@ -110,9 +123,11 @@ body{
   font-weight: 400;
 }
 
+
 .dropdown-content.show {
   display: block;
 }
+
 
 /* botão cadastre-se */
 .btn-cadastro {
@@ -129,6 +144,7 @@ body{
   box-shadow: inset 0px 0px 12px rgba(151, 200, 255, 0.44);
   transition: background 0.3s ease;
 }
+
 
 .btn-cadastro:hover {
   background: linear-gradient(
@@ -152,6 +168,7 @@ body{
   color: white;
 }
 
+
 .hero-content {
   position: relative;
   z-index: 10;
@@ -162,17 +179,20 @@ body{
   gap: 24px;
 }
 
+
 .hero-content h1 {
   font-size: 50px;
   font-weight: 600;
   line-height: 0.5;
 }
 
+
 .hero-content p {
   font-size: 24px;
   font-weight: 550;
   margin-bottom: 16px;
 }
+
 
 .hero-content .subtext {
   font-size: 22px;
@@ -181,14 +201,15 @@ body{
   margin-top: 16px;
 }
 
+
 /* botões principais de aluno, mentor e doador */
 .hero-buttons {
   display: flex;
   gap: 16px;
   justify-content: center;
-  /*margin-top: 16px;*/ 
   line-height: 0.5;
 }
+
 
 .hero-buttons button {
   width: 260px;
@@ -200,16 +221,17 @@ body{
   border: 2px solid black;
   cursor: pointer;
 }
-/* Estilização base do botão */
+/* estilo do botão */
 button {
   font-size: 17px;
   font-weight: bold;
   border: none;
   cursor: pointer;
-  border-radius: 2em; 
+  border-radius: 2em;
   background: transparent;
   padding: 0;
 }
+
 
 /* parte superior do botão */
 .button_top {
@@ -227,10 +249,11 @@ button:hover .button_top {
   transform: translateY(-0.33em);
 }
 
-/* Ativo: botão é pressionado */
+
 button:active .button_top {
   transform: translateY(0);
 }
+
 
 .btn-aluno .button_top {
   background: #E8E8E8;
@@ -238,11 +261,13 @@ button:active .button_top {
   border: 2px solid black;
 }
 
+
 .btn-mentor .button_top {
   background: #2B8665;
   color: black;
   border: 2px solid black;
 }
+
 
 .btn-doador .button_top {
   background: #E8E8E8;
@@ -250,7 +275,8 @@ button:active .button_top {
   border: 2px solid black;
 }
 
-/* imagens de fundo em grid */
+
+/*imagens de fundo em grid*/
 .background-grid {
   position: fixed;
   top: 0;
@@ -261,10 +287,10 @@ button:active .button_top {
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 1fr;
   gap: 0.2px;
-  z-index: -1; 
+  z-index: -1;
   opacity: 0.8;
 }
-
+/*tamanho do grid das imagens de fundo*/
 .background-grid img {
   width: 100%;
   height: 100%;
@@ -272,102 +298,94 @@ button:active .button_top {
   display: block;
   opacity: 0.8;
 }
-/* Footer */
 .footer {
-  background-color: #0a3d2e; /* verde escuro sólido */
-  color: white;
-  padding: 40px 20px 10px;
-  font-family: 'Inter', sans-serif;
+  background-color: #092A1E;
+  color: #fff;
+  padding: 20px 40px; /* compacta o footer */
+  font-family: 'Poppins', sans-serif;
+  text-align: justify; 
   position: relative;
   z-index: 10;
 }
 
-/* Container do footer - linha única */
-.footer-container {
+.footer-logos-top {
   display: flex;
-  align-items: flex-start; /* mantém alinhadas no topo */
-  justify-content: space-between;
-  gap: 60px;
-  max-width: 1200px;
-  margin: 0 auto;
-  flex-wrap: wrap; /* para telas menores */
+  justify-content: center;
+  align-items: center;
+  gap: 50px; /* espaçamento entre as logos */
+  margin-bottom: 30px;
 }
 
-/* Seções internas do footer */
-.footer-section {
+.footer-logos-top img.liderancas {
+  height: 100px;
+}
+
+.footer-logos-top img.cybersirens {
+  height: 120px;
+}
+
+.footer-container {
   display: flex;
-  flex-direction: column; /* links empilhados verticalmente */
-  flex: 1; /* distribui espaço igualmente entre as seções */
+  justify-content: space-around; 
+  text-align: justify;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 60px; 
+  flex-wrap: wrap;
+
+}
+
+.footer-section {
+  min-width: 150px;
+  text-align: justify; 
 }
 
 .footer-section h3 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 15px;
+  font-size: 16px;
+  margin-bottom: 12px;
+  font-weight: bold;
 }
 
-/* Links do footer */
 .footer-links {
   display: flex;
-  flex-direction: column; /* links internos em coluna */
+  flex-direction: column;
   gap: 8px;
-  list-style: none; /* remove qualquer ponto de lista */
-  padding: 0;
-  margin: 0;
 }
 
 .footer-links a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  color: #ccc;
   text-decoration: none;
-  color: white;
-  font-size: 16px;
-  font-weight: 400;
-  transition: color 0.3s ease;
+  transition: color 0.2s;
 }
 
 .footer-links a:hover {
-  color: #9fe870; /* verde claro ao passar o mouse */
-}
-
-/* Redes sociais */
-.footer-social {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.social-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Logo no topo da navegação */
-.footer-logo-top {
-  width: 300px;
-  margin-bottom: 15px;
-}
-
-/* Logo da direita */
-.footer-logo-right {
-  display: flex;
-  justify-content: flex-end;
-  flex: 1; /* garante que fique na mesma linha das seções */
+  color: #fff;
 }
 
 .footer-logo-right img {
-  width: 300px;
-  height: auto;
+  max-height: 120px; /* ajuste proporcional da logo direita */
 }
 
-/* Copyright */
 .footer-copy {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 14px;
-  font-weight: 400;
+  color: #888;
+  border-top: 1px solid #333;
+  padding-top: 10px;
 }
 
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .footer-logos-top {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center; /* centraliza no mobile */
+    text-align: justify; /* textos continuam justificados */
+  }
+}
 
