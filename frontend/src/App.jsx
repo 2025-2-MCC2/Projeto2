@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Login from "./components/Login"; // ou "./Login.jsx"
 import "./index.css";
 import "./i18n";
+import CadastroAluno from "./components/CadastroAluno";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/cadastro-aluno" element={<CadastroAluno />} />
       </Routes>
       <Footer />
     </>
