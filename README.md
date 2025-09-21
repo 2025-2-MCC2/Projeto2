@@ -64,14 +64,14 @@ Antes de começar, é necessário ter instalado:
  - npm
  - Git
 
-Clonando o projeto
+**Clonando o projeto**
 
 Primeiro, faça o clone do repositório e entre na pasta:
 git clone https://github.com/2025-2-MCC2/Projeto2.git
 
 cd Projeto2
 
-Configuração do Backend
+**Configuração do Backend**
 
 Entre na pasta do servidor e instale as dependências:
 cd frontend/src
@@ -80,7 +80,7 @@ npm install
 Depois, inicie o servidor com:
 npm run dev
 
-Configuração do Frontend
+**Configuração do Frontend**
 
 Vá até a pasta do cliente e instale as dependências:
 cd ../Client
@@ -89,7 +89,7 @@ npm install
 Em seguida, rode o projeto com:
 npm start
 
-Endereços locais
+**Endereços locais**
 
 O frontend estará disponível em http://localhost:5173
 O backend rodará em http://localhost:5000
