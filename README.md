@@ -6,13 +6,13 @@
 
 # Lideranças Empáticas
 
-## CyberSirens
+## CyberSirens🧜‍♀️
 
 ## Integrantes: <a href="https://www.linkedin.com/in/ana-clara-keiko-ribeiro-hagiwara-da-silva-970063341/">Ana Clara Keiko</a>, <a href="https://www.linkedin.com/in/felipe-mathey-47772b357/">Felipe Mathey</a>, <a href="https://www.linkedin.com/in/gustavo-miranda-162b5835b/">Gustavo Miranda</a>, <a href="https://www.linkedin.com/in/katiê-prado-388129312/">Katiê Prado</a>, <a href="https://www.linkedin.com/in/polianny-santos-6193a8324/">Polianny Santos</a>, <a href="https://www.linkedin.com/in/rafaelamorais0906/">Rafaela Morais</a>
 
 ## Professores Orientadores: <a href="https://www.linkedin.com/in/cristina-machado-corrêa-leite-630309160/">Cristina Machado Corrêa Leite</a>, <a href="https://www.linkedin.com/in/dolemes/">David de Oliveira Lemes</a>, <a href="https://www.linkedin.com/in/francisco-escobar/">Francisco Escobar</a>, <a href="https://www.linkedin.com/in/katia-bossi/">Katia M. Lara Bossi</a>, <a href="https://www.linkedin.com/in/leonardo-fabris-lugoboni-a3369416/">Leonardo Fabris Lugoboni</a>
 
-## Descrição
+## 📃 Descrição
 
 <p align="center">
 <a href= "CyberSirens"><img src="https://github.com/user-attachments/assets/3f3d917d-6539-4a25-a2cf-644a97f717ef"  ></a>
@@ -28,7 +28,7 @@ O foco é criar experiências digitais que incentivem colaboração, empatia e c
 <br><br>
 
 
-## 🛠 Estrutura de pastas
+## 📁 Estrutura de pastas
 ````text
 Raiz
 ├── documentos
@@ -55,47 +55,44 @@ Raiz
 └── readme.md
 ````
 
-A pasta raiz contem dois arquivos que devem ser alterados:
+## ⚙  Guia de Instalação e Execução 
+Requisitos
 
-Há também 4 pastas que seguem da seguinte forma:
+Antes de começar, é necessário ter instalado:
 
-<b>documentos</b>: Toda a documentação estará nesta pasta.
+ - Node.js (versão 18 ou superior)
+ - npm
+ - Git
 
-<b>executáveis</b>: Binários e executáveis do projeto devem estar nesta pasta.
+Clonando o projeto
 
-<b>imagens</b>: Imagens do sistema
+Primeiro, faça o clone do repositório e entre na pasta:
+git clone https://github.com/2025-2-MCC2/Projeto2.git
 
-<b>src</b>: Pasta que contém o código fonte.
+cd Projeto2
 
-## 🛠 Instalação
+Configuração do Backend
 
-<b>Windows:</b>
+Entre na pasta do servidor e instale as dependências:
+cd frontend/src
+npm install
 
-Não há instalação! Apenas executável!
-Encontre o Lideranças Empáticas.exe na pasta executáveis e execute-o como qualquer outro programa.
+Depois, inicie o servidor com:
+npm run dev
 
-```sh
-Coloque código do prompt de comnando se for necessário
-```
+Configuração do Frontend
 
-<b>HTML:</b>
+Vá até a pasta do cliente e instale as dependências:
+cd ../Client
+npm install
 
-Não há instalação!
-Encontre o index.html na pasta executáveis e execute-o como uma página WEB (através de algum browser).
+Em seguida, rode o projeto com:
+npm start
 
-## 💻 Configuração para Desenvolvimento
+Endereços locais
 
-Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
-
-Para abrir este projeto você necessita das seguintes ferramentas:
-
--<a href="https://godotengine.org/download">GODOT</a>
-
-```sh
-make install
-npm test
-Coloque código do prompt de comnando se for necessário
-```
+O frontend estará disponível em http://localhost:5173
+O backend rodará em http://localhost:5000
 
 ## 📋 Licença/License
 [CyberSirens](https://github.com/2025-2-MCC2) © 2025 by [Rafaela Morais, Katiê Prado, Felipe Mathey, Polianny Santos, Ana Clara Keiko, Gustavo Miranda](https://github.com/2025-2-MCC2) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  
