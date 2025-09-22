@@ -1,5 +1,6 @@
 import express from "express";
-import noticiasRoutes from "./routes/noticiasRoutes.js";
+import noticiasRoutes from './noticiasRoutes.js';
+
 
 const app = express();
 const PORT = 3000;
