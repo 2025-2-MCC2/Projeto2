@@ -9,3 +9,5 @@ app.use(express.json());
 app.use("/", noticiasRoutes);
 
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+
+
