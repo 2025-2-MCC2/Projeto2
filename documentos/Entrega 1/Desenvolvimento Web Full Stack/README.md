@@ -1,5 +1,5 @@
 # 🌐 Desenvolvimento Web Full Stack
-- **Professor(a):** Francisco de Souza Escobar
+- **Professor:** Francisco de Souza Escobar
 ---
 ## 📖 Descrição do Trabalho
 Este trabalho tem como objetivo aplicar os conceitos de **Desenvolvimento Web Full Stack**, unindo **front-end** e **back-end** em um projeto prático.  
