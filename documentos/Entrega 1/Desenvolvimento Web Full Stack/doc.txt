@@ -1,1 +1,0 @@
-Os códigos podem ser acessados na seguinte pasta: "frontend" disponibilizada com os códigos de todas as páginas.
