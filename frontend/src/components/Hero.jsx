@@ -1,29 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../index.css";
-import { useTranslation } from "react-i18next";
 
 const Hero = () => {
-  const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const imagens = [
-    "imagem1.jpg",
-    "imagem2.jpg",
-    "imagem3.jpg",
-    "imagem4.jpg",
-    "imagem5.jpg",
-    "imagem6.jpg",
-    "imagem7.jpg",
-    "imagem8.avif",
-    "imagem9.jpg",
-    "imagem10.avif",
-    "imagem11.jpg",
-    "imagem12.jpg",
-    "imagem13.jpg",
-    "imagem14.avif",
-    "imagem15.avif",
-    "imagem16.avif",
-    "imagem17.jpg",
-    "imagem18.jpg",
+    "imagem1.jpg", "imagem2.jpg", "imagem3.jpg", "imagem4.jpg",
+    "imagem5.jpg", "imagem6.jpg", "imagem7.jpg", "imagem8.avif",
+    "imagem9.jpg", "imagem10.avif", "imagem11.jpg", "imagem12.jpg",
+    "imagem13.jpg", "imagem14.avif", "imagem15.avif", "imagem16.avif",
+    "imagem17.jpg", "imagem18.jpg",
   ];
 
   return (
@@ -45,10 +32,10 @@ const Hero = () => {
           doador
         </p>
         <div className="hero-buttons">
-          <button className="btn-aluno">
+          <button className="btn-aluno" onClick={() => navigate("/cadastro-aluno")}>
             <span className="button_top">Aluno</span>
           </button>
-          <button className="btn-mentor">
+          <button className="btn-mentor" onClick={() => navigate("/cadastro-mentor")}>
             <span className="button_top">Mentor</span>
           </button>
           <button className="btn-doador">

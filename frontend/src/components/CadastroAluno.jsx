@@ -35,7 +35,7 @@ export default function CadastroAluno() {
           </p>
         </div>
 
-        <h1 style={{ color: 'green', marginTop: '10px', fontSize: '2rem' }}>Cadastro Aluno</h1>
+        <h1 style={{ color: 'green', marginTop: '10px', fontSize: '2rem' }}>Cadastre-se</h1>
 
         {/* Email */}
         <div style={{ marginTop: '20px' }}>
