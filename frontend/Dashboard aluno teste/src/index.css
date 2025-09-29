@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Academic Dashboard Design System - Verde, Azul, Branco e Vermelho */
+
+@layer base {
+  :root {
+    /* Layout básico */
+    --background: 0 0% 98%;
+    --foreground: 220 13% 18%;
+
+    /* Cards */
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+
+    /* Sidebar - Verde escuro */
+    --sidebar-primary: 155 100% 25%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-hover: 155 80% 30%;
+    
+    /* Verde - Comunicação/Actions */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-hover: 142 76% 32%;
+
+    /* Azul - Relatórios */
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+    --info-hover: 199 89% 44%;
+
+    /* Vermelho - Agenda/Alerts */
+    --warning: 14 100% 80%;
+    --warning-foreground: 220 13% 18%;
+    --danger: 0 84% 60%;
+    --danger-foreground: 0 0% 100%;
+
+    /* Neutros */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+
+    /* Sistema padrão */
+    --primary: 155 100% 25%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 220 13% 18%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+    --ring: 155 100% 25%;
+
+    /* Border radius */
+    --radius: 0.75rem;
+    
+    /* Transitions e animações */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    --shadow-floating: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -4px hsl(0 0% 0% / 0.1);
+  }
+
+  .dark {
+    /* Manter modo escuro simples para foco na versão clara */
+    --background: 220 13% 9%;
+    --foreground: 0 0% 98%;
+    --sidebar-primary: 155 80% 20%;
+    --card: 220 13% 12%;
+    --border: 220 13% 20%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
