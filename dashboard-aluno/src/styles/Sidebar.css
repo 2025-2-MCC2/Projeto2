@@ -3,27 +3,37 @@
   width: 60px;
   background-color: #0B6D48;
   color: white;
-  padding: 20px 10px;
+  padding: 9px 9px;
   box-sizing: border-box;
   transition: width 0.3s ease;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; 
 }
 
-.sidebar:hover {
+.sidebar.expanded {
   width: 200px;
-  align-items: flex-start;
 }
 
+/* Botão de expandir/minimizar */
+.toggle-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 10px;
+}
+
+/* Cabeçalho */
 .sidebar-header {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
-  transition: all 0.3s ease;
+
 }
 
 .sidebar-logo {
@@ -35,36 +45,29 @@
 .sidebar-group-name {
   font-size: 20px;
   font-weight: bold;
-  margin-top: 15px;
-  padding-top: 15px;
   width: 100%;
   text-align: center;
   opacity: 0;
+  max-height: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.sidebar:hover .sidebar-group-name {
+.sidebar.expanded .sidebar-group-name {
   opacity: 1;
   visibility: visible;
+  opacity: 1;
+  max-height: 100px;
+  padding-top: 15px;
+  margin-top: 15px;
 }
 
-.sidebar:hover .sidebar-group-name {
-  opacity: 1;
-  max-height: 100px; /* altura suficiente para o texto aparecer */
-}
 
 /* Navegação */
 .sidebar nav {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
-  transition: margin-top 0.3s ease;
-}
-
-.sidebar:hover nav {
-  margin-top: 10px;
 }
 
 .sidebar nav ul {
@@ -77,18 +80,11 @@
 .sidebar nav ul li {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  justify-content: flex-start;
   cursor: pointer;
   padding: 10px;
   font-size: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  transition: font-size 0.3s ease, padding 0.3s ease;
-}
-
-.sidebar:hover nav ul li {
-  font-size: 16px;
-  padding-left: 20px;
+  transition: font-size 0.3s ease, ease;
 }
 
 .menu-icon {
@@ -103,6 +99,6 @@
   transition: opacity 0.3s ease;
 }
 
-.sidebar:hover .menu-text {
+.sidebar.expanded .menu-text {
   opacity: 1;
 }

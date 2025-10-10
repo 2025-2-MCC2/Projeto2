@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/Sidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -11,15 +11,26 @@ import {
   faCalendar,
   faBookBookmark,
   faGear,
+  faChevronRight,
+  faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Sidebar() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsExpanded(prev => !prev);
+  };
+
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isExpanded ? 'expanded' : ''}`}>
       <div className="sidebar-header">
-  <FontAwesomeIcon icon={faUsers} className="sidebar-logo" />
-  <h2 className="sidebar-group-name">Nome do Grupo</h2>
-</div>
+        <button className="toggle-button" onClick={toggleSidebar}>
+          <FontAwesomeIcon icon={isExpanded ? faChevronLeft : faChevronRight} />
+        </button>
+        <FontAwesomeIcon icon={faUsers} className="sidebar-logo" />
+        <h2 className="sidebar-group-name">CyberSirens</h2>
+      </div>
 
       <nav>
         <ul>
