@@ -1,15 +1,60 @@
 import React from 'react';
-import '../styles/Sidebar.css'; // Se você já criou o CSS
+import '../styles/Sidebar.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faUsers,
+  faHouse,
+  faUser,
+  faBarsProgress,
+  faFileInvoice,
+  faComments,
+  faCalendar,
+  faBookBookmark,
+  faGear,
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function Sidebar() {
   return (
     <aside className="sidebar">
+      <div className="sidebar-header">
+  <FontAwesomeIcon icon={faUsers} className="sidebar-logo" />
+  <h2 className="sidebar-group-name">Nome do Grupo</h2>
+</div>
+
       <nav>
         <ul>
-          <li>Início</li>
-          <li>Relatórios</li>
-          <li>Perfil</li>
-          <li>Configurações</li>
+          <li>
+            <FontAwesomeIcon icon={faHouse} className="menu-icon" />
+            <span className="menu-text">Início</span>
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faUser} className="menu-icon" />
+            <span className="menu-text">Perfil</span>
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faBarsProgress} className="menu-icon" />
+            <span className="menu-text">Progresso</span>
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faFileInvoice} className="menu-icon" />
+            <span className="menu-text">Relatórios</span>
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faComments} className="menu-icon" />
+            <span className="menu-text">Mensagens</span>
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faCalendar} className="menu-icon" />
+            <span className="menu-text">Agenda</span>
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faBookBookmark} className="menu-icon" />
+            <span className="menu-text">Materiais</span>
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faGear} className="menu-icon" />
+            <span className="menu-text">Configurações</span>
+          </li>
         </ul>
       </nav>
     </aside>

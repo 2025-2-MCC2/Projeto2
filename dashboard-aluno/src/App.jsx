@@ -5,7 +5,7 @@ function App() {
     <div style={{ display: 'flex' }}>
       <Sidebar />
       <main style={{ padding: '20px' }}>
-        <h1>Conteúdo do Dashboard</h1>
+        <h2>👋 Seja bem vindo, Nome do Usuário!</h2>
       </main>
     </div>
   );
