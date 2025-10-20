@@ -1,0 +1,185 @@
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.dashboard-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  background-color: #fff;
+  border-bottom: 2px solid #e0e0e0;
+  position: relative; /* Importante para o posicionamento do calendário */
+}
+
+.dashboard-topbar-left h2 {
+  font-size: 1.6rem;
+  color: #333;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dashboard-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative; /* 🔑 garante que o calendário use este bloco como referência */
+}
+
+/* Botão verde da data */
+.date-display {
+  background-color: #78a97f;
+  color: #1e1e1e;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.date-display:hover {
+  background-color: #6b9871;
+}
+
+/* Calendário centralizado */
+.date-popup {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  z-index: 100;
+  padding: 6px;
+}
+
+/* Ícone de notificações */
+.icon-notification {
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.icon-notification:hover {
+  color: #0077b6;
+}
+
+/* Avatar do usuário */
+.user-avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #444;
+}
+
+
+/* Botão verde da data */
+.date-display {
+  background-color: #78a97f;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  min-width: 130px;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+
+.date-display:hover {
+  background-color: #67986d;
+}
+
+/* Container do calendário (melhor alinhado) */
+.date-popup {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  z-index: 100;
+  padding: 6px;
+}
+
+.react-datepicker {
+  font-family: 'Nunito', sans-serif;
+  border: none;
+  width: 260px;
+}
+
+.react-datepicker__header {
+  background-color: #78a97f;
+  border-bottom: none;
+  color: white;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 8px;
+  padding-right: 45px;
+}
+
+.react-datepicker__current-month {
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.react-datepicker__navigation--previous,
+.react-datepicker__navigation--next {
+  top: 14px;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: white;
+}
+
+/* Dias da semana e dias do mês */
+.react-datepicker__day-name,
+.react-datepicker__day {
+  color: #333;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  font-size: 0.9rem;
+}
+
+.react-datepicker__day:hover {
+  background-color: #e7f3e8;
+  border-radius: 50%;
+}
+
+.react-datepicker__day--selected {
+  background-color: #78a97f !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
+/* Remove sombra azul padrão */
+.react-datepicker__day--keyboard-selected {
+  background-color: #78a97f !important;
+  color: #fff !important;
+}
+
+/* Adiciona um leve espaçamento e sombra */
+.react-datepicker__month-container {
+  padding: 4px;
+}
