@@ -1,10 +1,10 @@
 import React from 'react';
 
-export default function CadastroAluno() {
+export default function LoginAluno() {
   return (
     <div
       style={{
-        position: 'relative',  // necessário para o overlay
+        position: 'relative',
         width: '100%',
         height: '100vh',
         fontFamily: 'Poppins, sans-serif',
@@ -27,7 +27,7 @@ export default function CadastroAluno() {
           backgroundSize: 'cover',
           backgroundPosition: 'right center',
           backgroundRepeat: 'no-repeat',
-          filter: 'brightness(0.6)', // escurece a imagem pra dar destaque à caixa
+          filter: 'brightness(0.6)',
           zIndex: -1,
           transition: 'background-position 0.5s ease',
         }}
@@ -45,54 +45,32 @@ export default function CadastroAluno() {
           zIndex: 1,
         }}
       >
-        {/* Resto do seu conteúdo aqui */}
         {/* Cabeçalho */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <h3 style={{ margin: 0, fontWeight: 600, color: '#2c2c2c', fontSize: '1.2rem' }}>
             Bem-vindo, Alvarista!
           </h3>
-          <p style={{ fontSize: '0.9rem', margin: 0, color: '#666' }}>
-            Já tem uma conta?{' '}
-            <a href="/login-aluno" style={{ color: '#248862', textDecoration: 'none', fontWeight: '500' }}>
-              Entrar
-            </a>
-          </p>
+         
         </div>
 
-        <h1 style={{ color: '#248862', marginTop: '20px', fontSize: '2rem' }}>Cadastre-se</h1>
+        <h1 style={{ color: '#248862', marginTop: '20px', fontSize: '2rem' }}>Login</h1>
 
-        {/* Email */}
+        {/* Campo ID */}
         <div style={{ marginTop: '20px' }}>
-          <label style={labelStyle}>Insira o email do representante do grupo</label>
-          <input
-            type="email"
-            placeholder="Email do líder do grupo"
-            style={inputStyle}
-          />
+          <label style={labelStyle}>ID</label>
+          <input type="text" placeholder="Seu ID" style={inputStyle} />
         </div>
 
-        {/* Nome do grupo e Turma */}
-        <div style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
-          <div style={{ flex: 1 }}>
-            <label style={labelStyle}>Nome do grupo</label>
-            <input type="text" placeholder="Nome do grupo aqui" style={inputStyle} />
-          </div>
-          <div style={{ flex: 1 }}>
-            <label style={labelStyle}>Turma</label>
-            <input type="text" placeholder="Turma aqui" style={inputStyle} />
-          </div>
+        {/* Campo Email */}
+        <div style={{ marginTop: '15px' }}>
+          <label style={labelStyle}>Email</label>
+          <input type="email" placeholder="email" style={inputStyle} />
         </div>
 
-        {/* Período e Senha */}
-        <div style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
-          <div style={{ flex: 1 }}>
-            <label style={labelStyle}>Período</label>
-            <input type="text" placeholder="Período aqui" style={inputStyle} />
-          </div>
-          <div style={{ flex: 1 }}>
-            <label style={labelStyle}>Crie uma senha</label>
-            <input type="password" placeholder="Senha" style={inputStyle} />
-          </div>
+        {/* Campo Senha */}
+        <div style={{ marginTop: '15px' }}>
+          <label style={labelStyle}>Senha</label>
+          <input type="password" placeholder="Crie uma senha" style={inputStyle} />
         </div>
 
         {/* Botão */}
