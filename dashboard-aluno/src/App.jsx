@@ -1,14 +1,19 @@
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
-
+import './App.css'; // (vamos colocar o CSS aqui embaixo)
+ 
 function App() {
     return (
-        <div style={{ display: 'flex' }}>
+        <div className="app-container">
             <Sidebar />
-            <div className='Título-Dash'>
-            <h2>Bem vindo(a), Katiê!</h2>
+
+            <div className="main-content">
+                <div className="titulo-dash">
+                    <h2>Bem-vindo(a), Katiê! 😉</h2>
+                </div>
+
+                <Dashboard />
             </div>
-            <Dashboard />
         </div>
     );
 }
