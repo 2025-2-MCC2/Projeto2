@@ -11,7 +11,7 @@
   padding: 10px 25px;
   background-color: #fff;
   border-bottom: 2px solid #e0e0e0;
-  position: relative; /* Importante para o posicionamento do calendário */
+  position: relative;
 }
 
 .dashboard-topbar-left h2 {
@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  position: relative; /* 🔑 garante que o calendário use este bloco como referência */
+  position: relative;
 }
 
 /* Botão verde da data */
@@ -49,21 +49,8 @@
   background-color: #6b9871;
 }
 
-/* Calendário centralizado */
-.date-popup {
-  position: absolute;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
-  overflow: hidden;
-  z-index: 100;
-  padding: 6px;
-}
 
-/* Ícone de notificações */
+/* Notf*/
 .icon-notification {
   font-size: 20px;
   color: #555;
@@ -72,10 +59,10 @@
 }
 
 .icon-notification:hover {
-  color: #0077b6;
+  color: #e4ae1b;
 }
 
-/* Avatar do usuário */
+/* Foto de usuário */
 .user-avatar img {
   width: 40px;
   height: 40px;
@@ -85,11 +72,11 @@
 }
 
 
-/* Botão verde da data */
+/* Botão Calendário */
 .date-display {
-  background-color: #78a97f;
+  font-family: 'Nunito', sans-serif;
+  background-color: #0B6D48;
   color: #fff;
-  border: none;
   padding: 10px 16px;
   border-radius: 8px;
   font-weight: 600;
@@ -104,10 +91,10 @@
 }
 
 .date-display:hover {
-  background-color: #67986d;
+  background-color: #083826;
 }
 
-/* Container do calendário (melhor alinhado) */
+/* Calendário */
 .date-popup {
   position: absolute;
   top: 50px;
@@ -128,7 +115,7 @@
 }
 
 .react-datepicker__header {
-  background-color: #78a97f;
+  background-color: #0B6D48;
   border-bottom: none;
   color: white;
   text-align: center;
@@ -152,7 +139,7 @@
   border-color: white;
 }
 
-/* Dias da semana e dias do mês */
+/* Dias */
 .react-datepicker__day-name,
 .react-datepicker__day {
   color: #333;
@@ -168,18 +155,65 @@
 }
 
 .react-datepicker__day--selected {
-  background-color: #78a97f !important;
+  background-color: #0B6D48 !important;
   color: white !important;
   border-radius: 50%;
 }
 
-/* Remove sombra azul padrão */
+/* Cor adicionada na seleção de dia*/
 .react-datepicker__day--keyboard-selected {
   background-color: #78a97f !important;
   color: #fff !important;
 }
 
-/* Adiciona um leve espaçamento e sombra */
 .react-datepicker__month-container {
   padding: 4px;
+}
+
+.dashboard-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.dashboard-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Área dos cards */
+.cards-area {
+  display: flex;
+  justify-content: left;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.grafico-area {
+  flex: 1;
+  min-height: 280px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  text-align: center;
+  color: #333;
+}
+
+/* Ranking à direita */
+.ranking-area {
+  width: 380px;
 }

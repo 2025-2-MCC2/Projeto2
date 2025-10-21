@@ -99,6 +99,15 @@ body {
   color: #555;
 }
 
+.dashboard-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+  justify-content: flex-start;
+}
+
+
 /*Botõessssss*/
 
 button {
@@ -110,7 +119,7 @@ button {
 }
 
 
-/* Header com título + ações do Dashboard (data, sino, avatar) */
+/* Header c tudo*/
 .dashboard-header {
   display: flex;
   justify-content: space-between;
@@ -127,11 +136,3 @@ button {
   margin: 0;
 }
 
-/* Cards container */
-.dashboard-cards {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 20px;
-  justify-content: flex-start;
-}
