@@ -1,3 +1,6 @@
+/* ============================
+   Layout do dashboard
+============================ */
 .dashboard-page {
   display: flex;
   min-height: 100vh;
@@ -19,14 +22,55 @@
   margin-left: 16px;
 }
 
+/* ============================
+   Topo direito
+============================ */
+.dashboard-top-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.date-filter {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.notification-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.mentor-avatar {
+  width: 36px;
+  height: 36px;
+  background-color: #1B2559;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+
+/* ============================
+   Container de cards
+============================ */
 .cards-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: flex-start;
+  margin-bottom: 20px;
 }
 
-/* Cards fixos de 180px */
+/* ============================
+   Card base
+============================ */
 .card {
   flex: 1 1 calc(33% - 16px);
   max-width: 400px;
@@ -37,23 +81,20 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  background-color: rgba(200, 200, 200, 0.1);
 }
 
-/* cores específicas para cada card */
-.chat-card {
-  background: rgba(141,141,141,0.11);
-}
+/* ============================
+   Cores específicas
+============================ */
+.chat-card { background: rgba(141,141,141,0.11); }
+.ranking-card { background: rgba(173,173,173,0.14); }
+.activities-card { background: rgba(173,173,173,0.2); border-radius: 20px; }
+.arrecadacao-card, .team-ranking-card, .latest-activities-card, .metas-card { background: #fff; border-radius: 16px; }
 
-.ranking-card {
-  background: rgba(173,173,173,0.14);
-}
-
-.activities-card {
-  background: rgba(173,173,173,0.2);
-  border-radius: 20px;
-}
-
-/* cabeçalhos dos cards */
+/* ============================
+   Cabeçalhos
+============================ */
 .card-header h3 {
   color: #131313;
   font-size: 20px;
@@ -68,7 +109,9 @@
   margin: 0;
 }
 
-/* Avatares no chat */
+/* ============================
+   Chat Avatares
+============================ */
 .avatars {
   display: flex;
   gap: 8px;
@@ -84,18 +127,20 @@
 .avatar.green { background-color: #78A376; }
 .avatar.gray { background-color: #cccccc; }
 
-/* rodapé dos cards */
+/* ============================
+   Footer do Card
+============================ */
 .card-footer {
   font-size: 12px;
   font-weight: 400;
-  margin-top: auto; /* faz ir pro final do card */
+  margin-top: auto; /* força ir pro final */
 }
 
-.card-footer.red {
-  color: #FF0000;
-}
+.card-footer.red { color: #FF0000; }
 
-/* Ranking */
+/* ============================
+   Ranking interno
+============================ */
 .ranking {
   display: flex;
   align-items: baseline;
@@ -123,7 +168,9 @@
   margin-top: 8px;
 }
 
-/* atividades */
+/* ============================
+   Atividades
+============================ */
 .activities-date {
   color: #131313;
   font-size: 20px;
@@ -164,8 +211,29 @@
 }
 
 .activities-footer {
-  margin-top: auto; /* deixa no final do card */
+  margin-top: auto;
   color: #FF0000;
   font-size: 12px;
   font-weight: 400;
+}
+
+/* ============================
+   Filtros do gráfico
+============================ */
+.period-filter {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.period-filter button {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.period-filter button:hover {
+  background-color: #f0f0f0;
 }
