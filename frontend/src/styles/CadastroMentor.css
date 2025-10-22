@@ -1,102 +1,121 @@
-/* Escopo da página Mentor */
+/* Página de Cadastro do Mentor */
 .mentor-page {
-  background: linear-gradient(to bottom, #2E5E3E, #1F3F2A);
+  background: linear-gradient(to bottom, #0d6b53, #0b5c45);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 24px;
+  font-family: "Inter", sans-serif;
 }
 
-/* Container do formulário */
-.mentor-page .form-container {
-  background-color: #fff;
-  padding: 20px;
+/* Container principal */
+.form-container {
+  background-color: #0f0f10;
   border-radius: 12px;
   width: 100%;
-  max-width: 360px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  padding: 32px 36px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #e6fff2;
 }
 
-/* Header do formulário */
-.mentor-page .header {
+/* Cabeçalho */
+.header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-.mentor-page .header-left h3 {
+.header-left h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.mentor-highlight {
+  font-size: 1.3rem;
+  color: #00c853;
+  font-weight: 700;
+}
+
+.cadastre-text {
   font-size: 1rem;
-  color: #333;
+  color: #00c853;
+  font-weight: 600;
+  margin-top: 8px;
 }
 
-.mentor-page .header-left span {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
+.header-right p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #e0e0e0;
 }
 
-.mentor-page .cadastre-text {
-  font-size: 1.2rem;
-  color: #6A9C78;
-  font-weight: bold;
-  margin: 10px 0;
-  text-align: left;
-}
-
-.mentor-page .header-right p {
-  font-size: 0.8rem;
-  color: #333;
-}
-
-.mentor-page .header-right a {
+.header-right a {
   display: block;
-  color: #6A9C78;
-  font-weight: bold;
+  margin-top: 4px;
+  color: #00c853;
   text-decoration: none;
-  font-size: 0.8rem;
-  margin-top: 2px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.header-right a:hover {
+  text-decoration: underline;
 }
 
 /* Inputs */
-.mentor-page input {
+form label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #00c853;
+  margin-bottom: 6px;
+  display: block;
+}
+
+form input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
+  padding: 12px;
+  border: 1px solid #444;
   border-radius: 8px;
-  font-size: 1rem;
-  background: #f9f9f9;
-  box-shadow: inset 2px 2px 5px rgba(0,0,0,0.1);
+  background-color: #1a1a1a;
+  color: #fff;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+  outline: none;
   transition: border-color 0.3s;
 }
 
-.mentor-page input:focus {
-  border-color: #6A9C78;
-  outline: none;
+form input:focus {
+  border-color: #00c853;
 }
 
 /* Botão */
-.mentor-page button {
+button {
   width: 100%;
   padding: 12px;
-  background-color: #6A9C78;
-  color: #fff;
+  background-color: #00c853;
+  color: #04110a;
+  font-weight: 700;
   font-size: 1rem;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: background 0.3s;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
 }
 
-.mentor-page button:hover {
-  background-color: #558c63;
+button:hover {
+  background-color: #00b246;
 }
 
 /* Responsivo */
 @media (max-width: 400px) {
-  .mentor-page .form-container {
-    padding: 15px;
+  .form-container {
+    padding: 24px;
   }
 }
+

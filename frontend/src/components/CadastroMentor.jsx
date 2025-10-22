@@ -12,8 +12,8 @@ export default function CadastroMentor() {
       <div className="form-container">
         <div className="header">
           <div className="header-left">
-            <h3>Bem-vindo</h3>
-            <span>MENTOR!</span>
+            <h3>Bem-Vindo,</h3>
+            <span className="mentor-highlight">Mentor!</span>
             <div className="cadastre-text">Cadastre-se</div>
           </div>
           <div className="header-right">
@@ -23,21 +23,12 @@ export default function CadastroMentor() {
         </div>
 
         <form onSubmit={handleSubmit}>
-          <label htmlFor="mentorId">ID</label>
-          <input
-            type="text"
-            id="mentorId"
-            name="mentorId"
-            placeholder="Digite seu ID"
-            required
-          />
-
           <label htmlFor="email">E-mail</label>
           <input
             type="email"
             id="email"
             name="email"
-            placeholder="Digite seu email"
+            placeholder="Digite seu e-mail"
             required
           />
 
@@ -46,11 +37,11 @@ export default function CadastroMentor() {
             type="password"
             id="senha"
             name="senha"
-            placeholder="Crie a senha"
+            placeholder="Crie sua senha"
             required
           />
 
-          <button type="submit">Cadastre-se</button>
+          <button type="submit">Cadastrar</button>
         </form>
       </div>
     </div>
