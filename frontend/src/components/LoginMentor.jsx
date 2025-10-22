@@ -1,10 +1,21 @@
 import React from "react";
 import "../styles/CadastroMentor.css";
 
-export default function CadastroMentor() {
+export default function LoginMentor() {
   function handleSubmit(event) {
     event.preventDefault();
-    alert("Cadastro realizado com sucesso!");
+    
+    // Aqui você pegaria os valores dos campos
+    const email = event.target.email.value;
+    const senha = event.target.senha.value;
+    
+    console.log("Email:", email);
+    console.log("Senha:", senha);
+    
+    // Por enquanto só mostra um alerta
+    alert("Login realizado com sucesso!");
+    
+    // Aqui você faria a validação com seu backend
   }
 
   return (
@@ -12,13 +23,13 @@ export default function CadastroMentor() {
       <div className="form-container">
         <div className="header">
           <div className="header-left">
-            <h3>Bem-Vindo,</h3>
+            <h3>Bem-Vindo de volta,</h3>
             <span className="mentor-highlight">Mentor!</span>
-            <div className="cadastre-text">Cadastre-se</div>
+            <div className="cadastre-text">Faça seu Login</div>
           </div>
           <div className="header-right">
-            <p>Já tem uma conta?</p>
-            <a href="/login-mentor">Login</a>
+            <p>Não tem uma conta?</p>
+            <a href="/cadastro-mentor">Cadastre-se</a>
           </div>
         </div>
 
@@ -37,11 +48,11 @@ export default function CadastroMentor() {
             type="password"
             id="senha"
             name="senha"
-            placeholder="Crie sua senha"
+            placeholder="Digite sua senha"
             required
           />
 
-          <button type="submit">Cadastrar</button>
+          <button type="submit">Entrar</button>
         </form>
       </div>
     </div>

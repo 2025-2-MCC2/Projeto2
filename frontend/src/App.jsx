@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import CadastroAluno from "./components/CadastroAluno";
 import CadastroMentor from "./components/CadastroMentor";
+import LoginMentor from "./components/LoginMentor";
 import MentorDashboard from "./components/MentorDashboard";
 import "./index.css";
 import "./i18n";
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro-aluno" element={<CadastroAluno />} />
         <Route path="/cadastro-mentor" element={<CadastroMentor />} />
+        <Route path="/login-mentor" element={<LoginMentor />} />
         <Route path="/dashboard-mentor" element={<MentorDashboard />} />
       </Routes>
       {showHeaderFooter && <Footer />}
