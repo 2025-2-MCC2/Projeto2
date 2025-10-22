@@ -217,3 +217,43 @@
 .ranking-area {
   width: 380px;
 }
+
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.grafico-placeholder {
+  flex: 1;
+  min-height: 280px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-style: italic;
+}
+
+
+.dashboard-summary {
+  margin-bottom: 0; /* estava empurrando o ranking pra baixo */
+  padding-bottom: 0; /* se existir padding, tira também */
+}
+
+.dashboard-ranking {
+  margin-top: -10px; /* puxa o ranking pra cima */
+}
+.dashboard-ranking {
+  margin-top: -20px;
+}
+
+.dashboard-content {
+  padding-top: 10px; /* ou menos */
+}
+

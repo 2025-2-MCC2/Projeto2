@@ -1,0 +1,101 @@
+.ranking-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    width: 380px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Nunito', sans-serif;
+  }
+  
+  .ranking-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .top3-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 25px;
+    margin-bottom: 20px;
+  }
+  
+  .posicao {
+    text-align: center;
+    background: #f8f8f8;
+    border-radius: 12px;
+    padding: 10px 12px;
+    flex: 1;
+  }
+  
+  .primeiro {
+    background-color: #fff6e0;
+    border: 2px solid #f4b400;
+  }
+  
+  .segundo {
+    background-color: #f0f0f0;
+    border: 2px solid #c0c0c0;
+  }
+  
+  .terceiro {
+    background-color: #fff1e6;
+    border: 2px solid #cd7f32;
+  }
+  
+  .pos-num {
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+  
+  .grupo-nome {
+    margin: 5px 0;
+    font-weight: 600;
+  }
+  
+  .valor {
+    color: #0b6d48;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  
+  .demais-grupos ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .demais-grupos li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 0.9rem;
+  }
+  
+  .rank-num {
+    color: #0b6d48;
+    font-weight: 700;
+  }
+  
+  .rank-nome {
+    flex: 1;
+    margin-left: 10px;
+    color: #333;
+  }
+  
+  .rank-valor {
+    color: #0b6d48;
+    font-weight: 600;
+  }
+
+  .dashboard-ranking {
+    position: relative;
+    top: -40px !important;
+  }
