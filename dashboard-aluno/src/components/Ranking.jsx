@@ -4,7 +4,7 @@ import "../styles/Ranking.css";
 const Ranking = () => {
   const grupos = [
     { pos: 1, nome: "Grupo Alpha", valor: 82450 },
-    { pos: 2, nome: "Grupo Beta", valor: 0 },
+    { pos: 2, nome: "Grupo Beta", valor: 25 },
     { pos: 3, nome: "Grupo Gamma", valor: 0 },
     { pos: 4, nome: "Grupo Delta", valor: 45670 },
     { pos: 5, nome: "Grupo Epsilon", valor: 38290 },
@@ -28,7 +28,7 @@ const Ranking = () => {
           <p className="grupo-nome">{top3[1].nome}</p>
         </div>
         <div className="posicao primeiro">
-          <span className="pos-num">1º 🏆</span>
+          <span className="pos-num">1º </span>
           <p className="grupo-nome">{top3[0].nome}</p>
           <p className="valor">{formatar(top3[0].valor)}</p>
         </div>

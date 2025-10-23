@@ -213,7 +213,7 @@
   color: #333;
 }
 
-/* Ranking à direita */
+/* Ranking direita */
 .ranking-area {
   width: 380px;
 }
@@ -242,8 +242,8 @@
 
 
 .dashboard-summary {
-  margin-bottom: 0; /* estava empurrando o ranking pra baixo */
-  padding-bottom: 0; /* se existir padding, tira também */
+  margin-bottom: 0; 
+  padding-bottom: 0; 
 }
 
 .dashboard-ranking {
