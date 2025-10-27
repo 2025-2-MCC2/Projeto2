@@ -1,0 +1,239 @@
+/* ============================
+   Layout do dashboard
+============================ */
+.dashboard-page {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f4f7f6;
+  transition: all 0.3s ease;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 24px;
+  background-color: #f5f5f5;
+  overflow-y: auto;
+  transition: margin 0.3s ease;
+}
+
+/* Ajusta o conteúdo conforme sidebar abre/fecha */
+.dashboard-page.sidebar-open .dashboard-main,
+.dashboard-page.sidebar-closed .dashboard-main {
+  margin-left: 16px;
+}
+
+/* ============================
+   Topo direito
+============================ */
+.dashboard-top-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.date-filter {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.notification-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.mentor-avatar {
+  width: 36px;
+  height: 36px;
+  background-color: #1B2559;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+}
+
+/* ============================
+   Container de cards
+============================ */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+/* ============================
+   Card base
+============================ */
+.card {
+  flex: 1 1 calc(33% - 16px);
+  max-width: 400px;
+  height: 180px;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: rgba(200, 200, 200, 0.1);
+}
+
+/* ============================
+   Cores específicas
+============================ */
+.chat-card { background: rgba(141,141,141,0.11); }
+.ranking-card { background: rgba(173,173,173,0.14); }
+.activities-card { background: rgba(173,173,173,0.2); border-radius: 20px; }
+.arrecadacao-card, .team-ranking-card, .latest-activities-card, .metas-card { background: #fff; border-radius: 16px; }
+
+/* ============================
+   Cabeçalhos
+============================ */
+.card-header h3 {
+  color: #131313;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.card-header p {
+  color: #454545;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* ============================
+   Chat Avatares
+============================ */
+.avatars {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.avatar.green { background-color: #78A376; }
+.avatar.gray { background-color: #cccccc; }
+
+/* ============================
+   Footer do Card
+============================ */
+.card-footer {
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: auto; /* força ir pro final */
+}
+
+.card-footer.red { color: #FF0000; }
+
+/* ============================
+   Ranking interno
+============================ */
+.ranking {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.rank-number {
+  font-size: 37px;
+  font-weight: 500;
+  color: #131313;
+}
+
+.rank-arrow {
+  width: 32px;
+  height: 32px;
+  border: 2px solid #25CD25;
+  transform: rotate(-44deg);
+}
+
+.rank-info {
+  color: #454545;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 8px;
+}
+
+/* ============================
+   Atividades
+============================ */
+.activities-date {
+  color: #131313;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.activity {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.activity-line {
+  width: 4px;
+  height: 41px;
+  border-radius: 16px;
+  margin-top: 3px;
+}
+
+.activity-line.red { background: #FF4400; }
+.activity-line.orange { background: #FF5900; }
+
+.activity-info h4 {
+  color: #1B2559;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.activity-info p {
+  color: #A3AED0;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.activities-footer {
+  margin-top: auto;
+  color: #FF0000;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+/* ============================
+   Filtros do gráfico
+============================ */
+.period-filter {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.period-filter button {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.period-filter button:hover {
+  background-color: #f0f0f0;
+}

@@ -388,5 +388,17 @@ button:active .button_top {
     align-items: center; /* centraliza no mobile */
     text-align: justify; /* textos continuam justificados */
   }
+  /* página de dashboard do mentor */
+  .dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
 }
 

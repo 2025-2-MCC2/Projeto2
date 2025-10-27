@@ -16,7 +16,7 @@
   width: 200px;
 }
 
-/* Botão de expandir/minimizar */
+/* Botão Sidebar */
 .toggle-button {
   background: none;
   border: none;
@@ -27,7 +27,7 @@
   margin-bottom: 10px;
 }
 
-/* Cabeçalho */
+/* Header */
 .sidebar-header {
   width: 100%;
   display: flex;
@@ -41,7 +41,7 @@
   color: white;
 }
 
-/* Nome do grupo */
+
 .sidebar-group-name {
   font-size: 20px;
   font-weight: bold;
@@ -63,7 +63,7 @@
 }
 
 
-/* Navegação */
+
 .sidebar nav {
   width: 100%;
   display: flex;

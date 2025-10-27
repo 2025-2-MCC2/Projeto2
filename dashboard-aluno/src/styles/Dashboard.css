@@ -1,0 +1,259 @@
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.dashboard-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  background-color: #fff;
+  border-bottom: 2px solid #e0e0e0;
+  position: relative;
+}
+
+.dashboard-topbar-left h2 {
+  font-size: 1.6rem;
+  color: #333;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dashboard-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+/* Botão verde da data */
+.date-display {
+  background-color: #78a97f;
+  color: #1e1e1e;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+}
+
+.date-display:hover {
+  background-color: #6b9871;
+}
+
+
+/* Notf*/
+.icon-notification {
+  font-size: 20px;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.icon-notification:hover {
+  color: #e4ae1b;
+}
+
+/* Foto de usuário */
+.user-avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #444;
+}
+
+
+/* Botão Calendário */
+.date-display {
+  font-family: 'Nunito', sans-serif;
+  background-color: #0B6D48;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  min-width: 130px;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+
+.date-display:hover {
+  background-color: #083826;
+}
+
+/* Calendário */
+.date-popup {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  z-index: 100;
+  padding: 6px;
+}
+
+.react-datepicker {
+  font-family: 'Nunito', sans-serif;
+  border: none;
+  width: 260px;
+}
+
+.react-datepicker__header {
+  background-color: #0B6D48;
+  border-bottom: none;
+  color: white;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 8px;
+  padding-right: 45px;
+}
+
+.react-datepicker__current-month {
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.react-datepicker__navigation--previous,
+.react-datepicker__navigation--next {
+  top: 14px;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: white;
+}
+
+/* Dias */
+.react-datepicker__day-name,
+.react-datepicker__day {
+  color: #333;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  font-size: 0.9rem;
+}
+
+.react-datepicker__day:hover {
+  background-color: #e7f3e8;
+  border-radius: 50%;
+}
+
+.react-datepicker__day--selected {
+  background-color: #0B6D48 !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
+/* Cor adicionada na seleção de dia*/
+.react-datepicker__day--keyboard-selected {
+  background-color: #78a97f !important;
+  color: #fff !important;
+}
+
+.react-datepicker__month-container {
+  padding: 4px;
+}
+
+.dashboard-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.dashboard-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Área dos cards */
+.cards-area {
+  display: flex;
+  justify-content: left;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.grafico-area {
+  flex: 1;
+  min-height: 280px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  text-align: center;
+  color: #333;
+}
+
+/* Ranking direita */
+.ranking-area {
+  width: 380px;
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.grafico-placeholder {
+  flex: 1;
+  min-height: 280px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-style: italic;
+}
+
+
+.dashboard-summary {
+  margin-bottom: 0; 
+  padding-bottom: 0; 
+}
+
+.dashboard-ranking {
+  margin-top: -10px; /* puxa o ranking pra cima */
+}
+.dashboard-ranking {
+  margin-top: -20px;
+}
+
+.dashboard-content {
+  padding-top: 10px; /* ou menos */
+}
+
