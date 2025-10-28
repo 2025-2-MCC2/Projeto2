@@ -6,7 +6,7 @@
   color: #213547;
 }
 
-/* geral */
+/* tudinho */
 .app-container {
   height: 100vh;
   width: 100%;
@@ -21,9 +21,10 @@
   flex-direction: column;
   padding: 15px;
   background-color: #ffffff;
+  overflow-y: auto;
 }
 
-/*header */
+/* header */
 .dashboard-header {
   display: flex;
   justify-content: space-between;
@@ -40,16 +41,21 @@
   gap: 30px;
   margin-top: 20px;
   padding: 0 20px;
-  grid-template-columns: repeat(3, 1fr);
-
 }
 
-/* cards na esquerda */
+/* cards + gráfico*/
 .cards-container {
   display: flex;
+  flex-direction: column;
   gap: 20px;
   flex: 1;
-  justify-content: flex-start;
+}
+
+/* Cards na mema linha */
+.cards-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 /* ranking direita */
@@ -59,7 +65,10 @@
   margin-top: 0;
 }
 
-
+/* Seção do gráfico */
+.grafico-section {
+  width: 100%;
+}
 
 /* responsividade */
 @media (max-width: 1024px) {
@@ -71,55 +80,13 @@
     width: 100%;
   }
   
-}
-
-.grafico-placeholder {
-
-  flex: 1;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  padding: 20px;
-  color: #333;
-  height: 320px; /* garante altura do gráfico */
-
-}
-
-/* Seção do gráfico */
-.grafico-section {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-}
-
-.grafico-container {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  grid-column: 1;
-}
-
-.grafico-content h3 {
-  margin: 0 0 20px 0;
-  color: #333;
-  font-size: 18px;
-}
-
-/* Estilos responsivos */
-@media (max-width: 1024px) {
-  .cards-wrapper,
   .grafico-section {
-    grid-template-columns: 1fr;
-  }
-  
-  .cards-container {
-    grid-template-columns: repeat(2, 1fr);
+    flex-direction: column;
   }
 }
 
 @media (max-width: 768px) {
-  .cards-container {
-    grid-template-columns: 1fr;
+  .cards-row {
+    flex-direction: column;
   }
 }

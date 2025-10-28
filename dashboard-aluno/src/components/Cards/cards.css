@@ -6,6 +6,13 @@
   justify-content: center;
 }
 
+/* Cards em linha */
+.cards-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap; /* NUNCA quebra linha */
+}
+
 /* Base do card!!*/
 .card {
   background: #fff;
@@ -17,7 +24,9 @@
   gap: 15px; 
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
-  min-height: 80px; 
+  min-height: 80px;
+  flex: 1 1 0; /* Divide o espaço igualmente entre os 3 cards */
+  min-width: 0; /* Permite que encolha além do conteúdo */
 }
 
 .card:hover {

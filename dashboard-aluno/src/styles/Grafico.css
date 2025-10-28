@@ -1,0 +1,38 @@
+.grafico-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  font-family: 'Nunito', sans-serif;
+  flex: 1;
+}
+
+.grafico-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.custom-tooltip {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip-label {
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 5px 0;
+  font-size: 0.9rem;
+}
+
+.tooltip-value {
+  color: #0B6D48;
+  font-weight: 700;
+  margin: 0;
+  font-size: 1rem;
+}
