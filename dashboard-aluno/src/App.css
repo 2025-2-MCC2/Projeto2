@@ -2,137 +2,91 @@
 
 :root {
   font-family: 'Nunito', sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f6fa;
+  color: #213547;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  font-family: 'Nunito', sans-serif;
-}
-
-/*Layout principalll*/
-
+/* tudinho */
 .app-container {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
   display: flex;
   min-height: 100vh;
-  background-color: #f5f6fa;
 }
 
-/* Conteúdo Principal */
 .main-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   padding: 15px;
   background-color: #ffffff;
-  color: #213547;
+  overflow-y: auto;
 }
 
-/* Headerrrr */
-.titulo-dash {
- 
-  border-bottom: 2px solid #e0e0e0;
-}
-
-.titulo-dash h2 {
-  font-size: 1.6rem;
-  color: #333;
-  font-weight: 700;
-}
-
-/*Cardssssss*/
-
-.dashboard-container {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 20px;
-    justify-content: left;
-}
-
-.card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 210px;
-  height: 79px;
-  text-align: left;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  cursor: pointer;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
-
-.card h3 {
-  font-size: 1.1rem;
-  color: #2b2b2b;
-  margin-bottom: 10px;
-}
-
-.card p {
-  font-size: 0.9rem;
-  color: #555;
-}
-
-.dashboard-cards {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 20px;
-  justify-content: flex-start;
-}
-
-
-/*Botõessssss*/
-
-button {
-
-  
-  font-size: 1em;
-  font-weight: 500;
-
-}
-
-
-/* Header c tudo*/
+/* header */
 .dashboard-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #e0e0e0;
   padding: 10px 20px;
-  margin-bottom: 10px;
 }
 
-.dashboard-header h2 {
-  font-size: 1.6rem;
-  color: #333;
-  font-weight: 700;
-  margin: 0;
+/* container cards e ranking*/
+.cards-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 20px;
+  padding: 0 20px;
 }
 
+/* cards + gráfico*/
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+/* Cards na mema linha */
+.cards-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* ranking direita */
+.ranking-card {
+  width: 380px;
+  flex-shrink: 0;
+  margin-top: 0;
+}
+
+/* Seção do gráfico */
+.grafico-section {
+  width: 100%;
+}
+
+/* responsividade */
+@media (max-width: 1024px) {
+  .cards-wrapper {
+    flex-direction: column;
+  }
+
+  .ranking-card {
+    width: 100%;
+  }
+  
+  .grafico-section {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards-row {
+    flex-direction: column;
+  }
+}

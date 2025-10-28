@@ -4,6 +4,15 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import ptBR from "date-fns/locale/pt-BR";
 import "react-datepicker/dist/react-datepicker.css";
 import "../styles/Dashboard.css";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts"
 
 // Registra o idioma português
 registerLocale("pt-BR", ptBR);
@@ -14,6 +23,7 @@ function Dashboard() {
 
   const toggleDatePicker = () => setShowDatePicker(!showDatePicker);
 
+  
   return (
     <div className="dashboard-topbar-right">
       {/* Campo de data */}

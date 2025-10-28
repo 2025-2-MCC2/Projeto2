@@ -4,6 +4,7 @@ import Card1 from './components/Cards/Card1';
 import Card2 from './components/Cards/Card2';
 import Card3 from './components/Cards/Card3';
 import Ranking from './components/Ranking';
+import GraficoArrecadacao from './components/GraficoArrecadacao';
 import './App.css';
 
 function App() {
@@ -12,24 +13,31 @@ function App() {
       <Sidebar />
 
       <div className="main-content">
+
+        {/* Header */}
         <div className="dashboard-header">
           <h2>Bem-vindo(a), Katiê! 😉</h2>
           <Dashboard />
         </div>
 
-        {/* Cards principais */}
-        <div className="dashboard-cards">
-          <Card1 />
-          <Card2 />
-          <Card3 />
-        </div>
+        {/* container card e ranking*/}
+        <div className="cards-wrapper">
+          <div className="cards-container">
 
-        {/* Parte inferior - Gráfico (espaço reservado) + Ranking */}
-        <div className="bottom-section">
-          <div className="grafico-placeholder">
-            {/* Aqui futuramente entrará o gráfico do Recharts */}
-            <p>📊 Espaço reservado para o gráfico</p>
+            {/* Cards em linha */}
+            <div className="cards-row">
+              <Card1 />
+              <Card2 />
+              <Card3 />
+            </div>
+
+            {/* Gráfico abaixo dos cards */}
+            <div className="grafico-section">
+              <GraficoArrecadacao />
+            </div>
           </div>
+
+          {/* Ranking à direita */}
           <Ranking />
         </div>
       </div>

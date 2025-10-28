@@ -9,6 +9,7 @@ import LoginMentor from "./components/LoginMentor";
 import MentorDashboard from "./components/MentorDashboard";
 import "./index.css";
 import "./i18n";
+import LoginAluno from "./components/LoginAluno";
 
 function App() {
   const location = useLocation(); // pega a rota atual
@@ -24,6 +25,7 @@ function App() {
         <Route path="/cadastro-mentor" element={<CadastroMentor />} />
         <Route path="/login-mentor" element={<LoginMentor />} />
         <Route path="/dashboard-mentor" element={<MentorDashboard />} />
+        <Route path="/login-aluno" element={<LoginAluno />} />
       </Routes>
       {showHeaderFooter && <Footer />}
     </>
