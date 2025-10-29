@@ -1,0 +1,63 @@
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 0 8px;
+  }
+  
+  .greeting {
+    font-size: 25px;
+    font-weight: 600;
+    color: #0f1724;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .date-picker {
+    background-color: #0f7a4f;
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .date-picker:hover {
+    background-color: #115d3a;
+  }
+  
+  .date-picker:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+  }
+  
+  .notification-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #0f1724;
+  }
+  
+  .mentor-avatar {
+    width: 36px;
+    height: 36px;
+    background-color: #1f2a44;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+  }
