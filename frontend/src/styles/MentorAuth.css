@@ -1,10 +1,10 @@
-/* ======== Reset específico para página de cadastro ======== */
-.mentor-signup-page * {
+/* ======== Reset específico para página de login ======== */
+.mentor-login-page * {
   box-sizing: border-box;
 }
 
-/* ======== Página de Cadastro do Mentor ======== */
-.mentor-signup-page {
+/* ======== Página de Login do Mentor ======== */
+.mentor-login-page {
   position: fixed;
   top: 0;
   left: 0;
@@ -20,7 +20,7 @@
   background: #111;
 }
 
-.mentor-signup-overlay {
+.mentor-login-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -33,7 +33,7 @@
   z-index: 0;
 }
 
-.mentor-signup-container {
+.mentor-login-container {
   position: relative;
   width: 420px;
   max-width: 90%;
@@ -45,19 +45,20 @@
   z-index: 10;
 }
 
-.mentor-signup-header {
+/* ======== Cabeçalho ======== */
+.mentor-login-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 15px;
 }
 
-.mentor-signup-header .header-left {
+.mentor-login-header .header-left {
   display: flex;
   flex-direction: column;
 }
 
-.mentor-signup-header .header-left h3 {
+.mentor-login-header .header-left h3 {
   margin: 0;
   padding: 0;
   font-weight: 600;
@@ -66,7 +67,7 @@
   line-height: 1.3;
 }
 
-.mentor-signup-header .mentor-highlight {
+.mentor-login-header .mentor-highlight {
   display: inline-block;
   font-size: 1.4rem;
   color: #248862;
@@ -75,11 +76,11 @@
   line-height: 1.2;
 }
 
-.mentor-signup-header .header-right {
+.mentor-login-header .header-right {
   text-align: right;
 }
 
-.mentor-signup-header .header-right p {
+.mentor-login-header .header-right p {
   font-size: 0.85rem;
   margin: 0 0 4px 0;
   padding: 0;
@@ -87,7 +88,7 @@
   line-height: 1.3;
 }
 
-.mentor-signup-header .mentor-login-link {
+.mentor-login-header .mentor-signup-link {
   color: #248862;
   text-decoration: none;
   font-weight: 600;
@@ -95,12 +96,13 @@
   transition: all 0.2s ease;
 }
 
-.mentor-signup-header .mentor-login-link:hover {
+.mentor-login-header .mentor-signup-link:hover {
   color: #1f704f;
   text-decoration: underline;
 }
 
-.mentor-signup-container .signup-title {
+/* ======== Título ======== */
+.mentor-login-container .login-title {
   color: #248862;
   margin: 20px 0 25px 0;
   padding: 0;
@@ -109,13 +111,14 @@
   line-height: 1.2;
 }
 
-.mentor-signup-container form {
+/* ======== Formulário ======== */
+.mentor-login-container form {
   display: flex;
   flex-direction: column;
   gap: 0;
 }
 
-.mentor-signup-container form label {
+.mentor-login-container form label {
   color: #2c2c2c;
   font-size: 0.95rem;
   font-weight: 500;
@@ -124,11 +127,12 @@
   display: block;
 }
 
-.mentor-signup-container form label:first-of-type {
+.mentor-login-container form label:first-of-type {
   margin-top: 0;
 }
 
-.mentor-signup-input {
+/* ======== Inputs ======== */
+.mentor-login-input {
   width: 100%;
   padding: 12px 15px;
   border-radius: 8px;
@@ -141,20 +145,21 @@
   outline: none;
 }
 
-.mentor-signup-input::placeholder {
+.mentor-login-input::placeholder {
   color: #999;
 }
 
-.mentor-signup-input:focus {
+.mentor-login-input:focus {
   border-color: #248862;
   box-shadow: 0 0 0 3px rgba(36, 136, 98, 0.1);
 }
 
-.mentor-signup-input:hover {
+.mentor-login-input:hover {
   border-color: #248862;
 }
 
-.mentor-signup-select {
+/* ======== Select (dropdown de grupo) ======== */
+.mentor-login-select {
   width: 100%;
   padding: 12px 15px;
   border-radius: 8px;
@@ -166,23 +171,34 @@
   transition: all 0.2s ease;
   outline: none;
   cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
 }
 
-.mentor-signup-select:focus {
+.mentor-login-select:focus {
   border-color: #248862;
   box-shadow: 0 0 0 3px rgba(36, 136, 98, 0.1);
 }
 
-.mentor-signup-select:hover {
+.mentor-login-select:hover {
   border-color: #248862;
 }
 
-.mentor-signup-select option {
+.mentor-login-select option {
   padding: 10px;
   color: #2c2c2c;
 }
 
-.mentor-signup-button {
+.mentor-login-select option:first-child {
+  color: #999;
+}
+
+/* ======== Botão ======== */
+.mentor-login-button {
   margin-top: 30px;
   width: 100%;
   padding: 15px;
@@ -198,33 +214,34 @@
   box-shadow: 0 4px 10px rgba(36, 136, 98, 0.2);
 }
 
-.mentor-signup-button:hover {
+.mentor-login-button:hover {
   background-color: #1f704f;
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(36, 136, 98, 0.3);
 }
 
-.mentor-signup-button:active {
+.mentor-login-button:active {
   transform: translateY(0);
   box-shadow: 0 2px 5px rgba(36, 136, 98, 0.2);
 }
 
+/* ======== Responsivo ======== */
 @media (max-width: 480px) {
-  .mentor-signup-container {
+  .mentor-login-container {
     width: 95%;
     padding: 25px 20px;
   }
 
-  .mentor-signup-header {
+  .mentor-login-header {
     flex-direction: column;
     gap: 10px;
   }
 
-  .mentor-signup-header .header-right {
+  .mentor-login-header .header-right {
     text-align: left;
   }
 
-  .mentor-signup-container .signup-title {
+  .mentor-login-container .login-title {
     font-size: 1.6rem;
   }
 }
