@@ -1,25 +1,25 @@
+/* === Reset global === */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
 /* === Página principal === */
 .dashboard-page {
   display: flex;
+  align-items: stretch;
   min-height: 100vh;
+  height: 100%;
   background-color: #f9f9fb;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #1B2559;
-}
-
-/* === Sidebar === */
-.sidebar-open .dashboard-main {
-  margin-left: 240px; /* largura da sidebar */
-}
-
-.sidebar-closed .dashboard-main {
-  margin-left: 80px; /* sidebar recolhida */
 }
 
 /* === Área principal === */
 .dashboard-main {
   flex: 1;
   padding: 32px;
+  overflow-y: auto;
   transition: margin-left 0.3s ease;
 }
 
@@ -52,7 +52,6 @@
 @media (max-width: 768px) {
   .dashboard-main {
     padding: 16px;
-    margin-left: 0 !important;
   }
 
   .dashboard-main .header {
@@ -60,4 +59,15 @@
     align-items: flex-start;
     gap: 16px;
   }
+  .cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+@media (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
 }

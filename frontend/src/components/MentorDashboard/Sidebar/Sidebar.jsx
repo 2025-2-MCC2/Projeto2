@@ -2,72 +2,78 @@ import React, { useState } from 'react';
 import './Sidebar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faUsers,
-  faHouse,
+  faHome,
   faUser,
-  faBarsProgress,
-  faFileInvoice,
-  faComments,
-  faCalendar,
-  faBookBookmark,
-  faGear,
-  faChevronRight,
+  faChartLine,
+  faFileAlt,
+  faEnvelope,
+  faUsers,
+  faBook,
+  faCog,
+  faBars,
   faChevronLeft,
+  faPeopleGroup,
+  faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function Sidebar() {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const toggleSidebar = () => {
-    setIsExpanded(prev => !prev);
+    setIsOpen(!isOpen);
   };
 
+  const menuItems = [
+    { icon: faHome, label: 'Home' },
+    { icon: faUser, label: 'Perfil' },
+    { icon: faChartLine, label: 'Progresso' },
+    { icon: faFileAlt, label: 'Relatórios' },
+    { icon: faEnvelope, label: 'Mensagens' },
+    { icon: faUsers, label: 'Mentoria' },
+    { icon: faBook, label: 'Materiais' },
+    { icon: faCog, label: 'Configurações' },
+  ];
+
   return (
-    <aside className={`sidebar ${isExpanded ? 'expanded' : ''}`}>
-      <div className="sidebar-header">
-        <button className="toggle-button" onClick={toggleSidebar}>
-          <FontAwesomeIcon icon={isExpanded ? faChevronLeft : faChevronRight} />
+    <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
+      
+      {/* === Topo do Sidebar: Toggle + Logo/Nome === */}
+      <div className="sidebar-top">
+        <button
+          className="toggle-btn"
+          onClick={toggleSidebar}
+          aria-label="Abrir/fechar menu"
+        >
+          <FontAwesomeIcon icon={isOpen ? faChevronLeft : faBars} />
         </button>
-        <FontAwesomeIcon icon={faUsers} className="sidebar-logo" />
-        <h2 className="sidebar-group-name">CyberSirens</h2>
+
+        <div className="sidebar-icon-title">
+          <FontAwesomeIcon icon={faPeopleGroup} className="group-icon" />
+          {isOpen && <h2>Nome do Grupo</h2>}
+        </div>
+
+        {isOpen && <hr className="sidebar-divider" />}
       </div>
 
-      <nav>
+      {/* === Menu de Navegação === */}
+      <nav className="sidebar-nav">
         <ul>
-          <li>
-            <FontAwesomeIcon icon={faHouse} className="menu-icon" />
-            <span className="menu-text">Início</span>
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faUser} className="menu-icon" />
-            <span className="menu-text">Perfil</span>
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faBarsProgress} className="menu-icon" />
-            <span className="menu-text">Progresso</span>
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faFileInvoice} className="menu-icon" />
-            <span className="menu-text">Relatórios</span>
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faComments} className="menu-icon" />
-            <span className="menu-text">Mensagens</span>
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faCalendar} className="menu-icon" />
-            <span className="menu-text">Agenda</span>
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faBookBookmark} className="menu-icon" />
-            <span className="menu-text">Materiais</span>
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faGear} className="menu-icon" />
-            <span className="menu-text">Configurações</span>
-          </li>
+          {menuItems.map((item, index) => (
+            <li key={index}>
+              <FontAwesomeIcon icon={item.icon} className="menu-icon" />
+              {isOpen && <span>{item.label}</span>}
+            </li>
+          ))}
         </ul>
       </nav>
-    </aside>
+
+      {/* === Rodapé: Logout === */}
+      <div className="sidebar-footer">
+        <button className="logout-btn">
+          <FontAwesomeIcon icon={faSignOutAlt} className="menu-icon" />
+          {isOpen && <span>Sair</span>}
+        </button>
+      </div>
+    </div>
   );
 }

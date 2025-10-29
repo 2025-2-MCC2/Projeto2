@@ -3,19 +3,19 @@ import './Header.css';
 import { Bell } from 'lucide-react';
 
 export default function Header() {
-  const today = new Date().toISOString().split('T')[0]; // yyyy-mm-dd
+  const formattedDate = new Date().toISOString().split('T')[0]; // yyyy-mm-dd
 
   return (
     <div className="dashboard-header">
       <div className="greeting">
-         <span>Seja bem-vindo, Mentor! 👋</span>
+        <span>Seja bem-vindo, Mentor! 👋</span>
       </div>
 
       <div className="header-actions">
         <input
           type="date"
           className="date-picker"
-          defaultValue={today}
+          defaultValue={formattedDate}
           aria-label="Selecionar data"
         />
         <button className="notification-btn" aria-label="Notificações">

@@ -1,178 +1,56 @@
-/* === Layout base dos cards === */
-.cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    margin-bottom: 32px;
-  }
-  
-  .card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    flex: 1;
-    min-width: 280px;
-    transition: box-shadow 0.3s ease;
-  }
-  
-  .card:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* === Cabeçalho dos cards === */
-  .card-header {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 16px;
-    color: #1B2559;
-  }
-  
-  /* === Rodapé dos cards === */
-  .card-footer {
-    margin-top: 16px;
-    font-size: 0.9rem;
-    color: #FF4400;
-    cursor: pointer;
-    font-weight: 500;
-  }
-  
-  .card-footer:hover {
-    text-decoration: underline;
-  }
-  
-  /* === ChatCard === */
-  .chat-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .chat-list li {
-    padding: 6px 0;
-    font-weight: 500;
-  }
-  
-  .chat-list .online {
-    color: #28a745;
-  }
-  
-  .chat-list .offline {
-    color: #6c757d;
-  }
-  
-  /* === RankingCard === */
-  .ranking {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .rank-number {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #FF4400;
-  }
-  
-  .rank-info {
-    font-size: 0.95rem;
-    color: #555;
-  }
-  
-  /* === Activities === */
-  .activity {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  
-  .activity-line {
-    width: 8px;
-    height: 40px;
-    border-radius: 4px;
-    margin-right: 12px;
-  }
-  
-  .activity-info h4 {
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 600;
-  }
-  
-  .activity-info p {
-    margin: 2px 0 0;
-    font-size: 0.85rem;
-    color: #666;
-  }
-  
-  .activities-date {
-    font-size: 0.9rem;
-    color: #888;
-    margin-bottom: 12px;
-  }
-  
-  /* === Últimas atividades === */
-  .date-filter {
-    margin-left: auto;
-    padding: 6px 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-  }
-  
-  /* === Metas === */
-  .metas-card p {
-    font-size: 0.95rem;
-    color: #444;
-  }
-  
-  /* === Botões de filtro de período === */
-  .period-filter {
-    margin-bottom: 12px;
-  }
-  
-  .period-filter button {
-    background: #f5f5f5;
-    border: none;
-    padding: 8px 14px;
-    margin-right: 8px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    color: #333;
-    transition: background 0.2s ease;
-  }
-  
-  .period-filter button:hover {
-    background-color: #e0e0e0;
-  }
-  
-  .period-filter button.active {
-    background-color: #FF4400;
-    color: white;
-  }
-  
-  /* === Gráficos === */
-  .recharts-wrapper {
-    margin-top: 12px;
-  }
-  
-  .recharts-tooltip-wrapper {
-    font-size: 0.85rem;
-  }
-  
-  /* === Responsividade === */
-  @media (max-width: 768px) {
-    .cards-container {
-      flex-direction: column;
-    }
-  
-    .card {
-      width: 100%;
-    }
-  
-    .period-filter {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-  }
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+/* === ChatCard === */
+.chat-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  background-color: #b0bec5;
+}
+
+.chat-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot.online {
+  background-color: #4caf50;
+}
+
+.status-dot.offline {
+  background-color: #b0bec5;
+}
+
+.chat-name {
+  font-weight: 500;
+}
+

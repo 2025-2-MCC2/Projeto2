@@ -9,6 +9,7 @@
 body{
   font-family: 'Poppins', sans-serif;
   width: 100%;
+  height: 100%;
   background: #111;
   color: #fff;
 }
@@ -34,7 +35,6 @@ body{
 .navbar.visible {
   transform: translateY(0);
 }
-
 
 /* para centralizar o conteudo principal da página inicial*/
 .container {
@@ -299,16 +299,20 @@ button:active .button_top {
   display: block;
   opacity: 0.8;
 }
+/* ===== FOOTER ===== */
 .footer {
   background-color: #092A1E;
   color: #fff;
-  padding: 20px 40px; /* compacta o footer */
+  padding: 20px 40px;
   font-family: 'Poppins', sans-serif;
   text-align: justify; 
   position: relative;
   z-index: 10;
+  width: 100%;
+  overflow-x: hidden; /* remove scroll lateral */
 }
 
+/* Logos do topo do footer */
 .footer-logos-top {
   display: flex;
   justify-content: center;
@@ -317,14 +321,13 @@ button:active .button_top {
   margin-bottom: 30px;
 }
 
-.footer-logos-top img.liderancas {
-  height: 100px;
-}
-
+.footer-logos-top img.liderancas,
 .footer-logos-top img.cybersirens {
-  height: 120px;
+  height: 60px !important; /* reduz o tamanho e força a alteração */
+  width: auto !important;   /* mantém proporção */
 }
 
+/* Container das seções do footer */
 .footer-container {
   display: flex;
   justify-content: space-around; 
@@ -333,9 +336,9 @@ button:active .button_top {
   margin: 0 auto;
   gap: 60px; 
   flex-wrap: wrap;
-
 }
 
+/* Seções internas */
 .footer-section {
   min-width: 150px;
   text-align: justify; 
@@ -363,10 +366,7 @@ button:active .button_top {
   color: #1e8957;
 }
 
-.footer-logo-right img {
-  max-height: 120px; /* ajuste proporcional da logo direita */
-}
-
+/* Copyright */
 .footer-copy {
   text-align: center;
   margin-top: 20px;
@@ -385,20 +385,9 @@ button:active .button_top {
 
   .footer-container {
     flex-direction: column;
-    align-items: center; /* centraliza no mobile */
-    text-align: justify; /* textos continuam justificados */
+    align-items: center;
+    text-align: justify;
   }
-  /* página de dashboard do mentor */
-  .dashboard-container {
-  display: flex;
-  height: 100vh;
 }
 
-.dashboard-main {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-}
-
-}
 

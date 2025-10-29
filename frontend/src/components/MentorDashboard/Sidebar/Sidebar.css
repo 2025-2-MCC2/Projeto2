@@ -1,105 +1,124 @@
+/* === Sidebar === */
 .sidebar {
-  height: 100vh;
-  width: 60px;
-  background-color: #0B6D48;
-  color: white;
-  padding: 9px 9px;
-  box-sizing: border-box;
-  transition: width 0.3s ease;
-  overflow: hidden;
+  width: 240px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  background-color: #1b3d2f;
+  color: #ffffff;
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; 
+  min-height: 100vh; /* ocupa toda a altura da página */
+  transition: width 0.3s ease;
 }
 
-.sidebar.expanded {
-  width: 200px;
+.sidebar.closed {
+  width: 80px;
+  align-items: center;
 }
 
-/* Botão Sidebar */
-.toggle-button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  align-self: flex-end;
-  margin-bottom: 10px;
-}
-
-/* Header */
-.sidebar-header {
-  width: 100%;
+/* Topo do sidebar */
+.sidebar-top {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  margin-bottom: 24px; /* espaço entre topo e menu */
 }
 
-.sidebar-logo {
-  font-size: 32px;
-  color: white;
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 16px;
 }
 
-
-.sidebar-group-name {
-  font-size: 20px;
-  font-weight: bold;
-  width: 100%;
-  text-align: center;
-  opacity: 0;
-  max-height: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.sidebar.expanded .sidebar-group-name {
-  opacity: 1;
-  visibility: visible;
-  opacity: 1;
-  max-height: 100px;
-  padding-top: 15px;
-  margin-top: 15px;
-}
-
-
-
-.sidebar nav {
-  width: 100%;
+.sidebar-icon-title {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
 }
 
-.sidebar nav ul {
+.group-icon {
+  font-size: 28px;
+}
+
+.sidebar-divider {
+  border: none;
+  border-top: 1px solid #ffffff33;
+  margin: 16px 0;
+  width: 100%;
+}
+
+/* Menu de navegação */
+.sidebar-nav {
+  flex-grow: 1; /* ocupa o espaço restante */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* scroll se houver muitos itens */
+}
+
+.sidebar-nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 100%;
 }
 
-.sidebar nav ul li {
+.sidebar-nav li {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  gap: 12px;
+  font-size: 16px;
   cursor: pointer;
-  padding: 10px;
-  font-size: 0;
-  transition: font-size 0.3s ease, ease;
+  padding: 12px 0; /* espaçamento vertical entre os itens */
+  transition: color 0.3s ease;
+}
+
+.sidebar.closed .sidebar-nav li {
+  justify-content: center;
+}
+
+.sidebar-nav li:hover {
+  color: #a5d6a7;
 }
 
 .menu-icon {
   font-size: 20px;
-  margin-right: 10px;
-  min-width: 20px;
+  transition: transform 0.3s ease;
 }
 
-.menu-text {
+.sidebar-nav li:hover .menu-icon,
+.logout-btn:hover .menu-icon {
+  transform: scale(1.2);
+}
+
+.sidebar-nav span {
+  white-space: nowrap;
+}
+
+/* Rodapé fixo */
+.sidebar-footer {
+  margin-top: auto; /* empurra o botão para o final */
+  display: flex;
+  justify-content: center;
+  padding-bottom: 24px; 
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 16px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.sidebar.expanded .menu-text {
-  opacity: 1;
+.logout-btn:hover {
+  color: #a5d6a7;
 }
-
