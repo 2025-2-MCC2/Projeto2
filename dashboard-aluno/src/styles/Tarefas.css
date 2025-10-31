@@ -1,0 +1,294 @@
+.tarefas-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: relative;
+  }
+  
+  .tarefas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .tarefas-header h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #213547;
+    margin: 0;
+  }
+  
+  .visualizar-btn {
+    background: none;
+    border: none;
+    color: #0B6D48;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  
+  .visualizar-btn:hover {
+    color: #083826;
+  }
+  
+  .tarefas-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+  
+  .tarefa-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: #f9fafb;
+    border-radius: 8px;
+    transition: background 0.2s;
+    position: relative;
+  }
+  
+  .tarefa-item:hover {
+    background: #f3f4f6;
+  }
+  
+  .tarefa-indicador {
+    width: 4px;
+    height: 40px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  
+  .tarefa-conteudo {
+    flex: 1;
+  }
+  
+  .tarefa-data {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-bottom: 4px;
+  }
+  
+  .tarefa-descricao {
+    font-size: 0.9rem;
+    color: #213547;
+    font-weight: 500;
+  }
+  
+  .excluir-tarefa-btn {
+    background: none;
+    border: none;
+    color: #ef4444;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 8px;
+    line-height: 1;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  
+  .tarefa-item:hover .excluir-tarefa-btn {
+    opacity: 1;
+  }
+  
+  .excluir-tarefa-btn:hover {
+    color: #dc2626;
+  }
+  
+  .adicionar-tarefa-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #0B6D48;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .adicionar-tarefa-btn:hover {
+    background: #083826;
+  }
+  
+  /* Modal sobreposto */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .modal-content {
+    background: white;
+    border-radius: 16px;
+    padding: 0;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .modal-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #213547;
+    font-weight: 700;
+  }
+  
+  .modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #6b7280;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+  
+  .modal-close-btn:hover {
+    background: #f3f4f6;
+    color: #213547;
+  }
+  
+  .modal-body {
+    padding: 24px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group:last-child {
+    margin-bottom: 0;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #213547;
+    font-size: 0.9rem;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="date"] {
+    width: 100%;
+ 
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+    font-family: 'Nunito', sans-serif;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #0B6D48;
+  }
+  
+  .cor-opcoes {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .cor-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .cor-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  .cor-btn.ativa {
+    border-color: #213547;
+    transform: scale(1.15);
+  }
+  
+  .modal-footer {
+    display: flex;
+    gap: 12px;
+    padding: 20px 24px;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .btn-cancelar,
+  .btn-salvar {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+  }
+  
+  .btn-cancelar {
+    background: #f3f4f6;
+    color: #6b7280;
+  }
+  
+  .btn-cancelar:hover {
+    background: #e5e7eb;
+    color: #213547;
+  }
+  
+  .btn-salvar {
+    background: #0B6D48;
+    color: white;
+  }
+  
+  .btn-salvar:hover {
+    background: #083826;
+  }

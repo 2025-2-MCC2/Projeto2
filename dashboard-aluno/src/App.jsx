@@ -5,6 +5,8 @@ import Card2 from './components/Cards/Card2';
 import Card3 from './components/Cards/Card3';
 import Ranking from './components/Ranking';
 import GraficoArrecadacao from './components/GraficoArrecadacao';
+import Tarefas from './components/Tarefas';
+import GraficoDonut from './components/GraficoDonut';
 import './App.css';
 
 function App() {
@@ -35,10 +37,19 @@ function App() {
             <div className="grafico-section">
               <GraficoArrecadacao />
             </div>
+
+            {/* Tarefas abaixo do gráfico */}
+            <div className="tarefas-section">
+              <Tarefas />
+            </div>
+
           </div>
 
           {/* Ranking à direita */}
-          <Ranking />
+          <div className="side-column">
+            <Ranking />
+            <GraficoDonut />
+          </div>
         </div>
       </div>
     </div>
