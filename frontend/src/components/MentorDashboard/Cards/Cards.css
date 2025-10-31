@@ -1,259 +1,149 @@
-/* Reset básico */
-.cards-row,
-.widgets-row,
-.activities-section,
-.highlights-row {
+.cards-row {
   display: flex;
+  gap: 24px;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 32px;
 }
 
-/* ================== Cards iniciais ================== */
+/* Card geral */
 .card {
-  background: #fff;
+  background-color: #ffffff;
   border-radius: 12px;
-  padding: 16px;
-  flex: 1;
-  min-width: 250px;
-  box-shadow: 0 6px 18px rgba(17,17,17,0.06);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  flex: 1 1 300px; /* largura mínima 300px, cresce conforme espaço */
   display: flex;
   flex-direction: column;
   gap: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Poppins', sans-serif;
 }
 
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Título do card */
 .card-title {
   font-size: 16px;
   font-weight: 600;
-  color: #111;
+  color: #0f1724;
 }
 
+/* Conteúdo do card */
 .card-content {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
+/* Ícones */
 .card-icon {
-  font-size: 24px;
-  color: #1b3d2f;
+  font-size: 28px;
+  color: #0f7a4f;
 }
 
+.ranking-arrow {
+  color: #0f7a4f;
+  margin-left: 4px;
+}
+
+/* Texto do card */
 .card-text div {
   font-size: 14px;
-  color: #666;
+  color: #333;
 }
 
 .label {
   font-size: 12px;
-  color: #3b82f6;
+  color: #0f7a4f;
   font-weight: 500;
 }
 
+/* Avatares da equipe */
 .avatars {
   display: flex;
-  gap: 8px;
+  margin-top: 12px;
 }
 
 .avatar {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: #1b3d2f;
+  background-color: #0f7a4f;
   color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 600;
+  margin-left: -10px; /* sobreposição */
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.1);
+}
+
+/* Lista de agenda */
+.agenda-list {
+  padding-left: 16px;
   font-size: 14px;
-}
-
-/* Ranking card */
-.ranking-value {
-  font-size: 24px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #111;
-}
-
-.ranking-arrow {
-  color: #22c55e;
-}
-
-.ranking-text {
-  font-size: 14px;
-  color: #666;
+  color: #333;
+  margin: 0;
 }
 
 .card-link {
-  font-size: 12px;
-  color: #3b82f6;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #0f7a4f;
   text-decoration: none;
-  margin-top: auto;
-}
-
-/* Agenda */
-.agenda-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.agenda-list li {
-  font-size: 14px;
-  color: #111;
-  margin-bottom: 6px;
-}
-
-/* ================== Widgets ================== */
-.widgets-row {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.widgets-row > * {
-  flex: 1;
-  min-width: 300px;
-}
-
-/* ================== Atividades ================== */
-.activities-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: 0 6px 18px rgba(17,17,17,0.06);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-}
-
-.activities-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.activities-header h3 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #111;
-}
-
-.activities-actions {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.date-filter {
-  padding: 4px 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-}
-
-.add-btn {
-  background: #ef4444;
-  color: #fff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.activities-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.activities-list li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-radius: 8px;
-  background: #f9f9fb;
-  border-left: 4px solid #22c55e; /* default, muda dinamicamente */
-}
-
-.activity-title {
   font-weight: 500;
-  color: #111;
 }
 
-.activity-time {
-  font-size: 12px;
-  color: #666;
+.card-link:hover {
+  text-decoration: underline;
 }
 
-.activity-icon {
-  color: #111;
-  font-size: 16px;
-}
-
-/* ================== Highlights ================== */
-.highlights-row {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.highlight-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  box-shadow: 0 6px 18px rgba(17,17,17,0.06);
-  flex: 1;
-  min-width: 200px;
-}
-
-.highlight-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-}
-
-.highlight-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.highlight-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: #666;
-}
-
-.highlight-value {
-  font-size: 18px;
-  font-weight: 600;
-  color: #111;
-}
-
-/* ================== Responsividade ================== */
+/* Responsividade */
 @media (max-width: 1024px) {
-  .cards-row, .widgets-row, .highlights-row {
+  .cards-row {
     flex-direction: column;
   }
 }
+.view-messages-btn {
+  margin-top: 12px;
+  background-color: #0f7a4f;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 4px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.view-messages-btn:hover {
+  background-color: #0c5e3c;
+  transform: translateY(-2px);
+}
+.chat-button {
+  background-color: #0f7a4f;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.chat-button:hover {
+  background-color: #115d3a;
+}
+

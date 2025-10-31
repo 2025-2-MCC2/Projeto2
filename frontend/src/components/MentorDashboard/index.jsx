@@ -2,7 +2,10 @@ import React from 'react';
 import Sidebar from './Sidebar/Sidebar';
 import Header from './Header/Header';
 import Cards from './Cards/Cards';
-import './MentorDashboard.css'; // CSS geral do dashboard
+import RevenueChart from './Charts/RevenueChart';
+import RankingCard from './Ranking/RankingCard';
+import Activities from './Activities/Activities';
+import './MentorDashboard.css';
 
 export default function MentorDashboard() {
   return (
@@ -15,8 +18,17 @@ export default function MentorDashboard() {
         {/* Header */}
         <Header />
 
-        {/* Cards, Widgets, Últimas Atividades e Highlights */}
+        {/* Cards iniciais */}
         <Cards />
+
+        {/* Gráfico e Ranking */}
+        <div className="widgets-row">
+          <RevenueChart />
+          <RankingCard />
+        </div>
+
+        {/* Últimas atividades */}
+        <Activities />
       </main>
     </div>
   );

@@ -1,48 +1,46 @@
 import React, { useState } from 'react';
 import './Activities.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faCalendarAlt, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Bell } from 'lucide-react';
 
 export default function Activities() {
-  const [filterDate, setFilterDate] = useState('');
+  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
 
   const activities = [
-    { id: 1, title: 'Feedback para Natalia', time: '09:00 AM', color: '#22c55e' },
-    { id: 2, title: 'Reunião com designer de produto', time: '11:00 AM', color: '#f59e0b' },
-    { id: 3, title: 'Revisar relatórios semanais', time: '02:00 PM', color: '#3b82f6' },
+    { id: 1, text: 'Feedback para cada integrante', time: '09:00 AM' },
+    { id: 2, text: 'Reunião curta com designer de produto', time: '11:00 AM' },
+    { id: 3, text: 'Revisar relatório semanal', time: '02:00 PM' },
   ];
 
-  const handleFilterChange = (e) => {
-    setFilterDate(e.target.value);
-  };
+  const handleDateChange = (e) => setSelectedDate(e.target.value);
+  const handleCreate = () => alert('Abrir modal de nova atividade!');
 
   return (
     <div className="activities-card">
       <div className="activities-header">
-        <h3>Últimas Atividades</h3>
+        <span>Últimas Atividades</span>
         <div className="activities-actions">
           <input
             type="date"
-            value={filterDate}
-            onChange={handleFilterChange}
             className="date-filter"
+            value={selectedDate}
+            onChange={handleDateChange}
           />
-          <button className="add-btn">
-            <FontAwesomeIcon icon={faPlus} /> Nova Atividade
+          <button className="create-btn" onClick={handleCreate}>
+            Criar nova atividade
           </button>
         </div>
       </div>
 
       <ul className="activities-list">
-        {activities
-          .filter(act => !filterDate || true) // Aqui você pode filtrar por data
-          .map(act => (
-            <li key={act.id} style={{ borderLeft: `4px solid ${act.color}` }}>
-              <span className="activity-title">{act.title}</span>
-              <span className="activity-time">{act.time}</span>
-              <FontAwesomeIcon icon={faBell} className="activity-icon" />
-            </li>
-          ))}
+        {activities.map((act) => (
+          <li key={act.id}>
+            <span>{act.text}</span>
+            <div>
+              <span className="hora">{act.time}</span>
+              <Bell className="sino-icon" size={16} />
+            </div>
+          </li>
+        ))}
       </ul>
     </div>
   );

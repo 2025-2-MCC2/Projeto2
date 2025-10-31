@@ -7,13 +7,14 @@ import CadastroAluno from "./components/CadastroAluno";
 import CadastroMentor from "./components/CadastroMentor";
 import LoginMentor from "./components/LoginMentor";
 import MentorDashboard from "./components/MentorDashboard";
+import LoginAluno from "./components/LoginAluno";
+import Messages from "./components/MentorDashboard/Messages"; // 👈 ADICIONA AQUI
 import "./index.css";
 import "./i18n";
-import LoginAluno from "./components/LoginAluno";
 
 function App() {
-  const location = useLocation(); // pega a rota atual
-  const showHeaderFooter = location.pathname === "/"; // true só na Home
+  const location = useLocation();
+  const showHeaderFooter = location.pathname === "/";
 
   return (
     <>
@@ -24,8 +25,9 @@ function App() {
         <Route path="/cadastro-aluno" element={<CadastroAluno />} />
         <Route path="/cadastro-mentor" element={<CadastroMentor />} />
         <Route path="/login-mentor" element={<LoginMentor />} />
-        <Route path="/dashboard-mentor" element={<MentorDashboard />} />
         <Route path="/login-aluno" element={<LoginAluno />} />
+        <Route path="/dashboard-mentor" element={<MentorDashboard />} />
+        <Route path="/dashboard-mentor/messages" element={<Messages />} /> {/* 👈 NOVA ROTA */}
       </Routes>
       {showHeaderFooter && <Footer />}
     </>

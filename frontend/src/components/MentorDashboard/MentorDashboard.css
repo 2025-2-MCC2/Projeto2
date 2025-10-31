@@ -4,27 +4,30 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
-}
-
-/* Página completa */
-.dashboard-page {
-  display: flex;
-  height: 100vh;
   background-color: #f9f9fb;
   overflow: hidden;
 }
 
-/* Área principal do dashboard */
+/* Container principal do dashboard */
+.dashboard-page {
+  display: flex;
+  height: 100vh; /* ocupa toda a altura da tela */
+  overflow: hidden; /* sidebar e header não geram scroll */
+}
+
+/* Área principal que rola conteúdo */
 .dashboard-main {
   flex: 1;
   padding: 32px;
-  overflow-y: auto;
-  transition: margin-left 0.3s ease;
+  overflow-y: auto; /* só conteúdo principal rola */
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-/* Responsividade */
-@media (max-width: 1024px) {
-  .dashboard-main {
-    padding: 16px;
-  }
+/* Linha de widgets: gráfico e ranking */
+.widgets-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
 }
