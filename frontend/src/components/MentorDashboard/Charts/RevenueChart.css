@@ -1,0 +1,22 @@
+.revenue-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(17,17,17,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.revenue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: #111;
+}
+
+.revenue-header span {
+  font-size: 14px;
+  color: #22c55e;
+}

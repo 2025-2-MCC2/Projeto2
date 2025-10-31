@@ -1,0 +1,47 @@
+.ranking-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(17,17,17,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ranking-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
+}
+
+.ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.team-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bar-container {
+  flex: 1;
+  height: 10px;
+  background: #f0f0f0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, #ff9900, #ff3d00);
+  border-radius: 6px;
+}
+
+.score {
+  font-weight: 600;
+  color: #111;
+  font-size: 12px;
+}
