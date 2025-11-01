@@ -1,30 +1,30 @@
 import React from 'react';
 import './RankingCard.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 export default function RankingCard() {
-  const ranking = [
-    { name: 'Equipe 1', score: 120000 },
-    { name: 'Equipe 2', score: 80000 },
-    { name: 'Equipe 3', score: 70000 },
-    { name: 'Equipe 4', score: 50000 },
+  const rankingData = [
+    { team: 'Equipe 1', score: 120, trend: 'up' },
+    { team: 'Equipe 2', score: 80, trend: 'down' },
+    { team: 'Equipe 3', score: 70, trend: 'up' },
+    { team: 'Equipe 4', score: 50, trend: 'down' },
   ];
-
-  const maxScore = Math.max(...ranking.map(r => r.score));
 
   return (
     <div className="ranking-card">
       <h3 className="ranking-title">Ranking das Equipes</h3>
-      <ul>
-        {ranking.map((team, idx) => (
-          <li key={idx}>
-            <span className="team-name">{team.name}</span>
-            <div className="bar-container">
-              <div
-                className="bar"
-                style={{ width: `${(team.score / maxScore) * 100}%` }}
-              ></div>
-            </div>
-            <span className="score">{team.score.toLocaleString('pt-BR')}</span>
+      <ul className="ranking-list">
+        {rankingData.map((item, index) => (
+          <li key={index} className="ranking-item">
+            <span className="team-name">{item.team}</span>
+            <span className="team-score">
+              {item.score}
+              <FontAwesomeIcon
+                icon={item.trend === 'up' ? faChevronUp : faChevronDown}
+                className={`trend-icon ${item.trend}`}
+              />
+            </span>
           </li>
         ))}
       </ul>

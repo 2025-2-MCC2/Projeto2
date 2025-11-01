@@ -1,7 +1,7 @@
 import React from 'react';
 import './Cards.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComments, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faComments, faChevronUp, faVideo, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 export default function Cards() {
@@ -17,7 +17,6 @@ export default function Cards() {
             <FontAwesomeIcon icon={faComments} className="card-icon" />
             <div className="card-text">
               <div>2 novas mensagens</div>
-              <div className="label">All messages</div>
             </div>
           </div>
 
@@ -27,7 +26,6 @@ export default function Cards() {
             <div className="avatar">J</div>
           </div>
 
-          {/* Botão de ver mensagens */}
           <button
             className="chat-button"
             onClick={() => navigate('/dashboard-mentor/messages')}
@@ -37,11 +35,11 @@ export default function Cards() {
         </div>
 
         {/* Card 2 - Posição no ranking */}
-        <div className="card">
+        <div className="card ranking-card">
           <div className="card-title">Posição no Ranking</div>
-          <div className="card-content">
-            <div className="ranking-value">
-              4º <FontAwesomeIcon icon={faChevronUp} className="ranking-arrow" />
+          <div className="ranking-content">
+            <div className="ranking-number up">
+              4º <FontAwesomeIcon icon={faChevronUp} className="ranking-arrow up" />
             </div>
             <div className="ranking-text">
               Subiu 3 posições comparado à última semana.
@@ -50,14 +48,33 @@ export default function Cards() {
           <a href="#" className="card-link">Ver progresso de relatórios</a>
         </div>
 
-        {/* Card 3 - Agenda */}
-        <div className="card">
-          <div className="card-title">Agenda do dia · 22 de Maio</div>
-          <ul className="agenda-list">
-            <li>Reunião com equipe — 01:00 PM - 02:00 PM</li>
-            <li>Conferir progresso de Natalia — 02:00 PM - 03:00 PM</li>
-          </ul>
-          <a href="#" className="card-link">Ver todas atividades</a>
+        {/* Card 3 - Agenda moderna reduzida */}
+        <div className="card agenda-card">
+          <div className="card-title" style={{ color: '#0f1724', fontWeight: '700' }}>Agenda da Semana</div>
+
+          <div className="agenda-item green">
+            <div className="agenda-date">
+              01<span>nov</span>
+            </div>
+            <div className="agenda-content">
+              <div className="agenda-title">Sessão de mentoria com Ana</div>
+              <div className="agenda-time">09:00 - 10:00</div>
+            </div>
+            <FontAwesomeIcon icon={faVideo} className="agenda-icon" />
+          </div>
+
+          <div className="agenda-item blue">
+            <div className="agenda-date">
+              02<span>nov</span>
+            </div>
+            <div className="agenda-content">
+              <div className="agenda-title">Planejamento de grupo</div>
+              <div className="agenda-time">13:00 - 14:30</div>
+            </div>
+            <FontAwesomeIcon icon={faUsers} className="agenda-icon" />
+          </div>
+
+          <a href="#" className="card-link">Ver todas as atividades</a>
         </div>
       </div>
     </>

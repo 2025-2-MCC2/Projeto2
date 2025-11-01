@@ -4,13 +4,13 @@
   flex-wrap: wrap;
 }
 
-/* Card geral */
+/* === Card Geral === */
 .card {
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 20px;
-  flex: 1 1 300px; /* largura mínima 300px, cresce conforme espaço */
+  padding: 10px;
+  flex: 1 1 300px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -23,34 +23,27 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* Título do card */
 .card-title {
   font-size: 16px;
   font-weight: 600;
   color: #0f1724;
 }
 
-/* Conteúdo do card */
 .card-content {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* Ícones */
 .card-icon {
-  font-size: 28px;
-  color: #0f7a4f;
+  font-size: 30px;
+  color: #005812;
 }
 
-.ranking-arrow {
-  color: #0f7a4f;
-  margin-left: 4px;
-}
-
-/* Texto do card */
 .card-text div {
-  font-size: 14px;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
   color: #333;
 }
 
@@ -60,7 +53,7 @@
   font-weight: 500;
 }
 
-/* Avatares da equipe */
+/* === Avatares === */
 .avatars {
   display: flex;
   margin-top: 12px;
@@ -76,7 +69,7 @@
   justify-content: center;
   align-items: center;
   font-weight: 600;
-  margin-left: -10px; /* sobreposição */
+  margin-left: -10px;
   border: 2px solid #ffffff;
   cursor: pointer;
   transition: transform 0.2s ease;
@@ -86,49 +79,168 @@
   transform: scale(1.1);
 }
 
-/* Lista de agenda */
-.agenda-list {
-  padding-left: 16px;
-  font-size: 14px;
-  color: #333;
-  margin: 0;
+/* === Ranking Card === */
+.ranking-card .ranking-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
 }
 
-.card-link {
-  margin-top: 8px;
-  font-size: 14px;
+.ranking-number {
+  font-size: 48px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.ranking-number.up {
   color: #0f7a4f;
+}
+
+.ranking-number.down {
+  color: #e74c3c;
+}
+
+.ranking-arrow {
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+.ranking-arrow.up {
+  color: #0f7a4f;
+  animation: bounceUp 1.2s infinite alternate ease-in-out;
+}
+
+.ranking-arrow.down {
+  color: #e74c3c;
+  animation: bounceDown 1.2s infinite alternate ease-in-out;
+}
+
+.ranking-text {
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* === Animações === */
+@keyframes bounceUp {
+  from { transform: translateY(3px); }
+  to { transform: translateY(-3px); }
+}
+
+@keyframes bounceDown {
+  from { transform: translateY(-3px); }
+  to { transform: translateY(3px); }
+}
+/* === card da agenda === */
+.agenda-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.agenda-card .card-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #0f1724; /* título escuro */
+  margin-bottom: 12px;
+}
+
+/* Cada item da agenda */
+.agenda-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #f9fafb;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  border-left: 6px solid transparent;
+}
+
+.agenda-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Cores diferentes para cada tipo de atividade */
+.agenda-item.green { border-left-color: #00a86b; }
+.agenda-item.blue { border-left-color: #007bff; }
+.agenda-item.yellow { border-left-color: #f1c40f; }
+.agenda-item.purple { border-left-color: #9b59b6; }
+
+/* Data do item */
+.agenda-date {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: #0f1724;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 40px;
+}
+
+/* Mês em destaque menor */
+.agenda-date span {
+  font-size: 12px;
+  font-weight: 500;
+  color: #555;
+  text-transform: uppercase;
+}
+
+/* Conteúdo da atividade */
+.agenda-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.agenda-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #0f1724; /* título visível */
+}
+
+.agenda-time {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #555;
+}
+
+/* Ícone da atividade */
+.agenda-icon {
+  font-size: 18px;
+  color: #0f7a4f;
+}
+
+/* === Links e Botão === */
+.card-link {
+  align-self: flex-start;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #e82f2f;
   text-decoration: none;
   font-weight: 500;
+  margin-top: 8px;
+  transition: color 0.3s ease;
 }
 
 .card-link:hover {
+  color: #c02020;
   text-decoration: underline;
 }
 
-/* Responsividade */
-@media (max-width: 1024px) {
-  .cards-row {
-    flex-direction: column;
-  }
-}
-.view-messages-btn {
-  margin-top: 12px;
-  background-color: #0f7a4f;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 4px 20px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.view-messages-btn:hover {
-  background-color: #0c5e3c;
-  transform: translateY(-2px);
-}
 .chat-button {
   background-color: #0f7a4f;
   color: white;
@@ -147,3 +259,9 @@
   background-color: #115d3a;
 }
 
+/* === Responsividade === */
+@media (max-width: 1024px) {
+  .cards-row {
+    flex-direction: column;
+  }
+}

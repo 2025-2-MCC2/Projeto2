@@ -1,60 +1,70 @@
 .ranking-card {
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  flex: 1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   font-family: 'Poppins', sans-serif;
 }
 
 .ranking-title {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 12px;
-  color: #111;
-  font-family: 'Poppins', sans-serif;
+  color: #0f1724;
 }
 
-.ranking-card ul {
+.ranking-list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-.ranking-card li {
-  display: flex;
-  align-items: center;
   gap: 12px;
 }
 
+.ranking-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9fafb;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.ranking-item:hover {
+  background-color: #f0f4f8;
+}
+
 .team-name {
-  flex: 1;
   font-size: 14px;
+  font-weight: 500;
   color: #333;
-  font-family: 'Poppins', sans-serif;
 }
 
-.bar-container {
-  flex: 3;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  height: 12px;
-  overflow: hidden;
-
+.team-score {
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #0f1724;
 }
 
-.bar {
-  height: 100%;
-  background: linear-gradient(90deg, #ff7a00, #ff5959);
-  border-radius: 8px;
+.trend-icon.up {
+  color: #0f7a4f; /* verde */
 }
 
-.score {
-  width: 60px;
-  text-align: right;
-  font-size: 14px;
-  color: #111;
+.trend-icon.down {
+  color: #e74c3c; /* vermelho */
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .ranking-card {
+    width: 100%;
+  }
 }
