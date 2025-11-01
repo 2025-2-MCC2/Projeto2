@@ -3,9 +3,16 @@ import { criarNoticia, listarNoticias, atualizarNoticia, deletarNoticia } from "
 
 const router = express.Router();
 
-router.post("/", criarNoticia);
+// CREATE - Criar notícia
+router.post("/noticias", criarNoticia);
+
+// READ - Listar todas as notícias
 router.get("/noticias", listarNoticias);
-router.put("/:id", atualizarNoticia);
-router.delete("/:id", deletarNoticia);
+
+// UPDATE - Atualizar notícia
+router.put("/noticias/:id", atualizarNoticia);
+
+// DELETE - Deletar notícia
+router.delete("/noticias/:id", deletarNoticia);
 
 export default router;
