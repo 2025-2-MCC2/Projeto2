@@ -1,0 +1,47 @@
+.highlights-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.highlight-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 6px 18px rgba(17,17,17,0.06);
+  flex: 1;
+  min-width: 200px;
+}
+
+.highlight-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.highlight-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.highlight-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+}
+
+.highlight-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+}

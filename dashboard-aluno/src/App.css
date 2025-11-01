@@ -58,11 +58,13 @@
   flex-wrap: wrap;
 }
 
-/* ranking direita */
-.ranking-card {
+/* Coluna lateral direita (ranking + donut) */
+.side-column {
   width: 380px;
   flex-shrink: 0;
-  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* Seção do gráfico */
@@ -76,7 +78,7 @@
     flex-direction: column;
   }
 
-  .ranking-card {
+  .side-column {
     width: 100%;
   }
   

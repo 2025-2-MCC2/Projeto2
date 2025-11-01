@@ -1,0 +1,37 @@
+.donut-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  width: 380px;
+}
+
+.donut-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #213547;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.donut-tooltip {
+  background: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: none;
+}
+
+.donut-tooltip .tooltip-label {
+  color: #213547;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  font-size: 0.9rem;
+}
+
+.donut-tooltip .tooltip-value {
+  color: #0B6D48;
+  font-weight: 700;
+  margin: 0;
+  font-size: 1rem;
+}

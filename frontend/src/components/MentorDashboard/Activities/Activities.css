@@ -1,0 +1,90 @@
+.activities-card {
+  background-color: #fafafa;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.activities-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activities-header span {
+  font-weight: 600;
+  color: #111;
+  font-size: 16px;
+}
+
+.activities-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-filter {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  background-color: #0f7a4f;
+  color: #fff;
+  cursor: pointer;
+}
+
+.date-filter:hover {
+  background-color: #115d3a;
+}
+
+.create-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background-color: #ff5959;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.create-btn:hover {
+  background-color: #e04e4e;
+}
+
+.activities-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.activities-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  font-size: 14px;
+  color: #333;
+}
+
+.activities-list li .hora {
+  margin-left: 8px;
+  color: #666;
+}
+
+.sino-icon {
+  color: #0f7a4f;
+}

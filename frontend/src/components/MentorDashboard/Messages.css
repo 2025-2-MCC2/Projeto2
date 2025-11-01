@@ -1,0 +1,126 @@
+.messages-page {
+  display: flex;
+  height: 100vh;
+  background-color: #111;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Lista lateral de conversas */
+.chat-list {
+  width: 25%;
+  background-color: #1c1c1c;
+  padding: 20px;
+  border-right: 1px solid #2c2c2c;
+  overflow-y: auto;
+}
+
+.chat-list h2 {
+  margin-bottom: 20px;
+  color: #f1f1f1;
+  font-size: 20px;
+}
+
+.chat-item {
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #222;
+  transition: background 0.3s;
+}
+
+.chat-item.active,
+.chat-item:hover {
+  background-color: #4e46e5;
+}
+
+.chat-item h4 {
+  font-size: 16px;
+  margin: 0 0 5px;
+  color: #fff;
+}
+
+.chat-item p {
+  font-size: 14px;
+  color: #bbb;
+}
+
+/* Janela principal do chat */
+.chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #171717;
+}
+
+.chat-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #2c2c2c;
+  background-color: #1d1d1d;
+}
+
+.chat-header h2 {
+  margin: 0;
+  color: #f1f1f1;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  max-width: 70%;
+}
+
+.mentor-msg {
+  background-color: #4e46e5;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.student-msg {
+  background-color: #2b2b2b;
+}
+
+.sender {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.chat-input {
+  display: flex;
+  padding: 16px;
+  border-top: 1px solid #2c2c2c;
+  background-color: #1c1c1c;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  background-color: #2a2a2a;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.chat-input button {
+  background-color: #4e46e5;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.chat-input button:hover {
+  background-color: #5b54f0;
+}
