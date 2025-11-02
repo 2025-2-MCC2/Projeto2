@@ -31,3 +31,13 @@ html, body {
   gap: 24px;
   flex-wrap: wrap;
 }
+.activities-highlights-row {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap; 
+}
+
+.activities-highlights-row > * {
+  flex: 1; 
+}

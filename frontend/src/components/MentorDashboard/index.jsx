@@ -5,6 +5,7 @@ import Cards from './Cards/Cards';
 import RevenueChart from './Charts/RevenueChart';
 import RankingCard from './Ranking/RankingCard';
 import Activities from './Activities/Activities';
+import HighlightsCard from './Highlights/HighlightsCard'; // 👈 importar
 import './MentorDashboard.css';
 
 export default function MentorDashboard() {
@@ -27,8 +28,11 @@ export default function MentorDashboard() {
           <RankingCard />
         </div>
 
-        {/* Últimas atividades */}
-        <Activities />
+        {/* Últimas atividades + Highlights lado a lado */}
+        <div className="activities-highlights-row">
+          <Activities />
+          <HighlightsCard />
+        </div>
       </main>
     </div>
   );

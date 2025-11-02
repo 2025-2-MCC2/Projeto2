@@ -1,25 +1,19 @@
-.ranking-card {
+.ranking-podium-card {
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 18px 20px;
-  flex: 1 1 300px;
+  padding: 16px;
+  font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  font-family: 'Poppins', sans-serif;
-  transition: all 0.3s ease;
-}
-
-.ranking-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  width: 100%;
+  max-width: 320px; /* para ficar ao lado do card de arrecadação */
 }
 
 .ranking-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 16px;
 }
 
 .ranking-title {
@@ -28,7 +22,8 @@
   color: #0f1724;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 6px;
 }
 
 .ranking-icon {
@@ -36,67 +31,113 @@
   font-size: 18px;
 }
 
-/* lista */
-.ranking-list {
-  list-style: none;
+/* === Pódio === */
+.podium {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-top: 5px;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.podium-spot {
+  background-color: #f9fafb;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+  flex: 1;
+  padding: 10px 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.podium-spot:hover {
+  transform: translateY(-4px);
+}
+
+.podium-spot .place {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #555;
+}
+
+.podium-spot .team {
+  font-weight: 600;
+  color: #0f1724;
+}
+
+.podium-spot .score {
+  font-size: 13px;
+  color: #0f7a4f;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+/* Alturas do pódio reduzidas */
+.podium-spot.first {
+  background-color: #fff9db;
+  border: 2px solid #f1c40f;
+  height: 120px;
+}
+
+.podium-spot.second {
+  background-color: #f4f4f4;
+  border: 2px solid #bdc3c7;
+  height: 100px;
+}
+
+.podium-spot.third {
+  background-color: #fff2e0;
+  border: 2px solid #e67e22;
+  height: 90px;
+}
+
+/* === Lista abaixo === */
+.ranking-list {
+  width: 100%;
+  margin-top: 6px;
 }
 
 .ranking-item {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   background: #f9fafb;
-  padding: 8px 12px;
-  border-radius: 10px;
-  font-size: 14px;
-  color: #1e293b;
-  transition: all 0.2s ease;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  transition: background 0.2s ease;
 }
 
 .ranking-item:hover {
-  background: #eef2f7;
-}
-
-.ranking-item.first {
-  background: linear-gradient(90deg, #0f7a4f 0%, #13a66b 100%);
-  color: #fff;
-  font-weight: 600;
-}
-
-.ranking-item.first .trend-icon.up {
-  color: #fff;
+  background: #eef6f3;
 }
 
 .position {
   font-weight: 600;
-  color: #0f7a4f;
-  width: 28px;
+  color: #0f1724;
 }
 
 .team-name {
-  flex: 1;
-  margin-left: 5px;
+  font-weight: 500;
+  color: #333;
 }
 
 .team-score {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-weight: 500;
-}
-
-.trend-icon {
-  font-size: 12px;
-}
-
-.trend-icon.up {
+  font-weight: 600;
   color: #0f7a4f;
 }
 
-.trend-icon.down {
-  color: #e11d48;
+/* Responsividade */
+@media (max-width: 768px) {
+  .podium {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .podium-spot {
+    width: 80%;
+    height: auto;
+  }
 }
