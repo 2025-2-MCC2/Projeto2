@@ -1,0 +1,125 @@
+.perfil-page {
+  display: flex;
+}
+
+.perfil-main {
+  flex: 1;
+  padding: 30px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.perfil-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.personal-info, .team-members {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.info-item label {
+  width: 160px;
+  font-weight: 600;
+  color: #111;
+}
+
+.info-item input {
+  flex: 1;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.info-item span {
+  flex: 1;
+  padding: 6px 10px;
+  color: #333;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+}
+
+.info-icon {
+  color: #555;
+  min-width: 20px;
+  text-align: center;
+}
+
+.team-members h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #111;
+}
+
+.team-members a {
+  font-size: 14px;
+  color: #0f7a4f;
+  text-decoration: none;
+}
+
+.team-members a:hover {
+  text-decoration: underline;
+}
+
+.team-members ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.team-members li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  background-color: #0f7a4f;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.member-info .name {
+  font-weight: 600;
+  color: #111;
+}
+
+.member-info .email {
+  font-size: 12px;
+  color: #555;
+}
+
+.edit-member {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0f7a4f;
+}

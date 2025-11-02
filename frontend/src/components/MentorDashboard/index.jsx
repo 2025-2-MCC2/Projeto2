@@ -5,7 +5,7 @@ import Cards from './Cards/Cards';
 import RevenueChart from './Charts/RevenueChart';
 import RankingCard from './Ranking/RankingCard';
 import Activities from './Activities/Activities';
-import HighlightsCard from './Highlights/HighlightsCard'; // 👈 importar
+import HighlightsCard from './Highlights/HighlightsCard'; 
 import './MentorDashboard.css';
 
 export default function MentorDashboard() {

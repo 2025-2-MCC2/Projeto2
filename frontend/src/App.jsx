@@ -8,7 +8,8 @@ import CadastroMentor from "./components/CadastroMentor";
 import LoginMentor from "./components/LoginMentor";
 import MentorDashboard from "./components/MentorDashboard";
 import LoginAluno from "./components/LoginAluno";
-import Messages from "./components/MentorDashboard/Messages"; // 👈 ADICIONA AQUI
+import Messages from "./components/MentorDashboard/Messages"; 
+import Perfil from "./components/MentorDashboard/Perfil";
 import "./index.css";
 import "./i18n";
 
@@ -27,7 +28,9 @@ function App() {
         <Route path="/login-mentor" element={<LoginMentor />} />
         <Route path="/login-aluno" element={<LoginAluno />} />
         <Route path="/dashboard-mentor" element={<MentorDashboard />} />
-        <Route path="/dashboard-mentor/messages" element={<Messages />} /> {/* 👈 NOVA ROTA */}
+        <Route path="/dashboard-mentor/messages" element={<Messages />} /> 
+        <Route path="/dashboard-mentor/perfil" element={<Perfil />} />
+    
       </Routes>
       {showHeaderFooter && <Footer />}
     </>
