@@ -1,3 +1,4 @@
+/* === Layout principal === */
 .perfil-page {
   display: flex;
 }
@@ -20,6 +21,7 @@
   margin-bottom: 25px;
 }
 
+/* === Dados Pessoais === */
 .personal-info, .team-members {
   background-color: #fff;
   border-radius: 12px;
@@ -62,6 +64,7 @@
   text-align: center;
 }
 
+/* === Integrantes === */
 .team-members h2 {
   display: flex;
   justify-content: space-between;
@@ -122,4 +125,84 @@
   border: none;
   cursor: pointer;
   color: #0f7a4f;
+}
+
+/* === Modal === */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-header h3 {
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+}
+
+.modal-body label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: 600;
+  color: #111;
+}
+
+.modal-body input[type="text"] {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.save-btn {
+  background-color: #0f7a4f;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.remove-btn {
+  background-color: #e53e3e;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
 }

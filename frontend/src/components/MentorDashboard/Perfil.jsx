@@ -1,15 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faEnvelope, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faEnvelope, faPencilAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./Perfil.css";
 
 export default function Perfil() {
-  const teamMembers = [
-    { id: 1, initials: "C", name: "Clara", email: "clara@email.com" },
-    { id: 2, initials: "J", name: "João", email: "joao@email.com" },
-    { id: 3, initials: "L", name: "Lucas", email: "lucas@email.com" },
-  ];
+  const [teamMembers, setTeamMembers] = useState([
+    { id: 1, initials: "C", name: "Clara", email: "clara@email.com", isRep: false },
+    { id: 2, initials: "J", name: "João", email: "joao@email.com", isRep: true },
+    { id: 3, initials: "L", name: "Lucas", email: "lucas@email.com", isRep: false },
+  ]);
+
+  const [editingMember, setEditingMember] = useState(null);
+
+  const handleOpenModal = (member) => setEditingMember(member);
+  const handleCloseModal = () => setEditingMember(null);
+
+  const handleSaveMember = (updatedMember) => {
+    setTeamMembers((prev) =>
+      prev.map((m) => (m.id === updatedMember.id ? updatedMember : m))
+    );
+    handleCloseModal();
+  };
+
+  const handleRemoveMember = (id) => {
+    setTeamMembers((prev) => prev.filter((m) => m.id !== id));
+    handleCloseModal();
+  };
 
   return (
     <div className="perfil-page">
@@ -59,7 +76,10 @@ export default function Perfil() {
                   <span className="name">{member.name}</span>
                   <span className="email">{member.email}</span>
                 </div>
-                <button className="edit-member">
+                <button
+                  className="edit-member"
+                  onClick={() => handleOpenModal(member)}
+                >
                   <FontAwesomeIcon icon={faPencilAlt} />
                 </button>
               </li>
@@ -67,6 +87,56 @@ export default function Perfil() {
           </ul>
         </section>
       </main>
+
+      {/* Modal de edição */}
+      {editingMember && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <div className="modal-header">
+              <h3>Editar Integrante</h3>
+              <button className="close-btn" onClick={handleCloseModal}>
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
+            </div>
+
+            <div className="modal-body">
+              <label>Nome:</label>
+              <input
+                type="text"
+                value={editingMember.name}
+                onChange={(e) =>
+                  setEditingMember({ ...editingMember, name: e.target.value })
+                }
+              />
+              <label>
+                <input
+                  type="checkbox"
+                  checked={editingMember.isRep}
+                  onChange={(e) =>
+                    setEditingMember({ ...editingMember, isRep: e.target.checked })
+                  }
+                />{" "}
+                Representante
+              </label>
+            </div>
+
+            <div className="modal-footer">
+              <button
+                className="remove-btn"
+                onClick={() => handleRemoveMember(editingMember.id)}
+              >
+                Remover
+              </button>
+              <button
+                className="save-btn"
+                onClick={() => handleSaveMember(editingMember)}
+              >
+                Salvar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
