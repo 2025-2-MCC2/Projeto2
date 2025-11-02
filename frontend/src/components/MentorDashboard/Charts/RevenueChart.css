@@ -1,14 +1,58 @@
 .revenue-card {
-  background-color: #fff;
+  background-color: #ffffff;
   border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  flex: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 18px 20px;
+  flex: 1 1 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.revenue-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.revenue-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .revenue-title {
   font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: #111;
+  font-weight: 700;
+  color: #0f1724;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.revenue-icon {
+  color: #0f7a4f;
+  font-size: 18px;
+}
+
+.period-select {
+  background-color: #f9fafb;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 5px 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  color: #0f1724;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.period-select:hover {
+  background-color: #eef2f7;
+}
+
+.period-select:focus {
+  outline: none;
+  border-color: #0f7a4f;
 }
