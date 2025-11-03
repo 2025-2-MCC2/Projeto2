@@ -1,208 +1,180 @@
-/* === Layout principal === */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
 .perfil-page {
   display: flex;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  background-color: #f8f8f8;
 }
 
 .perfil-main {
   flex: 1;
-  padding: 30px;
-  font-family: 'Poppins', sans-serif;
-  background-color: #f5f5f5;
-  min-height: 100vh;
+  padding: 20px 30px;
+  overflow-y: auto;
 }
 
-.perfil-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #111;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 25px;
-}
-
-/* === Dados Pessoais === */
-.personal-info, .team-members {
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 25px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-}
-
-.info-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.info-item label {
-  width: 160px;
-  font-weight: 600;
-  color: #111;
-}
-
-.info-item input {
-  flex: 1;
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-.info-item span {
-  flex: 1;
-  padding: 6px 10px;
-  color: #333;
-  background-color: #f9f9f9;
-  border-radius: 6px;
-}
-
-.info-icon {
-  color: #555;
-  min-width: 20px;
-  text-align: center;
-}
-
-/* === Integrantes === */
-.team-members h2 {
+.perfil-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
-  font-size: 20px;
-  color: #111;
+  margin-bottom: 20px;
 }
 
-.team-members a {
-  font-size: 14px;
-  color: #0f7a4f;
-  text-decoration: none;
+.perfil-header h1 {
+  font-size: 24px;
+  color: #0f1724;
+  font-weight: 700;
 }
 
-.team-members a:hover {
-  text-decoration: underline;
-}
-
-.team-members ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.team-members li {
+.editar-perfil-btn {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.avatar {
-  width: 36px;
-  height: 36px;
+  gap: 8px;
   background-color: #0f7a4f;
   color: #fff;
-  font-weight: 600;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.member-info .name {
-  font-weight: 600;
-  color: #111;
-}
-
-.member-info .email {
-  font-size: 12px;
-  color: #555;
-}
-
-.edit-member {
-  background: none;
   border: none;
+  padding: 8px 14px;
   cursor: pointer;
-  color: #0f7a4f;
+  font-weight: 500;
 }
 
-/* === Modal === */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.4);
+.perfil-content {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
+  gap: 30px;
 }
 
-.modal {
+/* Coluna esquerda */
+.perfil-left {
+  flex: 1;
   background-color: #fff;
   border-radius: 12px;
   padding: 20px;
-  width: 400px;
-  max-width: 90%;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
 }
 
-.modal-header {
+.perfil-avatar {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-.modal-header h3 {
-  margin: 0;
+.perfil-icon {
+  font-size: 60px;
+  color: #999;
 }
 
-.close-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #555;
-}
-
-.modal-body label {
+.perfil-form label {
   display: block;
-  margin: 10px 0 5px;
-  font-weight: 600;
-  color: #111;
+  margin-bottom: 15px;
+  font-weight: 500;
+  color: #333;
 }
 
-.modal-body input[type="text"] {
+.perfil-form input {
   width: 100%;
-  padding: 6px 10px;
+  padding: 8px 10px;
+  margin-top: 5px;
   border-radius: 6px;
   border: 1px solid #ccc;
 }
 
-.modal-footer {
+/* Email representante */
+.email-representante {
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
+  align-items: center;
+  gap: 8px;
   margin-top: 15px;
 }
 
-.save-btn {
+.email-icon {
   background-color: #0f7a4f;
   color: #fff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
 }
 
-.remove-btn {
-  background-color: #e53e3e;
+/* Coluna direita */
+.perfil-right {
+  flex: 1;
+  max-width: 400px;
+}
+
+.integrantes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #0f1724;
+}
+
+.integrantes-header h2 {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.ver-todos {
+  color: #0f7a4f;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.integrantes-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 500px;
+  overflow-y: auto;
+  color: #333;
+}
+
+.integrante-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.integrante-avatar {
+  background-color: #0f7a4f;
   color: #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+.integrante-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.representante-label {
+  background-color: #d0f0fd;
+  color: #0f7a4f;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-top: 4px;
+  width: fit-content;
+}
+
+.integrante-acoes {
+  display: flex;
+  gap: 6px;
+}
+
+.chat-btn, .edit-btn {
   border: none;
-  padding: 6px 12px;
+  background-color: #e5e5e5;
+  padding: 6px;
   border-radius: 6px;
   cursor: pointer;
 }

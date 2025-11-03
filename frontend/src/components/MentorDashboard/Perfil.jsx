@@ -1,31 +1,26 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "./Sidebar/Sidebar";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faEnvelope, faPencilAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FaGraduationCap, FaEnvelope, FaEdit, FaComments } from "react-icons/fa";
 import "./Perfil.css";
 
 export default function Perfil() {
-  const [teamMembers, setTeamMembers] = useState([
-    { id: 1, initials: "C", name: "Clara", email: "clara@email.com", isRep: false },
-    { id: 2, initials: "J", name: "João", email: "joao@email.com", isRep: true },
-    { id: 3, initials: "L", name: "Lucas", email: "lucas@email.com", isRep: false },
-  ]);
+  const navigate = useNavigate();
+  const [editing, setEditing] = useState(false);
 
-  const [editingMember, setEditingMember] = useState(null);
+  const [nome, setNome] = useState("Rafael Morais");
+  const [email, setEmail] = useState("mentor@email.com");
+  const [grupo, setGrupo] = useState("Equipe Alpha");
 
-  const handleOpenModal = (member) => setEditingMember(member);
-  const handleCloseModal = () => setEditingMember(null);
+  const integrantes = [
+    { nome: "Ana Souza", email: "ana.souza@email.com", representante: true },
+    { nome: "João Lima", email: "joao.lima@email.com" },
+    { nome: "Carla Mendes", email: "carla.mendes@email.com" },
+    { nome: "Lucas Pereira", email: "lucas.pereira@email.com" },
+  ];
 
-  const handleSaveMember = (updatedMember) => {
-    setTeamMembers((prev) =>
-      prev.map((m) => (m.id === updatedMember.id ? updatedMember : m))
-    );
-    handleCloseModal();
-  };
-
-  const handleRemoveMember = (id) => {
-    setTeamMembers((prev) => prev.filter((m) => m.id !== id));
-    handleCloseModal();
+  const handleChatClick = () => {
+    navigate("/dashboard-mentor/messages");
   };
 
   return (
@@ -33,110 +28,93 @@ export default function Perfil() {
       <Sidebar />
 
       <main className="perfil-main">
-        <h1 className="perfil-title">
-          <FontAwesomeIcon icon={faUser} /> Perfil do Mentor
-        </h1>
+        <div className="perfil-header">
+          <h1>Edite seu perfil</h1>
+          <button
+            className="editar-perfil-btn"
+            onClick={() => setEditing(!editing)}
+          >
+            <FaEdit /> {editing ? "Salvar alterações" : "Editar perfil"}
+          </button>
+        </div>
 
-        {/* Dados Pessoais */}
-        <section className="personal-info">
-          <h2>Dados Pessoais</h2>
-          <div className="info-item">
-            <FontAwesomeIcon icon={faUser} className="info-icon" />
-            <label>Nome:</label>
-            <input type="text" defaultValue="Rafaela" />
-          </div>
-          <div className="info-item">
-            <FontAwesomeIcon icon={faUser} className="info-icon" />
-            <label>Sobrenome:</label>
-            <input type="text" defaultValue="Morais" />
-          </div>
-          <div className="info-item">
-            <FontAwesomeIcon icon={faEnvelope} className="info-icon" />
-            <label>Email representante:</label>
-            <span>representante@equipe.com</span>
-          </div>
-          <div className="info-item">
-            <FontAwesomeIcon icon={faEnvelope} className="info-icon" />
-            <label>Email pessoal:</label>
-            <span>rafa@mentor.com</span>
-          </div>
-        </section>
-
-        {/* Integrantes */}
-        <section className="team-members">
-          <h2>
-            Integrantes
-            <a href="#">Ver todos</a>
-          </h2>
-          <ul>
-            {teamMembers.map((member) => (
-              <li key={member.id}>
-                <div className="avatar">{member.initials}</div>
-                <div className="member-info">
-                  <span className="name">{member.name}</span>
-                  <span className="email">{member.email}</span>
-                </div>
-                <button
-                  className="edit-member"
-                  onClick={() => handleOpenModal(member)}
-                >
-                  <FontAwesomeIcon icon={faPencilAlt} />
-                </button>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </main>
-
-      {/* Modal de edição */}
-      {editingMember && (
-        <div className="modal-overlay">
-          <div className="modal">
-            <div className="modal-header">
-              <h3>Editar Integrante</h3>
-              <button className="close-btn" onClick={handleCloseModal}>
-                <FontAwesomeIcon icon={faTimes} />
-              </button>
+        <div className="perfil-content">
+          {/* Coluna esquerda */}
+          <div className="perfil-left">
+            <div className="perfil-avatar">
+              <FaGraduationCap className="perfil-icon" />
             </div>
 
-            <div className="modal-body">
-              <label>Nome:</label>
-              <input
-                type="text"
-                value={editingMember.name}
-                onChange={(e) =>
-                  setEditingMember({ ...editingMember, name: e.target.value })
-                }
-              />
+            <form className="perfil-form">
               <label>
+                Nome completo
                 <input
-                  type="checkbox"
-                  checked={editingMember.isRep}
-                  onChange={(e) =>
-                    setEditingMember({ ...editingMember, isRep: e.target.checked })
-                  }
-                />{" "}
-                Representante
+                  type="text"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  disabled={!editing}
+                />
               </label>
+
+              <label>
+                Email
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={!editing}
+                />
+              </label>
+
+              <label>
+                Grupo
+                <input
+                  type="text"
+                  value={grupo}
+                  onChange={(e) => setGrupo(e.target.value)}
+                  disabled={!editing}
+                />
+              </label>
+
+              <div className="email-representante">
+                <FaEnvelope className="email-icon" />
+                <span>Email do representante: representante@email.com</span>
+              </div>
+            </form>
+          </div>
+
+          {/* Coluna direita */}
+          <div className="perfil-right">
+            <div className="integrantes-header">
+              <h2>Integrantes</h2>
+              <a href="#" className="ver-todos">Visualizar todos</a>
             </div>
 
-            <div className="modal-footer">
-              <button
-                className="remove-btn"
-                onClick={() => handleRemoveMember(editingMember.id)}
-              >
-                Remover
-              </button>
-              <button
-                className="save-btn"
-                onClick={() => handleSaveMember(editingMember)}
-              >
-                Salvar
-              </button>
+            <div className="integrantes-lista">
+              {integrantes.map((pessoa, index) => (
+                <div key={index} className="integrante-card">
+                  <div className="integrante-avatar">
+                    {pessoa.nome[0]}
+                  </div>
+                  <div className="integrante-info">
+                    <strong>{pessoa.nome}</strong>
+                    <span>{pessoa.email}</span>
+                    {pessoa.representante && <span className="representante-label">Representante</span>}
+                  </div>
+                  <div className="integrante-acoes">
+                    <button className="chat-btn" onClick={handleChatClick}>
+                      <FaComments />
+                    </button>
+                    <button className="edit-btn">
+                      <FaEdit />
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      )}
+      </main>
     </div>
   );
 }
