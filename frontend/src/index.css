@@ -267,19 +267,21 @@ button:active .button_top {
   border: 2px solid black;
 }
 
+
 /* Imagens de fundo em grid */
 .background-grid {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh; /* Limita ao tamanho da viewport */
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 1fr;
   gap: 0.2px;
-  z-index: -1;
-  opacity: 1; /* Removendo a opacidade para eliminar o nevoeiro */
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
 }
 
 .background-grid img {
@@ -294,13 +296,15 @@ button:active .button_top {
 .footer {
   background-color: #092A1E;
   color: #fff;
-  padding: 20px 40px;
+  padding: 40px 40px 20px 40px;
   font-family: 'Poppins', sans-serif;
   text-align: justify;
   position: relative;
-  z-index: 10;
+  margin-top: 0;
+  z-index: 100;
   width: 100%;
-  overflow-x: auto; /* Remove scroll lateral */
+  overflow-x: hidden;
+  clear: both;
 }
 
 /* Logos do topo do footer */
@@ -312,10 +316,11 @@ button:active .button_top {
   margin-bottom: 30px;
 }
 
-.footer-logos-top img.liderancas,
-.footer-logos-top img.cybersirens {
-  height: 60px !important;
-  width: auto !important;
+.footer-logos-top .logo-liderancas,
+.footer-logos-top .logo-cybersirens {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
 }
 
 /* Container das seções do footer */
@@ -351,10 +356,20 @@ button:active .button_top {
   color: #ccc;
   text-decoration: none;
   transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .footer-links a:hover {
   color: #1e8957;
+}
+
+/* Ícones das redes sociais */
+.icon-social {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 /* Copyright */
