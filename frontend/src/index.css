@@ -1,21 +1,22 @@
-
+/* Resetando o estilo de margin e padding para todos os elementos */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
-body{
+/* Estilos gerais para o body */
+body {
   font-family: 'Poppins', sans-serif;
   width: 100%;
-  height: 100%;
+  height: auto; /* Ajustando a altura para o conteúdo */
   background: #111;
   color: #fff;
+  overflow: auto; /* Certificando-se de que a rolagem está ativada */
+  z-index: 0; /* Garantindo que o conteúdo principal não seja sobreposto */
 }
 
-
-/* header e navbar*/
+/* header e navbar */
 .navbar {
   position: sticky;
   top: 0;
@@ -27,16 +28,16 @@ body{
   align-items: center;
   z-index: 1000;
 }
+
 .navbar.hidden {
   transform: translateY(-100%);
 }
-
 
 .navbar.visible {
   transform: translateY(0);
 }
 
-/* para centralizar o conteudo principal da página inicial*/
+/* Centralizando o conteúdo principal */
 .container {
   width: 100%;
   max-width: 1440px;
@@ -46,21 +47,20 @@ body{
   margin: 0 auto;
 }
 
-
 /* logo */
 .logo img {
   height: 50px;
 }
 
-
-/*dropdown do idioma */
+/* Dropdown do idioma */
 .dropdown {
   position: relative;
   font-family: 'Poppins', sans-serif;
   display: inline-block;
   margin-left: 24px;
 }
-/* estilização do botão */
+
+/* Estilização do botão */
 .dropdown-btn {
   background: none;
   border: none;
@@ -72,17 +72,20 @@ body{
   align-items: center;
   gap: 4px;
 }
-/* seta do dropdown */
+
 .dropdown-btn .arrow {
   font-size: 12px;
 }
+
 .btn-cadastro .arrow {
   font-size: 12px;
 }
+
 .dropdown-btn .arrow {
   transition: transform 0.3s ease;
 }
-/* seta gira ao abrir o dropdown */
+
+/* Dropdown content */
 .dropdown-content {
   display: block;
   position: absolute;
@@ -97,7 +100,6 @@ body{
   z-index: 100;
 }
 
-
 .dropdown-content li {
   padding: 8px 16px;
   color: white;
@@ -108,10 +110,12 @@ body{
   align-items: center;
   gap: 6px;
 }
-/* efeito para mudar de cor do dropdown de cadastre-se */
+
+/* Efeito de hover no dropdown */
 .dropdown-content li:hover {
   background: #1e684b;
 }
+
 .dropdown-content li a {
   display: flex;
   align-items: center;
@@ -124,13 +128,11 @@ body{
   font-weight: 400;
 }
 
-
 .dropdown-content.show {
   display: block;
 }
 
-
-/* botão cadastre-se */
+/* Botão cadastre-se */
 .btn-cadastro {
   margin-left: 24px;
   padding: 10px 24px;
@@ -146,7 +148,6 @@ body{
   transition: background 0.3s ease;
 }
 
-
 .btn-cadastro:hover {
   background: linear-gradient(
       180deg,
@@ -155,11 +156,13 @@ body{
     ),
     rgba(11, 53, 24, 0.9);
 }
-/* parte principal da página inicial */
+
+/* Parte principal da página inicial */
 .hero {
   position: relative;
   width: 100%;
   min-height: 100vh;
+  height: auto; /* Ajustando a altura automaticamente */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -168,7 +171,6 @@ body{
   z-index: 1;
   color: white;
 }
-
 
 .hero-content {
   position: relative;
@@ -180,20 +182,17 @@ body{
   gap: 24px;
 }
 
-
 .hero-content h1 {
   font-size: 50px;
   font-weight: 600;
   line-height: 0.5;
 }
 
-
 .hero-content p {
   font-size: 24px;
   font-weight: 550;
   margin-bottom: 16px;
 }
-
 
 .hero-content .subtext {
   font-size: 22px;
@@ -202,15 +201,13 @@ body{
   margin-top: 16px;
 }
 
-
-/* botões principais de aluno, mentor e doador */
+/* Botões principais de aluno, mentor e doador */
 .hero-buttons {
   display: flex;
   gap: 16px;
   justify-content: center;
   line-height: 0.5;
 }
-
 
 .hero-buttons button {
   width: 260px;
@@ -222,7 +219,8 @@ body{
   border: 2px solid black;
   cursor: pointer;
 }
-/* estilo do botão */
+
+/* Estilo dos botões */
 button {
   font-size: 17px;
   font-weight: bold;
@@ -233,8 +231,6 @@ button {
   padding: 0;
 }
 
-
-/* parte superior do botão */
 .button_top {
   display: block;
   box-sizing: border-box;
@@ -245,16 +241,13 @@ button {
   font-family: 'Roboto', sans-serif;
 }
 
-
 button:hover .button_top {
   transform: translateY(-0.33em);
 }
 
-
 button:active .button_top {
   transform: translateY(0);
 }
-
 
 .btn-aluno .button_top {
   background: #E8E8E8;
@@ -262,13 +255,11 @@ button:active .button_top {
   border: 2px solid black;
 }
 
-
 .btn-mentor .button_top {
   background: #2B8665;
   color: black;
   border: 2px solid black;
 }
-
 
 .btn-doador .button_top {
   background: #E8E8E8;
@@ -276,8 +267,7 @@ button:active .button_top {
   border: 2px solid black;
 }
 
-
-/*imagens de fundo em grid*/
+/* Imagens de fundo em grid */
 .background-grid {
   position: fixed;
   top: 0;
@@ -289,27 +279,28 @@ button:active .button_top {
   grid-template-rows: 1fr;
   gap: 0.2px;
   z-index: -1;
-  opacity: 0.8;
+  opacity: 1; /* Removendo a opacidade para eliminar o nevoeiro */
 }
-/*tamanho do grid das imagens de fundo*/
+
 .background-grid img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  opacity: 0.8;
+  opacity: 1; /* Aumentando a opacidade para a imagem ficar nítida */
 }
+
 /* ===== FOOTER ===== */
 .footer {
   background-color: #092A1E;
   color: #fff;
   padding: 20px 40px;
   font-family: 'Poppins', sans-serif;
-  text-align: justify; 
+  text-align: justify;
   position: relative;
   z-index: 10;
   width: 100%;
-  overflow-x: hidden; /* remove scroll lateral */
+  overflow-x: auto; /* Remove scroll lateral */
 }
 
 /* Logos do topo do footer */
@@ -317,31 +308,31 @@ button:active .button_top {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 50px; /* espaçamento entre as logos */
+  gap: 50px;
   margin-bottom: 30px;
 }
 
 .footer-logos-top img.liderancas,
 .footer-logos-top img.cybersirens {
-  height: 60px !important; /* reduz o tamanho e força a alteração */
-  width: auto !important;   /* mantém proporção */
+  height: 60px !important;
+  width: auto !important;
 }
 
 /* Container das seções do footer */
 .footer-container {
   display: flex;
-  justify-content: space-around; 
+  justify-content: space-around;
   text-align: justify;
   max-width: 1200px;
   margin: 0 auto;
-  gap: 60px; 
+  gap: 60px;
   flex-wrap: wrap;
 }
 
 /* Seções internas */
 .footer-section {
   min-width: 150px;
-  text-align: justify; 
+  text-align: justify;
 }
 
 .footer-section h3 {
@@ -389,5 +380,3 @@ button:active .button_top {
     text-align: justify;
   }
 }
-
-
