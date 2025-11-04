@@ -10,6 +10,8 @@ import MentorDashboard from "./components/MentorDashboard";
 import LoginAluno from "./components/LoginAluno";
 import Messages from "./components/MentorDashboard/Messages"; 
 import Perfil from "./components/MentorDashboard/Perfil";
+import Progress from "./components/MentorDashboard/Progress";
+import Reports from "./components/MentorDashboard/Reports";
 import "./index.css";
 import "./i18n";
 
@@ -30,7 +32,8 @@ function App() {
         <Route path="/dashboard-mentor" element={<MentorDashboard />} />
         <Route path="/dashboard-mentor/messages" element={<Messages />} /> 
         <Route path="/dashboard-mentor/perfil" element={<Perfil />} />
-    
+        <Route path="/dashboard-mentor/progress" element={<Progress />} />
+        <Route path="/dashboard-mentor/reports" element={<Reports />} />
       </Routes>
       {showHeaderFooter && <Footer />}
     </>

@@ -1,0 +1,206 @@
+import React, { useState } from "react";
+import Sidebar from "./Sidebar/Sidebar";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+} from "recharts";
+import {
+  FaBullseye,
+  FaMoneyBillWave,
+  FaChartLine,
+  FaClock,
+  FaPlus,
+} from "react-icons/fa";
+import "./Progress.css";
+
+export default function ProgressoMentor() {
+  const [metas, setMetas] = useState([
+    { nome: "Campanha de Inverno", meta: 2000, arrecadado: 1250, prazo: "30/11/2025" },
+  ]);
+
+  const [novaMeta, setNovaMeta] = useState({ nome: "", meta: "", prazo: "" });
+  const [mostrarModal, setMostrarModal] = useState(false);
+
+  const integrantes = [
+    { nome: "Ana", progresso: 30 },
+    { nome: "João", progresso: 45 },
+    { nome: "Carla", progresso: 15 },
+    { nome: "Lucas", progresso: 10 },
+  ];
+
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  const metaAtual = metas[0];
+  const progresso = ((metaAtual.arrecadado / metaAtual.meta) * 100).toFixed(1);
+
+  const handleAddMeta = (e) => {
+    e.preventDefault();
+    if (novaMeta.nome && novaMeta.meta) {
+      setMetas([
+        {
+          nome: novaMeta.nome,
+          meta: Number(novaMeta.meta),
+          arrecadado: 0,
+          prazo: novaMeta.prazo,
+        },
+        ...metas,
+      ]);
+      setNovaMeta({ nome: "", meta: "", prazo: "" });
+      setMostrarModal(false);
+    }
+  };
+
+  return (
+    <div className="mentor-progress-page">
+      <Sidebar />
+
+      <main className="mentor-progress-main">
+        <div className="mentor-progress-header">
+          <h1>Progresso da Equipe</h1>
+          <button
+            className="mentor-add-meta-btn"
+            onClick={() => setMostrarModal(true)}
+          >
+            <FaPlus /> Adicionar Meta
+          </button>
+        </div>
+
+        {/* Cards resumo */}
+        <div className="mentor-progress-cards">
+          <div className="mentor-progress-card">
+            <FaBullseye className="mentor-card-icon" />
+            <div>
+              <h3>Meta Atual</h3>
+              <p>R$ {metaAtual.meta}</p>
+            </div>
+          </div>
+          <div className="mentor-progress-card">
+            <FaMoneyBillWave className="mentor-card-icon" />
+            <div>
+              <h3>Arrecadado</h3>
+              <p>R$ {metaAtual.arrecadado}</p>
+            </div>
+          </div>
+          <div className="mentor-progress-card">
+            <FaChartLine className="mentor-card-icon" />
+            <div>
+              <h3>Progresso</h3>
+              <p>{progresso}%</p>
+            </div>
+          </div>
+          <div className="mentor-progress-card">
+            <FaClock className="mentor-card-icon" />
+            <div>
+              <h3>Prazo</h3>
+              <p>{metaAtual.prazo}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Gráficos */}
+        <div className="mentor-graficos-container">
+          <div className="mentor-grafico-card">
+            <h2>Meta Total</h2>
+            <ResponsiveContainer width="100%" height={250}>
+              <BarChart data={[metaAtual]}>
+                <XAxis dataKey="nome" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="meta" fill="#00C49F" name="Meta" />
+                <Bar dataKey="arrecadado" fill="#0088FE" name="Arrecadado" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+
+          <div className="mentor-grafico-card">
+            <h2>Progresso Individual</h2>
+            <ResponsiveContainer width="100%" height={250}>
+              <PieChart>
+                <Pie
+                  data={integrantes}
+                  dataKey="progresso"
+                  nameKey="nome"
+                  outerRadius={80}
+                  label
+                >
+                  {integrantes.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* Modal Adicionar Meta */}
+        {mostrarModal && (
+          <div className="mentor-modal-overlay">
+            <div className="mentor-modal">
+              <h2>Adicionar Nova Meta</h2>
+              <form onSubmit={handleAddMeta}>
+                <label>
+                  Nome da Meta
+                  <input
+                    type="text"
+                    value={novaMeta.nome}
+                    onChange={(e) =>
+                      setNovaMeta({ ...novaMeta, nome: e.target.value })
+                    }
+                    required
+                  />
+                </label>
+                <label>
+                  Valor da Meta (R$)
+                  <input
+                    type="number"
+                    value={novaMeta.meta}
+                    onChange={(e) =>
+                      setNovaMeta({ ...novaMeta, meta: e.target.value })
+                    }
+                    required
+                  />
+                </label>
+                <label>
+                  Prazo
+                  <input
+                    type="text"
+                    placeholder="Ex: 30/11/2025"
+                    value={novaMeta.prazo}
+                    onChange={(e) =>
+                      setNovaMeta({ ...novaMeta, prazo: e.target.value })
+                    }
+                  />
+                </label>
+                <div className="mentor-modal-actions">
+                  <button type="submit" className="mentor-save-btn">
+                    Salvar
+                  </button>
+                  <button
+                    type="button"
+                    className="mentor-cancel-btn"
+                    onClick={() => setMostrarModal(false)}
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
+      </main>
+    </div>
+  );
+}

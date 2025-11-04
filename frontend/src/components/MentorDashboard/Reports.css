@@ -1,0 +1,100 @@
+.reports-page {
+  display: flex;
+  font-family: "Poppins", sans-serif;
+  background: #f9fafb;
+  color: #222;
+  min-height: 100vh;
+}
+
+.reports-main {
+  flex: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+}
+
+.reports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.reports-header h1 {
+  font-size: 1.8rem;
+  color: #0b3050;
+  font-weight: 600;
+}
+
+/* Filtro */
+.reports-filtro {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.reports-filtro label {
+  font-weight: 500;
+  color: #333;
+}
+
+.reports-filtro select {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: "Poppins", sans-serif;
+  background: white;
+  cursor: pointer;
+}
+
+/* Cards */
+.reports-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.reports-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.reports-card:hover {
+  transform: scale(1.03);
+}
+
+.reports-card-icon {
+  font-size: 1.8rem;
+  color: #00b49f;
+}
+
+/* Gráficos */
+.reports-graficos-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.reports-grafico-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.reports-grafico-card h2 {
+  font-size: 1.2rem;
+  color: #0b3050;
+  margin-bottom: 1rem;
+}
+
+.full {
+  grid-column: 1 / -1;
+}

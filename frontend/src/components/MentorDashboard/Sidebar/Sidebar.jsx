@@ -28,11 +28,11 @@ export default function Sidebar() {
   const menuItems = [
     { icon: faHome, label: 'Home', path: '/dashboard-mentor' },
     { icon: faUser, label: 'Perfil', path: '/dashboard-mentor/perfil' },
-    { icon: faChartLine, label: 'Progresso', path: '/dashboard-mentor/progresso' },
-    { icon: faFileAlt, label: 'Relatórios', path: '/dashboard-mentor/relatorios' },
+    { icon: faChartLine, label: 'Progresso', path: '/dashboard-mentor/progress' },
+    { icon: faFileAlt, label: 'Relatórios', path: '/dashboard-mentor/reports' },
     { icon: faEnvelope, label: 'Mensagens', path: '/dashboard-mentor/messages' },
-    { icon: faUsers, label: 'Mentoria', path: '/dashboard-mentor/mentoria' },
-    { icon: faBook, label: 'Materiais', path: '/dashboard-mentor/materiais' },
+    { icon: faUsers, label: 'Mentoria', path: '/dashboard-mentor/mentoring' },
+    { icon: faBook, label: 'Materiais', path: '/dashboard-mentor/materials' },
     { icon: faCog, label: 'Configurações', path: '/dashboard-mentor/config' },
   ];
 
@@ -69,7 +69,7 @@ export default function Sidebar() {
         </ul>
       </nav>
 
-      {/* === Rodapé: Logout === */}
+      {/* === Rodapé: Logout, faz o mentor vou para a página de cadastro/login === */}
       <div className="sidebar-footer">
         <button
           className="logout-btn"
