@@ -4,9 +4,9 @@
 
 -- Tabela de Notícias
 CREATE TABLE IF NOT EXISTS noticias (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(255) NOT NULL,
-    conteudo TEXT NOT NULL
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  titulo VARCHAR(255) NOT NULL,
+  conteudo TEXT NOT NULL
 );
 
 -- Tabela de Doadores
@@ -59,3 +59,27 @@ INSERT INTO campanhas (titulo, descricao, meta_valor, valor_arrecadado, data_ini
 ('Educação para Todos', 'Contribua para levar educação de qualidade para crianças carentes', 30000.00, 8000.00, '2025-02-01', '2025-11-30', 'ativa'),
 ('Saúde em Primeiro Lugar', 'Apoie o acesso à saúde para comunidades carentes', 40000.00, 15000.00, '2025-01-15', '2025-10-31', 'ativa'),
 ('Roupas para o Inverno', 'Ajude a distribuir roupas e cobertores para pessoas em situação de rua', 20000.00, 5000.00, '2025-03-01', '2025-08-31', 'ativa');
+
+
+-- ATbela de Doacoes
+
+CREATE TABLE IF NOT EXISTS doacoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    doador_nome VARCHAR(255) NOT NULL,
+    doador_email VARCHAR(255) NOT NULL,
+    valor DECIMAL(10, 2) NOT NULL,
+    campanha VARCHAR(255) NOT NULL,
+    status ENUM('Pendente', 'Confirmada', 'Cancelada') DEFAULT 'Pendente',
+    data_doacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    mensagem_agradecimento TEXT
+);
+
+CREATE TABLE IF NOT EXISTS campanhas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    descricao TEXT,
+    meta_valor DECIMAL(10, 2),
+    valor_arrecadado DECIMAL(10, 2) DEFAULT 0,
+    ativa BOOLEAN DEFAULT TRUE,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

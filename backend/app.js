@@ -12,3 +12,6 @@ app.use("/api/noticias", noticiaRoutes);
 app.use("/api/mentor", mentorRoutes);
 
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+
+const doacoesRoutes = require('./routes/DoacoesRoutes');
+app.use('/api', doacoesRoutes);

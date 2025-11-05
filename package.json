@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "emoji-picker-react": "^4.15.0",
     "jsonwebtoken": "^9.0.2",
+    "react-icons": "^5.5.0",
     "recharts": "^3.3.0"
   }
 }

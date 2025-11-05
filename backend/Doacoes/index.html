@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Doações</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* Header com abas */
+        .header-tabs {
+            display: flex;
+            background-color: #1f8b7d;
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 15px 10px;
+            background-color: #1f8b7d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 13px;
+            text-align: center;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .tab:hover {
+            background-color: #187066;
+        }
+
+        .tab.active {
+            background-color: #16655b;
+        }
+
+        /* Card Principal */
+        .main-card {
+            background-color: white;
+            padding: 30px;
+            min-height: calc(100vh - 53px);
+        }
+
+        .greeting {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #000;
+        }
+
+        /* Histórico de Doações */
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        thead th {
+            text-align: left;
+            padding: 10px 8px;
+            font-weight: 600;
+            color: #000;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        tbody td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #f0f0f0;
+            color: #333;
+        }
+
+        .status {
+            font-weight: 500;
+        }
+
+        .status.confirmada {
+            color: #000;
+        }
+
+        .status.pendente {
+            color: #d32f2f;
+        }
+
+        /* Cards de Informação */
+        .info-cards {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            flex: 1;
+            padding: 30px;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            line-height: 1.6;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-card h3 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .info-card p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .info-card.combate {
+            background-color: #e85d4a;
+        }
+
+        .info-card.mensagem {
+            background-color: #f4c542;
+        }
+
+        /* Botão Nova Doação */
+        .btn-nova-doacao {
+            background-color: #1f8b7d;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 25px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-nova-doacao:hover {
+            background-color: #187066;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 35px;
+            border-radius: 8px;
+            max-width: 450px;
+            width: 90%;
+        }
+
+        .modal-header {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #000;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #1f8b7d;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 11px;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #1f8b7d;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #187066;
+        }
+
+        .btn-secondary {
+            background-color: #e0e0e0;
+            color: #666;
+        }
+
+        .btn-secondary:hover {
+            background-color: #d0d0d0;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .info-cards {
+                flex-direction: column;
+            }
+            
+            .tab {
+                font-size: 11px;
+                padding: 12px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header com abas -->
+        <div class="header-tabs">
+            <button class="tab">
+                <span>📊</span>
+                <span>Sobre Nós</span>
+            </button>
+            <button class="tab">
+                <span>📢</span>
+                <span>Campanha</span>
+            </button>
+            <button class="tab active">
+                <span>🎁</span>
+                <span>minhas doações</span>
+            </button>
+            <button class="tab">
+                <span>👤</span>
+                <span>Perfil</span>
+            </button>
+        </div>
+
+        <!-- Card Principal -->
+        <div class="main-card">
+            <h1 class="greeting">Olá, <span id="nomeDoador">Nome do doador</span>!</h1>
+
+            <button class="btn-nova-doacao" onclick="abrirModalDoacao()">
+                + Nova Doação
+            </button>
+
+            <!-- Histórico de Doações -->
+            <div class="section-title">Histórico de Doações</div>
+            
+            <div id="loading" class="loading">Carregando doações...</div>
+            
+            <table id="tabelaDoacoes" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Valor</th>
+                        <th>Campanha</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyDoacoes">
+                </tbody>
+            </table>
+
+            <!-- Cards de Informação -->
+            <div class="info-cards">
+                <div class="info-card combate">
+                    <h3>Combate a Fome</h3>
+                    <p>Sua doação ajudou a fornecer refeições para pessoas em necessidades</p>
+                </div>
+                <div class="info-card mensagem">
+                    <h3>Mensagens de Agradecimento</h3>
+                    <p id="mensagemAgradecimento">Obrigado pela sua ajuda! Sua contribuição faz a diferença!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nova Doação -->
+    <div class="modal" id="modalDoacao">
+        <div class="modal-content">
+            <h2 class="modal-header">Nova Doação</h2>
+            <form id="formDoacao" onsubmit="criarDoacao(event)">
+                <div class="form-group">
+                    <label>Nome Completo</label>
+                    <input type="text" id="inputNome" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="inputEmail" required>
+                </div>
+                <div class="form-group">
+                    <label>Valor (R$)</label>
+                    <input type="number" id="inputValor" step="0.01" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Campanha</label>
+                    <select id="inputCampanha" required>
+                        <option value="">Selecione uma campanha</option>
+                        <option value="Combate a Fome">Combate a Fome</option>
+                        <option value="Educação">Educação</option>
+                        <option value="Saúde">Saúde</option>
+                    </select>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="fecharModalDoacao()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Confirmar Doação</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Configuração da API
+        const API_URL = 'http://localhost:3000/api';
+        let emailDoadorAtual = 'doador@email.com';
+
+        // Carregar doações ao iniciar
+        window.addEventListener('DOMContentLoaded', () => {
+            carregarDoacoes();
+        });
+
+        async function carregarDoacoes() {
+            try {
+                // Tentar carregar da API
+                const response = await fetch(`${API_URL}/doacoes/doador/${emailDoadorAtual}`);
+                
+                if (!response.ok) {
+                    throw new Error('API não disponível');
+                }
+                
+                const doacoes = await response.json();
+                exibirDoacoes(doacoes);
+            } catch (error) {
+                console.error('Erro ao carregar doações:', error);
+                
+                // Mostrar dados de exemplo se a API não funcionar
+                const doacoesExemplo = [
+                    {
+                        data_doacao: '2025-04-10',
+                        valor: 100,
+                        campanha: 'Combate a Fome',
+                        status: 'Confirmada'
+                    },
+                    {
+                        data_doacao: '2025-04-27',
+                        valor: 80,
+                        campanha: 'Combate a Fome',
+                        status: 'Confirmada'
+                    },
+                    {
+                        data_doacao: '2025-06-12',
+                        valor: 50,
+                        campanha: 'Combate a Fome',
+                        status: 'Pendente'
+                    }
+                ];
+                exibirDoacoes(doacoesExemplo);
+            }
+        }
+
+        function exibirDoacoes(doacoes) {
+            const tbody = document.getElementById('tbodyDoacoes');
+            const loading = document.getElementById('loading');
+            const tabela = document.getElementById('tabelaDoacoes');
+            
+            loading.style.display = 'none';
+            tabela.style.display = 'table';
+            
+            tbody.innerHTML = '';
+            
+            if (doacoes.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 30px;">Nenhuma doação encontrada</td></tr>';
+                return;
+            }
+            
+            doacoes.forEach(doacao => {
+                const tr = document.createElement('tr');
+                const data = new Date(doacao.data_doacao).toLocaleDateString('pt-BR');
+                const valor = `R$ ${parseFloat(doacao.valor).toFixed(0)}`;
+                
+                tr.innerHTML = `
+                    <td>${data}</td>
+                    <td>${valor}</td>
+                    <td>${doacao.campanha}</td>
+                    <td><span class="status ${doacao.status.toLowerCase()}">${doacao.status}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+            // Atualizar mensagem de agradecimento
+            const ultimaDoacao = doacoes[0];
+            if (ultimaDoacao && ultimaDoacao.mensagem_agradecimento) {
+                document.getElementById('mensagemAgradecimento').textContent = ultimaDoacao.mensagem_agradecimento;
+            }
+        }
+
+        function abrirModalDoacao() {
+            document.getElementById('modalDoacao').classList.add('active');
+        }
+
+        function fecharModalDoacao() {
+            document.getElementById('modalDoacao').classList.remove('active');
+            document.getElementById('formDoacao').reset();
+        }
+
+        async function criarDoacao(event) {
+            event.preventDefault();
+            
+            const doacao = {
+                doador_nome: document.getElementById('inputNome').value,
+                doador_email: document.getElementById('inputEmail').value,
+                valor: parseFloat(document.getElementById('inputValor').value),
+                campanha: document.getElementById('inputCampanha').value
+            };
+            
+            try {
+                const response = await fetch(`${API_URL}/doacoes`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(doacao)
+                });
+                
+                if (response.ok) {
+                    alert('Doação realizada com sucesso!');
+                    fecharModalDoacao();
+                    emailDoadorAtual = doacao.doador_email;
+                    document.getElementById('nomeDoador').textContent = doacao.doador_nome.split(' ')[0];
+                    carregarDoacoes();
+                } else {
+                    alert('Erro ao realizar doação. Tente novamente.');
+                }
+            } catch (error) {
+                console.error('Erro ao criar doação:', error);
+                alert('Erro ao realizar doação. Verifique sua conexão.');
+            }
+        }
+
+        // Fechar modal clicando fora
+        document.getElementById('modalDoacao').addEventListener('click', function(e) {
+            if (e.target === this) {
+                fecharModalDoacao();
+            }
+        });
+    </script>
+</body>
+</html>
