@@ -8,7 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import "../styles/Grafico.css";
+import "../GraficoArrecadacao/Grafico.css";
 
 const GraficoArrecadacao = () => {
   

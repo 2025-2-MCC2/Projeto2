@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/Tarefas.css';
+import "./Tarefas.css";
 
 const Tarefas = () => {
   const [tarefas, setTarefas] = useState([]);
@@ -24,8 +24,7 @@ const Tarefas = () => {
       if (result && result.value) {
         setTarefas(JSON.parse(result.value));
       }
-    } catch (error) {
-      // Se não existir, cria tarefas iniciais
+    } catch (_error) {
       const tarefasIniciais = [
         { id: 1, data: "24 Dec 2021", descricao: "web conference agenda", cor: "#ef4444" },
         { id: 2, data: "24 Nov 2022", descricao: "meeting with partners", cor: "#3b82f6" },

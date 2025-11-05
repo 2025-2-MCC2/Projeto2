@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Sidebar from "./Sidebar/Sidebar";
+import Sidebar from "../AlunoDashboard/SidebarAluno/SidebarAluno";
 import { FaPaperPlane, FaSmile } from "react-icons/fa";
 import EmojiPicker from "emoji-picker-react";
 import "./Messages.css";

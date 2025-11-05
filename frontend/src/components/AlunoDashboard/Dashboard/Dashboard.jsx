@@ -3,7 +3,7 @@ import { FaBell, FaChevronDown } from "react-icons/fa";
 import DatePicker, { registerLocale } from "react-datepicker";
 import ptBR from "date-fns/locale/pt-BR";
 import "react-datepicker/dist/react-datepicker.css";
-import "../styles/Dashboard.css";
+import "../Dashboard/Dashboard.css";
 import {
   LineChart,
   Line,

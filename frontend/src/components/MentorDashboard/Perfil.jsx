@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "./Sidebar/Sidebar";
+import Sidebar from "../AlunoDashboard/SidebarAluno/SidebarAluno";
 import { FaGraduationCap, FaEnvelope, FaEdit, FaComments } from "react-icons/fa";
 import "./Perfil.css";
 
