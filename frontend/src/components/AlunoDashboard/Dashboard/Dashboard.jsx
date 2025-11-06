@@ -4,17 +4,7 @@ import DatePicker, { registerLocale } from "react-datepicker";
 import ptBR from "date-fns/locale/pt-BR";
 import "react-datepicker/dist/react-datepicker.css";
 import "../Dashboard/Dashboard.css";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts"
 
-// Registra o idioma português
 registerLocale("pt-BR", ptBR);
 
 function Dashboard() {
@@ -23,10 +13,10 @@ function Dashboard() {
 
   const toggleDatePicker = () => setShowDatePicker(!showDatePicker);
 
-  
   return (
     <div className="dashboard-topbar-right">
-      {/* Campo de data */}
+
+      {/* Date Picker */}
       <div className="date-picker-container">
         <button className="date-display" onClick={toggleDatePicker}>
           {selectedDate.toLocaleDateString("pt-BR")}
@@ -34,14 +24,17 @@ function Dashboard() {
         </button>
 
         {showDatePicker && (
-          <div className="date-popup">
+          <div className="datepicker-popper">
             <DatePicker
               selected={selectedDate}
-              onChange={(date) => setSelectedDate(date)}
-              inline
+              onChange={(date) => {
+                setSelectedDate(date);
+                setShowDatePicker(false);
+              }}
               locale="pt-BR"
               dateFormat="dd/MM/yyyy"
-              calendarStartDay={0}
+              inline
+              calendarClassName="custom-calendar"
             />
           </div>
         )}
@@ -59,10 +52,9 @@ function Dashboard() {
           alt="User"
         />
       </div>
+
     </div>
   );
-  
-  
 }
 
 export default Dashboard;

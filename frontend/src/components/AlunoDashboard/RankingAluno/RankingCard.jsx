@@ -13,42 +13,40 @@ export default function RankingPodium() {
   ];
 
   return (
-    <div className="ranking-podium-card">
-      <div className="ranking-header">
-        <h3 className="ranking-title">
-          <FontAwesomeIcon icon={faCrown} className="ranking-icon" />
+    <div className="rankingAluno-card">
+      <div className="rankingAluno-header">
+        <h3 className="rankingAluno-title">
+          <FontAwesomeIcon icon={faCrown} className="rankingAluno-icon" />
           Ranking das Equipes
         </h3>
       </div>
 
-      {/* === Pódio (Top 3) === */}
-      <div className="podium">
-        <div className="podium-spot second">
-          <div className="place">2º</div>
-          <div className="team">{rankingData[1].team}</div>
-          <div className="score">{rankingData[1].score}kg</div>
+      <div className="rankingAluno-podium">
+        <div className="rankingAluno-spot rankingAluno-second">
+          <div className="rankingAluno-place">2º</div>
+          <div className="rankingAluno-team">{rankingData[1].team}</div>
+          <div className="rankingAluno-score">{rankingData[1].score}kg</div>
         </div>
 
-        <div className="podium-spot first">
-          <div className="place">1º</div>
-          <div className="team">{rankingData[0].team}</div>
-          <div className="score">{rankingData[0].score}kg</div>
+        <div className="rankingAluno-spot rankingAluno-first">
+          <div className="rankingAluno-place">1º</div>
+          <div className="rankingAluno-team">{rankingData[0].team}</div>
+          <div className="rankingAluno-score">{rankingData[0].score}kg</div>
         </div>
 
-        <div className="podium-spot third">
-          <div className="place">3º</div>
-          <div className="team">{rankingData[2].team}</div>
-          <div className="score">{rankingData[2].score}kg</div>
+        <div className="rankingAluno-spot rankingAluno-third">
+          <div className="rankingAluno-place">3º</div>
+          <div className="rankingAluno-team">{rankingData[2].team}</div>
+          <div className="rankingAluno-score">{rankingData[2].score}kg</div>
         </div>
       </div>
 
-      {/* === Restante das Equipes === */}
-      <ul className="ranking-list">
+      <ul className="rankingAluno-list">
         {rankingData.slice(3).map((item, index) => (
-          <li key={index + 3} className="ranking-item">
-            <span className="position">#{index + 4}</span>
-            <span className="team-name">{item.team}</span>
-            <span className="team-score">{item.score}kg</span>
+          <li key={index + 3} className="rankingAluno-item">
+            <span className="rankingAluno-position">#{index + 4}</span>
+            <span className="rankingAluno-teamName">{item.team}</span>
+            <span className="rankingAluno-teamScore">{item.score}kg</span>
           </li>
         ))}
       </ul>

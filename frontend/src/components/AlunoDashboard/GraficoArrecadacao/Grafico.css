@@ -1,4 +1,4 @@
-.grafico-card {
+.graficoAluno-card {
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
@@ -7,32 +7,28 @@
   flex: 1;
 }
 
-.grafico-card h3 {
+.graficoAluno-title {
   font-size: 1rem;
   font-weight: 700;
   color: #333;
   margin-bottom: 20px;
-  margin-top: 0;
 }
 
-.custom-tooltip {
+.graficoAluno-tooltip {
   background: white;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 10px 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.tooltip-label {
+.graficoAluno-tooltip-label {
   font-weight: 600;
   color: #333;
-  margin: 0 0 5px 0;
-  font-size: 0.9rem;
+  margin-bottom: 5px;
 }
 
-.tooltip-value {
+.graficoAluno-tooltip-value {
   color: #0B6D48;
   font-weight: 700;
-  margin: 0;
-  font-size: 1rem;
 }

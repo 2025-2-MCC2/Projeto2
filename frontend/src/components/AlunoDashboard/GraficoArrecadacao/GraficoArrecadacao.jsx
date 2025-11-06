@@ -8,10 +8,9 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import "../GraficoArrecadacao/Grafico.css";
+import "./Grafico.css";
 
 const GraficoArrecadacao = () => {
-  
   const dados = [
     { mes: "Jan", valor: 12000 },
     { mes: "Fev", valor: 19000 },
@@ -22,14 +21,13 @@ const GraficoArrecadacao = () => {
     { mes: "Jul", valor: 28000 },
   ];
 
-
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="custom-tooltip">
-          <p className="tooltip-label">{`${payload[0].payload.mes}`}</p>
-          <p className="tooltip-value">
-            {`R$ ${payload[0].value.toLocaleString("pt-BR")}`}
+        <div className="graficoAluno-tooltip">
+          <p className="graficoAluno-tooltip-label">{payload[0].payload.mes}</p>
+          <p className="graficoAluno-tooltip-value">
+            R$ {payload[0].value.toLocaleString("pt-BR")}
           </p>
         </div>
       );
@@ -38,22 +36,25 @@ const GraficoArrecadacao = () => {
   };
 
   return (
-    <div className="grafico-card">
-      <h3>Arrecadação Mensal do Grupo</h3>
+    <div className="graficoAluno-card">
+      <h3 className="graficoAluno-title">Arrecadação Mensal do Grupo</h3>
+
       <ResponsiveContainer width="100%" height={280}>
-        <LineChart data={dados} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+        <LineChart data={dados}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
-          <XAxis 
-            dataKey="mes" 
+          <XAxis
+            dataKey="mes"
             stroke="#666"
-            style={{ fontSize: '0.85rem' }}
+            style={{ fontSize: "0.85rem" }}
           />
-          <YAxis 
+          <YAxis
             stroke="#666"
-            style={{ fontSize: '0.85rem' }}
+            style={{ fontSize: "0.85rem" }}
             tickFormatter={(value) => `R$ ${(value / 1000).toFixed(0)}k`}
           />
+
           <Tooltip content={<CustomTooltip />} />
+
           <Line
             type="monotone"
             dataKey="valor"

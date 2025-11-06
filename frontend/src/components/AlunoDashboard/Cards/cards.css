@@ -1,4 +1,4 @@
-.dashboard-container {
+.dashboard-container-aluno {
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
@@ -6,37 +6,35 @@
   justify-content: center;
 }
 
-/* Cards em linha */
-.cards-row {
+.cards-row-aluno {
   display: flex;
   gap: 20px;
-  flex-wrap: nowrap; /* NUNCA quebra linha */
+  flex-wrap: nowrap;
 }
 
-/* Base do card!!*/
-.card {
+/* Base do card aluno */
+.card-aluno {
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 10px 18px; 
+  padding: 10px 18px;
   display: flex;
   align-items: center;
-  gap: 15px; 
+  gap: 15px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
   min-height: 80px;
-  flex: 1 1 0; /* Divide o espaço igualmente entre os 3 cards */
-  min-width: 0; /* Permite que encolha além do conteúdo */
+  flex: 1 1 0;
+  min-width: 0;
 }
 
-.card:hover {
+.card-aluno:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Bolinhas dos cards */
-/* Centraliza os ícones dentro dos círculos */
-.circle {
+/* Círculos */
+.card-aluno-circle {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -44,34 +42,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem; /* tamanho do ícone */
-  color: #1a1a1a; /* cor do ícone */
+  font-size: 1.3rem;
+  color: #1a1a1a;
 }
 
-
-.circle-blue {
-  background-color: #cfe2ff; 
+.card-aluno-blue {
+  background-color: #cfe2ff;
 }
 
-.circle-orange {
-  background-color: #ffe5b4; 
+.card-aluno-orange {
+  background-color: #ffe5b4;
 }
 
-.circle-green {
-  background-color: #f2b6b2; 
+.card-aluno-green {
+  background-color: #f2b6b2;
 }
 
-/* Texto de dentro do card */
-.card-text h3 {
+/* Texto */
+.card-aluno-text h3 {
   font-size: 1rem;
   font-weight: 700;
   color: #1a1a1a;
   line-height: 1.2;
 }
 
-.card-text p {
+.card-aluno-text p {
   font-size: 0.85rem;
   color: #555;
   line-height: 1.3;
   max-width: 151px;
 }
+ 

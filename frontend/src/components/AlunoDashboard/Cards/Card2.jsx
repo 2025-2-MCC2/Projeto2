@@ -5,11 +5,11 @@ import './cards.css';
 
 function Card2() {
   return (
-    <div className="card">
-      <div className="circle circle-orange">
+    <div className="card-aluno">
+      <div className="card-aluno-circle card-aluno-orange">
         <FontAwesomeIcon icon={faStar} />
       </div>
-      <div className="card-text">
+      <div className="card-aluno-text">
         <h3>5°</h3>
         <p>Posição no ranking.</p>
       </div>
@@ -18,3 +18,4 @@ function Card2() {
 }
 
 export default Card2;
+ 

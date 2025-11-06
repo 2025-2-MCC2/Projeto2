@@ -1,143 +1,126 @@
-.ranking-podium-card {
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 16px;
-  font-family: 'Poppins', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 320px; /* para ficar ao lado do card de arrecadação */
+/* CARD GERAL */
+.rankingAluno-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  padding: 22px;
+  font-family: "Poppins", sans-serif;
+  width: 410px;
 }
 
-.ranking-header {
-  text-align: center;
-  margin-bottom: 16px;
-}
-
-.ranking-title {
-  font-size: 16px;
+/* TÍTULO */
+.rankingAluno-title {
+  font-size: 17px;
   font-weight: 700;
-  color: #0f1724;
+  color: #111;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
-.ranking-icon {
+.rankingAluno-icon {
   color: #f1c40f;
   font-size: 18px;
 }
 
-/* === Pódio === */
-.podium {
+/* PÓDIO */
+.rankingAluno-podium {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 12px;
-  margin-bottom: 16px;
-  width: 100%;
+  gap: 14px;
+  margin-bottom: 15px;
 }
 
-.podium-spot {
-  background-color: #f9fafb;
-  border-radius: 10px 10px 0 0;
-  text-align: center;
-  flex: 1;
-  padding: 10px 6px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease;
+.rankingAluno-spot {
+  background: #fafafa;
+  border-radius: 14px;
+  width: 90px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.podium-spot:hover {
-  transform: translateY(-4px);
-}
-
-.podium-spot .place {
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 4px;
-  color: #555;
-}
-
-.podium-spot .team {
-  font-weight: 600;
-  color: #0f1724;
-}
-
-.podium-spot .score {
-  font-size: 13px;
-  color: #0f7a4f;
-  font-weight: 500;
-  margin-top: 2px;
-}
-
-/* Alturas do pódio reduzidas */
-.podium-spot.first {
-  background-color: #fff9db;
+/* POSIÇÕES */
+.rankingAluno-first {
   border: 2px solid #f1c40f;
-  height: 120px;
+  background: #fff8d9;
+  height: 130px;
+  padding: 5px;
 }
 
-.podium-spot.second {
-  background-color: #f4f4f4;
-  border: 2px solid #bdc3c7;
-  height: 100px;
+.rankingAluno-second {
+  border: 2px solid #cdd3d8;
+  background: #f1f2f4;
+  padding: 5px;
+  height: 115px;
 }
 
-.podium-spot.third {
-  background-color: #fff2e0;
-  border: 2px solid #e67e22;
-  height: 90px;
+.rankingAluno-third {
+  border: 2px solid #e89b47;
+  background: #fff1dc;
+  padding: 5px;
 }
 
-/* === Lista abaixo === */
-.ranking-list {
-  width: 100%;
+/* TEXTO DO PÓDIO */
+.rankingAluno-place {
+  font-size: 17px;
+  font-weight: 700;
+  color: #666;
+}
+
+.rankingAluno-team {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: #222;
+  margin-top: 4px;
+}
+
+.rankingAluno-score {
+  font-size: 15px;
+  font-weight: 700;
   margin-top: 6px;
+  color: #0f7a4f;
 }
 
-.ranking-item {
+/* LISTA INFERIOR */
+.rankingAluno-list {
+  margin-top: 10px;
+}
+
+.rankingAluno-item {
+  background: #f9fafb;
+  padding: 8px 12px;
+  border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f9fafb;
-  padding: 6px 10px;
-  border-radius: 8px;
-  margin-bottom: 6px;
-  transition: background 0.2s ease;
+  margin-bottom: 8px;
+  transition: background 0.2s;
 }
 
-.ranking-item:hover {
+.rankingAluno-item:hover {
   background: #eef6f3;
 }
 
-.position {
-  font-weight: 600;
-  color: #0f1724;
-}
-
-.team-name {
-  font-weight: 500;
+/* LISTA — TEXTO */
+.rankingAluno-position {
+  font-weight: 700;
   color: #333;
 }
 
-.team-score {
+.rankingAluno-teamName {
+  flex: 1;
+  margin-left: 10px;
   font-weight: 600;
-  color: #0f7a4f;
+  color: #333;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .podium {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .podium-spot {
-    width: 80%;
-    height: auto;
-  }
+.rankingAluno-teamScore {
+  font-weight: 700;
+  color: #0f7a4f;
 }
