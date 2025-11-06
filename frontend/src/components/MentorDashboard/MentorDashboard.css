@@ -1,3 +1,4 @@
+/* Reset global */
 html, body {
   height: 100%;
   margin: 0;
@@ -6,35 +7,22 @@ html, body {
   background-color: #f9f9fb;
   overflow: hidden;
 }
-.sidebar {
-  width: 240px;
-  background-color: #1b3d2f;
-  color: #ffffff;
-  padding: 24px 16px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* garante altura total da viewport */
-  transition: width 0.3s ease;
-}
 
 /* Container principal do dashboard */
 .dashboard-page {
   display: flex;
-  height: 100vh; 
-  overflow: hidden; 
+  height: 100vh; /* ocupa toda a altura da tela */
+  overflow: hidden; /* sidebar e header não geram scroll */
 }
 
+/* Área principal que rola conteúdo */
 .dashboard-main {
   flex: 1;
   padding: 32px;
-  margin-left: 240px;
-  overflow-y: auto; 
+  overflow-y: auto; /* só conteúdo principal rola */
   display: flex;
   flex-direction: column;
   gap: 24px;
-  transition: margin-left 0.3s ease;
 }
 
 /* Linha de widgets: gráfico e ranking */
@@ -43,6 +31,7 @@ html, body {
   gap: 24px;
   flex-wrap: wrap;
 }
+
 .activities-highlights-row {
   display: flex;
   gap: 20px;

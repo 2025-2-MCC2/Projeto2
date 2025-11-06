@@ -3,8 +3,8 @@
   font-family: "Poppins", sans-serif;
   background: #f9fafb;
   color: #222;
-  height: 100vh;
-  overflow-y: auto;
+  min-height: 100vh;
+  overflow-y: visible;
 }
 
 .mentor-progress-main {

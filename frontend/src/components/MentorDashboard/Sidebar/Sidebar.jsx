@@ -43,7 +43,6 @@ export default function SidebarMentor() {
 
         <div className="mentor-sidebar-logo-group">
           <FontAwesomeIcon icon={faUsers} className="mentor-sidebar-logo" />
-          {isExpanded && <h2>CyberSirens</h2>}
         </div>
 
         {isExpanded && <hr className="mentor-sidebar-divider" />}
