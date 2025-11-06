@@ -1,9 +1,9 @@
 import React from 'react';
-import Sidebar from '../AlunoDashboard/SidebarAluno/SidebarAluno';
+import Sidebar from './Sidebar/Sidebar';
 import Header from './Header/Header';
 import Cards from './Cards/Cards';
 import RevenueChart from './Charts/RevenueChart';
-import RankingCard from '../AlunoDashboard/RankingAluno/RankingCard';
+import RankingCard from './Ranking/Ranking';
 import Activities from './Activities/Activities';
 import HighlightsCard from './Highlights/HighlightsCard'; 
 import './MentorDashboard.css';

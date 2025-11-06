@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Sidebar from "../AlunoDashboard/SidebarAluno/SidebarAluno";
+import Sidebar from "./Sidebar/Sidebar";
 import {
   BarChart,
   Bar,

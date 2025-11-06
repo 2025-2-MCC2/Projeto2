@@ -11,19 +11,16 @@ import {
   faUsers,
   faBook,
   faCog,
-  faBars,
-  faChevronLeft,
-  faPeopleGroup,
   faSignOutAlt,
+  faChevronLeft,
+  faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 
-export default function Sidebar() {
-  const [isOpen, setIsOpen] = useState(true);
+export default function SidebarMentor() {
+  const [isExpanded, setIsExpanded] = useState(true);
   const navigate = useNavigate();
 
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleSidebar = () => setIsExpanded(!isExpanded);
 
   const menuItems = [
     { icon: faHome, label: 'Home', path: '/dashboard-mentor' },
@@ -37,48 +34,43 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
-      
-      {/* === Topo do Sidebar: Toggle + Logo/Nome === */}
-      <div className="sidebar-top">
-        <button
-          className="toggle-btn"
-          onClick={toggleSidebar}
-          aria-label="Abrir/fechar menu"
-        >
-          <FontAwesomeIcon icon={isOpen ? faChevronLeft : faBars} />
+    <aside className={`mentor-sidebar ${isExpanded ? 'expanded' : 'collapsed'}`}>
+      {/* === Topo do Sidebar === */}
+      <div className="mentor-sidebar-top">
+        <button className="mentor-toggle-btn" onClick={toggleSidebar}>
+          <FontAwesomeIcon icon={isExpanded ? faChevronLeft : faChevronRight} />
         </button>
 
-        <div className="sidebar-icon-title">
-          <FontAwesomeIcon icon={faPeopleGroup} className="group-icon" />
-          {isOpen && <h2>Nome do Grupo</h2>}
+        <div className="mentor-sidebar-logo-group">
+          <FontAwesomeIcon icon={faUsers} className="mentor-sidebar-logo" />
+          {isExpanded && <h2>CyberSirens</h2>}
         </div>
 
-        {isOpen && <hr className="sidebar-divider" />}
+        {isExpanded && <hr className="mentor-sidebar-divider" />}
       </div>
 
-      {/* === Menu de Navegação === */}
-      <nav className="sidebar-nav">
+      {/* === Navegação === */}
+      <nav className="mentor-sidebar-nav">
         <ul>
           {menuItems.map((item, index) => (
             <li key={index} onClick={() => navigate(item.path)}>
-              <FontAwesomeIcon icon={item.icon} className="menu-icon" />
-              {isOpen && <span>{item.label}</span>}
+              <FontAwesomeIcon icon={item.icon} className="mentor-menu-icon" />
+              {isExpanded && <span>{item.label}</span>}
             </li>
           ))}
         </ul>
       </nav>
 
-      {/* === Rodapé: Logout, faz o mentor vou para a página de cadastro/login === */}
-      <div className="sidebar-footer">
+      {/* === Rodapé: Logout === */}
+      <div className="mentor-sidebar-footer">
         <button
-          className="logout-btn"
+          className="mentor-logout-btn"
           onClick={() => navigate('/login-mentor')}
         >
-          <FontAwesomeIcon icon={faSignOutAlt} className="menu-icon" />
-          {isOpen && <span>Sair</span>}
+          <FontAwesomeIcon icon={faSignOutAlt} className="mentor-menu-icon" />
+          {isExpanded && <span>Sair</span>}
         </button>
       </div>
-    </div>
+    </aside>
   );
 }

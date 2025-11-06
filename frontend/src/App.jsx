@@ -2,7 +2,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Footer from "./components/Footer";
-import Login from "./components/Login";
 import CadastroAluno from "./components/CadastroAluno";
 import CadastroMentor from "./components/CadastroMentor";
 import LoginMentor from "./components/LoginMentor";
@@ -12,6 +11,9 @@ import Messages from "./components/MentorDashboard/Messages";
 import Perfil from "./components/MentorDashboard/Perfil";
 import Progress from "./components/MentorDashboard/Progress";
 import Reports from "./components/MentorDashboard/Reports";
+import Mentoring from "./components/MentorDashboard/Mentoring";
+import Materials from "./components/MentorDashboard/Materials";
+import Config from "./components/MentorDashboard/Config";
 import Student from "./components/AlunoDashboard/Student";
 import "./index.css";
 import "./i18n";
@@ -25,7 +27,6 @@ function App() {
       {showHeaderFooter && <Navbar />}
       <Routes>
         <Route path="/" element={<Hero />} />
-        <Route path="/login" element={<Login />} />
         <Route path="/cadastro-aluno" element={<CadastroAluno />} />
         <Route path="/cadastro-mentor" element={<CadastroMentor />} />
         <Route path="/login-mentor" element={<LoginMentor />} />
@@ -35,6 +36,9 @@ function App() {
         <Route path="/dashboard-mentor/perfil" element={<Perfil />} />
         <Route path="/dashboard-mentor/progress" element={<Progress />} />
         <Route path="/dashboard-mentor/reports" element={<Reports />} />
+        <Route path="/dashboard-mentor/mentoring" element={<Mentoring />} />
+        <Route path="/dashboard-mentor/materials" element={<Materials />} />
+        <Route path="/dashboard-mentor/config" element={<Config />} />
         <Route path="/dashboard-aluno" element={<Student />} /> {}
       </Routes>
       {showHeaderFooter && <Footer />}

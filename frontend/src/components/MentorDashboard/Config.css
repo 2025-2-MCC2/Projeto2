@@ -1,0 +1,107 @@
+.config-page {
+  display: flex;
+  font-family: "Poppins", sans-serif;
+  background: #f9fafb;
+  color: #222;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.config-main {
+  flex: 1;
+  padding: 2rem 3rem;
+}
+
+.config-main h1 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #0b3050;
+}
+
+.config-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.config-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #0b3050;
+}
+
+.config-card p {
+  margin-bottom: 0.5rem;
+}
+
+.config-card label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.config-card input,
+.config-card select {
+  margin-top: 4px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #222;
+  font-size: 0.95rem;
+}
+
+.config-btn {
+  background: #007b66;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.config-btn:hover {
+  background: #009b7f;
+}
+
+.delete-btn {
+  background: #d9534f;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.delete-btn:hover {
+  background: #c9302c;
+}
+
+/* Tema escuro */
+.dark-theme {
+  background: #1a1a1a;
+  color: #f1f1f1;
+}
+
+.dark-theme .config-main {
+  background: #1a1a1a;
+}
+
+.dark-theme .config-card {
+  background: #222;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme input,
+.dark-theme select {
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+}

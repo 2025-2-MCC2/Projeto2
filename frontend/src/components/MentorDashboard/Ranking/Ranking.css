@@ -1,0 +1,126 @@
+/* CARD GERAL */
+.rankingAluno-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  padding: 22px;
+  font-family: "Poppins", sans-serif;
+  width: 410px;
+}
+
+/* TÍTULO */
+.rankingAluno-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.rankingAluno-icon {
+  color: #f1c40f;
+  font-size: 18px;
+}
+
+/* PÓDIO */
+.rankingAluno-podium {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 14px;
+  margin-bottom: 15px;
+}
+
+.rankingAluno-spot {
+  background: #fafafa;
+  border-radius: 14px;
+  width: 90px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* POSIÇÕES */
+.rankingAluno-first {
+  border: 2px solid #f1c40f;
+  background: #fff8d9;
+  height: 130px;
+  padding: 5px;
+}
+
+.rankingAluno-second {
+  border: 2px solid #cdd3d8;
+  background: #f1f2f4;
+  padding: 5px;
+  height: 115px;
+}
+
+.rankingAluno-third {
+  border: 2px solid #e89b47;
+  background: #fff1dc;
+  padding: 5px;
+}
+
+/* TEXTO DO PÓDIO */
+.rankingAluno-place {
+  font-size: 17px;
+  font-weight: 700;
+  color: #666;
+}
+
+.rankingAluno-team {
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  color: #222;
+  margin-top: 4px;
+}
+
+.rankingAluno-score {
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 6px;
+  color: #0f7a4f;
+}
+
+/* LISTA INFERIOR */
+.rankingAluno-list {
+  margin-top: 10px;
+}
+
+.rankingAluno-item {
+  background: #f9fafb;
+  padding: 8px 12px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  transition: background 0.2s;
+}
+
+.rankingAluno-item:hover {
+  background: #eef6f3;
+}
+
+/* LISTA — TEXTO */
+.rankingAluno-position {
+  font-weight: 700;
+  color: #333;
+}
+
+.rankingAluno-teamName {
+  flex: 1;
+  margin-left: 10px;
+  font-weight: 600;
+  color: #333;
+}
+
+.rankingAluno-teamScore {
+  font-weight: 700;
+  color: #0f7a4f;
+}
