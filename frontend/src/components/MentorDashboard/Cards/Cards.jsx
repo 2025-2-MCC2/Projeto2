@@ -2,7 +2,7 @@ import React from 'react';
 import './Cards.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComments, faChevronUp, faVideo, faUsers } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function Cards() {
   const navigate = useNavigate();
@@ -45,12 +45,17 @@ export default function Cards() {
               Subiu 3 posições comparado à última semana.
             </div>
           </div>
-          <a href="#" className="card-link">Ver progresso de relatórios</a>
+          {/* 🔹 Usando Link para navegar */}
+          <Link to="/dashboard-mentor/reports" className="card-link">
+            Ver progresso de relatórios
+          </Link>
         </div>
 
         {/* Card 3 - Agenda moderna reduzida */}
         <div className="card agenda-card">
-          <div className="card-title" style={{ color: '#0f1724', fontWeight: '700' }}>Agenda da Semana</div>
+          <div className="card-title" style={{ color: '#0f1724', fontWeight: '700' }}>
+            Agenda da Semana
+          </div>
 
           <div className="agenda-item green">
             <div className="agenda-date">
@@ -74,7 +79,10 @@ export default function Cards() {
             <FontAwesomeIcon icon={faUsers} className="agenda-icon" />
           </div>
 
-          <a href="#" className="card-link">Ver todas as atividades</a>
+          {/* 🔹 Usando Link para navegar até Mentoring */}
+          <Link to="/dashboard-mentor/mentoring" className="card-link">
+            Ver todas as atividades
+          </Link> 
         </div>
       </div>
     </>

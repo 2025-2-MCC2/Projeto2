@@ -2,7 +2,7 @@
   display: flex;
   font-family: "Poppins", sans-serif;
   background: #f9fafb;
-  color: #222;
+  color: #000000;
   height: 100vh;
   overflow-y: auto;
 }
@@ -22,7 +22,7 @@
 
 .mentoring-header h1 {
   font-size: 1.8rem;
-  color: #0b3050;
+  color: #000000;
 }
 
 .add-atividade-btn {

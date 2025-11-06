@@ -3,19 +3,21 @@
   font-family: "Poppins", sans-serif;
   background: #f9fafb;
   color: #222;
-  height: 100vh;
-  overflow-y: auto;
+  width: 100%;
+  overflow: hidden;
 }
 
 .config-main {
   flex: 1;
   padding: 2rem 3rem;
+  height: 100vh;
+    overflow-y: auto;
 }
 
 .config-main h1 {
   font-size: 1.8rem;
   margin-bottom: 2rem;
-  color: #0b3050;
+  color: #000000;
 }
 
 .config-card {

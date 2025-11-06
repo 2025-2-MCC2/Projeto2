@@ -50,7 +50,7 @@ export default function Mentoring() {
         <div className="mentoring-header">
           <h1>Mentoria</h1>
           <button className="add-atividade-btn" onClick={() => setMostrarModal(true)}>
-            <FaPlus /> Adicionar Atividade
+            <FaPlus /> Adicionar Arrecadação
           </button>
         </div>
 
