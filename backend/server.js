@@ -1,12 +1,14 @@
 import express from 'express';
 import cors from 'cors';
 import mysql from 'mysql2/promise';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ Conexão com o banco dentro de função async
+// ✅ Conexão com o banco
 let connection;
 
 async function conectarBanco() {
@@ -14,37 +16,93 @@ async function conectarBanco() {
     connection = await mysql.createConnection({
       host: "localhost",
       user: "root",
-      password: "banco123",
+      password: "SenhaFORTE25027968!", // ✅ senha correta
       database: "projeto2"
     });
     console.log('✅ Conectado ao MySQL com sucesso!');
   } catch (err) {
     console.log('Erro ao conectar ao MySQL:', err.message);
-    process.exit(1); // encerra o servidor se não conseguir conectar
+    process.exit(1);
   }
 }
 
-await conectarBanco(); // executa a conexão antes de iniciar o servidor
+await conectarBanco();
 
 // ✅ Teste da conexão
 app.get('/', (req, res) => {
   res.send('Backend funcionando!');
 });
 
-// Suas rotas aqui (arrecadacao, ranking, atividades, mensagens)
+// ==========================
+// ✅ ROTAS PARA ALUNO
+// ==========================
 
-// ✅ Iniciar servidor
-app.listen(3001, () => console.log('Backend rodando na porta 3001'));
+// Cadastro do aluno
+app.post('/api/aluno/cadastro-aluno', async (req, res) => {
+  const { email, nome_grupo, turma, periodo, senha } = req.body;
 
+  if (!email || !nome_grupo || !turma || !periodo || !senha) {
+    return res.status(400).json({ message: "Todos os campos são obrigatórios" });
+  }
 
+  try {
+    const [rows] = await connection.query("SELECT * FROM alunos WHERE email = ?", [email]);
+    if (rows.length > 0) {
+      return res.status(400).json({ message: "Email já cadastrado" });
+    }
 
+    const hashedPassword = await bcrypt.hash(senha, 10);
 
+    await connection.query(
+      "INSERT INTO alunos (email, nome_grupo, turma, periodo, senha) VALUES (?, ?, ?, ?, ?)",
+      [email, nome_grupo, turma, periodo, hashedPassword]
+    );
 
+    res.status(201).json({ message: "Aluno cadastrado com sucesso" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erro ao cadastrar aluno" });
+  }
+});
 
+// Login do aluno
+app.post('/api/aluno/login-aluno', async (req, res) => {
+  const { email, senha } = req.body;
 
+  if (!email || !senha) {
+    return res.status(400).json({ message: "Email e senha são obrigatórios" });
+  }
 
+  try {
+    const [rows] = await connection.query("SELECT * FROM alunos WHERE email = ?", [email]);
+    if (rows.length === 0) {
+      return res.status(404).json({ message: "Aluno não encontrado" });
+    }
 
-// ✅ Rota: Arrecadação Total por equipe
+    const aluno = rows[0];
+    const senhaValida = await bcrypt.compare(senha, aluno.senha);
+    if (!senhaValida) {
+      return res.status(401).json({ message: "Senha incorreta" });
+    }
+
+    const token = jwt.sign(
+      { email: aluno.email, nome_grupo: aluno.nome_grupo },
+      "segredoSuperSeguro",
+      { expiresIn: "1h" }
+    );
+
+    res.status(200).json({ message: "Login realizado com sucesso", token });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Erro ao realizar login" });
+  }
+});
+
+// ==========================
+// ✅ SUAS ROTAS EXISTENTES
+// ==========================
+
+// Arrecadação Total por equipe
 app.get('/arrecadacao/:equipeId', async (req, res) => {
   const { equipeId } = req.params;
   try {
@@ -58,7 +116,7 @@ app.get('/arrecadacao/:equipeId', async (req, res) => {
   }
 });
 
-// ✅ Rota: Ranking das equipes
+// Ranking das equipes
 app.get('/ranking', async (req, res) => {
   try {
     const [rows] = await connection.query(
@@ -70,7 +128,7 @@ app.get('/ranking', async (req, res) => {
   }
 });
 
-// ✅ Rota: Últimas atividades (Agenda)
+// Últimas atividades
 app.get('/atividades/:equipeId', async (req, res) => {
   const { equipeId } = req.params;
   try {
@@ -84,7 +142,7 @@ app.get('/atividades/:equipeId', async (req, res) => {
   }
 });
 
-// ✅ Rota: Mensagens do chat
+// Mensagens do chat
 app.get('/mensagens/:equipeId', async (req, res) => {
   const { equipeId } = req.params;
   try {
