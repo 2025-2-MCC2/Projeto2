@@ -1,0 +1,104 @@
+/* ===== Layout com Sidebar ===== */
+.perfil-page {
+  display: flex;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.perfil-container {
+  flex: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+}
+
+/* Reorganiza o grid como no print */
+.perfil-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+  gap: 2rem;
+}
+
+/* Avatar centralizado */
+.avatar-circle {
+  background-color: #f3f4f6;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Email do representante - estilo bolinha verde + texto */
+.representante-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.representante-icon {
+  width: 1rem;
+  height: 1rem;
+  background-color: #047857;
+  border-radius: 50%;
+}
+
+.representante-text {
+  color: #111827;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Cartões com sombra suave */
+.card-formulario,
+.card-integrantes {
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  background-color: #fff;
+}
+
+/* Estilo da lista de integrantes mais clean */
+.integrante-item {
+  background-color: #f9fafb;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.integrante-item:hover {
+  background-color: #f3f4f6;
+}
+
+.integrante-avatar {
+  background-color: #047857;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 600;
+}
+
+.integrante-avatar.representante {
+  background-color: #059669;
+}
+
+.badge-representante {
+  background-color: #d1fae5;
+  color: #047857;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .perfil-grid {
+    grid-template-columns: 1fr;
+  }
+}

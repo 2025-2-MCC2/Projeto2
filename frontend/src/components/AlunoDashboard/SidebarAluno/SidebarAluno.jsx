@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../SidebarAluno/SidebarAluno.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PerfilAluno from '../PerfilAluno';
 import {
   faUsers,
   faHouse,
@@ -36,13 +37,13 @@ export default function Sidebar() {
       <nav>
         <ul>
           <li>
-            <Link to="/InicioAluno">
+            <Link to="/dashboard-aluno">
               <FontAwesomeIcon icon={faHouse} className="menu-icon" />
               <span className="menu-text">Início</span>
             </Link>
           </li>
           <li>
-            <Link to="/PerfilAluno">
+            <Link to="/dashboard-aluno/perfil">
               <FontAwesomeIcon icon={faUser} className="menu-icon" />
               <span className="menu-text">Perfil</span>
             </Link>
