@@ -1,6 +1,6 @@
 import Sidebar from './SidebarAluno/SidebarAluno';
 import Dashboard from './Dashboard/Dashboard';
-import Card1 from './Cards/Card1';
+import Card1 from './Cards/card1';
 import Card2 from './Cards/Card2';
 import Card3 from './Cards/Card3';
 import Ranking from './RankingAluno/RankingCard';

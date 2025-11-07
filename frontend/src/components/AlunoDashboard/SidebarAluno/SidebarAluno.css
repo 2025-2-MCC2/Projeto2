@@ -102,3 +102,34 @@
 .sidebar.expanded .menu-text {
   opacity: 1;
 }
+
+/* Corrige cor dos ícones e textos mesmo com links */
+.sidebar a {
+  color: white;              /* Sempre branco */
+  text-decoration: none;     /* Remove sublinhado */
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.sidebar a:visited,
+.sidebar a:active {
+  color: white;              /* Evita azul/roxo após clicar */
+}
+
+/* Garante ícones e textos sempre brancos */
+.sidebar .menu-icon {
+  color: white;
+  transition: color 0.2s ease;
+}
+
+.sidebar .menu-text {
+  color: white;
+  transition: color 0.2s ease;
+}
+
+/* Efeito hover opcional */
+.sidebar nav ul li:hover .menu-icon,
+.sidebar nav ul li:hover .menu-text {
+  color: #00ffb3; /* muda pro verde-claro ao passar o mouse, se quiser */
+}

@@ -14,6 +14,7 @@ import {
   faChevronRight,
   faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -35,36 +36,52 @@ export default function Sidebar() {
       <nav>
         <ul>
           <li>
-            <FontAwesomeIcon icon={faHouse} className="menu-icon" />
-            <span className="menu-text">Início</span>
+            <Link to="/InicioAluno">
+              <FontAwesomeIcon icon={faHouse} className="menu-icon" />
+              <span className="menu-text">Início</span>
+            </Link>
           </li>
           <li>
-            <FontAwesomeIcon icon={faUser} className="menu-icon" />
-            <span className="menu-text">Perfil</span>
+            <Link to="/PerfilAluno">
+              <FontAwesomeIcon icon={faUser} className="menu-icon" />
+              <span className="menu-text">Perfil</span>
+            </Link>
           </li>
           <li>
-            <FontAwesomeIcon icon={faBarsProgress} className="menu-icon" />
-            <span className="menu-text">Progresso</span>
+            <Link to="/ProgressoAluno">
+              <FontAwesomeIcon icon={faBarsProgress} className="menu-icon" />
+              <span className="menu-text">Progresso</span>
+            </Link>
           </li>
           <li>
-            <FontAwesomeIcon icon={faFileInvoice} className="menu-icon" />
-            <span className="menu-text">Relatórios</span>
+            <Link to="/RelatóriosAluno">
+              <FontAwesomeIcon icon={faFileInvoice} className="menu-icon" />
+              <span className="menu-text">Relatórios</span>
+            </Link>
           </li>
           <li>
-            <FontAwesomeIcon icon={faComments} className="menu-icon" />
-            <span className="menu-text">Mensagens</span>
+            <Link to="/MensagensAluno">
+              <FontAwesomeIcon icon={faComments} className="menu-icon" />
+              <span className="menu-text">Mensagens</span>
+            </Link>
           </li>
           <li>
-            <FontAwesomeIcon icon={faCalendar} className="menu-icon" />
-            <span className="menu-text">Agenda</span>
+            <Link to="/AgendaAluno">
+              <FontAwesomeIcon icon={faCalendar} className="menu-icon" />
+              <span className="menu-text">Agenda</span>
+            </Link>
           </li>
           <li>
-            <FontAwesomeIcon icon={faBookBookmark} className="menu-icon" />
-            <span className="menu-text">Materiais</span>
+            <Link to="/MateriaisAluno">
+              <FontAwesomeIcon icon={faBookBookmark} className="menu-icon" />
+              <span className="menu-text">Materiais</span>
+            </Link>
           </li>
           <li>
-            <FontAwesomeIcon icon={faGear} className="menu-icon" />
-            <span className="menu-text">Configurações</span>
+            <Link to="/ConfiguraçõesAluno">
+              <FontAwesomeIcon icon={faGear} className="menu-icon" />
+              <span className="menu-text">Configurações</span>
+            </Link>
           </li>
         </ul>
       </nav>
