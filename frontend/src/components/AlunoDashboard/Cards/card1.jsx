@@ -11,7 +11,7 @@ function Card1() {
       </div>
       <div className="card-aluno-text">
         <h3>0+</h3>
-        <p>Produtos arrecadados essa semana.</p>
+        <p>Produtos arrecadados recentemente.</p>
       </div>
     </div>
   );
