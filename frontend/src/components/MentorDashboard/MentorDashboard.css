@@ -11,18 +11,20 @@ html, body {
 /* Container principal do dashboard */
 .dashboard-page {
   display: flex;
-  height: 100vh; /* ocupa toda a altura da tela */
-  overflow: hidden; /* sidebar e header não geram scroll */
+  height: 100vh; 
+  background-color: #f9f9fb;
+  overflow: hidden; 
 }
 
 /* Área principal que rola conteúdo */
 .dashboard-main {
   flex: 1;
   padding: 32px;
-  overflow-y: auto; /* só conteúdo principal rola */
+  overflow-y: auto; 
   display: flex;
   flex-direction: column;
   gap: 24px;
+  transition: margin-left 0.3s ease;
 }
 
 /* Linha de widgets: gráfico e ranking */

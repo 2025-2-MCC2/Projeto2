@@ -1,0 +1,190 @@
+/* Container principal */
+.cadastro-aluno-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  /* Imagem de fundo */
+  .background-image {
+    position: absolute;
+    inset: 0;
+    background-image: url("/imagens/foto-fundo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    transition: background-position 0.5s ease;
+  }
+  
+  /* Overlay escuro */
+  .background-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  /* Caixa de cadastro */
+  .cadastro-box {
+    width: 420px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Cabeçalho */
+  .cadastro-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .cadastro-header h3 {
+    margin: 0;
+    font-weight: 600;
+    color: #2c2c2c;
+    font-size: 1.2rem;
+  }
+  
+  .cadastro-header p {
+    font-size: 0.9rem;
+    margin: 0;
+    color: #666;
+  }
+  
+  .cadastro-header a {
+    color: #248862;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  /* Título */
+  .cadastro-box h1 {
+    color: #248862;
+    margin-top: 20px;
+    font-size: 2rem;
+  }
+  
+  /* Formulário */
+  .form-group {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+  }
+  
+  /* Linhas de formulário lado a lado */
+  .form-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  /* Botão */
+  .form-button {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .form-button button {
+    margin-top: 30px;
+    width: 100%;
+    padding: 15px;
+    background-color: #248862;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .form-button button:hover {
+    background-color: #1f704f;
+    transform: translateY(-2px);
+  }
+  
+  /* ===========================
+     RESPONSIVIDADE
+  =========================== */
+  
+  /* Tablets e telas médias */
+  @media (max-width: 1024px) {
+    .cadastro-box {
+      width: 350px;
+      padding: 25px;
+    }
+  
+    .cadastro-box h1 {
+      font-size: 1.8rem;
+    }
+  }
+  
+  /* Mobile */
+  @media (max-width: 768px) {
+    .cadastro-box {
+      width: 90%;
+      max-width: 320px;
+      padding: 20px;
+      border-radius: 15px;
+    }
+  
+    .form-row {
+      flex-direction: column;
+    }
+  
+    .background-image {
+      background-position: center top;
+    }
+  }
+  
+  /* Pequenas telas (celular vertical) */
+  @media (max-width: 480px) {
+    .cadastro-box h1 {
+      font-size: 1.5rem;
+    }
+  
+    .cadastro-header h3 {
+      font-size: 1rem;
+    }
+  
+    .form-group input {
+      font-size: 13px;
+      padding: 8px;
+    }
+  
+    .form-button button {
+      font-size: 14px;
+      padding: 12px;
+    }
+  }
+  
