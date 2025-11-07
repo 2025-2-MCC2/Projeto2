@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import * as doacoesController from '../controllers/doacoesController.js';
+
 const router = express.Router();
-const doacoesController = require('../controllers/DoacoesController');
 
 // Rotas de doações
 router.get('/doacoes', doacoesController.listarDoacoes);
@@ -11,4 +12,4 @@ router.get('/doacoes/doador/:email', doacoesController.buscarPorDoador);
 // Rotas de campanhas
 router.get('/campanhas', doacoesController.listarCampanhas);
 
-module.exports = router;
+export default router;
