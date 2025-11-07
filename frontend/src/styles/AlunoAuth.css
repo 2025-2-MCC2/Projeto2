@@ -1,204 +1,222 @@
 /* Container principal */
 .login-aluno-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-  
-  /* Fundo */
-  .background-image {
-    position: absolute;
-    inset: 0;
-    background-image: url("/imagens/foto-fundo.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 0;
-  }
-  
-  .background-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.35);
-    z-index: 1;
-    pointer-events: none;
-  }
-  
-  /* Card de login */
-  .login-box {
-    width: 420px;
-    background: rgba(255,255,255,0.95);
-    border-radius: 20px;
-    padding: 35px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    backdrop-filter: blur(5px);
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Cabeçalho */
-  .login-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .login-header h3 {
-    margin: 0;
-    font-weight: 600;
-    color: #2c2c2c;
-    font-size: 1.2rem;
-  }
-  
-  .login-header p {
-    font-size: 0.9rem;
-    margin: 0;
-    color: #666;
-  }
-  
-  .login-header a {
-    color: #248862;
-    text-decoration: none;
-    font-weight: 600;
-  }
-  
-  /* Título */
-  .login-box h1 {
-    color: #248862;
-    margin-top: 20px;
-    font-size: 2rem;
-  }
-  
-  /* Formulário */
-  .form-group {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group label {
-    font-size: 14px;
-    color: #333;
-    font-weight: 500;
-    margin-bottom: 5px;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    box-sizing: border-box;
-    outline: none;
-  }
-  
-  /* Opções de lembrar senha */
-  .form-options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .form-options label {
-    font-size: 0.9rem;
-    color: #666;
-  }
-  
-  .form-options input {
-    margin-right: 6px;
-  }
-  
-  .form-options a {
-    font-size: 0.9rem;
-    color: #248862;
-    text-decoration: none;
-  }
-  
-  /* Botão */
-  .form-button {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .form-button button {
-    margin-top: 24px;
-    width: 100%;
-    padding: 15px;
-    background-color: #248862;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .form-button button:hover {
-    background-color: #1f704f;
-    transform: translateY(-2px);
-  }
-  
-  /* ===========================
-     RESPONSIVIDADE
-  =========================== */
-  
-  /* Tablets e telas médias */
-  @media (max-width: 1024px) {
-    .login-box {
-      width: 350px;
-      padding: 25px;
-    }
-  
-    .login-box h1 {
-      font-size: 1.8rem;
-    }
-  }
-  
-  /* Mobile */
-  @media (max-width: 768px) {
-    .login-box {
-      width: 90%;
-      max-width: 320px;
-      padding: 20px;
-      border-radius: 15px;
-    }
-  
-    .form-row {
-      flex-direction: column;
-    }
-  
-    .background-image {
-      background-position: center top;
-    }
-  }
-  
-  /* Pequenas telas (celular vertical) */
-  @media (max-width: 480px) {
-    .login-box h1 {
-      font-size: 1.5rem;
-    }
-  
-    .login-header h3 {
-      font-size: 1rem;
-    }
-  
-    .form-group input {
-      font-size: 13px;
-      padding: 8px;
-    }
-  
-    .form-button button {
-      font-size: 14px;
-      padding: 12px;
-    }
-  }
-  
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Fundo */
+.background-image {
+  position: fixed;
+  inset: 0;
+  background-image: url("/imagens/foto-fundo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.background-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Card de login - visual consistente com CadastroAluno */
+.login-box {
+  width: 420px;
+  max-width: 95%;
+  background: rgba(255,255,255,0.95);
+  border-radius: 18px;
+  padding: 0;           /* padding na inner */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  backdrop-filter: blur(4px);
+  z-index: 2;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Inner com padding (manter consistência com cadastro) */
+.login-inner {
+  padding: 26px;
+}
+
+/* Cabeçalho */
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.login-header h3 {
+  margin: 0;
+  font-weight: 600;
+  color: #2c2c2c;
+  font-size: 1.05rem;
+}
+
+.login-header p {
+  font-size: 0.88rem;
+  margin: 0;
+  color: #666;
+}
+
+.login-header a {
+  color: #248862;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Título */
+.login-inner h1 {
+  color: #248862;
+  margin-top: 16px;
+  margin-bottom: 12px;
+  font-size: 1.5rem;
+}
+
+/* Formulário */
+.form-group {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 13px;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #248862;
+}
+
+/* password wrapper */
+.password-row .password-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.password-wrapper input {
+  flex: 1;
+}
+
+.toggle-password {
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  color: #248862;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+}
+.toggle-password:hover {
+  background: rgba(36,136,98,0.08);
+}
+
+/* Opções de lembrar senha */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.form-options label {
+  font-size: 0.9rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-options input {
+  margin: 0;
+  transform: translateY(1px);
+}
+
+.form-options a {
+  font-size: 0.9rem;
+  color: #248862;
+  text-decoration: none;
+}
+
+/* Mensagem de erro */
+.form-error {
+  background: #ffe6e6;
+  color: #8b1c1c;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+/* Botão */
+.form-button {
+  display: flex;
+  justify-content: center;
+}
+
+.form-button button {
+  margin-top: 18px;
+  width: 100%;
+  padding: 12px;
+  background-color: #248862;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.18s ease;
+}
+
+.form-button button[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.form-button button:hover:not([disabled]) {
+  background-color: #1f704f;
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1024px) {
+  .login-box { width: 380px; }
+  .login-inner h1 { font-size: 1.35rem; }
+}
+
+@media (max-width: 768px) {
+  .login-box { width: 92%; max-width: 360px; border-radius: 14px; }
+  .login-inner { padding: 20px; }
+  .password-wrapper { gap: 6px; }
+}
+
+@media (max-width: 480px) {
+  .login-inner h1 { font-size: 1.2rem; margin-bottom: 10px; }
+  .form-group input { font-size: 13px; padding: 9px; }
+  .form-button button { font-size: 14px; padding: 11px; }
+}
