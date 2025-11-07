@@ -1,0 +1,60 @@
+.doacoes-container {
+  padding: 40px;
+  width: 100%;
+  margin: 0;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.nova-doacao {
+  background-color: #007b55;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.tabela-doacoes {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+
+.tabela-doacoes th,
+.tabela-doacoes td {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.confirmada {
+  color: green;
+}
+
+.pendente {
+  color: red;
+}
+
+.cards-doacoes {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex: 1;
+  padding: 20px;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.card-vermelho {
+  background-color: #e74c3c;
+}
+
+.card-amarelo {
+  background-color: #f1c40f;
+  color: #333;
+}

@@ -2,7 +2,7 @@ import express from "express";
 import noticiaRoutes from "./routes/noticiasRoutes.js";
 import mentorRoutes from "./routes/mentorRoutes.js";
 import alunoRoutes from "./routes/alunoRoutes.js";
-import doacoesRoutes from './routes/DoacoesRoutes.js';  
+import doacoesRoutes from './routes/DoacoesRoutes.js';  // ← Minúsculo aqui!
 
 const app = express();
 const PORT = 3000;

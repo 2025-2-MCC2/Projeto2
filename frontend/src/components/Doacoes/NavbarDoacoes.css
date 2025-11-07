@@ -1,0 +1,19 @@
+.navbar-doacoes {
+  background-color: #007b55;
+  padding: 12px 20px;
+}
+
+.navbar-doacoes ul {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-doacoes li {
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
