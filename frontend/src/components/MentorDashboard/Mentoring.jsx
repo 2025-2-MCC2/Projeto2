@@ -1,46 +1,101 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Sidebar from "./Sidebar/Sidebar";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { FaTasks, FaBoxOpen, FaMapMarkerAlt, FaPlus } from "react-icons/fa";
 import "./Mentoring.css";
 
 export default function Mentoring() {
-  const [projetos, setProjetos] = useState([
-    { nome: "Projeto Inverno", totalArrecadado: 1250, atividades: 12 },
-  ]);
+  // tenta ler meta global do localStorage (por compatibilidade com a outra página).
+  // se não tiver, usa 100 kg como fallback.
+  const metaGlobal = Number(localStorage.getItem("metaGlobal")) || 100;
 
-  const [novaAtividade, setNovaAtividade] = useState({ descricao: "", quantidade: "", regiao: "" });
+  // alunos mockados (5)
+  const alunosMock = [
+    { id: "a1", nome: "Ana Oliveira", email: "ana@uni.edu" },
+    { id: "a2", nome: "João Lima", email: "joao@uni.edu" },
+    { id: "a3", nome: "Carla Mendes", email: "carla@uni.edu" },
+    { id: "a4", nome: "Lucas Pereira", email: "lucas@uni.edu" },
+    { id: "a5", nome: "Rafa Morais", email: "rafa@uni.edu" },
+  ];
+
+  // atividades mockadas (cada item tem alunoId, alimento, quantidade em kg, endereco, data ISO)
+  const atividadesMock = [
+    { alunoId: "a1", alimento: "Arroz", quantidade: 20, endereco: "Rua das Flores, Centro", data: "2025-11-05T10:15:00" },
+    { alunoId: "a2", alimento: "Feijão", quantidade: 15, endereco: "Av. Brasil, Sul", data: "2025-11-06T11:30:00" },
+    { alunoId: "a3", alimento: "Leite", quantidade: 30, endereco: "Rua A, Bairro Novo", data: "2025-11-06T09:05:00" },
+    { alunoId: "a4", alimento: "Arroz", quantidade: 25, endereco: "Praça Central, Centro", data: "2025-11-07T14:40:00" },
+    { alunoId: "a1", alimento: "Açúcar", quantidade: 5, endereco: "Rua das Flores, Centro", data: "2025-11-07T16:00:00" },
+    { alunoId: "a5", alimento: "Macarrão", quantidade: 12, endereco: "Av. Liberdade, Oeste", data: "2025-11-08T08:20:00" },
+    { alunoId: "a2", alimento: "Óleo", quantidade: 6, endereco: "Av. Brasil, Sul", data: "2025-11-08T09:45:00" },
+    { alunoId: "a3", alimento: "Arroz", quantidade: 10, endereco: "Rua A, Bairro Novo", data: "2025-11-08T10:10:00" },
+    { alunoId: "a4", alimento: "Feijão", quantidade: 8, endereco: "Praça Central, Centro", data: "2025-11-09T12:05:00" },
+    { alunoId: "a5", alimento: "Leite", quantidade: 18, endereco: "Av. Liberdade, Oeste", data: "2025-11-09T13:40:00" },
+    // mais exemplos pra ter histórico
+    { alunoId: "a1", alimento: "Macarrão", quantidade: 7, endereco: "Rua das Flores, Centro", data: "2025-11-10T10:00:00" },
+    { alunoId: "a2", alimento: "Arroz", quantidade: 9, endereco: "Av. Brasil, Sul", data: "2025-11-10T11:30:00" },
+  ];
+
   const [mostrarModal, setMostrarModal] = useState(false);
+  const [modalAluno, setModalAluno] = useState(null);
+  const [verTodas, setVerTodas] = useState(false);
 
-  const atividades = [
-    { aluno: "Ana", descricao: "Arroz", quantidade: 20, regiao: "Norte" },
-    { aluno: "João", descricao: "Feijão", quantidade: 15, regiao: "Sul" },
-    { aluno: "Carla", descricao: "Leite", quantidade: 30, regiao: "Sudeste" },
-    { aluno: "Lucas", descricao: "Arroz", quantidade: 25, regiao: "Centro-Oeste" },
-  ];
+  // filtro por período
+  const hojeIso = new Date().toISOString().slice(0, 10);
+  const [filtroInicio, setFiltroInicio] = useState(""); // yyyy-mm-dd
+  const [filtroFim, setFiltroFim] = useState(""); // yyyy-mm-dd
 
-  const regioes = [
-    { nome: "Norte", valor: 20 },
-    { nome: "Sul", valor: 15 },
-    { nome: "Sudeste", valor: 30 },
-    { nome: "Centro-Oeste", valor: 25 },
-  ];
+  // calcula atividades filtradas pelo período
+  const atividadesFiltradas = useMemo(() => {
+    if (!filtroInicio && !filtroFim) return atividadesMock;
+    const start = filtroInicio ? new Date(filtroInicio) : null;
+    const end = filtroFim ? new Date(filtroFim + "T23:59:59") : null;
+    return atividadesMock.filter((a) => {
+      const d = new Date(a.data);
+      if (start && d < start) return false;
+      if (end && d > end) return false;
+      return true;
+    }).sort((a, b) => new Date(b.data) - new Date(a.data)); // ordena decrescente por data
+  }, [filtroInicio, filtroFim]);
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+  // últimas 5 atividades
+  const ultimas5 = atividadesFiltradas.slice(0, 5);
 
-  const handleAddAtividade = (e) => {
-    e.preventDefault();
-    if (novaAtividade.descricao && novaAtividade.quantidade && novaAtividade.regiao) {
-      atividades.push({
-        aluno: "Novo",
-        descricao: novaAtividade.descricao,
-        quantidade: Number(novaAtividade.quantidade),
-        regiao: novaAtividade.regiao,
-      });
-      setNovaAtividade({ descricao: "", quantidade: "", regiao: "" });
-      setMostrarModal(false);
-    }
-  };
+  // total por aluno (baseado nas atividades filtradas)
+  const totalPorAluno = useMemo(() => {
+    const map = {};
+    alunosMock.forEach(a => (map[a.id] = 0));
+    atividadesFiltradas.forEach((act) => {
+      map[act.alunoId] = (map[act.alunoId] || 0) + Number(act.quantidade);
+    });
+    return alunosMock.map(a => ({ alunoId: a.id, nome: a.nome, total: map[a.id] || 0 }));
+  }, [atividadesFiltradas]);
+
+  // dados para gráfico (atividades por aluno)
+  const graficoDados = totalPorAluno.map((t) => ({ nome: t.nome, kg: t.total }));
+
+  // Handlers
+  function abrirModalAluno(alunoId) {
+    const aluno = alunosMock.find(a => a.id === alunoId);
+    setModalAluno(aluno);
+    setMostrarModal(true);
+  }
+
+  function fecharModal() {
+    setMostrarModal(false);
+    setModalAluno(null);
+  }
+
+  // util: formatar data legível
+  function fmtData(iso) {
+    const d = new Date(iso);
+    return d.toLocaleString();
+  }
+
+  // total geral (filtrado)
+  const totalGeral = atividadesFiltradas.reduce((s, a) => s + Number(a.quantidade), 0);
+
+  // média por aluno
+  const mediaPorAluno = (totalGeral / alunosMock.length).toFixed(1);
 
   return (
     <div className="mentoring-page">
@@ -49,9 +104,18 @@ export default function Mentoring() {
       <main className="mentoring-main">
         <div className="mentoring-header">
           <h1>Mentoria</h1>
-          <button className="add-atividade-btn" onClick={() => setMostrarModal(true)}>
-            <FaPlus /> Adicionar Arrecadação
-          </button>
+          <div className="mentoring-actions">
+            <div className="date-filter">
+              <label>De</label>
+              <input type="date" value={filtroInicio} onChange={(e) => setFiltroInicio(e.target.value)} />
+              <label>Até</label>
+              <input type="date" value={filtroFim} onChange={(e) => setFiltroFim(e.target.value)} />
+            </div>
+
+            <button className="add-atividade-btn" onClick={() => alert("Adicionar Arrecadação (mentor não cadastra) ✨")}>
+              <FaPlus /> Adicionar Arrecadação
+            </button>
+          </div>
         </div>
 
         {/* Cards resumo */}
@@ -60,92 +124,145 @@ export default function Mentoring() {
             <FaTasks className="cardresumo-icon" />
             <div>
               <h3>Total de Atividades</h3>
-              <p>{atividades.length}</p>
+              <p>{atividadesFiltradas.length}</p>
             </div>
           </div>
           <div className="card-resumo">
             <FaBoxOpen className="cardresumo-icon" />
             <div>
               <h3>Total Arrecadado (kg)</h3>
-              <p>{atividades.reduce((sum, a) => sum + a.quantidade, 0)}</p>
+              <p>{totalGeral} kg</p>
+            </div>
+          </div>
+          <div className="card-resumo">
+            <FaMapMarkerAlt className="cardresumo-icon" />
+            <div>
+              <h3>Média por Aluno</h3>
+              <p>{mediaPorAluno} kg</p>
             </div>
           </div>
         </div>
 
-        {/* Lista de atividades */}
+        {/* Progresso dos alunos (barrinhas) */}
         <div className="atividades-container">
-          <h2>Atividades da Equipe</h2>
-          <div className="atividades-lista">
-            {atividades.map((a, idx) => (
-              <div key={idx} className="atividade-card">
-                <strong>{a.aluno}</strong>
-                <span>{a.descricao}</span>
-                <span>{a.quantidade} kg</span>
-                <span>{a.regiao}</span>
-              </div>
-            ))}
+          <h2>Progresso dos Integrantes (meta: {metaGlobal} kg)</h2>
+
+          <div className="alunos-grid">
+            {totalPorAluno.map((p) => {
+              const pct = Math.min(100, Math.round((p.total / metaGlobal) * 100));
+              return (
+                <div className="aluno-card" key={p.alunoId}>
+                  <div className="aluno-top">
+                    <strong>{p.nome}</strong>
+                    <span className="aluno-kg">{p.total} kg</span>
+                  </div>
+
+                  <div className="barra-progresso">
+                    <div className="barra-fill" style={{ width: `${pct}%` }} />
+                  </div>
+                  <div className="aluno-actions">
+                    <button className="ver-detalhes-btn" onClick={() => abrirModalAluno(p.alunoId)}>Ver detalhes</button>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Gráfico de regiões */}
+        {/* Últimas atividades */}
+        <div className="atividades-container">
+          <h2>Últimas Atividades</h2>
+
+          <div className="atividades-lista">
+            {ultimas5.map((a, idx) => {
+              const aluno = alunosMock.find(x => x.id === a.alunoId);
+              return (
+                <div className="atividade-card" key={idx}>
+                  <div className="atividade-left">
+                    <strong>{aluno?.nome}</strong>
+                    <span className="atividade-info">{a.alimento} — {a.quantidade} kg</span>
+                    <span className="atividade-end">{a.endereco}</span>
+                  </div>
+                  <div className="atividade-right">
+                    <span className="atividade-data">{fmtData(a.data)}</span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="ver-tudo-row">
+            <button className="ver-tudo-btn" onClick={() => setVerTodas(!verTodas)}>
+              {verTodas ? "Mostrar apenas últimas 5" : "Ver todas atividades"}
+            </button>
+          </div>
+
+          {/* se verTodas true mostra todas as atividades (filtradas) */}
+          {verTodas && (
+            <div className="atividades-lista todas">
+              {atividadesFiltradas.map((a, idx) => {
+                const aluno = alunosMock.find(x => x.id === a.alunoId);
+                return (
+                  <div className="atividade-card" key={`all-${idx}`}>
+                    <div className="atividade-left">
+                      <strong>{aluno?.nome}</strong>
+                      <span className="atividade-info">{a.alimento} — {a.quantidade} kg</span>
+                      <span className="atividade-end">{a.endereco}</span>
+                    </div>
+                    <div className="atividade-right">
+                      <span className="atividade-data">{fmtData(a.data)}</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        {/* Gráfico comparativo por aluno */}
         <div className="graficos-container">
           <div className="grafico-card">
-            <h2>Arrecadação por Região</h2>
+            <h2>Atividades por Aluno (kg)</h2>
             <ResponsiveContainer width="100%" height={250}>
-              <PieChart>
-                <Pie data={regioes} dataKey="valor" nameKey="nome" outerRadius={80} label>
-                  {regioes.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Pie>
+              <BarChart data={graficoDados}>
+                <XAxis dataKey="nome" />
+                <YAxis />
                 <Tooltip />
-                <Legend />
-              </PieChart>
+                <Bar dataKey="kg" fill="#00C49F" />
+              </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        {/* Modal Adicionar Atividade */}
-        {mostrarModal && (
-          <div className="modal-overlay">
-            <div className="modal">
-              <h2>Adicionar Nova Atividade</h2>
-              <form onSubmit={handleAddAtividade}>
-                <label>
-                  Descrição
-                  <input
-                    type="text"
-                    value={novaAtividade.descricao}
-                    onChange={(e) => setNovaAtividade({ ...novaAtividade, descricao: e.target.value })}
-                    required
-                  />
-                </label>
-                <label>
-                  Quantidade (kg)
-                  <input
-                    type="number"
-                    value={novaAtividade.quantidade}
-                    onChange={(e) => setNovaAtividade({ ...novaAtividade, quantidade: e.target.value })}
-                    required
-                  />
-                </label>
-                <label>
-                  Região
-                  <input
-                    type="text"
-                    value={novaAtividade.regiao}
-                    onChange={(e) => setNovaAtividade({ ...novaAtividade, regiao: e.target.value })}
-                    required
-                  />
-                </label>
-                <div className="modal-actions">
-                  <button type="submit" className="save-btn">Salvar</button>
-                  <button type="button" className="cancel-btn" onClick={() => setMostrarModal(false)}>Cancelar</button>
-                </div>
-              </form>
+        {/* Modal detalhes do aluno */}
+        {mostrarModal && modalAluno && (
+          <div className="modal-overlay" onClick={fecharModal}>
+            <div className="modal" onClick={(e) => e.stopPropagation()}>
+              <h2>Atividades de {modalAluno.nome}</h2>
+              <div className="atividades-lista">
+                {atividadesFiltradas.filter(a => a.alunoId === modalAluno.id).map((a, i) => (
+                  <div className="atividade-card" key={`modal-${i}`}>
+                    <div>
+                      <strong>{a.alimento}</strong>
+                      <div className="atividade-info">{a.quantidade} kg — {a.endereco}</div>
+                    </div>
+                    <div>
+                      <span className="atividade-data">{fmtData(a.data)}</span>
+                    </div>
+                  </div>
+                ))}
+                {atividadesFiltradas.filter(a => a.alunoId === modalAluno.id).length === 0 && (
+                  <p>Nenhuma atividade no período selecionado.</p>
+                )}
+              </div>
+
+              <div className="modal-actions">
+                <button className="save-btn" onClick={fecharModal}>Fechar</button>
+              </div>
             </div>
           </div>
         )}
+
       </main>
     </div>
   );
