@@ -12,7 +12,7 @@ export const cadastrarMentor = async (req, res) => {
 
   try {
     // Verifica se já existe mentor com esse email
-    const [rows] = await db.promise().query("SELECT * FROM mentores WHERE email = ?", [email]);
+    const [rows] = await db.query("SELECT * FROM mentores WHERE email = ?", [email]);
     if (rows.length > 0) {
       return res.status(400).json({ message: "Email já cadastrado" });
     }
@@ -21,7 +21,7 @@ export const cadastrarMentor = async (req, res) => {
     const hashedPassword = await bcrypt.hash(senha, 10);
 
     // Insere no banco
-    await db.promise().query(
+    await db.query(
       "INSERT INTO mentores (email, grupo, senha) VALUES (?, ?, ?)",
       [email, grupo, hashedPassword]
     );
@@ -43,7 +43,7 @@ export const loginMentor = async (req, res) => {
 
   try {
     // Busca mentor pelo email
-    const [rows] = await db.promise().query("SELECT * FROM mentores WHERE email = ?", [email]);
+    const [rows] = await db.query("SELECT * FROM mentores WHERE email = ?", [email]);
     if (rows.length === 0) {
       return res.status(404).json({ message: "Mentor não encontrado" });
     }
@@ -58,9 +58,9 @@ export const loginMentor = async (req, res) => {
 
     // Gera token JWT
     const token = jwt.sign(
-      { email: mentor.email, grupo: mentor.grupo }, // payload
-      process.env.JWT_SECRET || "segredoSuperSeguro", // chave secreta
-      { expiresIn: "1h" } // expira em 1 hora
+      { email: mentor.email, grupo: mentor.grupo },
+      process.env.JWT_SECRET || "segredoSuperSeguro",
+      { expiresIn: "1h" }
     );
 
     res.status(200).json({

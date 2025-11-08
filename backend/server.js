@@ -16,7 +16,7 @@ async function conectarBanco() {
     connection = await mysql.createConnection({
       host: "localhost",
       user: "root",
-      password: "SenhaFORTE25027968!", // ✅ senha correta
+      password: "banco123", // ✅ senha correta
       database: "projeto2"
     });
     console.log('✅ Conectado ao MySQL com sucesso!');

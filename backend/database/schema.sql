@@ -1,79 +1,93 @@
--- ============================================
--- SCHEMA COMPLETO - SISTEMA DE DOAÇÕES + NOTÍCIAS
--- ============================================
-
--- Tabela de Notícias
-CREATE TABLE IF NOT EXISTS noticias (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  titulo VARCHAR(255) NOT NULL,
-  conteudo TEXT NOT NULL
-);
-
--- Tabela de Doadores
-CREATE TABLE IF NOT EXISTS doadores (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(255) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    cpf VARCHAR(14) UNIQUE NOT NULL,
-    senha VARCHAR(255) NOT NULL,
-    telefone VARCHAR(20),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
--- Tabela de Campanhas
-CREATE TABLE IF NOT EXISTS campanhas (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    titulo VARCHAR(255) NOT NULL,
-    descricao TEXT NOT NULL,
-    meta_valor DECIMAL(10, 2) NOT NULL,
-    valor_arrecadado DECIMAL(10, 2) DEFAULT 0,
-    data_inicio DATE NOT NULL,
-    data_fim DATE NOT NULL,
-    status ENUM('ativa', 'encerrada', 'pausada') DEFAULT 'ativa',
-    imagem_url VARCHAR(500),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
-
--- Tabela de Doações
-CREATE TABLE IF NOT EXISTS doacoes (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    doador_id INT NOT NULL,
-    campanha_id INT NOT NULL,
-    valor DECIMAL(10, 2) NOT NULL,
-    status ENUM('pendente', 'confirmada', 'cancelada') DEFAULT 'pendente',
-    mensagem TEXT,
-    forma_pagamento ENUM('pix', 'cartao', 'boleto') NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (doador_id) REFERENCES doadores(id) ON DELETE CASCADE,
-    FOREIGN KEY (campanha_id) REFERENCES campanhas(id) ON DELETE CASCADE
-);
 
 -- ============================================
--- DADOS DE EXEMPLO
+-- SEÇÃO 1: GRUPOS E ALUNOS
 -- ============================================
-INSERT INTO campanhas (titulo, descricao, meta_valor, valor_arrecadado, data_inicio, data_fim, status) VALUES
-('Combate à Fome', 'Ajude a fornecer refeições para famílias em situação de vulnerabilidade social', 50000.00, 12500.00, '2025-01-01', '2025-12-31', 'ativa'),
-('Educação para Todos', 'Contribua para levar educação de qualidade para crianças carentes', 30000.00, 8000.00, '2025-02-01', '2025-11-30', 'ativa'),
-('Saúde em Primeiro Lugar', 'Apoie o acesso à saúde para comunidades carentes', 40000.00, 15000.00, '2025-01-15', '2025-10-31', 'ativa'),
-('Roupas para o Inverno', 'Ajude a distribuir roupas e cobertores para pessoas em situação de rua', 20000.00, 5000.00, '2025-03-01', '2025-08-31', 'ativa');
 
-
--- ATbela de Doacoes
-
-CREATE TABLE IF NOT EXISTS doacoes (
+-- Tabela de grupos (responsável pelo cadastro de alunos)
+CREATE TABLE IF NOT EXISTS grupos (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    doador_nome VARCHAR(255) NOT NULL,
-    doador_email VARCHAR(255) NOT NULL,
-    valor DECIMAL(10, 2) NOT NULL,
-    campanha VARCHAR(255) NOT NULL,
-    status ENUM('Pendente', 'Confirmada', 'Cancelada') DEFAULT 'Pendente',
-    data_doacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    mensagem_agradecimento TEXT
+    nome_grupo VARCHAR(255) NOT NULL,
+    sala VARCHAR(50) NOT NULL,
+    nome_responsavel VARCHAR(255) NOT NULL,
+    email_responsavel VARCHAR(255) UNIQUE NOT NULL,
+    telefone_responsavel VARCHAR(20),
+    senha VARCHAR(255) NOT NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Tabela de alunos (vinculados a grupos)
+CREATE TABLE IF NOT EXISTS alunos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    grupo_id INT NOT NULL,
+    nome VARCHAR(255) NOT NULL,
+    ra VARCHAR(50),
+    email VARCHAR(255),
+    FOREIGN KEY (grupo_id) REFERENCES grupos(id) ON DELETE CASCADE
+);
+
+-- ============================================
+-- SEÇÃO 2: MENTORES E EQUIPES
+-- ============================================
+
+-- Tabela de mentores
+CREATE TABLE IF NOT EXISTS mentores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    grupo VARCHAR(255) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabela de equipes (lideradas por mentores)
+CREATE TABLE IF NOT EXISTS equipes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    mentor_id INT NOT NULL,
+    FOREIGN KEY (mentor_id) REFERENCES mentores(id) ON DELETE CASCADE
+);
+
+-- ============================================
+-- SEÇÃO 3: ARRECADAÇÕES E ATIVIDADES
+-- ============================================
+
+-- Tabela de arrecadações por equipe
+CREATE TABLE IF NOT EXISTS arrecadacoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    equipe_id INT NOT NULL,
+    total_arrecadado DECIMAL(10,2) NOT NULL,
+    ano YEAR NOT NULL,
+    FOREIGN KEY (equipe_id) REFERENCES equipes(id) ON DELETE CASCADE
+);
+
+-- Tabela de atividades das equipes
+CREATE TABLE IF NOT EXISTS atividades (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    equipe_id INT NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
+    data DATE NOT NULL,
+    hora TIME NOT NULL,
+    FOREIGN KEY (equipe_id) REFERENCES equipes(id) ON DELETE CASCADE
+);
+
+-- ============================================
+-- SEÇÃO 4: MENSAGENS
+-- ============================================
+
+-- Tabela de mensagens entre equipes
+CREATE TABLE IF NOT EXISTS mensagens (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    equipe_id INT NOT NULL,
+    remetente VARCHAR(255) NOT NULL,
+    conteudo TEXT NOT NULL,
+    hora_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (equipe_id) REFERENCES equipes(id) ON DELETE CASCADE
+);
+
+-- ============================================
+-- SEÇÃO 5: CAMPANHAS E DOAÇÕES (SITE PÚBLICO)
+-- ============================================
+
+-- Tabela de campanhas de doação
 CREATE TABLE IF NOT EXISTS campanhas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
@@ -83,3 +97,43 @@ CREATE TABLE IF NOT EXISTS campanhas (
     ativa BOOLEAN DEFAULT TRUE,
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Tabela de doações do site
+CREATE TABLE IF NOT EXISTS doacoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    doador_nome VARCHAR(255) NOT NULL,
+    doador_email VARCHAR(255) NOT NULL,
+    valor DECIMAL(10,2) NOT NULL,
+    campanha VARCHAR(255) NOT NULL,
+    status ENUM('Pendente','Confirmada','Cancelada') DEFAULT 'Pendente',
+    data_doacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    mensagem_agradecimento TEXT
+);
+
+-- ============================================
+-- SEÇÃO 6: NOTÍCIAS
+-- ============================================
+
+-- Tabela de notícias
+CREATE TABLE IF NOT EXISTS noticias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    conteudo TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ============================================
+-- DADOS INICIAIS (EXEMPLOS)
+-- ============================================
+
+-- Campanhas de exemplo
+INSERT INTO campanhas (nome, descricao, meta_valor, valor_arrecadado) VALUES
+('Combate à Fome', 'Ajude a fornecer refeições para famílias em situação de vulnerabilidade social', 50000.00, 0),
+('Educação para Todos', 'Contribua para levar educação de qualidade para crianças carentes', 30000.00, 0),
+('Saúde em Primeiro Lugar', 'Apoie o acesso à saúde para comunidades carentes', 40000.00, 0);
+
+-- Notícias de exemplo
+INSERT INTO noticias (titulo, conteudo) VALUES
+('Primeira campanha de doações', 'Estamos iniciando nossa primeira campanha para ajudar 100 alunos.'),
+('Novo mentor cadastrado', 'Bem-vindo ao nosso programa de mentoria!'),
+('Meta alcançada!', 'Conseguimos arrecadar R$ 10.000 para bolsas de estudo.');

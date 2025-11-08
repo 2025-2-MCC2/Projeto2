@@ -1,3 +1,4 @@
+import { db } from "../database/connection.js"; // ADICIONAR IMPORT
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -10,14 +11,14 @@ export async function cadastrarAluno(req, res) {
   }
 
   try {
-    const [rows] = await connection.query("SELECT * FROM alunos WHERE email = ?", [email]);
+    const [rows] = await db.query("SELECT * FROM alunos WHERE email = ?", [email]);
     if (rows.length > 0) {
       return res.status(400).json({ message: "Email já cadastrado" });
     }
 
     const hashedPassword = await bcrypt.hash(senha, 10);
 
-    await connection.query(
+    await db.query(
       "INSERT INTO alunos (email, nome_grupo, turma, periodo, senha) VALUES (?, ?, ?, ?, ?)",
       [email, nome_grupo, turma, periodo, hashedPassword]
     );
@@ -38,7 +39,7 @@ export async function loginAluno(req, res) {
   }
 
   try {
-    const [rows] = await connection.query("SELECT * FROM alunos WHERE email = ?", [email]);
+    const [rows] = await db.query("SELECT * FROM alunos WHERE email = ?", [email]);
     if (rows.length === 0) {
       return res.status(404).json({ message: "Aluno não encontrado" });
     }
@@ -51,11 +52,15 @@ export async function loginAluno(req, res) {
 
     const token = jwt.sign(
       { email: aluno.email, nome_grupo: aluno.nome_grupo },
-      "segredoSuperSeguro",
+      process.env.JWT_SECRET || "segredoSuperSeguro",
       { expiresIn: "1h" }
     );
 
-    res.status(200).json({ message: "Login realizado com sucesso", token });
+    res.status(200).json({ 
+      message: "Login realizado com sucesso", 
+      token,
+      aluno: { email: aluno.email, nome_grupo: aluno.nome_grupo }
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Erro ao realizar login" });
