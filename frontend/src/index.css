@@ -1,22 +1,20 @@
-/* Resetando o estilo de margin e padding para todos os elementos */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Estilos gerais para o body */
 body {
   font-family: 'Poppins', sans-serif;
   width: 100%;
-  height: auto; /* Ajustando a altura para o conteúdo */
+  height: auto; 
   background: #111;
   color: #fff;
-  overflow: auto; /* Certificando-se de que a rolagem está ativada */
-  z-index: 0; /* Garantindo que o conteúdo principal não seja sobreposto */
+  overflow: auto; 
+  z-index: 0; 
 }
 
-/* header e navbar */
 .navbar {
   position: sticky;
   top: 0;
@@ -37,7 +35,7 @@ body {
   transform: translateY(0);
 }
 
-/* Centralizando o conteúdo principal */
+
 .container {
   width: 100%;
   max-width: 1440px;
@@ -47,7 +45,6 @@ body {
   margin: 0 auto;
 }
 
-/* logo */
 .logo img {
   height: 50px;
 }
@@ -60,7 +57,6 @@ body {
   margin-left: 24px;
 }
 
-/* Estilização do botão */
 .dropdown-btn {
   background: none;
   border: none;
@@ -132,7 +128,7 @@ body {
   display: block;
 }
 
-/* Botão cadastre-se */
+
 .btn-cadastro {
   margin-left: 24px;
   padding: 10px 24px;

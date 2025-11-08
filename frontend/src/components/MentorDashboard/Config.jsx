@@ -6,7 +6,6 @@ export default function Configuracoes() {
   const [tema, setTema] = useState("claro");
   const [idioma, setIdioma] = useState("pt-br");
 
-  // Aplicar classe do tema no body
   useEffect(() => {
     document.body.className = tema === "escuro" ? "dark-theme" : "";
   }, [tema]);
@@ -18,7 +17,6 @@ export default function Configuracoes() {
       <main className="config-main">
         <h1>Configurações</h1>
 
-        {/* Card Perfil */}
         <div className="config-card">
           <h2>Perfil</h2>
           <p>Nome: Rafael Morais</p>
@@ -26,7 +24,6 @@ export default function Configuracoes() {
           <button className="config-btn">Editar Perfil</button>
         </div>
 
-        {/* Card Segurança */}
         <div className="config-card">
           <h2>Segurança</h2>
           <label>
@@ -36,7 +33,6 @@ export default function Configuracoes() {
           <button className="config-btn">Salvar</button>
         </div>
 
-        {/* Card Notificações */}
         <div className="config-card">
           <h2>Notificações</h2>
           <label>
@@ -47,7 +43,6 @@ export default function Configuracoes() {
           </label>
         </div>
 
-        {/* Card Preferências */}
         <div className="config-card">
           <h2>Preferências</h2>
           <label>
@@ -66,7 +61,6 @@ export default function Configuracoes() {
           </label>
         </div>
 
-        {/* Card Excluir Conta */}
         <div className="config-card">
           <h2>Excluir Conta</h2>
           <button className="delete-btn">Excluir Minha Conta</button>

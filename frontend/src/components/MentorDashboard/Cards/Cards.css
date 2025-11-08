@@ -4,7 +4,6 @@
   flex-wrap: wrap;
 }
 
-/* === Card Geral === */
 .card {
   background-color: #fafafad2;
   border-radius: 12px;
@@ -53,7 +52,6 @@
   font-weight: 500;
 }
 
-/* === Avatares === */
 .avatars {
   display: flex;
   margin-top: 12px;
@@ -79,7 +77,7 @@
   transform: scale(1.1);
 }
 
-/* === Ranking Card === */
+
 .ranking-card .ranking-content {
   display: flex;
   flex-direction: column;
@@ -127,7 +125,7 @@
   line-height: 1.4;
 }
 
-/* === Animações === */
+
 @keyframes bounceUp {
   from { transform: translateY(3px); }
   to { transform: translateY(-3px); }
@@ -137,7 +135,7 @@
   from { transform: translateY(-3px); }
   to { transform: translateY(3px); }
 }
-/* === card da agenda === */
+
 .agenda-card {
   display: flex;
   flex-direction: column;
@@ -148,11 +146,10 @@
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 16px;
-  color: #0f1724; /* título escuro */
+  color: #0f1724; 
   margin-bottom: 12px;
 }
 
-/* Cada item da agenda */
 .agenda-item {
   display: flex;
   align-items: center;
@@ -170,13 +167,11 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-/* Cores diferentes para cada tipo de atividade */
 .agenda-item.green { border-left-color: #00a86b; }
 .agenda-item.blue { border-left-color: #007bff; }
 .agenda-item.yellow { border-left-color: #f1c40f; }
 .agenda-item.purple { border-left-color: #9b59b6; }
 
-/* Data do item */
 .agenda-date {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
@@ -188,7 +183,7 @@
   min-width: 40px;
 }
 
-/* Mês em destaque menor */
+
 .agenda-date span {
   font-size: 12px;
   font-weight: 500;
@@ -196,7 +191,7 @@
   text-transform: uppercase;
 }
 
-/* Conteúdo da atividade */
+
 .agenda-content {
   display: flex;
   flex-direction: column;
@@ -208,7 +203,7 @@
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 14px;
-  color: #0f1724; /* título visível */
+  color: #0f1724; 
 }
 
 .agenda-time {
@@ -218,13 +213,11 @@
   color: #555;
 }
 
-/* Ícone da atividade */
 .agenda-icon {
   font-size: 18px;
   color: #0f7a4f;
 }
 
-/* === Links e Botão === */
 .card-link {
   align-self: flex-start;
   font-family: 'Poppins', sans-serif;
@@ -259,7 +252,6 @@
   background-color: #115d3a;
 }
 
-/* === Responsividade === */
 @media (max-width: 1024px) {
   .cards-row {
     flex-direction: column;

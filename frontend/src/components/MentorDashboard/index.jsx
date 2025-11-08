@@ -11,24 +11,14 @@ import './MentorDashboard.css';
 export default function MentorDashboard() {
   return (
     <div className="dashboard-page">
-      {/* Sidebar */}
       <Sidebar />
-
-      {/* Área principal */}
       <main className="dashboard-main">
-        {/* Header */}
         <Header />
-
-        {/* Cards iniciais */}
         <Cards />
-
-        {/* Gráfico e Ranking */}
         <div className="widgets-row">
           <RevenueChart />
           <RankingCard />
         </div>
-
-        {/* Últimas atividades + Highlights lado a lado */}
         <div className="activities-highlights-row">
           <Activities />
           <HighlightsCard />

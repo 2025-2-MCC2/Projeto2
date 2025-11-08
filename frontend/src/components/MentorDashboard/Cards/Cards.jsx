@@ -10,7 +10,6 @@ export default function Cards() {
   return (
     <>
       <div className="cards-row">
-        {/* Card 1 - Chat com equipe */}
         <div className="card">
           <div className="card-title">Chat com Equipe</div>
           <div className="card-content">
@@ -19,13 +18,11 @@ export default function Cards() {
               <div>2 novas mensagens</div>
             </div>
           </div>
-
           <div className="avatars">
             <div className="avatar">C</div>
             <div className="avatar">N</div>
             <div className="avatar">J</div>
           </div>
-
           <button
             className="chat-button"
             onClick={() => navigate('/dashboard-mentor/messages')}
@@ -34,7 +31,6 @@ export default function Cards() {
           </button>
         </div>
 
-        {/* Card 2 - Posição no ranking */}
         <div className="card ranking-card">
           <div className="card-title">Posição no Ranking</div>
           <div className="ranking-content">
@@ -45,13 +41,10 @@ export default function Cards() {
               Subiu 3 posições comparado à última semana.
             </div>
           </div>
-          {/* 🔹 Usando Link para navegar */}
           <Link to="/dashboard-mentor/reports" className="card-link">
             Ver progresso de relatórios
           </Link>
         </div>
-
-        {/* Card 3 - Agenda moderna reduzida */}
         <div className="card agenda-card">
           <div className="card-title" style={{ color: '#0f1724', fontWeight: '700' }}>
             Agenda da Semana
@@ -78,8 +71,6 @@ export default function Cards() {
             </div>
             <FontAwesomeIcon icon={faUsers} className="agenda-icon" />
           </div>
-
-          {/* 🔹 Usando Link para navegar até Mentoring */}
           <Link to="/dashboard-mentor/mentoring" className="card-link">
             Ver todas as atividades
           </Link> 

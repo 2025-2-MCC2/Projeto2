@@ -3,7 +3,7 @@ import './Header.css';
 import { Bell } from 'lucide-react';
 
 export default function Header() {
-  const formattedDate = new Date().toISOString().split('T')[0]; // yyyy-mm-dd
+  const formattedDate = new Date().toISOString().split('T')[0]; 
 
   return (
     <div className="dashboard-header">

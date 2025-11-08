@@ -8,15 +8,54 @@
   overflow: hidden;
 }
 
+/* scroll geral */
 .perfil-main {
   flex: 1;
   padding: 20px 30px;
-  height: 100vh;
   overflow-y: auto;
-  scrollbar-width: thin;     
+  max-height: 100vh;
+  scrollbar-width: thin;
   scrollbar-color: #ccc #f8f8f8;
 }
 
+/* Scroll custom */
+.perfil-main::-webkit-scrollbar {
+  width: 8px;
+}
+.perfil-main::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 8px;
+}
+.perfil-main::-webkit-scrollbar-track {
+  background-color: #f8f8f8;
+}
+
+/* === ALERTA DE SUCESSO === */
+.alert-success {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  background-color: #0f7a4f;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  animation: fadeInOut 2.5s ease forwards;
+  z-index: 10;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* topo */
 .perfil-header {
   display: flex;
   justify-content: space-between;
@@ -40,20 +79,27 @@
   padding: 8px 14px;
   cursor: pointer;
   font-weight: 500;
+  border-radius: 8px;
 }
 
-.perfil-content {
-  display: flex;
-  gap: 30px;
+.editar-perfil-btn:hover {
+  background-color: #109f6d;
 }
 
-/* Coluna esquerda */
+/* === LAYOUT LADO A LADO === */
+.perfil-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1.1fr; /* aumentei proporcionalmente */
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* coluna esquerda */
 .perfil-left {
-  flex: 1;
   background-color: #fff;
   border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  padding: 28px; /* leve aumento */
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
 }
 
 .perfil-avatar {
@@ -74,15 +120,16 @@
   color: #333;
 }
 
-.perfil-form input {
+.perfil-form input,
+.perfil-form select {
   width: 100%;
   padding: 8px 10px;
   margin-top: 5px;
   border-radius: 6px;
   border: 1px solid #ccc;
+  font-size: 0.95rem;
 }
 
-/* Email representante */
 .email-representante {
   display: flex;
   align-items: center;
@@ -98,10 +145,12 @@
   border-radius: 50%;
 }
 
-/* Coluna direita */
+/* coluna direita */
 .perfil-right {
-  flex: 1;
-  max-width: 400px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
 }
 
 .integrantes-header {
@@ -127,10 +176,20 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: 500px;
+  max-height: 70vh;
   overflow-y: auto;
+  padding-right: 6px;
 }
 
+.integrantes-lista::-webkit-scrollbar {
+  width: 6px;
+}
+.integrantes-lista::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 6px;
+}
+
+/* cards dos integrantes */
 .integrante-card {
   display: flex;
   align-items: center;
@@ -138,20 +197,21 @@
   background-color: #fff;
   border-radius: 10px;
   padding: 10px 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .integrante-avatar {
   background-color: #0f7a4f;
   color: #fff;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
   margin-right: 12px;
+  flex-shrink: 0;
 }
 
 .integrante-info {
@@ -174,12 +234,30 @@
 .integrante-acoes {
   display: flex;
   gap: 6px;
+  flex-shrink: 0;
 }
 
-.chat-btn, .edit-btn {
+.chat-btn,
+.edit-btn {
   border: none;
   background-color: #e5e5e5;
   padding: 6px;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.chat-btn:hover,
+.edit-btn:hover {
+  background-color: #ccc;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .perfil-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .integrantes-lista {
+    max-height: unset;
+  }
 }

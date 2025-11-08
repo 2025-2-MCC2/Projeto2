@@ -26,7 +26,6 @@ export default function SidebarMentor() {
     return saved === null ? true : JSON.parse(saved);
   });
 
-  // 🔹 Salva no localStorage sempre que mudar
   useEffect(() => {
     localStorage.setItem("sidebarExpanded", JSON.stringify(isExpanded));
   }, [isExpanded]);
@@ -46,7 +45,6 @@ export default function SidebarMentor() {
 
   return (
     <aside className={`mentor-sidebar ${isExpanded ? 'expanded' : 'collapsed'}`}>
-      {/* Topo */}
       <div className="mentor-sidebar-top">
         <button className="mentor-toggle-btn" onClick={toggleSidebar}>
           <FontAwesomeIcon icon={isExpanded ? faChevronLeft : faChevronRight} />
@@ -59,8 +57,6 @@ export default function SidebarMentor() {
 
         {isExpanded && <hr className="mentor-sidebar-divider" />}
       </div>
-
-      {/* Navegação */}
       <nav className="mentor-sidebar-nav">
         <ul>
           {menuItems.map((item, index) => (
@@ -68,7 +64,6 @@ export default function SidebarMentor() {
               key={index}
               onClick={() => {
                 navigate(item.path);
-                // 🔹 mantém o sidebar como está (não abre nem fecha)
               }}
               className={location.pathname === item.path ? 'active' : ''}
             >
@@ -79,7 +74,6 @@ export default function SidebarMentor() {
         </ul>
       </nav>
 
-      {/* Rodapé */}
       <div className="mentor-sidebar-footer">
         <button
           className="mentor-logout-btn"

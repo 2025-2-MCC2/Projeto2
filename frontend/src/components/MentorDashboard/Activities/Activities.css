@@ -7,7 +7,7 @@
   flex-direction: column;
   gap: 16px;
   font-family: 'Poppins', sans-serif;
-  flex: 1; /* para ficar lado a lado com Highlights */
+  flex: 1; 
 }
 
 .activities-header {
