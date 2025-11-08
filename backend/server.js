@@ -4,9 +4,10 @@ import mysql from 'mysql2/promise';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+app.use(cors({
+  origin: 'http://localhost:5173', // porta do seu Vite
+  credentials: true
+}));
 
 // ✅ Conexão com o banco
 let connection;
@@ -16,8 +17,8 @@ async function conectarBanco() {
     connection = await mysql.createConnection({
       host: "localhost",
       user: "root",
-      password: "banco123", // ✅ senha correta
-      database: "projeto2"
+      password: "banco123",
+      database: "dashboard_doacoes"
     });
     console.log('✅ Conectado ao MySQL com sucesso!');
   } catch (err) {
@@ -99,7 +100,7 @@ app.post('/api/aluno/login-aluno', async (req, res) => {
 });
 
 // ==========================
-// ✅ SUAS ROTAS EXISTENTES
+// ✅ ROTAS DE EQUIPES/MENTORES
 // ==========================
 
 // Arrecadação Total por equipe
@@ -156,5 +157,355 @@ app.get('/mensagens/:equipeId', async (req, res) => {
   }
 });
 
+// ==========================
+// 🎁 ROTAS DE DOAÇÕES (SITE PÚBLICO)
+// ==========================
+
+// 📌 Criar nova doação
+app.post('/api/doacoes', async (req, res) => {
+  try {
+    const { doador_nome, doador_email, valor, campanha, forma_pagamento } = req.body;
+
+    // Validações
+    if (!doador_nome || !doador_email || !valor || !campanha) {
+      return res.status(400).json({ 
+        error: 'Todos os campos são obrigatórios' 
+      });
+    }
+
+    if (parseFloat(valor) <= 0) {
+      return res.status(400).json({ 
+        error: 'O valor deve ser maior que zero' 
+      });
+    }
+
+    // Inserir doação no banco
+    const query = `
+      INSERT INTO doacoes 
+      (doador_nome, doador_email, valor, campanha, status, data_doacao) 
+      VALUES (?, ?, ?, ?, 'Pendente', NOW())
+    `;
+    
+    const [result] = await connection.execute(query, [
+      doador_nome,
+      doador_email,
+      parseFloat(valor),
+      campanha
+    ]);
+
+    // Buscar a doação recém-criada
+    const [novaDoacao] = await connection.execute(
+      'SELECT * FROM doacoes WHERE id = ?',
+      [result.insertId]
+    );
+
+    res.status(201).json({
+      message: 'Doação criada com sucesso!',
+      doacao: novaDoacao[0]
+    });
+
+  } catch (error) {
+    console.error('Erro ao criar doação:', error);
+    res.status(500).json({ error: 'Erro ao processar doação' });
+  }
+});
+
+// 📌 Listar todas as doações de um doador específico
+app.get('/api/doacoes/doador/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    const [doacoes] = await connection.execute(
+      `SELECT 
+        id,
+        doador_nome,
+        doador_email,
+        valor,
+        campanha,
+        status,
+        DATE_FORMAT(data_doacao, '%d/%m/%Y') as data,
+        mensagem_agradecimento
+      FROM doacoes 
+      WHERE doador_email = ?
+      ORDER BY data_doacao DESC`,
+      [email]
+    );
+
+    res.json(doacoes);
+
+  } catch (error) {
+    console.error('Erro ao buscar doações:', error);
+    res.status(500).json({ error: 'Erro ao buscar doações' });
+  }
+});
+
+// 📌 Listar TODAS as doações (para admin)
+app.get('/api/doacoes', async (req, res) => {
+  try {
+    const [doacoes] = await connection.execute(
+      `SELECT 
+        id,
+        doador_nome,
+        doador_email,
+        valor,
+        campanha,
+        status,
+        DATE_FORMAT(data_doacao, '%d/%m/%Y') as data,
+        mensagem_agradecimento
+      FROM doacoes 
+      ORDER BY data_doacao DESC`
+    );
+
+    res.json(doacoes);
+
+  } catch (error) {
+    console.error('Erro ao buscar doações:', error);
+    res.status(500).json({ error: 'Erro ao buscar doações' });
+  }
+});
+
+// 📌 Atualizar status da doação (Confirmar/Cancelar)
+app.put('/api/doacoes/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status, mensagem_agradecimento } = req.body;
+
+    // Validar status
+    if (!['Pendente', 'Confirmada', 'Cancelada'].includes(status)) {
+      return res.status(400).json({ 
+        error: 'Status inválido. Use: Pendente, Confirmada ou Cancelada' 
+      });
+    }
+
+    // Buscar doação antes de atualizar
+    const [doacaoAnterior] = await connection.execute(
+      'SELECT * FROM doacoes WHERE id = ?',
+      [id]
+    );
+
+    if (doacaoAnterior.length === 0) {
+      return res.status(404).json({ error: 'Doação não encontrada' });
+    }
+
+    // Atualizar status
+    await connection.execute(
+      `UPDATE doacoes 
+       SET status = ?, mensagem_agradecimento = ?
+       WHERE id = ?`,
+      [status, mensagem_agradecimento || null, id]
+    );
+
+    // Se a doação foi confirmada, atualizar valor_arrecadado da campanha
+    if (status === 'Confirmada' && doacaoAnterior[0].status !== 'Confirmada') {
+      await connection.execute(
+        `UPDATE campanhas 
+         SET valor_arrecadado = valor_arrecadado + ?
+         WHERE nome = ?`,
+        [doacaoAnterior[0].valor, doacaoAnterior[0].campanha]
+      );
+    }
+
+    // Se a doação foi cancelada após estar confirmada, remover valor
+    if (status === 'Cancelada' && doacaoAnterior[0].status === 'Confirmada') {
+      await connection.execute(
+        `UPDATE campanhas 
+         SET valor_arrecadado = valor_arrecadado - ?
+         WHERE nome = ?`,
+        [doacaoAnterior[0].valor, doacaoAnterior[0].campanha]
+      );
+    }
+
+    res.json({ message: 'Doação atualizada com sucesso!' });
+
+  } catch (error) {
+    console.error('Erro ao atualizar doação:', error);
+    res.status(500).json({ error: 'Erro ao atualizar doação' });
+  }
+});
+
+// 📌 Deletar doação
+app.delete('/api/doacoes/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Verificar se existe
+    const [doacao] = await connection.execute(
+      'SELECT * FROM doacoes WHERE id = ?',
+      [id]
+    );
+
+    if (doacao.length === 0) {
+      return res.status(404).json({ error: 'Doação não encontrada' });
+    }
+
+    // Se estava confirmada, remover do valor_arrecadado
+    if (doacao[0].status === 'Confirmada') {
+      await connection.execute(
+        `UPDATE campanhas 
+         SET valor_arrecadado = valor_arrecadado - ?
+         WHERE nome = ?`,
+        [doacao[0].valor, doacao[0].campanha]
+      );
+    }
+
+    // Deletar doação
+    await connection.execute('DELETE FROM doacoes WHERE id = ?', [id]);
+
+    res.json({ message: 'Doação excluída com sucesso!' });
+
+  } catch (error) {
+    console.error('Erro ao excluir doação:', error);
+    res.status(500).json({ error: 'Erro ao excluir doação' });
+  }
+});
+
+// ==========================
+// 🎯 ROTAS DE CAMPANHAS
+// ==========================
+
+// 📌 Listar todas as campanhas ativas
+app.get('/api/campanhas', async (req, res) => {
+  try {
+    const [campanhas] = await connection.execute(
+      `SELECT 
+        id,
+        nome,
+        descricao,
+        meta_valor,
+        valor_arrecadado,
+        ativa
+      FROM campanhas 
+      WHERE ativa = TRUE
+      ORDER BY data_criacao DESC`
+    );
+
+    console.log('📊 Campanhas encontradas:', campanhas.length);
+    res.json(campanhas);
+
+  } catch (error) {
+    console.error('Erro ao buscar campanhas:', error);
+    res.status(500).json({ error: 'Erro ao buscar campanhas' });
+  }
+});
+
+// 📌 Buscar uma campanha específica
+app.get('/api/campanhas/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const [campanha] = await connection.execute(
+      `SELECT 
+        id,
+        nome,
+        descricao,
+        meta_valor,
+        valor_arrecadado,
+        ativa,
+        ROUND((valor_arrecadado / meta_valor) * 100, 2) as percentual_arrecadado,
+        data_criacao
+      FROM campanhas 
+      WHERE id = ?`,
+      [id]
+    );
+
+    if (campanha.length === 0) {
+      return res.status(404).json({ error: 'Campanha não encontrada' });
+    }
+
+    res.json(campanha[0]);
+
+  } catch (error) {
+    console.error('Erro ao buscar campanha:', error);
+    res.status(500).json({ error: 'Erro ao buscar campanha' });
+  }
+});
+
+// ==========================
+// 👤 ROTAS DE PERFIL DO DOADOR
+// ==========================
+
+// 📌 Buscar perfil/resumo do doador
+app.get('/api/perfil/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    // Total doado
+    const [totalDoado] = await connection.execute(
+      `SELECT 
+        COUNT(*) as total_doacoes,
+        COALESCE(SUM(CASE WHEN status = 'Confirmada' THEN valor ELSE 0 END), 0) as valor_total,
+        COALESCE(SUM(CASE WHEN status = 'Pendente' THEN valor ELSE 0 END), 0) as valor_pendente
+      FROM doacoes 
+      WHERE doador_email = ?`,
+      [email]
+    );
+
+    // Doações por campanha
+    const [doacoesPorCampanha] = await connection.execute(
+      `SELECT 
+        campanha,
+        COUNT(*) as quantidade,
+        SUM(valor) as total
+      FROM doacoes 
+      WHERE doador_email = ? AND status = 'Confirmada'
+      GROUP BY campanha`,
+      [email]
+    );
+
+    // Última doação
+    const [ultimaDoacao] = await connection.execute(
+      `SELECT 
+        campanha,
+        valor,
+        DATE_FORMAT(data_doacao, '%d/%m/%Y') as data,
+        status
+      FROM doacoes 
+      WHERE doador_email = ?
+      ORDER BY data_doacao DESC
+      LIMIT 1`,
+      [email]
+    );
+
+    res.json({
+      resumo: totalDoado[0],
+      campanhas: doacoesPorCampanha,
+      ultima_doacao: ultimaDoacao[0] || null
+    });
+
+  } catch (error) {
+    console.error('Erro ao buscar perfil:', error);
+    res.status(500).json({ error: 'Erro ao buscar perfil' });
+  }
+});
+
+// ==========================
+// 📰 ROTAS DE NOTÍCIAS
+// ==========================
+
+// 📌 Listar notícias
+app.get('/api/noticias', async (req, res) => {
+  try {
+    const [noticias] = await connection.execute(
+      `SELECT 
+        id,
+        titulo,
+        conteudo,
+        DATE_FORMAT(created_at, '%d/%m/%Y %H:%i') as data
+      FROM noticias 
+      ORDER BY created_at DESC`
+    );
+
+    res.json(noticias);
+
+  } catch (error) {
+    console.error('Erro ao buscar notícias:', error);
+    res.status(500).json({ error: 'Erro ao buscar notícias' });
+  }
+});
+
 // ✅ Iniciar servidor
-app.listen(3001, () => console.log('Backend rodando na porta 3001'));
+app.listen(3001, () => {
+  console.log('🚀 Backend rodando na porta 3001');
+  console.log('📍 http://localhost:3001');
+  console.log('✅ Rotas de Doações disponíveis!');
+});
