@@ -4,6 +4,10 @@
   background: #f9fafb;
   color: #222;
   min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f9fafb;
 }
 
 .reports-main {
@@ -46,12 +50,12 @@
   cursor: pointer;
 }
 
-/* Cards */
 .reports-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.2rem;
   margin-bottom: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .reports-card {
@@ -66,7 +70,8 @@
 }
 
 .reports-card:hover {
-  transform: scale(1.03);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .reports-card-icon {

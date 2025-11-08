@@ -7,7 +7,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* === CONTAINER PRINCIPAL === */
 .messages-container {
   flex: 1;
   padding: 2rem;
@@ -23,7 +22,6 @@
   margin-bottom: 1.5rem;
 }
 
-/* === CONTEÚDO PRINCIPAL === */
 .messages-content {
   display: flex;
   gap: 1.5rem;
@@ -35,7 +33,6 @@
   overflow: hidden;
 }
 
-/* === SIDEBAR DE CHAT === */
 .chat-list {
   width: 28%;
   background-color: #1f1f23;
@@ -101,7 +98,6 @@
   color: #bbb;
 }
 
-/* === JANELA DO CHAT === */
 .chat-window {
   flex: 1;
   background-color: #141415;
@@ -124,7 +120,6 @@
   color: #f1f1f1;
 }
 
-/* === MENSAGENS === */
 .chat-messages {
   flex: 1;
   padding: 1.2rem 1.5rem;
@@ -163,7 +158,6 @@
   margin-right: 6px;
 }
 
-/* === INPUT === */
 .chat-input {
   display: flex;
   align-items: center;
@@ -205,7 +199,6 @@
   transform: scale(1.05);
 }
 
-/* === EMOJIS === */
 .emoji-container {
   position: relative;
   margin-right: 10px;
@@ -229,7 +222,6 @@
   z-index: 10;
 }
 
-/* === ANIMAÇÃO === */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -241,7 +233,7 @@
   }
 }
 
-/* === RESPONSIVIDADE === */
+
 @media (max-width: 992px) {
   .messages-content {
     flex-direction: column;
@@ -254,5 +246,67 @@
 
   .chat-window {
     order: 1;
+  }
+}
+
+.message-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.message-time {
+  font-size: 11px;
+  color: #aaa;
+  align-self: flex-end;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+.typing-indicator {
+  font-size: 13px;
+  color: #bbb;
+  font-style: italic;
+  margin: 6px 12px;
+  animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .messages-content {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .chat-list {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .chat-window {
+    width: 100%;
+  }
+
+  .chat-input input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .chat-input button {
+    padding: 8px 12px;
+  }
+
+  .message {
+    font-size: 14px;
+  }
+
+  .messages-title {
+    font-size: 1.5rem;
   }
 }

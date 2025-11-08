@@ -14,7 +14,7 @@ import {
 } from "recharts";
 import {
   FaBullseye,
-  FaMoneyBillWave,
+  FaWeightHanging,
   FaChartLine,
   FaClock,
   FaPlus,
@@ -23,17 +23,17 @@ import "./Progress.css";
 
 export default function ProgressoMentor() {
   const [metas, setMetas] = useState([
-    { nome: "Campanha de Inverno", meta: 2000, arrecadado: 1250, prazo: "30/11/2025" },
+    { nome: "Campanha de Inverno", meta: 200, arrecadado: 125, prazo: "30/11/2025" },
   ]);
 
   const [novaMeta, setNovaMeta] = useState({ nome: "", meta: "", prazo: "" });
   const [mostrarModal, setMostrarModal] = useState(false);
 
   const integrantes = [
-    { nome: "Ana", progresso: 30 },
-    { nome: "João", progresso: 45 },
-    { nome: "Carla", progresso: 15 },
-    { nome: "Lucas", progresso: 10 },
+    { nome: "Ana", progresso: 30, arrecadado: 60 },
+    { nome: "João", progresso: 45, arrecadado: 90 },
+    { nome: "Carla", progresso: 15, arrecadado: 30 },
+    { nome: "Lucas", progresso: 10, arrecadado: 20 },
   ];
 
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
@@ -63,7 +63,7 @@ export default function ProgressoMentor() {
 
       <main className="mentor-progress-main">
         <div className="mentor-progress-header">
-          <h1>Progresso da Equipe</h1>
+          <h1>Progresso da Arrecadação</h1>
           <button
             className="mentor-add-meta-btn"
             onClick={() => setMostrarModal(true)}
@@ -78,14 +78,14 @@ export default function ProgressoMentor() {
             <FaBullseye className="mentor-card-icon" />
             <div>
               <h3>Meta Atual</h3>
-              <p>R$ {metaAtual.meta}</p>
+              <p>{metaAtual.meta} kg</p>
             </div>
           </div>
           <div className="mentor-progress-card">
-            <FaMoneyBillWave className="mentor-card-icon" />
+            <FaWeightHanging className="mentor-card-icon" />
             <div>
               <h3>Arrecadado</h3>
-              <p>R$ {metaAtual.arrecadado}</p>
+              <p>{metaAtual.arrecadado} kg</p>
             </div>
           </div>
           <div className="mentor-progress-card">
@@ -107,29 +107,29 @@ export default function ProgressoMentor() {
         {/* Gráficos */}
         <div className="mentor-graficos-container">
           <div className="mentor-grafico-card">
-            <h2>Meta Total</h2>
+            <h2>Meta Total (kg)</h2>
             <ResponsiveContainer width="100%" height={250}>
               <BarChart data={[metaAtual]}>
                 <XAxis dataKey="nome" />
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="meta" fill="#00C49F" name="Meta" />
-                <Bar dataKey="arrecadado" fill="#0088FE" name="Arrecadado" />
+                <Bar dataKey="meta" fill="#00C49F" name="Meta (kg)" />
+                <Bar dataKey="arrecadado" fill="#0088FE" name="Arrecadado (kg)" />
               </BarChart>
             </ResponsiveContainer>
           </div>
 
           <div className="mentor-grafico-card">
-            <h2>Progresso Individual</h2>
+            <h2>Progresso Individual (%)</h2>
             <ResponsiveContainer width="100%" height={250}>
               <PieChart>
                 <Pie
                   data={integrantes}
                   dataKey="progresso"
                   nameKey="nome"
-                  outerRadius={80}
-                  label
+                  outerRadius={90}
+                  label={({ nome, progresso }) => `${nome}: ${progresso}%`}
                 >
                   {integrantes.map((entry, index) => (
                     <Cell
@@ -138,11 +138,29 @@ export default function ProgressoMentor() {
                     />
                   ))}
                 </Pie>
-                <Tooltip />
+                <Tooltip formatter={(value) => `${value}%`} />
                 <Legend />
               </PieChart>
             </ResponsiveContainer>
           </div>
+        </div>
+
+        {/* Gráfico adicional - Ranking de Arrecadação */}
+        <div className="mentor-ranking-card">
+          <h2>Ranking de Arrecadação (kg)</h2>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={integrantes} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+              <XAxis dataKey="nome" />
+              <YAxis />
+              <Tooltip formatter={(value) => `${value} kg`} />
+              <Legend />
+              <Bar dataKey="arrecadado" name="Arrecadado (kg)">
+                {integrantes.map((entry, index) => (
+                  <Cell key={`cell-rank-${index}`} fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
         </div>
 
         {/* Modal Adicionar Meta */}
@@ -163,7 +181,7 @@ export default function ProgressoMentor() {
                   />
                 </label>
                 <label>
-                  Valor da Meta (R$)
+                  Meta (em kg)
                   <input
                     type="number"
                     value={novaMeta.meta}

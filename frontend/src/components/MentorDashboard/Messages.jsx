@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import { FaPaperPlane, FaSmile } from "react-icons/fa";
 import EmojiPicker from "emoji-picker-react";
@@ -8,6 +8,8 @@ export default function Messages() {
   const [selectedChat, setSelectedChat] = useState("Equipe Alpha");
   const [inputValue, setInputValue] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const chatEndRef = useRef(null);
 
   const chats = [
     { id: 1, name: "Equipe Alpha", lastMessage: "Reunião amanhã às 14h." },
@@ -15,34 +17,88 @@ export default function Messages() {
     { id: 3, name: "Equipe Gamma", lastMessage: "Feedback do mentor pendente." },
   ];
 
-  const [messages, setMessages] = useState({
-    "Equipe Alpha": [
-      { sender: "Mentor", text: "Oi pessoal, tudo pronto pra reunião?" },
-      { sender: "Clara", text: "Sim, estamos revisando o relatório final!" },
-    ],
-    "Equipe Beta": [
-      { sender: "Mentor", text: "Bom trabalho no relatório 👏" },
-      { sender: "Lucas", text: "Valeu mentor!" },
-    ],
-    "Equipe Gamma": [
-      { sender: "Mentor", text: "Precisam de ajuda com o feedback?" },
-      { sender: "Ana", text: "Acho que conseguimos, obrigada!" },
-    ],
+  const [messages, setMessages] = useState(() => {
+    const saved = localStorage.getItem("chatMessages");
+    return (
+      JSON.parse(saved) || {
+        "Equipe Alpha": [
+          { sender: "Mentor", text: "Oi pessoal, tudo pronto pra reunião?", time: "10:15" },
+          { sender: "Clara", text: "Sim, estamos revisando o relatório final!", time: "10:17" },
+        ],
+        "Equipe Beta": [
+          { sender: "Mentor", text: "Bom trabalho no relatório 👏", time: "09:10" },
+          { sender: "Lucas", text: "Valeu mentor!", time: "09:12" },
+        ],
+        "Equipe Gamma": [
+          { sender: "Mentor", text: "Precisam de ajuda com o feedback?", time: "08:40" },
+          { sender: "Ana", text: "Acho que conseguimos, obrigada!", time: "08:42" },
+        ],
+      }
+    );
   });
 
+  // Salvar mensagens
+  useEffect(() => {
+    localStorage.setItem("chatMessages", JSON.stringify(messages));
+  }, [messages]);
+
+  // Auto scroll
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, selectedChat]);
+
+  // Função de envio
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
-    const novaMensagem = { sender: "Mentor", text: inputValue };
+    const horaAtual = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    const novaMensagem = { sender: "Mentor", text: inputValue, time: horaAtual };
     setMessages((prev) => ({
       ...prev,
       [selectedChat]: [...prev[selectedChat], novaMensagem],
     }));
     setInputValue("");
     setShowEmojiPicker(false);
+    setIsTyping(false);
+
+    // simula resposta automática
+    setTimeout(() => setIsTyping(true), 800);
+    setTimeout(() => {
+      const respostas = [
+        "Perfeito, vamos seguir com isso!",
+        "Entendido 👌",
+        "Ótimo ponto, obrigado!",
+        "Pode deixar que resolvemos!",
+        "Show! 👏",
+      ];
+      const respostaAleatoria =
+        respostas[Math.floor(Math.random() * respostas.length)];
+
+      const horaResp = new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      setMessages((prev) => ({
+        ...prev,
+        [selectedChat]: [
+          ...prev[selectedChat],
+          { sender: selectedChat, text: respostaAleatoria, time: horaResp },
+        ],
+      }));
+      setIsTyping(false);
+    }, 1800);
   };
 
   const handleEmojiClick = (emojiData) => {
     setInputValue((prev) => prev + emojiData.emoji);
+  };
+
+  const handleTyping = (e) => {
+    setInputValue(e.target.value);
   };
 
   return (
@@ -52,7 +108,7 @@ export default function Messages() {
         <h1 className="messages-title">Mensagens</h1>
 
         <div className="messages-content">
-          {/* Sidebar de conversas */}
+          {/* Lista lateral */}
           <aside className="chat-list">
             <h2>Conversas</h2>
             <div className="chat-scroll">
@@ -76,7 +132,7 @@ export default function Messages() {
             </div>
           </aside>
 
-          {/* Área de mensagens */}
+          {/* Janela de conversa */}
           <section className="chat-window">
             <div className="chat-header">
               <h2>{selectedChat}</h2>
@@ -90,9 +146,16 @@ export default function Messages() {
                     msg.sender === "Mentor" ? "mentor-msg" : "student-msg"
                   }`}
                 >
-                  <span className="sender">{msg.sender}:</span> {msg.text}
+                  <div className="message-text">
+                    <span className="sender">{msg.sender}:</span> {msg.text}
+                  </div>
+                  <span className="message-time">{msg.time}</span>
                 </div>
               ))}
+              {isTyping && (
+                <div className="typing-indicator">Digitando...</div>
+              )}
+              <div ref={chatEndRef} />
             </div>
 
             <div className="chat-input">
@@ -112,7 +175,7 @@ export default function Messages() {
                 type="text"
                 placeholder="Digite uma mensagem..."
                 value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={handleTyping}
                 onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
               />
               <button onClick={handleSendMessage}>

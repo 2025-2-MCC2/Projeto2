@@ -4,7 +4,10 @@
   background: #f9fafb;
   color: #222;
   min-height: 100vh;
-  overflow-y: visible;
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f9fafb;
 }
 
 .mentor-progress-main {
@@ -70,6 +73,22 @@
   gap: 2rem;
 }
 
+/* novo gráfico de ranking */
+.mentor-ranking-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.mentor-ranking-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #0b3050;
+  font-weight: 600;
+}
+
 .mentor-grafico-card {
   background: white;
   border-radius: 10px;
@@ -83,7 +102,7 @@
   color: #0b3050;
 }
 
-/* Modal */
+/* modal igual ao anterior */
 .mentor-modal-overlay {
   position: fixed;
   top: 0;
@@ -144,4 +163,7 @@
   padding: 0.5rem 1rem;
   border-radius: 6px;
   cursor: pointer;
+}
+.mentor-save-btn:hover {
+  background: #009b7f;
 }
