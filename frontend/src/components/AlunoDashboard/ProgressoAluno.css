@@ -1,0 +1,237 @@
+.aluno-progress-page {
+  display: flex;
+  font-family: "Poppins", sans-serif;
+  background: #f9fafb;
+  color: #222;
+  min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f9fafb;
+}
+
+.aluno-progress-main {
+  flex: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+}
+
+.aluno-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.aluno-progress-header h1 {
+  font-size: 1.8rem;
+  color: #000000;
+}
+
+.aluno-trophy-badge {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #000;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 3px 8px rgba(255, 215, 0, 0.4);
+  font-size: 1rem;
+}
+
+.aluno-progress-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.aluno-progress-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.aluno-progress-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.aluno-card-icon {
+  font-size: 1.8rem;
+  color: #2b9463;
+}
+
+.aluno-graficos-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.aluno-grafico-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.aluno-grafico-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #0b3050;
+  font-weight: 600;
+}
+
+/* Ranking do Grupo */
+.aluno-ranking-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.aluno-ranking-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #0b3050;
+  font-weight: 600;
+}
+
+.aluno-ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.aluno-ranking-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.aluno-ranking-item:hover {
+  background: #e8e8e8;
+}
+
+.aluno-ranking-destaque {
+  background: linear-gradient(135deg, #2cb37a59, #32ad743f);
+  border: 2px solid #22835e;
+  font-weight: 600;
+}
+
+.aluno-ranking-posicao {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.aluno-posicao-numero {
+  background: #1b8358;
+  color: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.aluno-ranking-destaque .aluno-posicao-numero {
+  background: #996c0b;
+  color: #000;
+}
+
+.aluno-ranking-nome {
+  font-size: 1rem;
+  color: #333;
+}
+
+.aluno-ranking-valor {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #083625;
+}
+
+/* Progresso do Grupo */
+.aluno-grupo-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.aluno-grupo-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #0b3050;
+  font-weight: 600;
+}
+
+.aluno-progress-bar-container {
+  margin-top: 1rem;
+}
+
+.aluno-progress-bar {
+  width: 100%;
+  height: 40px;
+  background: #e0e0e0;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.aluno-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #115528, #03a373);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1rem;
+  transition: width 0.5s ease;
+  border-radius: 20px;
+}
+
+.aluno-progress-fill span {
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.aluno-progress-info {
+  margin-top: 0.8rem;
+  color: #555;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .aluno-graficos-container {
+    grid-template-columns: 1fr;
+  }
+
+  .aluno-progress-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .aluno-trophy-badge {
+    align-self: flex-start;
+  }
+}

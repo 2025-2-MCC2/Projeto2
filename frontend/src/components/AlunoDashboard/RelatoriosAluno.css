@@ -1,0 +1,165 @@
+.aluno-reports-page {
+  display: flex;
+  font-family: "Poppins", sans-serif;
+  background: #f9fafb;
+  color: #222;
+  min-height: 100vh;
+  height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f9fafb;
+}
+
+.aluno-reports-main {
+  flex: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
+}
+
+.aluno-reports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.aluno-reports-header h1 {
+  font-size: 1.8rem;
+  color: #000000;
+  font-weight: 600;
+}
+
+/* Filtro */
+.aluno-reports-filtro {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.aluno-reports-filtro label {
+  font-weight: 500;
+  color: #333;
+}
+
+.aluno-reports-filtro select {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: "Poppins", sans-serif;
+  background: white;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.aluno-reports-filtro select:hover {
+  border-color: #0088FE;
+}
+
+.aluno-reports-filtro select:focus {
+  outline: none;
+  border-color: #0088FE;
+  box-shadow: 0 0 0 3px rgba(0, 136, 254, 0.1);
+}
+
+.aluno-reports-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.aluno-reports-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.aluno-reports-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.aluno-reports-card-icon {
+  font-size: 1.8rem;
+  color: #0088FE;
+}
+
+.aluno-reports-card-icon.gold {
+  color: #FFD700;
+}
+
+.aluno-reports-card h3 {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.aluno-reports-card p {
+  font-size: 1.3rem;
+  color: #000;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Gráficos */
+.aluno-reports-graficos-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.aluno-reports-grafico-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.aluno-reports-grafico-card h2 {
+  font-size: 1.2rem;
+  color: #0b3050;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.aluno-full {
+  grid-column: 1 / -1;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+  .aluno-reports-graficos-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .aluno-reports-main {
+    padding: 1.5rem;
+  }
+
+  .aluno-reports-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .aluno-reports-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .aluno-reports-filtro {
+    width: 100%;
+  }
+
+  .aluno-reports-filtro select {
+    flex: 1;
+  }
+}

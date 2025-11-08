@@ -33,78 +33,78 @@ export default function PerfilAluno() {
   const representante = integrantes.find((int) => int.representante);
 
   return (
-    <div className="perfil-page">
+    <div className="aluno-perfil-page">
       <SidebarAluno />
 
-      <div className="perfil-container">
-        <div className="perfil-header">
-          <h1 className="perfil-title">Edite seu perfil</h1>
+      <div className="aluno-perfil-container">
+        <div className="aluno-perfil-header">
+          <h1 className="aluno-perfil-title">Edite seu perfil</h1>
           {!isEditing ? (
-            <button onClick={() => setIsEditing(true)} className="btn-editar">
+            <button onClick={() => setIsEditing(true)} className="aluno-btn-editar">
               <Edit2 size={18} />
               Editar perfil
             </button>
           ) : (
-            <div className="btn-actions">
-              <button onClick={() => setIsEditing(false)} className="btn-cancelar">
+            <div className="aluno-btn-actions">
+              <button onClick={() => setIsEditing(false)} className="aluno-btn-cancelar">
                 Cancelar
               </button>
-              <button onClick={handleSave} className="btn-salvar">
+              <button onClick={handleSave} className="aluno-btn-salvar">
                 Salvar
               </button>
             </div>
           )}
         </div>
 
-        <div className="perfil-grid">
+        <div className="aluno-perfil-grid">
           {/* Formulário à esquerda */}
-          <div className="card-formulario">
-            <div className="avatar-container">
-              <div className="avatar-circle">
-                <User className="avatar-icon" />
+          <div className="aluno-card-formulario">
+            <div className="aluno-avatar-container">
+              <div className="aluno-avatar-circle">
+                <User className="aluno-avatar-icon" />
               </div>
             </div>
 
             <div>
-              <div className="form-group">
-                <label className="form-label">Nome completo</label>
+              <div className="aluno-form-group">
+                <label className="aluno-form-label">Nome completo</label>
                 <input
                   type="text"
                   name="nomeCompleto"
                   value={formData.nomeCompleto}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className="form-input"
+                  className="aluno-form-input"
                 />
               </div>
 
-              <div className="form-group">
-                <label className="form-label">Email</label>
+              <div className="aluno-form-group">
+                <label className="aluno-form-label">Email</label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className="form-input"
+                  className="aluno-form-input"
                 />
               </div>
 
-              <div className="form-group">
-                <label className="form-label">Grupo</label>
+              <div className="aluno-form-group">
+                <label className="aluno-form-label">Grupo</label>
                 <input
                   type="text"
                   name="grupo"
                   value={formData.grupo}
                   onChange={handleInputChange}
                   disabled={!isEditing}
-                  className="form-input"
+                  className="aluno-form-input"
                 />
               </div>
 
-              <div className="representante-info">
-                <div className="representante-icon"></div>
-                <p className="representante-text">
+              <div className="aluno-representante-info">
+                <div className="aluno-representante-icon"></div>
+                <p className="aluno-representante-text">
                   Email do representante: {representante?.email}
                 </p>
               </div>
@@ -112,36 +112,36 @@ export default function PerfilAluno() {
           </div>
 
           {/* Integrantes à direita */}
-          <div className="card-integrantes">
-            <div className="integrantes-header">
-              <h2 className="integrantes-title">Integrantes</h2>
-              <button className="btn-visualizar">Visualizar todos</button>
+          <div className="aluno-card-integrantes">
+            <div className="aluno-integrantes-header">
+              <h2 className="aluno-integrantes-title">Integrantes</h2>
+              <button className="aluno-btn-visualizar">Visualizar todos</button>
             </div>
 
-            <div className="integrantes-list">
+            <div className="aluno-integrantes-list">
               {integrantes.map((integrante) => (
-                <div key={integrante.id} className="integrante-item">
-                  <div className="integrante-info">
+                <div key={integrante.id} className="aluno-integrante-item">
+                  <div className="aluno-integrante-info">
                     <div
-                      className={`integrante-avatar ${
-                        integrante.representante ? "representante" : "membro"
+                      className={`aluno-integrante-avatar ${
+                        integrante.representante ? "aluno-representante" : "aluno-membro"
                       }`}
                     >
                       {integrante.inicial}
                     </div>
-                    <div className="integrante-dados">
-                      <p className="integrante-nome">{integrante.nome}</p>
-                      <p className="integrante-email">{integrante.email}</p>
+                    <div className="aluno-integrante-dados">
+                      <p className="aluno-integrante-nome">{integrante.nome}</p>
+                      <p className="aluno-integrante-email">{integrante.email}</p>
                       {integrante.representante && (
-                        <span className="badge-representante">Representante</span>
+                        <span className="aluno-badge-representante">Representante</span>
                       )}
                     </div>
                   </div>
-                  <div className="integrante-actions">
-                    <button className="btn-action">
+                  <div className="aluno-integrante-actions">
+                    <button className="aluno-btn-action">
                       <MessageCircle size={18} />
                     </button>
-                    <button className="btn-action">
+                    <button className="aluno-btn-action">
                       <Edit2 size={18} />
                     </button>
                   </div>
