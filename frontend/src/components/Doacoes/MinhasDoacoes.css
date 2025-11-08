@@ -1,109 +1,138 @@
-/* Container principal */
 .doacoes-container {
-  padding: 40px;
-  width: 100%; /* Ocupa toda a largura */
-  margin: 0;
-  background-color: #fff;
-  font-family: Arial, sans-serif;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px;
+  background-color: #f9fafb;
+  min-height: 100vh;
 }
-/* Títulos */
+
 .doacoes-container h2 {
-  margin-bottom: 10px;
-  font-size: 24px;
-  color: #333;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #111827;
 }
 
-.doacoes-container h3 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-  font-size: 20px;
-  color: #007b55;
-}
-
-/* Botão Nova Doação */
 .nova-doacao {
-  background-color: #007b55;
+  background-color: #0d9488;
   color: white;
+  font-weight: 600;
+  padding: 12px 24px;
   border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  margin-bottom: 20px;
-  font-size: 16px;
+  margin-bottom: 32px;
+  transition: background-color 0.2s;
 }
 
 .nova-doacao:hover {
-  background-color: #005f40;
+  background-color: #0f766e;
 }
 
-/* Tabela de Doações */
+.doacoes-container h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
 .tabela-doacoes {
   width: 100%;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 32px;
   border-collapse: collapse;
-  margin-bottom: 40px;
-  font-size: 16px;
+}
+
+.tabela-doacoes thead {
+  background-color: #f3f4f6;
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .tabela-doacoes th {
-  background-color: #f4f4f4;
-  font-weight: bold;
-  padding: 12px;
-  border-bottom: 2px solid #ccc;
+  padding: 12px 24px;
   text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.tabela-doacoes tbody tr {
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s;
+}
+
+.tabela-doacoes tbody tr:hover {
+  background-color: #f9fafb;
 }
 
 .tabela-doacoes td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+  padding: 16px 24px;
+  font-size: 14px;
+  color: #111827 !important;
+  background-color: transparent !important;
+  vertical-align: middle;
 }
 
-.tabela-doacoes tr:hover {
-  background-color: #f9f9f9;
+.tabela-doacoes .confirmada {
+  color: #16a34a;
+  font-weight: 500;
 }
 
-/* Status */
-.confirmada {
-  color: green;
-  font-weight: bold;
+.tabela-doacoes .pendente {
+  color: #dc2626;
+  font-weight: 500;
 }
 
-.pendente {
-  color: red;
-  font-weight: bold;
-}
-
-/* Cards */
 .cards-doacoes {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
 }
 
 .card {
-  flex: 1;
-  padding: 20px;
+  padding: 24px;
   border-radius: 8px;
-  color: #fff;
-  min-width: 250px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.card h4 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 15px;
+  opacity: 0.95;
 }
 
 .card-vermelho {
-  background-color: #e74c3c;
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
 }
 
 .card-amarelo {
-  background-color: #f1c40f;
-  color: #333;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
+  .doacoes-container {
+    padding: 16px;
+  }
+
   .cards-doacoes {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+  }
+
+  .tabela-doacoes {
+    font-size: 12px;
   }
 
   .tabela-doacoes th,
   .tabela-doacoes td {
-    font-size: 14px;
+    padding: 8px 12px;
   }
 }

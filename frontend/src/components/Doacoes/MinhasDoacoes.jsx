@@ -3,6 +3,31 @@ import "./MinhasDoacoes.css";
 import NavbarDoacoes from "./NavbarDoacoes";
 
 const MinhasDoacoes = () => {
+  // Dados das doações
+  const doacoes = [
+    {
+      id: 1,
+      data: "09/04/2025",
+      valor: "R$ 100",
+      campanha: "Combate a Fome",
+      status: "Confirmada"
+    },
+    {
+      id: 2,
+      data: "26/04/2025",
+      valor: "R$ 80",
+      campanha: "Combate a Fome",
+      status: "Confirmada"
+    },
+    {
+      id: 3,
+      data: "11/06/2025",
+      valor: "R$ 50",
+      campanha: "Combate a Fome",
+      status: "Pendente"
+    }
+  ];
+
   return (
     <>
       <NavbarDoacoes />
@@ -21,31 +46,23 @@ const MinhasDoacoes = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>09/04/2025</td>
-              <td>R$ 100,00</td>
-              <td>Combate à Fome</td>
-              <td className="confirmada">Confirmada</td>
-            </tr>
-            <tr>
-              <td>26/04/2025</td>
-              <td>R$ 80,00</td>
-              <td>Educação</td>
-              <td className="confirmada">Confirmada</td>
-            </tr>
-            <tr>
-              <td>11/06/2025</td>
-              <td>R$ 50,00</td>
-              <td>Saúde</td>
-              <td className="pendente">Pendente</td>
-            </tr>
+            {doacoes.map((doacao) => (
+              <tr key={doacao.id}>
+                <td>{doacao.data}</td>
+                <td>{doacao.valor}</td>
+                <td>{doacao.campanha}</td>
+                <td className={doacao.status === "Confirmada" ? "confirmada" : "pendente"}>
+                  {doacao.status}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
 
         <div className="cards-doacoes">
           <div className="card card-vermelho">
-            <h4>Combate à Fome</h4>
-            <p>Sua doação ajudou a fornecer refeições para pessoas em necessidade.</p>
+            <h4>Combate a Fome</h4>
+            <p>Sua doação ajudou a fornecer refeições para pessoas em necessidades</p>
           </div>
 
           <div className="card card-amarelo">
