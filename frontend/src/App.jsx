@@ -17,9 +17,11 @@ import Config from "./components/MentorDashboard/Config";
 import Student from "./components/AlunoDashboard/Student";
 import PerfilAluno from "./components/AlunoDashboard/PerfilAluno";
 
-
-
+import NavbarDoacoes from "./components/Doacoes/NavbarDoacoes";
 import MinhasDoacoes from "./components/Doacoes/MinhasDoacoes";
+import Campanhas from "./components/Doacoes/Campanhas";
+import SobreNos from "./components/Doacoes/SobreNos";
+import PerfilDoador from "./components/Doacoes/PerfilDoador";
 
 import "./index.css";
 import "./i18n";
@@ -28,21 +30,20 @@ function App() {
   const location = useLocation();
 
   const showHeaderFooter = location.pathname === "/";
+  const isDoacoesRoute = location.pathname.startsWith("/doacoes");
 
   return (
     <>
       {showHeaderFooter && <Navbar />}
+      {isDoacoesRoute && <NavbarDoacoes />}
 
       <Routes>
-
         <Route path="/" element={<Hero />} />
-
 
         <Route path="/cadastro-aluno" element={<CadastroAluno />} />
         <Route path="/cadastro-mentor" element={<CadastroMentor />} />
         <Route path="/login-mentor" element={<LoginMentor />} />
         <Route path="/login-aluno" element={<LoginAluno />} />
-
 
         <Route path="/dashboard-mentor" element={<MentorDashboard />} />
         <Route path="/dashboard-mentor/messages" element={<Messages />} />
@@ -53,11 +54,13 @@ function App() {
         <Route path="/dashboard-mentor/materials" element={<Materials />} />
         <Route path="/dashboard-mentor/config" element={<Config />} />
 
-    
         <Route path="/dashboard-aluno" element={<Student />} />
         <Route path="/dashboard-aluno/perfil" element={<PerfilAluno />} />
        
-        <Route path="/Doacoes" element={<MinhasDoacoes />} />
+        <Route path="/doacoes" element={<MinhasDoacoes />} />
+        <Route path="/doacoes/campanhas" element={<Campanhas />} />
+        <Route path="/doacoes/sobre-nos" element={<SobreNos />} />
+        <Route path="/doacoes/perfil" element={<PerfilDoador />} />
       </Routes>
 
       {showHeaderFooter && <Footer />}

@@ -1,60 +1,115 @@
-.doacoes-container {
-  padding: 40px;
-  width: 100%;
-  margin: 0;
-  background-color: #fff;
-  font-family: Arial, sans-serif;
-}
-
-.nova-doacao {
-  background-color: #007b55;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-bottom: 20px;
-}
-
-.tabela-doacoes {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 40px;
-}
-
-.tabela-doacoes th,
-.tabela-doacoes td {
-  border-bottom: 1px solid #ddd;
-  padding: 10px;
-  text-align: left;
-}
-
-.confirmada {
-  color: green;
-}
-
-.pendente {
-  color: red;
-}
-
-.cards-doacoes {
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-.card {
-  flex: 1;
-  padding: 20px;
-  border-radius: 8px;
-  color: #fff;
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
-.card-vermelho {
-  background-color: #e74c3c;
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
-.card-amarelo {
-  background-color: #f1c40f;
+.modal-header h2 {
+  margin: 0;
+  color: #2d7a5e;
+  font-size: 1.5rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #666;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
   color: #333;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #2d7a5e;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-cancelar,
+.btn-confirmar {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancelar {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.btn-cancelar:hover {
+  background-color: #e5e5e5;
+}
+
+.btn-confirmar {
+  background-color: #2d7a5e;
+  color: white;
+}
+
+.btn-confirmar:hover {
+  background-color: #236349;
 }

@@ -1,78 +1,83 @@
-import React from "react";
-import "./MinhasDoacoes.css";
-import NavbarDoacoes from "./NavbarDoacoes";
+import React, { useState } from 'react';
+import './MinhasDoacoes.css';
+import ModalDoacao from './ModalDoacao';
 
-const MinhasDoacoes = () => {
-  // Dados das doações
-  const doacoes = [
-    {
-      id: 1,
-      data: "09/04/2025",
-      valor: "R$ 100",
-      campanha: "Combate a Fome",
-      status: "Confirmada"
-    },
-    {
-      id: 2,
-      data: "26/04/2025",
-      valor: "R$ 80",
-      campanha: "Combate a Fome",
-      status: "Confirmada"
-    },
-    {
-      id: 3,
-      data: "11/06/2025",
-      valor: "R$ 50",
-      campanha: "Combate a Fome",
-      status: "Pendente"
-    }
-  ];
+function MinhasDoacoes() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [doacoes, setDoacoes] = useState([
+    { data: '09/04/2025', valor: 'R$ 100', campanha: 'Combate a Fome', status: 'Confirmada' },
+    { data: '26/04/2025', valor: 'R$ 80', campanha: 'Combate a Fome', status: 'Confirmada' },
+    { data: '11/06/2025', valor: 'R$ 50', campanha: 'Combate a Fome', status: 'Pendente' }
+  ]);
+
+  const formatarData = (dataISO) => {
+    const [ano, mes, dia] = dataISO.split('-');
+    return `${dia}/${mes}/${ano}`;
+  };
+
+  const handleAddDoacao = (novaDoacao) => {
+    const doacaoFormatada = {
+      ...novaDoacao,
+      data: formatarData(novaDoacao.data)
+    };
+    setDoacoes([doacaoFormatada, ...doacoes]);
+  };
 
   return (
-    <>
-      <NavbarDoacoes />
-      <div className="doacoes-container">
-        <h2>Olá, Nome do doador!</h2>
-        <button className="nova-doacao">+ Nova Doação</button>
+    <div className="minhas-doacoes-container">
+      <h1>Olá, Nome do doador!</h1>
+      
+      <button 
+        className="btn-nova-doacao"
+        onClick={() => setIsModalOpen(true)}
+      >
+        + Nova Doação
+      </button>
 
-        <h3>Histórico de Doações</h3>
-        <table className="tabela-doacoes">
-          <thead>
-            <tr>
-              <th>Data</th>
-              <th>Valor</th>
-              <th>Campanha</th>
-              <th>Status</th>
+      <h2>Histórico de Doações</h2>
+
+      <table className="tabela-doacoes">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Valor</th>
+            <th>Campanha</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {doacoes.map((doacao, index) => (
+            <tr key={index}>
+              <td>{doacao.data}</td>
+              <td>{doacao.valor}</td>
+              <td>{doacao.campanha}</td>
+              <td className={doacao.status === 'Pendente' ? 'status-pendente' : 'status-confirmada'}>
+                {doacao.status}
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {doacoes.map((doacao) => (
-              <tr key={doacao.id}>
-                <td>{doacao.data}</td>
-                <td>{doacao.valor}</td>
-                <td>{doacao.campanha}</td>
-                <td className={doacao.status === "Confirmada" ? "confirmada" : "pendente"}>
-                  {doacao.status}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          ))}
+        </tbody>
+      </table>
 
-        <div className="cards-doacoes">
-          <div className="card card-vermelho">
-            <h4>Combate a Fome</h4>
-            <p>Sua doação ajudou a fornecer refeições para pessoas em necessidades</p>
-          </div>
-
-          <div className="card card-amarelo">
-            <h4>Mensagens de Agradecimento</h4>
-            <p>Obrigado pela sua ajuda! Sua contribuição faz a diferença!</p>
-          </div>
+      <div className="cards-info">
+        <div className="card-info card-combate">
+          <h3>Combate a Fome</h3>
+          <p>Sua doação ajudou a fornecer refeições para pessoas em necessidades</p>
+        </div>
+        
+        <div className="card-info card-agradecimento">
+          <h3>Mensagens de Agradecimento</h3>
+          <p>Obrigado pela sua ajuda! Sua contribuição faz a diferença!</p>
         </div>
       </div>
-    </>
+
+      <ModalDoacao 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onAddDoacao={handleAddDoacao}
+      />
+    </div>
   );
-};
+}
 
 export default MinhasDoacoes;

@@ -1,0 +1,216 @@
+.sobre-nos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 3rem 0;
+  background: linear-gradient(135deg, #2d7a5e 0%, #3a9970 100%);
+  color: white;
+  border-radius: 12px;
+  margin-bottom: 3rem;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  opacity: 0.95;
+}
+
+.missao-section {
+  margin-bottom: 4rem;
+}
+
+.missao-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.missao-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.missao-card h2 {
+  color: #2d7a5e;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.missao-card p {
+  color: #666;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.valores-section {
+  margin-bottom: 4rem;
+}
+
+.valores-section h2 {
+  text-align: center;
+  color: #2d7a5e;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.valor-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.valor-card:hover {
+  transform: translateY(-5px);
+}
+
+.valor-icone {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.valor-card h3 {
+  color: #333;
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.valor-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.impacto-section {
+  background: #f8f9fa;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  margin-bottom: 4rem;
+}
+
+.impacto-section h2 {
+  text-align: center;
+  color: #2d7a5e;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.impacto-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.impacto-card {
+  text-align: center;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+}
+
+.impacto-numero {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2d7a5e;
+  margin-bottom: 0.5rem;
+}
+
+.impacto-label {
+  display: block;
+  color: #666;
+  font-size: 1rem;
+}
+
+.equipe-section {
+  margin-bottom: 4rem;
+}
+
+.equipe-section h2 {
+  text-align: center;
+  color: #2d7a5e;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.equipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.equipe-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.equipe-avatar {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.equipe-card h3 {
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.equipe-card p {
+  color: #999;
+  font-size: 0.95rem;
+}
+
+.cta-section {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #2d7a5e 0%, #3a9970 100%);
+  color: white;
+  border-radius: 12px;
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+.btn-cta {
+  padding: 1rem 2.5rem;
+  background: white;
+  color: #2d7a5e;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-cta:hover {
+  transform: scale(1.05);
+}

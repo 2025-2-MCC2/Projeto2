@@ -1,36 +1,46 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./NavbarDoacoes.css";
 
 const NavbarDoacoes = () => {
-  const [activeTab, setActiveTab] = useState("doacoes");
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
 
   return (
     <nav className="navbar-doacoes">
       <ul>
         <li 
-          className={activeTab === "sobre" ? "active" : ""}
-          onClick={() => setActiveTab("sobre")}
+          className={isActive("/doacoes/sobre-nos") ? "active" : ""}
+          onClick={() => handleNavigation("/doacoes/sobre-nos")}
         >
           <span className="icon">🏛️</span>
           Sobre Nós
         </li>
         <li 
-          className={activeTab === "campanha" ? "active" : ""}
-          onClick={() => setActiveTab("campanha")}
+          className={isActive("/doacoes/campanhas") ? "active" : ""}
+          onClick={() => handleNavigation("/doacoes/campanhas")}
         >
           <span className="icon">📢</span>
           Campanha
         </li>
         <li 
-          className={activeTab === "doacoes" ? "active" : ""}
-          onClick={() => setActiveTab("doacoes")}
+          className={isActive("/doacoes") ? "active" : ""}
+          onClick={() => handleNavigation("/doacoes")}
         >
           <span className="icon">🎁</span>
           minhas doações
         </li>
         <li 
-          className={activeTab === "perfil" ? "active" : ""}
-          onClick={() => setActiveTab("perfil")}
+          className={isActive("/doacoes/perfil") ? "active" : ""}
+          onClick={() => handleNavigation("/doacoes/perfil")}
         >
           <span className="icon">👤</span>
           Perfil

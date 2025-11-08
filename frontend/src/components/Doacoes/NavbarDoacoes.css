@@ -1,7 +1,10 @@
 .navbar-doacoes {
-  background-color: #0d9488; /* teal-600 */
+  background-color: #12736b;
   padding: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
 }
 
 .navbar-doacoes ul {
@@ -9,33 +12,31 @@
   display: flex;
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .navbar-doacoes li {
+  flex: 1;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 12px 20px;
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  border: none;
-  flex: 1;
   justify-content: center;
-  font-size: 14px;
+  cursor: pointer;
+  color: white;
+  font-size: 0.95rem;
+  height: 100%;
+  transition: background-color 0.2s;
+  gap: 0.5rem;
 }
 
 .navbar-doacoes li:hover {
-  background-color: #0f766e; /* teal-700 */
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .navbar-doacoes li.active {
-  background-color: #115e59; /* teal-800 */
+  background-color: #0d5449;
 }
 
 .navbar-doacoes .icon {
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
+  font-size: 1.1rem;
 }
