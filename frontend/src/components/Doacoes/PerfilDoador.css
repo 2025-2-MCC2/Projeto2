@@ -32,8 +32,10 @@
 }
 
 .perfil-subtitle {
-  opacity: 0.9;
-  font-size: 1.1rem;
+  display: block;
+  margin-left: 11px; /* ou mais, se quiser */
+  font-size: 1rem;
+  color: #fff;
 }
 
 .perfil-stats {

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './MinhasDoacoes.css';
 import ModalDoacao from './ModalDoacao';
 
+const nomeDoador = localStorage.getItem('nomeDoador') || 'doador@exemplo.com';
+
+
 function MinhasDoacoes() {
   const [isModalOpen, setIsModalOpen] = useState(false);
  const [doacoes, setDoacoes] = useState([
@@ -26,8 +29,8 @@ function MinhasDoacoes() {
 
   return (
     <div className="minhas-doacoes-container">
-      <h1>Olá, {emailDoador}!</h1>
-
+      <h1>Olá, {nomeDoador}!</h1>
+      
       <button 
         className="btn-nova-doacao"
         onClick={() => setIsModalOpen(true)}

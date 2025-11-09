@@ -1,19 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './PerfilDoador.css';
 
 function PerfilDoador() {
   const [isEditing, setIsEditing] = useState(false);
-  const [perfil, setPerfil] = useState({
-    nome: 'Nome do Doador',
-    email: 'doador@email.com',
-    telefone: '(11) 98765-4321',
-    cpf: '123.456.789-00',
-    endereco: 'Rua Example, 123',
-    cidade: 'São Paulo',
-    estado: 'SP'
+
+  const [perfil, setPerfil] = useState(() => {
+    const nomeSalvo = localStorage.getItem('nomeDoador');
+    return {
+      nome: nomeSalvo || 'Nome do Doador',
+      email: 'doador@email.com',
+      telefone: '(11) 98765-4321',
+      cpf: '123.456.789-00',
+      endereco: 'Rua Example, 123',
+      cidade: 'São Paulo',
+      estado: 'SP'
+    };
   });
 
   const [formData, setFormData] = useState({ ...perfil });
+
+  // Atualiza estado com nome salvo ao carregar
+  useEffect(() => {
+    const nomeSalvo = localStorage.getItem('nomeDoador');
+    if (nomeSalvo) {
+      setPerfil(prev => ({ ...prev, nome: nomeSalvo }));
+      setFormData(prev => ({ ...prev, nome: nomeSalvo }));
+    }
+  }, []);
 
   const estatisticas = {
     totalDoado: 'R$ 2.450,00',
@@ -32,6 +45,7 @@ function PerfilDoador() {
 
   const handleSave = () => {
     setPerfil({ ...formData });
+    localStorage.setItem('nomeDoador', formData.nome); // salva no navegador
     setIsEditing(false);
   };
 
@@ -44,8 +58,10 @@ function PerfilDoador() {
     <div className="perfil-container">
       <div className="perfil-header">
         <div className="perfil-avatar">👤</div>
-        <h1>{perfil.nome}</h1>
-        <p className="perfil-subtitle">Doador desde 2024</p>
+        <div className="perfil-nome">
+          <h1>{perfil.nome}</h1>
+          <span className="perfil-subtitle">Doador desde 2024</span>
+        </div>
       </div>
 
       <div className="perfil-stats">

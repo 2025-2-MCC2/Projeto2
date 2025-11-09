@@ -113,3 +113,13 @@
 .btn-confirmar:hover {
   background-color: #236349;
 }
+
+html, body {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.main-container {
+  min-height: 100vh;
+  overflow-y: auto;
+}
