@@ -18,6 +18,12 @@ import Student from "./components/AlunoDashboard/Student";
 import PerfilAluno from "./components/AlunoDashboard/PerfilAluno";
 import ProgressoAluno from "./components/AlunoDashboard/ProgressoAluno";
 import RelatoriosAluno from "./components/AlunoDashboard/RelatoriosAluno";
+import MensagemAluno from "./components/AlunoDashboard/Tarefas/Mensagem";
+import AgendaAluno from "./components/AlunoDashboard/Tarefas/agenda";
+import MateriaisAluno from "./components/AlunoDashboard/Tarefas/material";
+import ConfiguracoesAluno from "./components/AlunoDashboard/Tarefas/config";
+
+
 
 import NavbarDoacoes from "./components/Doacoes/NavbarDoacoes";
 import MinhasDoacoes from "./components/Doacoes/MinhasDoacoes";
@@ -60,6 +66,11 @@ function App() {
         <Route path="/dashboard-aluno/perfil" element={<PerfilAluno />} />
         <Route path="/dashboard-aluno/progresso" element={<ProgressoAluno />} />
         <Route path="/dashboard-aluno/relatorios" element={<RelatoriosAluno />} />
+        <Route path="/dashboard-aluno/mensagens" element={<MensagemAluno />} />
+        <Route path="/dashboard-aluno/agenda" element={<AgendaAluno />} />
+        <Route path="/dashboard-aluno/materiais" element={<MateriaisAluno />} />
+        <Route path="/dashboard-aluno/configuracoes" element={<ConfiguracoesAluno />} />
+
 
         <Route path="/doacoes" element={<MinhasDoacoes />} />
         <Route path="/doacoes/campanhas" element={<Campanhas />} />

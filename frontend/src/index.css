@@ -1,18 +1,23 @@
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
-  width: 100%;
-  height: auto; 
   background: #111;
   color: #fff;
-  overflow: auto; 
-  z-index: 0; 
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .navbar {
@@ -157,8 +162,7 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  height: auto; /* Ajustando a altura automaticamente */
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -270,7 +274,7 @@ button:active .button_top {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh; /* Limita ao tamanho da viewport */
+  height: 100vh;
   display: grid;
   gap: 0.2px;
   z-index: 0;
@@ -283,7 +287,7 @@ button:active .button_top {
   height: 100%;
   object-fit: cover;
   display: block;
-  opacity: 1; /* Aumentando a opacidade para a imagem ficar nítida */
+  opacity: 1;
 }
 
 /* ===== FOOTER ===== */
@@ -294,7 +298,7 @@ button:active .button_top {
   font-family: 'Poppins', sans-serif;
   text-align: justify;
   position: relative;
-  margin-top: 0;
+  margin-top: auto;
   z-index: 100;
   width: 100%;
   overflow-x: hidden;

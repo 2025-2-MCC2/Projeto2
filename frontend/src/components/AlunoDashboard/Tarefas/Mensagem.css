@@ -1,0 +1,263 @@
+/* Container principal */
+.messages-dashboard {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: #12121b;
+  color: #fff;
+}
+
+/* Container de mensagens */
+.messages-container {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Título */
+.messages-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+/* Conteúdo do chat */
+.messages-content {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Lista de chats lateral */
+.chat-list {
+  width: 25%;
+  background-color: #1f1f2e;
+  border-radius: 12px;
+  padding: 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-list h2 {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: #eaeaea;
+}
+
+.chat-scroll {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #6b63ff #1f1f2e;
+}
+
+.chat-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-scroll::-webkit-scrollbar-track {
+  background: #1f1f2e;
+  border-radius: 4px;
+}
+
+.chat-scroll::-webkit-scrollbar-thumb {
+  background-color: #6b63ff;
+  border-radius: 4px;
+  border: 2px solid #1f1f2e;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin-bottom: 6px;
+  border-radius: 8px;
+  background-color: #252538;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 0.95rem;
+}
+
+.chat-item.active {
+  background: linear-gradient(135deg, #4e46e5, #6b63ff);
+}
+
+.chat-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #d66b0d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+  margin-right: 8px;
+}
+
+/* Janela do chat */
+.chat-window {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  background-color: #181824;
+  overflow: hidden;
+}
+
+/* Header do chat */
+.chat-header {
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #6b63ff, #4e46e5);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* Mensagens do chat */
+.chat-messages {
+  flex: 1 1 auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #6b63ff #181824;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #181824;
+  border-radius: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background-color: #6b63ff;
+  border-radius: 4px;
+  border: 2px solid #181824;
+}
+
+/* Mensagens */
+.message {
+  max-width: 70%;
+  padding: 8px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.3;
+  word-wrap: break-word;
+}
+
+.student-msg {
+  align-self: flex-end;
+  background-color: #6b63ff;
+  color: #fff;
+}
+
+.mentor-msg {
+  align-self: flex-start;
+  background-color: #444466;
+  color: #e0e0ff;
+}
+
+.sender {
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.message-time {
+  font-size: 10px;
+  color: #bbb;
+  margin-top: 2px;
+}
+
+/* Digitando */
+.typing-indicator {
+  font-size: 12px;
+  color: #bbb;
+  font-style: italic;
+  margin-left: 4px;
+}
+
+/* Campo de input */
+.chat-input {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  background-color: #1c1c29;
+  border-top: 1px solid #33334d;
+  flex-shrink: 0;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  margin-right: 8px;
+  background-color: #2c2c44;
+  color: #fff;
+}
+
+.chat-input button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, #6b63ff, #4e46e5);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.chat-input button:hover {
+  transform: scale(1.05);
+}
+
+/* Emoji */
+.emoji-container {
+  position: relative;
+  margin-right: 6px;
+}
+
+.emoji-icon {
+  font-size: 18px;
+  color: #bbb;
+  cursor: pointer;
+}
+
+.emoji-picker {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  z-index: 10;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .messages-content {
+    flex-direction: column;
+  }
+
+  .chat-list {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .chat-window {
+    width: 100%;
+  }
+}

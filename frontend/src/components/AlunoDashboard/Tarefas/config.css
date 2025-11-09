@@ -1,0 +1,151 @@
+.config-page {
+  display: flex;
+  font-family: "Poppins", sans-serif;
+  background: #f9fafb;
+  color: #222;
+  width: 100%;
+  overflow: hidden;
+}
+
+.config-main {
+  flex: 1;
+  padding: 2rem 3rem;
+  height: 100vh;
+  overflow-y: auto;
+  background: #f9fafb;
+}
+
+.config-main h1 {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #000000;
+}
+
+.config-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.config-card h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #0b3050;
+}
+
+.config-card p {
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.config-card label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #222;
+}
+
+.config-card input,
+.config-card select {
+  margin-top: 4px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #222;
+  font-size: 0.95rem;
+}
+
+.config-btn {
+  display: inline-block;
+  background: #007b66;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+  margin-top: 0.5rem;
+}
+
+.config-btn:hover {
+  background: #009b7f;
+}
+
+.delete-btn {
+  background: #d9534f;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.delete-btn:hover {
+  background: #c9302c;
+}
+
+/* Tema escuro */
+.dark-theme {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+.dark-theme .config-main {
+  background: #121212;
+  color: #e0e0e0;
+}
+
+.dark-theme .config-card {
+  background: #1e1e1e;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme .config-card h2 {
+  color: #ffffff;
+}
+
+.dark-theme .config-card p,
+.dark-theme .config-card label {
+  color: #e0e0e0;
+}
+
+.dark-theme input,
+.dark-theme select {
+  background: #2c2c2c;
+  color: #e0e0e0;
+  border: 1px solid #555;
+}
+
+.dark-theme input::placeholder {
+  color: #aaa;
+}
+
+.dark-theme .config-btn {
+  background: #009b7f;
+  color: #fff;
+}
+
+.dark-theme .config-btn:hover {
+  background: #00b393;
+}
+
+.dark-theme .delete-btn {
+  background: #d9534f;
+  color: #fff;
+}
+
+.dark-theme .delete-btn:hover {
+  background: #c9302c;
+}
+
+/* Ajuste para checkboxes */
+.dark-theme input[type="checkbox"] {
+  accent-color: #00b393;
+}

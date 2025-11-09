@@ -60,25 +60,25 @@ export default function Sidebar() {
             </Link>
           </li>
           <li>
-            <Link to="/MensagensAluno">
+            <Link to="/dashboard-aluno/mensagens">
               <FontAwesomeIcon icon={faComments} className="menu-icon" />
               <span className="menu-text">Mensagens</span>
             </Link>
           </li>
           <li>
-            <Link to="/AgendaAluno">
+            <Link to="/dashboard-aluno/agenda">
               <FontAwesomeIcon icon={faCalendar} className="menu-icon" />
               <span className="menu-text">Agenda</span>
             </Link>
           </li>
           <li>
-            <Link to="/MateriaisAluno">
+            <Link to="/dashboard-aluno/materiais">
               <FontAwesomeIcon icon={faBookBookmark} className="menu-icon" />
               <span className="menu-text">Materiais</span>
             </Link>
           </li>
           <li>
-            <Link to="/ConfiguraçõesAluno">
+            <Link to="/dashboard-aluno/configuracoes">
               <FontAwesomeIcon icon={faGear} className="menu-icon" />
               <span className="menu-text">Configurações</span>
             </Link>
