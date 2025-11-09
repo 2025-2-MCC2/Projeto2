@@ -7,7 +7,6 @@ function MinhasDoacoes() {
   const [doacoes, setDoacoes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [perfil, setPerfil] = useState(null);
-  const [error, setError] = useState('');
 
   // ⚠️ IMPORTANTE: Substitua por um sistema de autenticação real
   // Por enquanto, vou usar um email fixo para demonstração
@@ -21,7 +20,8 @@ function MinhasDoacoes() {
   const carregarDoacoes = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:5173/api/doacoes/${emailDoador}`);
+      // ✅ ÚNICA CORREÇÃO: Mudou de 5173 para 3000
+      const response = await fetch(`http://localhost:3000/api/doacoes/${emailDoador}`);
       
       if (!response.ok) {
         throw new Error('Erro ao buscar doações');
@@ -42,7 +42,6 @@ function MinhasDoacoes() {
       setDoacoes(doacoesFormatadas);
     } catch (error) {
       console.error('Erro ao carregar doações:', error);
-      setError('Erro ao carregar suas doações');
     } finally {
       setLoading(false);
     }
@@ -50,7 +49,8 @@ function MinhasDoacoes() {
 
   const carregarPerfil = async () => {
     try {
-      const response = await fetch(`http://localhost:5173/api/perfil/${emailDoador}`);
+      // ✅ ÚNICA CORREÇÃO: Mudou de 5173 para 3000
+      const response = await fetch(`http://localhost:3000/api/perfil/${emailDoador}`);
       
       if (!response.ok) {
         throw new Error('Erro ao buscar perfil');
@@ -80,8 +80,6 @@ function MinhasDoacoes() {
   return (
     <div className="minhas-doacoes-container">
       <h1>Olá, {emailDoador}!</h1>
-      
-      {error && <div className="alert alert-error">{error}</div>}
 
       {/* Card de Resumo */}
       {perfil && (

@@ -4,6 +4,11 @@ import mysql from 'mysql2/promise';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
+// ✅ IMPORTANTE: Criar a instância do Express ANTES de usar
+const app = express();
+
+// ✅ Middlewares
+app.use(express.json());
 app.use(cors({
   origin: 'http://localhost:5173', // porta do seu Vite
   credentials: true
@@ -168,24 +173,24 @@ app.post('/api/doacoes', async (req, res) => {
 
     // Validações
     if (!doador_nome || !doador_email || !valor || !campanha) {
-      return res.status(400).json({ 
-        error: 'Todos os campos são obrigatórios' 
+      return res.status(400).json({
+        error: 'Todos os campos são obrigatórios'
       });
     }
 
     if (parseFloat(valor) <= 0) {
-      return res.status(400).json({ 
-        error: 'O valor deve ser maior que zero' 
+      return res.status(400).json({
+        error: 'O valor deve ser maior que zero'
       });
     }
 
     // Inserir doação no banco
     const query = `
-      INSERT INTO doacoes 
-      (doador_nome, doador_email, valor, campanha, status, data_doacao) 
+      INSERT INTO doacoes
+      (doador_nome, doador_email, valor, campanha, status, data_doacao)
       VALUES (?, ?, ?, ?, 'Pendente', NOW())
     `;
-    
+
     const [result] = await connection.execute(query, [
       doador_nome,
       doador_email,
@@ -211,12 +216,12 @@ app.post('/api/doacoes', async (req, res) => {
 });
 
 // 📌 Listar todas as doações de um doador específico
-app.get('/api/doacoes/doador/:email', async (req, res) => {
+app.get('/api/doacoes/:email', async (req, res) => {
   try {
     const { email } = req.params;
 
     const [doacoes] = await connection.execute(
-      `SELECT 
+      `SELECT
         id,
         doador_nome,
         doador_email,
@@ -225,7 +230,7 @@ app.get('/api/doacoes/doador/:email', async (req, res) => {
         status,
         DATE_FORMAT(data_doacao, '%d/%m/%Y') as data,
         mensagem_agradecimento
-      FROM doacoes 
+      FROM doacoes
       WHERE doador_email = ?
       ORDER BY data_doacao DESC`,
       [email]
@@ -243,7 +248,7 @@ app.get('/api/doacoes/doador/:email', async (req, res) => {
 app.get('/api/doacoes', async (req, res) => {
   try {
     const [doacoes] = await connection.execute(
-      `SELECT 
+      `SELECT
         id,
         doador_nome,
         doador_email,
@@ -252,7 +257,7 @@ app.get('/api/doacoes', async (req, res) => {
         status,
         DATE_FORMAT(data_doacao, '%d/%m/%Y') as data,
         mensagem_agradecimento
-      FROM doacoes 
+      FROM doacoes
       ORDER BY data_doacao DESC`
     );
 
@@ -272,8 +277,8 @@ app.put('/api/doacoes/:id', async (req, res) => {
 
     // Validar status
     if (!['Pendente', 'Confirmada', 'Cancelada'].includes(status)) {
-      return res.status(400).json({ 
-        error: 'Status inválido. Use: Pendente, Confirmada ou Cancelada' 
+      return res.status(400).json({
+        error: 'Status inválido. Use: Pendente, Confirmada ou Cancelada'
       });
     }
 
@@ -289,7 +294,7 @@ app.put('/api/doacoes/:id', async (req, res) => {
 
     // Atualizar status
     await connection.execute(
-      `UPDATE doacoes 
+      `UPDATE doacoes
        SET status = ?, mensagem_agradecimento = ?
        WHERE id = ?`,
       [status, mensagem_agradecimento || null, id]
@@ -298,7 +303,7 @@ app.put('/api/doacoes/:id', async (req, res) => {
     // Se a doação foi confirmada, atualizar valor_arrecadado da campanha
     if (status === 'Confirmada' && doacaoAnterior[0].status !== 'Confirmada') {
       await connection.execute(
-        `UPDATE campanhas 
+        `UPDATE campanhas
          SET valor_arrecadado = valor_arrecadado + ?
          WHERE nome = ?`,
         [doacaoAnterior[0].valor, doacaoAnterior[0].campanha]
@@ -308,7 +313,7 @@ app.put('/api/doacoes/:id', async (req, res) => {
     // Se a doação foi cancelada após estar confirmada, remover valor
     if (status === 'Cancelada' && doacaoAnterior[0].status === 'Confirmada') {
       await connection.execute(
-        `UPDATE campanhas 
+        `UPDATE campanhas
          SET valor_arrecadado = valor_arrecadado - ?
          WHERE nome = ?`,
         [doacaoAnterior[0].valor, doacaoAnterior[0].campanha]
@@ -367,14 +372,14 @@ app.delete('/api/doacoes/:id', async (req, res) => {
 app.get('/api/campanhas', async (req, res) => {
   try {
     const [campanhas] = await connection.execute(
-      `SELECT 
+      `SELECT
         id,
         nome,
         descricao,
         meta_valor,
         valor_arrecadado,
         ativa
-      FROM campanhas 
+      FROM campanhas
       WHERE ativa = TRUE
       ORDER BY data_criacao DESC`
     );
@@ -394,7 +399,7 @@ app.get('/api/campanhas/:id', async (req, res) => {
     const { id } = req.params;
 
     const [campanha] = await connection.execute(
-      `SELECT 
+      `SELECT
         id,
         nome,
         descricao,
@@ -403,7 +408,7 @@ app.get('/api/campanhas/:id', async (req, res) => {
         ativa,
         ROUND((valor_arrecadado / meta_valor) * 100, 2) as percentual_arrecadado,
         data_criacao
-      FROM campanhas 
+      FROM campanhas
       WHERE id = ?`,
       [id]
     );
@@ -431,22 +436,22 @@ app.get('/api/perfil/:email', async (req, res) => {
 
     // Total doado
     const [totalDoado] = await connection.execute(
-      `SELECT 
+      `SELECT
         COUNT(*) as total_doacoes,
         COALESCE(SUM(CASE WHEN status = 'Confirmada' THEN valor ELSE 0 END), 0) as valor_total,
         COALESCE(SUM(CASE WHEN status = 'Pendente' THEN valor ELSE 0 END), 0) as valor_pendente
-      FROM doacoes 
+      FROM doacoes
       WHERE doador_email = ?`,
       [email]
     );
 
     // Doações por campanha
     const [doacoesPorCampanha] = await connection.execute(
-      `SELECT 
+      `SELECT
         campanha,
         COUNT(*) as quantidade,
         SUM(valor) as total
-      FROM doacoes 
+      FROM doacoes
       WHERE doador_email = ? AND status = 'Confirmada'
       GROUP BY campanha`,
       [email]
@@ -454,12 +459,12 @@ app.get('/api/perfil/:email', async (req, res) => {
 
     // Última doação
     const [ultimaDoacao] = await connection.execute(
-      `SELECT 
+      `SELECT
         campanha,
         valor,
         DATE_FORMAT(data_doacao, '%d/%m/%Y') as data,
         status
-      FROM doacoes 
+      FROM doacoes
       WHERE doador_email = ?
       ORDER BY data_doacao DESC
       LIMIT 1`,
@@ -486,12 +491,12 @@ app.get('/api/perfil/:email', async (req, res) => {
 app.get('/api/noticias', async (req, res) => {
   try {
     const [noticias] = await connection.execute(
-      `SELECT 
+      `SELECT
         id,
         titulo,
         conteudo,
         DATE_FORMAT(created_at, '%d/%m/%Y %H:%i') as data
-      FROM noticias 
+      FROM noticias
       ORDER BY created_at DESC`
     );
 
@@ -503,9 +508,10 @@ app.get('/api/noticias', async (req, res) => {
   }
 });
 
-// ✅ Iniciar servidor
-app.listen(3001, () => {
-  console.log('🚀 Backend rodando na porta 3001');
-  console.log('📍 http://localhost:3001');
+// ✅ Iniciar servidor na porta 3001
+const PORT = 3001;
+app.listen(PORT, () => {
+  console.log(`🚀 Backend rodando na porta ${PORT}`);
+  console.log(`📍 http://localhost:${PORT}`);
   console.log('✅ Rotas de Doações disponíveis!');
 });

@@ -2,7 +2,7 @@ import express from "express";
 import noticiaRoutes from "./routes/noticiasRoutes.js";
 import mentorRoutes from "./routes/mentorRoutes.js";
 import alunoRoutes from "./routes/alunoRoutes.js";
-import doacoesRoutes from "./routes/doacoesRoutes.js"; // Corrige maiúscula/minúscula
+import doacoesRoutes from "./routes/DoacoesRoutes.js"; // Corrige maiúscula/minúscula
 import campanhasRoutes from "./routes/campanhasRoutes.js"; // Nova rota
 
 const app = express();
