@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Campanhas.css';
 
 function Campanhas() {
+  const navigate = useNavigate();
+
   const campanhas = [
     {
       titulo: 'Combate a Fome',
@@ -22,7 +25,7 @@ function Campanhas() {
       imagem: '📚'
     },
     {
-      titulo: 'Saúde e Bem-Estar',
+      titulo: 'Ajuda Humanitária',
       descricao: 'Contribua para melhorar o acesso a tratamentos médicos e medicamentos.',
       meta: 40000,
       arrecadado: 25300,
@@ -82,7 +85,12 @@ function Campanhas() {
               </div>
             </div>
 
-            <button className="btn-doar">Fazer Doação</button>
+            <button 
+              className="btn-doar"
+              onClick={() => navigate('/doacoes')}
+            >
+              Fazer Doação
+            </button>
           </div>
         ))}
       </div>

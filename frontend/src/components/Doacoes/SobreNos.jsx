@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SobreNos.css';
 
 function SobreNos() {
+  const navigate = useNavigate();
+
   const valores = [
     {
       icone: '💚',
@@ -25,13 +28,6 @@ function SobreNos() {
     }
   ];
 
-  const equipe = [
-    { nome: 'Maria Silva', cargo: 'Fundadora & CEO', emoji: '👩‍💼' },
-    { nome: 'João Santos', cargo: 'Diretor de Operações', emoji: '👨‍💼' },
-    { nome: 'Ana Costa', cargo: 'Coordenadora de Campanhas', emoji: '👩‍💻' },
-    { nome: 'Pedro Oliveira', cargo: 'Gerente de Comunicação', emoji: '👨‍💻' }
-  ];
-
   return (
     <div className="sobre-nos-container">
       <section className="hero-section">
@@ -46,8 +42,7 @@ function SobreNos() {
           <div className="missao-card">
             <h2>Nossa Missão</h2>
             <p>
-              Facilitar o processo de doação e tornar transparente o impacto de cada contribuição,
-              conectando pessoas que querem ajudar com causas que realmente fazem a diferença.
+             O projeto Lideranças Empáticas tem como objetivo elevar o aprendizado dos estudantes do 1° semestre dos cursos de ciências econômicas, ciências contábeis e administração da Fundação Escola de Comércio Álvares Penteado - FECAP
             </p>
           </div>
           
@@ -78,41 +73,48 @@ function SobreNos() {
         <h2>Nosso Impacto</h2>
         <div className="impacto-stats">
           <div className="impacto-card">
-            <span className="impacto-numero">R$ 500K+</span>
-            <span className="impacto-label">Arrecadados</span>
+            <span className="impacto-numero">87.763 Kg</span>
+            <span className="impacto-label">Em arrecadações</span>
           </div>
           <div className="impacto-card">
-            <span className="impacto-numero">1.500+</span>
-            <span className="impacto-label">Doadores Ativos</span>
+            <span className="impacto-numero">1.950</span>
+            <span className="impacto-label">Famílias alimentadas durante 1 mês</span>
           </div>
           <div className="impacto-card">
-            <span className="impacto-numero">25+</span>
-            <span className="impacto-label">Campanhas Realizadas</span>
+            <span className="impacto-numero">+1.600</span>
+            <span className="impacto-label">Alunos participantes</span>
           </div>
           <div className="impacto-card">
-            <span className="impacto-numero">5.000+</span>
-            <span className="impacto-label">Vidas Impactadas</span>
+            <span className="impacto-numero">7.800</span>
+            <span className="impacto-label">Pessoas alimentadas durante 1 mês</span>
           </div>
         </div>
       </section>
 
-      <section className="equipe-section">
-        <h2>Nossa Equipe</h2>
-        <div className="equipe-grid">
-          {equipe.map((membro, index) => (
-            <div key={index} className="equipe-card">
-              <div className="equipe-avatar">{membro.emoji}</div>
-              <h3>{membro.nome}</h3>
-              <p>{membro.cargo}</p>
-            </div>
-          ))}
+      <section className="video-section">
+        <h2>Conheça Nossa História</h2>
+        <div className="video-container">
+          <iframe
+            width="100%"
+            height="500"
+            src="https://www.youtube.com/embed/3nrICgzuPFQ"
+            title="Lideranças Empáticas"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
         </div>
       </section>
 
       <section className="cta-section">
         <h2>Faça Parte Dessa História</h2>
         <p>Junte-se a nós e ajude a transformar o mundo, uma doação por vez.</p>
-        <button className="btn-cta">Começar a Doar Agora</button>
+        <button 
+          className="btn-cta"
+          onClick={() => navigate('/doacoes')}
+        >
+          Começar a Doar Agora
+        </button>
       </section>
     </div>
   );
