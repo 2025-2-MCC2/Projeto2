@@ -123,6 +123,29 @@ body {
   font-weight: 400;
 }
 
+.btn-simular-pagamento {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.btn-simular-pagamento:hover {
+  background-color: #218838;
+}
+
+.chave-pix {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 4px;
+  display: block;
+}
+
 @media (max-width: 768px) {
   .cards-info {
     grid-template-columns: 1fr;

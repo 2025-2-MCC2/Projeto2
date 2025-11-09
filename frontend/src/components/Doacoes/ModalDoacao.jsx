@@ -16,7 +16,7 @@ function ModalDoacao({ isOpen, onClose, onAddDoacao }) {
     forma_pagamento: 'PIX'
   });
 
-  // Buscar campanhas ao abrir o modal
+  // Buscar campanhas ao abrir o modal (simulação)
   useEffect(() => {
     if (isOpen) {
       buscarCampanhas();
@@ -26,49 +26,20 @@ function ModalDoacao({ isOpen, onClose, onAddDoacao }) {
   const buscarCampanhas = async () => {
     setLoadingCampanhas(true);
     setError('');
-    
     try {
-      console.log('🔍 Buscando campanhas em: http://localhost:3001/api/campanhas');
-      const response = await fetch('http://localhost:3001/api/campanhas');
-      
-      console.log('📡 Status da resposta:', response.status);
-      console.log('📡 Response OK?:', response.ok);
-      
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('❌ Erro na resposta:', errorText);
-        throw new Error(`Erro HTTP: ${response.status} - ${errorText}`);
-      }
-      
-      const text = await response.text();
-      console.log('📄 Resposta bruta:', text);
-      
-      const data = JSON.parse(text);
-      console.log('📦 Dados parseados:', data);
-      console.log('📦 Tipo de dados:', typeof data);
-      console.log('📦 É array?:', Array.isArray(data));
-      
-      // Verifica se é um array
-      if (Array.isArray(data)) {
-        setCampanhas(data);
-        console.log('✅ Campanhas carregadas:', data.length);
-        console.log('✅ Primeira campanha:', data[0]);
-      } else if (data.campanhas && Array.isArray(data.campanhas)) {
-        // Caso a API retorne {campanhas: [...]}
-        setCampanhas(data.campanhas);
-        console.log('✅ Campanhas carregadas:', data.campanhas.length);
-      } else {
-        console.error('❌ Formato de dados inesperado:', data);
-        console.error('❌ Chaves disponíveis:', Object.keys(data));
-        setCampanhas([]);
-      }
-      
+      // Simulação de campanhas mock
+      const mockCampanhas = [
+        { id: 1, nome: 'Combate à Fome' },
+        { id: 2, nome: 'Educação para Todos' },
+        { id: 3, nome: 'Ajuda Humanitária' }
+      ];
+      setTimeout(() => {
+        setCampanhas(mockCampanhas);
+        setLoadingCampanhas(false);
+      }, 500);
     } catch (error) {
-      console.error('❌ Erro completo:', error);
-      console.error('❌ Stack:', error.stack);
       setError(`Erro ao carregar campanhas: ${error.message}`);
       setCampanhas([]);
-    } finally {
       setLoadingCampanhas(false);
     }
   };
@@ -83,7 +54,9 @@ function ModalDoacao({ isOpen, onClose, onAddDoacao }) {
     setSuccess('');
   };
 
-  const handleSubmit = async (e) => {
+  const gerarChavePixFake = () => 'pix-' + Math.random().toString(36).substring(2, 15);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
@@ -102,66 +75,40 @@ function ModalDoacao({ isOpen, onClose, onAddDoacao }) {
       return;
     }
 
-    try {
-      console.log('Enviando doação...', formData); // Debug
-      
-      const response = await fetch('http://localhost:3001/api/doacoes', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          doador_nome: formData.doador_nome,
-          doador_email: formData.doador_email,
-          valor: parseFloat(formData.valor),
-          campanha: formData.campanha,
-          forma_pagamento: formData.forma_pagamento
-        })
-      });
+    // Criar objeto mock
+    const novaDoacao = {
+      id: Date.now(),
+      data: new Date().toLocaleDateString(),
+      valor: parseFloat(formData.valor),
+      campanha: formData.campanha,
+      status: 'Pendente',
+      doador_nome: formData.doador_nome,
+      doador_email: formData.doador_email,
+      forma_pagamento: formData.forma_pagamento,
+      chavePix: formData.forma_pagamento === 'PIX' ? gerarChavePixFake() : null
+    };
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.message || 'Erro ao processar doação');
-      }
-
-      const data = await response.json();
-      console.log('✅ Doação criada:', data); // Debug
-      
-      setSuccess('✅ Doação realizada com sucesso!');
-
-      // Atualiza a lista na página principal
-      if (onAddDoacao) {
-        onAddDoacao({
-          id: data.id || Date.now(),
-          data: new Date().toISOString().split('T')[0],
-          valor: parseFloat(formData.valor),
-          campanha: formData.campanha,
-          status: 'Pendente',
-          doador_nome: formData.doador_nome,
-          doador_email: formData.doador_email,
-          forma_pagamento: formData.forma_pagamento
-        });
-      }
-
-      // Aguarda 2 segundos antes de fechar
-      setTimeout(() => {
-        setFormData({
-          doador_nome: '',
-          doador_email: '',
-          valor: '',
-          campanha: '',
-          forma_pagamento: 'PIX'
-        });
-        setSuccess('');
-        onClose();
-      }, 2000);
-
-    } catch (error) {
-      console.error('❌ Erro ao enviar doação:', error);
-      setError(`❌ ${error.message || 'Erro ao processar doação. Tente novamente.'}`);
-    } finally {
-      setLoading(false);
+    // Adicionar à lista
+    if (onAddDoacao) {
+      onAddDoacao(novaDoacao);
     }
+
+    setSuccess('✅ Doação registrada com sucesso!');
+
+    // Fechar modal após 2s
+    setTimeout(() => {
+      setFormData({
+        doador_nome: '',
+        doador_email: '',
+        valor: '',
+        campanha: '',
+        forma_pagamento: 'PIX'
+      });
+      setSuccess('');
+      onClose();
+    }, 2000);
+
+    setLoading(false);
   };
 
   if (!isOpen) return null;

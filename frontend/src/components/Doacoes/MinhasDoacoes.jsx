@@ -1,107 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './MinhasDoacoes.css';
 import ModalDoacao from './ModalDoacao';
 
 function MinhasDoacoes() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [doacoes, setDoacoes] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [perfil, setPerfil] = useState(null);
+ const [doacoes, setDoacoes] = useState([
+  { id: 1, data: '10/04/2025', valor: 'R$ 100,00', campanha: 'Combate à Fome', status: 'Confirmada' },
+  { id: 2, data: '27/04/2025', valor: 'R$ 80,00', campanha: 'Educação para Todos', status: 'Confirmada' }
+]);
+  const emailDoador = 'doador@exemplo.com'; // Simulação
 
-  // ⚠️ IMPORTANTE: Substitua por um sistema de autenticação real
-  // Por enquanto, vou usar um email fixo para demonstração
-  const emailDoador = 'doador@exemplo.com'; // Troque pelo email do usuário logado
-
-  useEffect(() => {
-    carregarDoacoes();
-    carregarPerfil();
-  }, []);
-
-  const carregarDoacoes = async () => {
-    try {
-      setLoading(true);
-      // ✅ ÚNICA CORREÇÃO: Mudou de 5173 para 3000
-      const response = await fetch(`http://localhost:3000/api/doacoes/${emailDoador}`);
-      
-      if (!response.ok) {
-        throw new Error('Erro ao buscar doações');
-      }
-
-      const data = await response.json();
-      
-      // Formatar os dados para exibição
-      const doacoesFormatadas = data.map(doacao => ({
-        id: doacao.id,
-        data: doacao.data,
-        valor: `R$ ${parseFloat(doacao.valor).toFixed(2)}`,
-        campanha: doacao.campanha,
-        status: doacao.status,
-        mensagem: doacao.mensagem_agradecimento
-      }));
-
-      setDoacoes(doacoesFormatadas);
-    } catch (error) {
-      console.error('Erro ao carregar doações:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const carregarPerfil = async () => {
-    try {
-      // ✅ ÚNICA CORREÇÃO: Mudou de 5173 para 3000
-      const response = await fetch(`http://localhost:3000/api/perfil/${emailDoador}`);
-      
-      if (!response.ok) {
-        throw new Error('Erro ao buscar perfil');
-      }
-
-      const data = await response.json();
-      setPerfil(data);
-    } catch (error) {
-      console.error('Erro ao carregar perfil:', error);
-    }
-  };
-
+  // Adicionar nova doação mock
   const handleAddDoacao = (novaDoacao) => {
-    // Recarregar as doações após adicionar uma nova
-    carregarDoacoes();
-    carregarPerfil();
+    const doacaoFormatada = {
+      ...novaDoacao,
+      valor: `R$ ${parseFloat(novaDoacao.valor).toFixed(2)}`
+    };
+    setDoacoes(prev => [...prev, doacaoFormatada]); // Mantém as existentes
   };
 
-  if (loading) {
-    return (
-      <div className="minhas-doacoes-container">
-        <div className="loading">Carregando suas doações...</div>
-      </div>
-    );
-  }
+  // Simular pagamento
+  const confirmarPagamento = (id) => {
+    setDoacoes(doacoes.map(d => d.id === id ? { ...d, status: 'Confirmada' } : d));
+  };
 
   return (
     <div className="minhas-doacoes-container">
       <h1>Olá, {emailDoador}!</h1>
-
-      {/* Card de Resumo */}
-      {perfil && (
-        <div className="resumo-doacoes">
-          <div className="resumo-card">
-            <h3>Total Doado</h3>
-            <p className="valor-destaque">
-              R$ {parseFloat(perfil.resumo.valor_total || 0).toFixed(2)}
-            </p>
-          </div>
-          <div className="resumo-card">
-            <h3>Total de Doações</h3>
-            <p className="valor-destaque">{perfil.resumo.total_doacoes}</p>
-          </div>
-          <div className="resumo-card">
-            <h3>Valor Pendente</h3>
-            <p className="valor-destaque">
-              R$ {parseFloat(perfil.resumo.valor_pendente || 0).toFixed(2)}
-            </p>
-          </div>
-        </div>
-      )}
 
       <button 
         className="btn-nova-doacao"
@@ -125,6 +50,7 @@ function MinhasDoacoes() {
               <th>Valor</th>
               <th>Campanha</th>
               <th>Status</th>
+              <th>Ações</th>
             </tr>
           </thead>
           <tbody>
@@ -136,6 +62,19 @@ function MinhasDoacoes() {
                 <td className={doacao.status === 'Pendente' ? 'status-pendente' : 'status-confirmada'}>
                   {doacao.status}
                 </td>
+                <td>
+                  {doacao.status === 'Pendente' && (
+                    <>
+                      {doacao.chavePix && <span className="chave-pix">Chave Pix: {doacao.chavePix}</span>}
+                      <button 
+                        className="btn-simular-pagamento"
+                        onClick={() => confirmarPagamento(doacao.id)}
+                      >
+                        Simular Pagamento
+                      </button>
+                    </>
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>
@@ -144,24 +83,13 @@ function MinhasDoacoes() {
 
       <div className="cards-info">
         <div className="card-info card-combate">
-          <h3>Combate a Fome</h3>
+          <h3>Combate à Fome</h3>
           <p>Sua doação ajudou a fornecer refeições para pessoas em necessidades</p>
         </div>
         
         <div className="card-info card-agradecimento">
           <h3>Mensagens de Agradecimento</h3>
-          {doacoes.filter(d => d.mensagem).length > 0 ? (
-            <div className="mensagens-lista">
-              {doacoes
-                .filter(d => d.mensagem)
-                .map(d => (
-                  <p key={d.id}>{d.mensagem}</p>
-                ))
-              }
-            </div>
-          ) : (
-            <p>Obrigado pela sua ajuda! Sua contribuição faz a diferença!</p>
-          )}
+          <p>Obrigado pela sua ajuda! Sua contribuição faz a diferença!</p>
         </div>
       </div>
 
