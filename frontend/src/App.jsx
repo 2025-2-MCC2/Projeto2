@@ -4,7 +4,9 @@ import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 import CadastroAluno from "./components/CadastroAluno";
 import CadastroMentor from "./components/CadastroMentor";
+import CadastroDoador from "./components/CadastroDoador";
 import LoginMentor from "./components/LoginMentor";
+import LoginDoador from "./components/LoginDoador";
 import MentorDashboard from "./components/MentorDashboard";
 import LoginAluno from "./components/LoginAluno";
 import Messages from "./components/MentorDashboard/Messages";
@@ -22,8 +24,6 @@ import MensagemAluno from "./components/AlunoDashboard/Tarefas/Mensagem";
 import AgendaAluno from "./components/AlunoDashboard/Tarefas/agenda";
 import MateriaisAluno from "./components/AlunoDashboard/Tarefas/material";
 import ConfiguracoesAluno from "./components/AlunoDashboard/Tarefas/config";
-
-
 
 import NavbarDoacoes from "./components/Doacoes/NavbarDoacoes";
 import MinhasDoacoes from "./components/Doacoes/MinhasDoacoes";
@@ -50,8 +50,11 @@ function App() {
 
         <Route path="/cadastro-aluno" element={<CadastroAluno />} />
         <Route path="/cadastro-mentor" element={<CadastroMentor />} />
+        <Route path="/cadastro-doador" element={<CadastroDoador />} />
+        
         <Route path="/login-mentor" element={<LoginMentor />} />
         <Route path="/login-aluno" element={<LoginAluno />} />
+        <Route path="/login-doador" element={<LoginDoador />} />
 
         <Route path="/dashboard-mentor" element={<MentorDashboard />} />
         <Route path="/dashboard-mentor/messages" element={<Messages />} />
@@ -70,7 +73,6 @@ function App() {
         <Route path="/dashboard-aluno/agenda" element={<AgendaAluno />} />
         <Route path="/dashboard-aluno/materiais" element={<MateriaisAluno />} />
         <Route path="/dashboard-aluno/configuracoes" element={<ConfiguracoesAluno />} />
-
 
         <Route path="/doacoes" element={<MinhasDoacoes />} />
         <Route path="/doacoes/campanhas" element={<Campanhas />} />

@@ -1,0 +1,208 @@
+/* ======== Reset específico para página de login ======== */
+.doador-login-page * {
+  box-sizing: border-box;
+}
+
+/* ======== Página de Login do Doador ======== */
+.doador-login-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: #111;
+}
+
+.doador-login-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/imagens/foto-fundo.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.6);
+  z-index: 0;
+}
+
+.doador-login-container {
+  position: relative;
+  width: 420px;
+  max-width: 90%;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+/* ======== Cabeçalho ======== */
+.doador-login-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.doador-login-header .header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.doador-login-header .header-left h3 {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  color: #2c2c2c;
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.doador-login-header .doador-highlight {
+  display: inline-block;
+  font-size: 1.4rem;
+  color: #248862;
+  font-weight: 700;
+  margin-top: 2px;
+  line-height: 1.2;
+}
+
+.doador-login-header .header-right {
+  text-align: right;
+}
+
+.doador-login-header .header-right p {
+  font-size: 0.85rem;
+  margin: 0 0 4px 0;
+  padding: 0;
+  color: #666;
+  line-height: 1.3;
+}
+
+.doador-login-header .doador-signup-link {
+  color: #248862;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.doador-login-header .doador-signup-link:hover {
+  color: #1f704f;
+  text-decoration: underline;
+}
+
+/* ======== Título ======== */
+.doador-login-container .login-title {
+  color: #248862;
+  margin: 20px 0 25px 0;
+  padding: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ======== Formulário ======== */
+.doador-login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.doador-login-container form label {
+  color: #2c2c2c;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  margin-top: 15px;
+  display: block;
+}
+
+.doador-login-container form label:first-of-type {
+  margin-top: 0;
+}
+
+/* ======== Inputs ======== */
+.doador-login-input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #d0d0d0;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  color: #2c2c2c;
+  background-color: #fff;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.doador-login-input::placeholder {
+  color: #999;
+}
+
+.doador-login-input:focus {
+  border-color: #248862;
+  box-shadow: 0 0 0 3px rgba(36, 136, 98, 0.1);
+}
+
+.doador-login-input:hover {
+  border-color: #248862;
+}
+
+/* ======== Botão ======== */
+.doador-login-button {
+  margin-top: 30px;
+  width: 100%;
+  padding: 15px;
+  background-color: #248862;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(36, 136, 98, 0.2);
+}
+
+.doador-login-button:hover {
+  background-color: #1f704f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(36, 136, 98, 0.3);
+}
+
+.doador-login-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(36, 136, 98, 0.2);
+}
+
+/* ======== Responsivo ======== */
+@media (max-width: 480px) {
+  .doador-login-container {
+    width: 95%;
+    padding: 25px 20px;
+  }
+
+  .doador-login-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .doador-login-header .header-right {
+    text-align: left;
+  }
+
+  .doador-login-container .login-title {
+    font-size: 1.6rem;
+  }
+}

@@ -1,0 +1,202 @@
+/* ======== Reset específico para página de cadastro ======== */
+.doador-signup-page * {
+  box-sizing: border-box;
+}
+
+/* ======== Página de Cadastro do Doador ======== */
+.doador-signup-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: #111;
+}
+
+.doador-signup-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/imagens/foto-fundo.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.6);
+  z-index: 0;
+}
+
+.doador-signup-container {
+  position: relative;
+  width: 420px;
+  max-width: 90%;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.doador-signup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.doador-signup-header .header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.doador-signup-header .header-left h3 {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  color: #2c2c2c;
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.doador-signup-header .doador-highlight {
+  display: inline-block;
+  font-size: 1.4rem;
+  color: #248862;
+  font-weight: 700;
+  margin-top: 2px;
+  line-height: 1.2;
+}
+
+.doador-signup-header .header-right {
+  text-align: right;
+}
+
+.doador-signup-header .header-right p {
+  font-size: 0.85rem;
+  margin: 0 0 4px 0;
+  padding: 0;
+  color: #666;
+  line-height: 1.3;
+}
+
+.doador-signup-header .doador-login-link {
+  color: #248862;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.doador-signup-header .doador-login-link:hover {
+  color: #1f704f;
+  text-decoration: underline;
+}
+
+.doador-signup-container .signup-title {
+  color: #248862;
+  margin: 20px 0 25px 0;
+  padding: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.doador-signup-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.doador-signup-container form label {
+  color: #2c2c2c;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  margin-top: 15px;
+  display: block;
+}
+
+.doador-signup-container form label:first-of-type {
+  margin-top: 0;
+}
+
+.doador-signup-input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #d0d0d0;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  color: #2c2c2c;
+  background-color: #fff;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.doador-signup-input::placeholder {
+  color: #999;
+}
+
+.doador-signup-input:focus {
+  border-color: #248862;
+  box-shadow: 0 0 0 3px rgba(36, 136, 98, 0.1);
+}
+
+.doador-signup-input:hover {
+  border-color: #248862;
+}
+
+.doador-signup-button {
+  margin-top: 30px;
+  width: 100%;
+  padding: 15px;
+  background-color: #248862;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(36, 136, 98, 0.2);
+}
+
+.doador-signup-button:hover {
+  background-color: #1f704f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(36, 136, 98, 0.3);
+}
+
+.doador-signup-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(36, 136, 98, 0.2);
+}
+
+@media (max-width: 480px) {
+  .doador-signup-container {
+    width: 95%;
+    padding: 25px 20px;
+  }
+
+  .doador-signup-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .doador-signup-header .header-right {
+    text-align: left;
+  }
+
+  .doador-signup-container .signup-title {
+    font-size: 1.6rem;
+  }
+}

@@ -34,7 +34,7 @@ const Hero = () => {
           <button className="btn-mentor" onClick={() => navigate("/cadastro-mentor")}>
             <span className="button_top">Mentor</span>
           </button>
-          <button className="btn-doador">
+          <button className="btn-doador" onClick={() => navigate("/cadastro-doador")}>
             <span className="button_top">Doador</span>
           </button>
         </div>
