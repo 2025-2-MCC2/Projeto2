@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import "../index.css";
 
 const Navbar = () => {
+  const { t, i18n } = useTranslation();
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [signupDropdownOpen, setSignupDropdownOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
@@ -20,7 +22,11 @@ const Navbar = () => {
     setLangDropdownOpen(false);
   };
 
-  // Fecha dropdowns ao clicar fora
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+    setLangDropdownOpen(false);
+  };
+
   useEffect(() => {
     const handleClickOutside = () => {
       setLangDropdownOpen(false);
@@ -32,21 +38,16 @@ const Navbar = () => {
     };
   }, []);
 
-  // Lógica para esconder/show Navbar no scroll
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY) {
-        // Scroll para baixo
         setShowNavbar(false);
       } else {
-        // Scroll para cima
         setShowNavbar(true);
       }
       setLastScrollY(window.scrollY);
     };
-
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -65,13 +66,15 @@ const Navbar = () => {
           {/* Dropdown de idioma */}
           <div className="dropdown">
             <button className="dropdown-btn" onClick={toggleLangDropdown}>
-              Português (Brasil) <span className="arrow">▼</span>
+              {i18n.language === "pt" && "Português (Brasil)"}
+              {i18n.language === "en" && "English"}
+              {i18n.language === "es" && "Español"} <span className="arrow">▼</span>
             </button>
             {langDropdownOpen && (
               <ul className="dropdown-content">
-                <li>Português (Brasil)</li>
-                <li>English</li>
-                <li>Español</li>
+                <li onClick={() => changeLanguage("pt")}>Português (Brasil)</li>
+                <li onClick={() => changeLanguage("en")}>English</li>
+                <li onClick={() => changeLanguage("es")}>Español</li>
               </ul>
             )}
           </div>
@@ -79,7 +82,7 @@ const Navbar = () => {
           {/* Dropdown de cadastro */}
           <div className="dropdown signup-cadastro">
             <button className="btn-cadastro" onClick={toggleSignupDropdown}>
-              Cadastre-se <span className="arrow">▼</span>
+              {t("navbarSignup")} <span className="arrow">▼</span>
             </button>
             {signupDropdownOpen && (
               <ul className="dropdown-content">
@@ -90,7 +93,7 @@ const Navbar = () => {
                       alt="Aluno"
                       className="icon"
                     />
-                    Aluno
+                    {t("btnAluno")}
                   </Link>
                 </li>
                 <li>
@@ -100,7 +103,7 @@ const Navbar = () => {
                       alt="Mentor"
                       className="icon"
                     />
-                    Mentor
+                    {t("btnMentor")}
                   </Link>
                 </li>
               </ul>

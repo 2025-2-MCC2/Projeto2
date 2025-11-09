@@ -1,42 +1,71 @@
 import React from "react";
+import { useTranslation } from "react-i18next"; // Importa o hook de tradução
 import "../index.css";
 
 export default function Footer() {
+  const { t } = useTranslation(); // Inicializa o hook
+
   return (
     <footer className="footer">
       <div className="footer-logos-top">
         <img
           src="/imagens/logo lideranças footer.png"
-          alt="Logo Lideranças"
+          alt={t("logoLiderancasAlt")}
           className="logo-liderancas"
         />
         <img
           src="/imagens/logo cybersirens.png"
-          alt="Logo CyberSirens"
+          alt={t("logoCybersirensAlt")}
           className="logo-cybersirens"
         />
       </div>
+
       <div className="footer-container">
+        {/* Navegação */}
         <div className="footer-section">
-          <h3>NAVEGAÇÃO</h3>
+          <h3>{t("footerNavTitle")}</h3>
           <div className="footer-links">
-            <a href="/">Início</a>
-            <a href="/sobre">Sobre Nós</a>
-            <a href="/projetos">Projetos</a>
-            <a href="/blog">Blog/Notícias</a>
+            <a
+              href="https://liderancasempaticas.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("footerNavInicio")}
+            </a>
+            <a
+              href="https://liderancasempaticas.com/sobre"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("footerNavSobre")}
+            </a>
+            <a
+              href="https://liderancasempaticas.com/projetos"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("footerNavProjetos")}
+            </a>
+            <a
+              href="https://liderancasempaticas.com/blog"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("footerNavBlog")}
+            </a>
           </div>
         </div>
 
         {/* Contato */}
         <div className="footer-section">
-          <h3>CONTATO</h3>
+          <h3>{t("footerContatoTitle")}</h3>
           <div className="footer-links">
             <a
-              href="https://www.google.com/maps/place/FECAP+-+Fundação+Escola+de+Comércio+Álvares+Penteado"
+              href="https://www.google.com/maps/place/FECAP+-+Funda%C3%A7%C3%A3o+Escola+de+Com%C3%A9rcio+%C3%81lvares+Penteado+-+Campus+Liberdade/@-23.5572299,-46.6395327,17z/data=!3m1!4b1!4m6!3m5!1s0x94ce59a8b4d648f9:0x862df06cefe8bc3e!8m2!3d-23.5572348!4d-46.6369578!16s%2Fg%2F122xff09?entry=ttu&g_ep=EgoyMDI1MTEwNC4xIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Avenida Liberdade, 552
+              {t("footerContatoEndereco")}
             </a>
             <a
               href="https://liderancasempaticas.com"
@@ -47,8 +76,10 @@ export default function Footer() {
             </a>
           </div>
         </div>
+
+        {/* Redes sociais */}
         <div className="footer-section">
-          <h3>REDES SOCIAIS</h3>
+          <h3>{t("footerRedesTitle")}</h3>
           <div className="footer-links">
             <a
               href="https://www.linkedin.com/company/projeto-lideranças-empáticas/"
@@ -60,7 +91,7 @@ export default function Footer() {
                 alt="Linkedin"
                 className="icon-social"
               />
-              Linkedin
+              {t("footerLinkedin")}
             </a>
             <a
               href="https://www.instagram.com/liderancasempaticas/"
@@ -72,14 +103,13 @@ export default function Footer() {
                 alt="Instagram"
                 className="icon-social"
               />
-              Instagram
+              {t("footerInstagram")}
             </a>
           </div>
         </div>
       </div>
-      <div className="footer-copy">
-        © 2025 Lideranças Empáticas — Todos os direitos reservados.
-      </div>
+
+      <div className="footer-copy">© 2025 {t("footerCopy")}</div>
     </footer>
   );
 }

@@ -1,13 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next"; // 🟩 Importa o hook
 import "../index.css";
 
 const Hero = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation(); // 🟩 Inicializa o hook de tradução
 
-  const imagens = [
-    "fundohome.png",
-  ];
+  const imagens = ["fundohome.png"];
 
   return (
     <section className="hero">
@@ -18,24 +18,29 @@ const Hero = () => {
       </div>
 
       <div className="hero-content">
-        <h1>Faça parte da mudança!</h1>
-        <p>
-          Cadastre seu grupo e participe de ações que ajudam quem precisa,
-          conectando voluntários, mentores e doações.
-        </p>
-        <p className="subtext">
-          Cadastre-se agora e comece a contribuir como voluntário, mentor ou
-          doador
-        </p>
+        {/* 🟢 Textos traduzidos */}
+        <h1>{t("heroTitle")}</h1>
+        <p>{t("heroText")}</p>
+        <p className="subtext">{t("heroSubtext")}</p>
+
         <div className="hero-buttons">
-          <button className="btn-aluno" onClick={() => navigate("/cadastro-aluno")}>
-            <span className="button_top">Aluno</span>
+          <button
+            className="btn-aluno"
+            onClick={() => navigate("/cadastro-aluno")}
+          >
+            <span className="button_top">{t("btnAluno")}</span>
           </button>
-          <button className="btn-mentor" onClick={() => navigate("/cadastro-mentor")}>
-            <span className="button_top">Mentor</span>
+          <button
+            className="btn-mentor"
+            onClick={() => navigate("/cadastro-mentor")}
+          >
+            <span className="button_top">{t("btnMentor")}</span>
           </button>
-          <button className="btn-doador" onClick={() => navigate("/cadastro-doador")}>
-            <span className="button_top">Doador</span>
+          <button
+            className="btn-doador"
+            onClick={() => navigate("/cadastro-doador")}
+          >
+            <span className="button_top">{t("btnDoador")}</span>
           </button>
         </div>
       </div>

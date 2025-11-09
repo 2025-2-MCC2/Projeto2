@@ -59,7 +59,7 @@ body {
 .navbar {
   position: sticky;
   top: 0;
-  background: transparent;
+  background-color: #092A1E;
   border-bottom: 1px solid rgba(102, 102, 102, 0.25);
   padding: 16px 48px;
   display: flex;
