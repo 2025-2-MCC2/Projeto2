@@ -3,11 +3,22 @@ import './PerfilDoador.css';
 
 function PerfilDoador() {
   const [isEditing, setIsEditing] = useState(false);
+  const [showAvatarModal, setShowAvatarModal] = useState(false);
+
+  const avatarsDisponiveis = [
+    '👨‍💼', '👩‍💼', '👨‍🎓', '👩‍🎓', '👨‍⚕️', '👩‍⚕️',
+    '👨‍🍳', '👩‍🍳', '👨‍🔧', '👩‍🔧', '👨‍🌾', '👩‍🌾',
+    '🧑‍💻', '👨‍🎨', '👩‍🎨', '👨‍✈️', '👩‍✈️', '👨‍🚀',
+    '🐶', '🐱', '🦁', '🐼', '🦊', '🐻', '🐨', '🐯',
+    '🌟', '⭐', '💫', '✨', '🎨', '🎭', '🎪', '🎯'
+  ];
 
   const [perfil, setPerfil] = useState(() => {
     const nomeSalvo = localStorage.getItem('nomeDoador');
+    const avatarSalvo = localStorage.getItem('avatarDoador');
     return {
       nome: nomeSalvo || 'Nome do Doador',
+      avatar: avatarSalvo || '👤',
       email: 'doador@email.com',
       telefone: '(11) 98765-4321',
       cpf: '123.456.789-00',
@@ -22,9 +33,14 @@ function PerfilDoador() {
   // Atualiza estado com nome salvo ao carregar
   useEffect(() => {
     const nomeSalvo = localStorage.getItem('nomeDoador');
+    const avatarSalvo = localStorage.getItem('avatarDoador');
     if (nomeSalvo) {
       setPerfil(prev => ({ ...prev, nome: nomeSalvo }));
       setFormData(prev => ({ ...prev, nome: nomeSalvo }));
+    }
+    if (avatarSalvo) {
+      setPerfil(prev => ({ ...prev, avatar: avatarSalvo }));
+      setFormData(prev => ({ ...prev, avatar: avatarSalvo }));
     }
   }, []);
 
@@ -45,7 +61,8 @@ function PerfilDoador() {
 
   const handleSave = () => {
     setPerfil({ ...formData });
-    localStorage.setItem('nomeDoador', formData.nome); // salva no navegador
+    localStorage.setItem('nomeDoador', formData.nome);
+    localStorage.setItem('avatarDoador', formData.avatar);
     setIsEditing(false);
   };
 
@@ -54,10 +71,26 @@ function PerfilDoador() {
     setIsEditing(false);
   };
 
+  const handleSelectAvatar = (avatar) => {
+    setFormData(prev => ({ ...prev, avatar }));
+    setPerfil(prev => ({ ...prev, avatar }));
+    localStorage.setItem('avatarDoador', avatar);
+    setShowAvatarModal(false);
+  };
+
   return (
     <div className="perfil-container">
       <div className="perfil-header">
-        <div className="perfil-avatar">👤</div>
+        <div className="perfil-avatar-wrapper">
+          <div className="perfil-avatar">{perfil.avatar}</div>
+          <button 
+            className="btn-change-avatar" 
+            onClick={() => setShowAvatarModal(true)}
+            title="Trocar avatar"
+          >
+            📷
+          </button>
+        </div>
         <div className="perfil-nome">
           <h1>{perfil.nome}</h1>
           <span className="perfil-subtitle">Doador desde 2024</span>
@@ -225,6 +258,34 @@ function PerfilDoador() {
           </div>
         </div>
       </div>
+
+      {/* Modal de Seleção de Avatar */}
+      {showAvatarModal && (
+        <div className="avatar-modal-overlay" onClick={() => setShowAvatarModal(false)}>
+          <div className="avatar-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="avatar-modal-header">
+              <h3>Escolha seu Avatar</h3>
+              <button 
+                className="btn-close-modal" 
+                onClick={() => setShowAvatarModal(false)}
+              >
+                ✕
+              </button>
+            </div>
+            <div className="avatar-grid">
+              {avatarsDisponiveis.map((avatar, index) => (
+                <button
+                  key={index}
+                  className={`avatar-option ${perfil.avatar === avatar ? 'selected' : ''}`}
+                  onClick={() => handleSelectAvatar(avatar)}
+                >
+                  {avatar}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

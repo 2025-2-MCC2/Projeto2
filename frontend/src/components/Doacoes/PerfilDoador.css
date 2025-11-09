@@ -11,6 +11,15 @@
   color: white;
   border-radius: 12px;
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.perfil-avatar-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
 }
 
 .perfil-avatar {
@@ -22,8 +31,33 @@
   align-items: center;
   justify-content: center;
   font-size: 3rem;
-  margin: 0 auto 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-change-avatar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 35px;
+  height: 35px;
+  background: #2d7a5e;
+  border: 3px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.btn-change-avatar:hover {
+  background: #236349;
+  transform: scale(1.1);
+}
+
+.perfil-nome {
+  text-align: center;
 }
 
 .perfil-header h1 {
@@ -33,9 +67,9 @@
 
 .perfil-subtitle {
   display: block;
-  margin-left: 11px; /* ou mais, se quiser */
   font-size: 1rem;
   color: #fff;
+  opacity: 0.9;
 }
 
 .perfil-stats {
@@ -207,4 +241,140 @@
 .conquista-card p {
   color: #666;
   font-size: 0.9rem;
+}
+
+/* Modal de Avatar */
+.avatar-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.avatar-modal {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.avatar-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.avatar-modal-header h3 {
+  color: #2d7a5e;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.btn-close-modal {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.btn-close-modal:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  gap: 1rem;
+}
+
+.avatar-option {
+  width: 70px;
+  height: 70px;
+  font-size: 2.5rem;
+  background: #f8f9fa;
+  border: 3px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.avatar-option:hover {
+  background: #e9ecef;
+  transform: scale(1.1);
+}
+
+.avatar-option.selected {
+  border-color: #2d7a5e;
+  background: #e8f5f1;
+  transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .perfil-container {
+    padding: 1rem;
+  }
+
+  .avatar-grid {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .avatar-option {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+
+  .avatar-modal {
+    width: 95%;
+    padding: 1.5rem;
+  }
 }
