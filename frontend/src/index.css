@@ -7,17 +7,54 @@
 html, body {
   height: 100%;
   width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   font-family: 'Poppins', sans-serif;
   background: #111;
   color: #fff;
-  overflow-x: hidden;
-  overflow-y: auto;
+}
+
+/* Scrollbar customizada */
+::-webkit-scrollbar {
+  width: 14px;
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-left: 1px solid #333;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  border: 2px solid #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Para Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: rgba(255, 255, 255, 0.6) #1a1a1a;
+}
+
+/* Wrapper principal para controlar layout */
+#root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar {
@@ -30,6 +67,7 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  width: 100%;
 }
 
 .navbar.hidden {
@@ -39,7 +77,6 @@ body {
 .navbar.visible {
   transform: translateY(0);
 }
-
 
 .container {
   width: 100%;
@@ -133,7 +170,6 @@ body {
   display: block;
 }
 
-
 .btn-cadastro {
   margin-left: 24px;
   padding: 10px 24px;
@@ -167,9 +203,22 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px 0;
+  padding: 100px 20px;
+  min-height: 85vh;
   z-index: 1;
   color: white;
+}
+
+.hero::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hero-content {
@@ -179,34 +228,37 @@ body {
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
 }
 
 .hero-content h1 {
   font-size: 50px;
   font-weight: 600;
-  line-height: 0.5;
+  line-height: 1.2;
+  margin-bottom: 20px;
 }
 
 .hero-content p {
   font-size: 24px;
   font-weight: 550;
   margin-bottom: 16px;
+  line-height: 1.5;
 }
 
 .hero-content .subtext {
   font-size: 22px;
   font-weight: 600;
-  line-height: 0.5;
-  margin-top: 16px;
+  line-height: 1.4;
+  margin-top: 20px;
 }
 
 /* Botões principais de aluno, mentor e doador */
 .hero-buttons {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   justify-content: center;
-  line-height: 0.5;
+  flex-wrap: wrap;
+  margin-top: 32px;
 }
 
 .hero-buttons button {
@@ -267,7 +319,6 @@ button:active .button_top {
   border: 2px solid black;
 }
 
-
 /* Imagens de fundo em grid */
 .background-grid {
   position: fixed;
@@ -276,10 +327,9 @@ button:active .button_top {
   width: 100%;
   height: 100vh;
   display: grid;
-  gap: 0.2px;
+  gap: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 1;
 }
 
 .background-grid img {
@@ -287,22 +337,23 @@ button:active .button_top {
   height: 100%;
   object-fit: cover;
   display: block;
-  opacity: 1;
+  filter: brightness(0.65);
 }
 
 /* ===== FOOTER ===== */
 .footer {
   background-color: #092A1E;
   color: #fff;
-  padding: 40px 40px 20px 40px;
+  padding: 50px 0 30px 0;
   font-family: 'Poppins', sans-serif;
-  text-align: justify;
+  text-align: left;
   position: relative;
-  margin-top: auto;
   z-index: 100;
   width: 100%;
+  max-width: 100vw;
+  margin: 0;
+  box-sizing: border-box;
   overflow-x: hidden;
-  clear: both;
 }
 
 /* Logos do topo do footer */
@@ -311,12 +362,12 @@ button:active .button_top {
   justify-content: center;
   align-items: center;
   gap: 50px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .footer-logos-top .logo-liderancas,
 .footer-logos-top .logo-cybersirens {
-  height: 60px;
+  height: 100px;
   width: auto;
   object-fit: contain;
 }
@@ -325,29 +376,31 @@ button:active .button_top {
 .footer-container {
   display: flex;
   justify-content: space-around;
-  text-align: justify;
+  text-align: left;
   max-width: 1200px;
-  margin: 0 auto;
-  gap: 60px;
+  margin: 0 auto 30px auto;
+  padding: 0 40px;
+  gap: 80px;
   flex-wrap: wrap;
 }
 
 /* Seções internas */
 .footer-section {
-  min-width: 150px;
-  text-align: justify;
+  min-width: 200px;
+  text-align: left;
 }
 
 .footer-section h3 {
-  font-size: 16px;
-  margin-bottom: 12px;
+  font-size: 18px;
+  margin-bottom: 16px;
   font-weight: bold;
+  color: #fff;
 }
 
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
 }
 
 .footer-links a {
@@ -357,39 +410,85 @@ button:active .button_top {
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: 15px;
 }
 
 .footer-links a:hover {
-  color: #1e8957;
+  color: #2B8665;
 }
 
 /* Ícones das redes sociais */
 .icon-social {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   object-fit: contain;
 }
 
 /* Copyright */
 .footer-copy {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
   font-size: 14px;
-  color: #888;
-  border-top: 1px solid #333;
-  padding-top: 10px;
+  color: #999;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
 }
 
 /* RESPONSIVO */
 @media (max-width: 768px) {
+  .hero {
+    min-height: 70vh;
+    padding: 60px 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+  }
+
+  .hero-content .subtext {
+    font-size: 16px;
+  }
+
+  .hero-buttons {
+    gap: 16px;
+  }
+
+  .hero-buttons button {
+    width: 220px;
+    font-size: 20px;
+  }
+
+  .footer {
+    padding: 40px 30px 20px 30px;
+  }
+
   .footer-logos-top {
     flex-direction: column;
     gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .footer-logos-top .logo-liderancas,
+  .footer-logos-top .logo-cybersirens {
+    height: 50px;
   }
 
   .footer-container {
     flex-direction: column;
     align-items: center;
-    text-align: justify;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+
+  .footer-links {
+    align-items: center;
   }
 }

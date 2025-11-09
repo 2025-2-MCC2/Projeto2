@@ -66,7 +66,7 @@ export default function Footer() {
                 src="/imagens/logo linkedin.png"
                 alt="Linkedin"
                 className="icon-social"
-              />{" "}
+              />
               Linkedin
             </a>
             <a
@@ -78,7 +78,7 @@ export default function Footer() {
                 src="/imagens/logo insta.png"
                 alt="Instagram"
                 className="icon-social"
-              />{" "}
+              />
               Instagram
             </a>
           </div>
