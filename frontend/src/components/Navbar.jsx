@@ -63,7 +63,7 @@ const Navbar = () => {
         </div>
 
         <div className="nav-actions">
-          {/* Dropdown de idioma */}
+
           <div className="dropdown">
             <button className="dropdown-btn" onClick={toggleLangDropdown}>
               {i18n.language === "pt" && "Português (Brasil)"}
@@ -79,7 +79,7 @@ const Navbar = () => {
             )}
           </div>
 
-          {/* Dropdown de cadastro */}
+
           <div className="dropdown signup-cadastro">
             <button className="btn-cadastro" onClick={toggleSignupDropdown}>
               {t("navbarSignup")} <span className="arrow">▼</span>

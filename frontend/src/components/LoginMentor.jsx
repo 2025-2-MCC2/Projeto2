@@ -20,7 +20,6 @@ export default function LoginMentor() {
       <div className="mentor-login-overlay"></div>
 
       <div className="mentor-login-container">
-        {/* Cabeçalho */}
         <div className="mentor-login-header">
           <div className="header-left">
             <h3>Bem-vindo de volta,</h3>
@@ -37,7 +36,7 @@ export default function LoginMentor() {
 
         <h1 className="login-title">Entrar</h1>
 
-        {/* Formulário */}
+
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">Email</label>
           <input

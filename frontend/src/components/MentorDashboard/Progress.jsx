@@ -71,8 +71,6 @@ export default function ProgressoMentor() {
             <FaPlus /> Adicionar Meta
           </button>
         </div>
-
-        {/* Cards resumo */}
         <div className="mentor-progress-cards">
           <div className="mentor-progress-card">
             <FaBullseye className="mentor-card-icon" />
@@ -104,7 +102,6 @@ export default function ProgressoMentor() {
           </div>
         </div>
 
-        {/* Gráficos */}
         <div className="mentor-graficos-container">
           <div className="mentor-grafico-card">
             <h2>Meta Total (kg)</h2>
@@ -144,8 +141,6 @@ export default function ProgressoMentor() {
             </ResponsiveContainer>
           </div>
         </div>
-
-        {/* Gráfico adicional - Ranking de Arrecadação */}
         <div className="mentor-ranking-card">
           <h2>Ranking de Arrecadação (kg)</h2>
           <ResponsiveContainer width="100%" height={300}>

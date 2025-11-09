@@ -1,15 +1,12 @@
 import React, { useState, useMemo } from "react";
 import Sidebar from "./Sidebar/Sidebar";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
-import { FaTasks, FaBoxOpen, FaMapMarkerAlt, FaPlus } from "react-icons/fa";
+import { FaTasks, FaBoxOpen, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
 import "./Mentoring.css";
 
 export default function Mentoring() {
-  // tenta ler meta global do localStorage (por compatibilidade com a outra página).
-  // se não tiver, usa 100 kg como fallback.
   const metaGlobal = Number(localStorage.getItem("metaGlobal")) || 100;
 
-  // alunos mockados (5)
   const alunosMock = [
     { id: "a1", nome: "Ana Oliveira", email: "ana@uni.edu" },
     { id: "a2", nome: "João Lima", email: "joao@uni.edu" },
@@ -18,7 +15,6 @@ export default function Mentoring() {
     { id: "a5", nome: "Rafa Morais", email: "rafa@uni.edu" },
   ];
 
-  // atividades mockadas (cada item tem alunoId, alimento, quantidade em kg, endereco, data ISO)
   const atividadesMock = [
     { alunoId: "a1", alimento: "Arroz", quantidade: 20, endereco: "Rua das Flores, Centro", data: "2025-11-05T10:15:00" },
     { alunoId: "a2", alimento: "Feijão", quantidade: 15, endereco: "Av. Brasil, Sul", data: "2025-11-06T11:30:00" },
@@ -30,7 +26,6 @@ export default function Mentoring() {
     { alunoId: "a3", alimento: "Arroz", quantidade: 10, endereco: "Rua A, Bairro Novo", data: "2025-11-08T10:10:00" },
     { alunoId: "a4", alimento: "Feijão", quantidade: 8, endereco: "Praça Central, Centro", data: "2025-11-09T12:05:00" },
     { alunoId: "a5", alimento: "Leite", quantidade: 18, endereco: "Av. Liberdade, Oeste", data: "2025-11-09T13:40:00" },
-    // mais exemplos pra ter histórico
     { alunoId: "a1", alimento: "Macarrão", quantidade: 7, endereco: "Rua das Flores, Centro", data: "2025-11-10T10:00:00" },
     { alunoId: "a2", alimento: "Arroz", quantidade: 9, endereco: "Av. Brasil, Sul", data: "2025-11-10T11:30:00" },
   ];
@@ -39,12 +34,9 @@ export default function Mentoring() {
   const [modalAluno, setModalAluno] = useState(null);
   const [verTodas, setVerTodas] = useState(false);
 
-  // filtro por período
-  const hojeIso = new Date().toISOString().slice(0, 10);
-  const [filtroInicio, setFiltroInicio] = useState(""); // yyyy-mm-dd
-  const [filtroFim, setFiltroFim] = useState(""); // yyyy-mm-dd
+  const [filtroInicio, setFiltroInicio] = useState("");
+  const [filtroFim, setFiltroFim] = useState("");
 
-  // calcula atividades filtradas pelo período
   const atividadesFiltradas = useMemo(() => {
     if (!filtroInicio && !filtroFim) return atividadesMock;
     const start = filtroInicio ? new Date(filtroInicio) : null;
@@ -54,13 +46,11 @@ export default function Mentoring() {
       if (start && d < start) return false;
       if (end && d > end) return false;
       return true;
-    }).sort((a, b) => new Date(b.data) - new Date(a.data)); // ordena decrescente por data
+    }).sort((a, b) => new Date(b.data) - new Date(a.data));
   }, [filtroInicio, filtroFim]);
 
-  // últimas 5 atividades
   const ultimas5 = atividadesFiltradas.slice(0, 5);
 
-  // total por aluno (baseado nas atividades filtradas)
   const totalPorAluno = useMemo(() => {
     const map = {};
     alunosMock.forEach(a => (map[a.id] = 0));
@@ -70,10 +60,8 @@ export default function Mentoring() {
     return alunosMock.map(a => ({ alunoId: a.id, nome: a.nome, total: map[a.id] || 0 }));
   }, [atividadesFiltradas]);
 
-  // dados para gráfico (atividades por aluno)
   const graficoDados = totalPorAluno.map((t) => ({ nome: t.nome, kg: t.total }));
 
-  // Handlers
   function abrirModalAluno(alunoId) {
     const aluno = alunosMock.find(a => a.id === alunoId);
     setModalAluno(aluno);
@@ -85,16 +73,12 @@ export default function Mentoring() {
     setModalAluno(null);
   }
 
-  // util: formatar data legível
   function fmtData(iso) {
     const d = new Date(iso);
     return d.toLocaleString();
   }
 
-  // total geral (filtrado)
   const totalGeral = atividadesFiltradas.reduce((s, a) => s + Number(a.quantidade), 0);
-
-  // média por aluno
   const mediaPorAluno = (totalGeral / alunosMock.length).toFixed(1);
 
   return (
@@ -107,18 +91,29 @@ export default function Mentoring() {
           <div className="mentoring-actions">
             <div className="date-filter">
               <label>De</label>
-              <input type="date" value={filtroInicio} onChange={(e) => setFiltroInicio(e.target.value)} />
+              <div className="date-wrapper">
+                <FaCalendarAlt className="calendar-icon" />
+                <input
+                  type="date"
+                  value={filtroInicio}
+                  onChange={(e) => setFiltroInicio(e.target.value)}
+                  className="date-input"
+                />
+              </div>
               <label>Até</label>
-              <input type="date" value={filtroFim} onChange={(e) => setFiltroFim(e.target.value)} />
+              <div className="date-wrapper">
+                <FaCalendarAlt className="calendar-icon" />
+                <input
+                  type="date"
+                  value={filtroFim}
+                  onChange={(e) => setFiltroFim(e.target.value)}
+                  className="date-input"
+                />
+              </div>
             </div>
-
-            <button className="add-atividade-btn" onClick={() => alert("Adicionar Arrecadação (mentor não cadastra) ✨")}>
-              <FaPlus /> Adicionar Arrecadação
-            </button>
           </div>
         </div>
 
-        {/* Cards resumo */}
         <div className="mentoring-cards">
           <div className="card-resumo">
             <FaTasks className="cardresumo-icon" />
@@ -142,11 +137,8 @@ export default function Mentoring() {
             </div>
           </div>
         </div>
-
-        {/* Progresso dos alunos (barrinhas) */}
         <div className="atividades-container">
           <h2>Progresso dos Integrantes (meta: {metaGlobal} kg)</h2>
-
           <div className="alunos-grid">
             {totalPorAluno.map((p) => {
               const pct = Math.min(100, Math.round((p.total / metaGlobal) * 100));
@@ -156,7 +148,6 @@ export default function Mentoring() {
                     <strong>{p.nome}</strong>
                     <span className="aluno-kg">{p.total} kg</span>
                   </div>
-
                   <div className="barra-progresso">
                     <div className="barra-fill" style={{ width: `${pct}%` }} />
                   </div>
@@ -168,11 +159,8 @@ export default function Mentoring() {
             })}
           </div>
         </div>
-
-        {/* Últimas atividades */}
         <div className="atividades-container">
           <h2>Últimas Atividades</h2>
-
           <div className="atividades-lista">
             {ultimas5.map((a, idx) => {
               const aluno = alunosMock.find(x => x.id === a.alunoId);
@@ -197,7 +185,6 @@ export default function Mentoring() {
             </button>
           </div>
 
-          {/* se verTodas true mostra todas as atividades (filtradas) */}
           {verTodas && (
             <div className="atividades-lista todas">
               {atividadesFiltradas.map((a, idx) => {
@@ -218,8 +205,6 @@ export default function Mentoring() {
             </div>
           )}
         </div>
-
-        {/* Gráfico comparativo por aluno */}
         <div className="graficos-container">
           <div className="grafico-card">
             <h2>Atividades por Aluno (kg)</h2>
@@ -233,8 +218,6 @@ export default function Mentoring() {
             </ResponsiveContainer>
           </div>
         </div>
-
-        {/* Modal detalhes do aluno */}
         {mostrarModal && modalAluno && (
           <div className="modal-overlay" onClick={fecharModal}>
             <div className="modal" onClick={(e) => e.stopPropagation()}>
@@ -255,14 +238,12 @@ export default function Mentoring() {
                   <p>Nenhuma atividade no período selecionado.</p>
                 )}
               </div>
-
               <div className="modal-actions">
                 <button className="save-btn" onClick={fecharModal}>Fechar</button>
               </div>
             </div>
           </div>
         )}
-
       </main>
     </div>
   );

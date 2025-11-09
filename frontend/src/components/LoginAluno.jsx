@@ -33,10 +33,9 @@ export default function LoginAluno({ onLogin }) {
     setLoading(true);
 
     try {
-      // Se você passou onLogin (prop), delega a ele.
+
       if (typeof onLogin === 'function') {
         await Promise.resolve(onLogin(email, password, { remember }));
-        // onLogin deve lançar/retornar erro em caso de falha
         setLoading(false);
         return;
       }
@@ -51,23 +50,18 @@ export default function LoginAluno({ onLogin }) {
       const data = await res.json();
 
       if (!res.ok) {
-        // exibir mensagem do backend ou genérica
         throw new Error(data?.message || 'Erro ao fazer login.');
       }
-
-      // Exemplo: backend retorna { token: '...', user: {...} }
       if (remember && data.token) {
         localStorage.setItem('authToken', data.token);
       } else if (data.token) {
-        // guardamos temporariamente (sessionStorage) se não lembrar
         sessionStorage.setItem('authToken', data.token);
       }
 
-      // chame onLogin se existir, ou redirecione/navigate conforme app
       if (typeof onLogin === 'function') onLogin(email, password, data);
 
       setLoading(false);
-      // sucesso - você pode redirecionar aqui
+
     } catch (err) {
       console.error('Login error:', err);
       setError(err.message || 'Erro ao realizar login.');
@@ -137,8 +131,8 @@ export default function LoginAluno({ onLogin }) {
               </button>
             </div>
           </form>
-        </div>{/* login-inner */}
-      </div>{/* login-box */}
+        </div>
+      </div>
     </div>
   );
 }

@@ -53,13 +53,11 @@ export default function Perfil() {
       <Sidebar />
 
       <main className="perfil-main">
-        {/* === ALERTA DE SUCESSO === */}
         {showAlert && (
           <div className="alert-success">
             <FaCheckCircle /> Alterações salvas com sucesso!
           </div>
         )}
-        {/* === ALERTA DE SUCESSO === */}
 
         <div className="perfil-header">
           <h1>Edite seu perfil</h1>
@@ -72,7 +70,6 @@ export default function Perfil() {
         </div>
 
         <div className="perfil-content">
-          {/* Coluna esquerda */}
           <div className="perfil-left">
             <div className="perfil-avatar">
               <FaGraduationCap className="perfil-icon" />
@@ -119,7 +116,6 @@ export default function Perfil() {
             </form>
           </div>
 
-          {/* Coluna direita */}
           <div className="perfil-right">
             <div className="integrantes-header">
               <h2>Integrantes</h2>

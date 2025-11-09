@@ -8,7 +8,6 @@
   overflow: hidden;
 }
 
-/* scroll geral */
 .perfil-main {
   flex: 1;
   padding: 20px 30px;
@@ -18,7 +17,6 @@
   scrollbar-color: #ccc #f8f8f8;
 }
 
-/* Scroll custom */
 .perfil-main::-webkit-scrollbar {
   width: 8px;
 }
@@ -30,7 +28,6 @@
   background-color: #f8f8f8;
 }
 
-/* === ALERTA DE SUCESSO === */
 .alert-success {
   position: fixed;
   top: 20px;
@@ -55,7 +52,6 @@
   100% { opacity: 0; transform: translateY(-10px); }
 }
 
-/* topo */
 .perfil-header {
   display: flex;
   justify-content: space-between;
@@ -86,15 +82,15 @@
   background-color: #109f6d;
 }
 
-/* === LAYOUT LADO A LADO === */
+
 .perfil-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1.1fr; /* aumentei proporcionalmente */
+  grid-template-columns: 1.6fr 1.1fr; 
   gap: 40px;
   align-items: flex-start;
 }
 
-/* coluna esquerda */
+
 .perfil-left {
   background-color: #fff;
   border-radius: 12px;
@@ -145,7 +141,7 @@
   border-radius: 50%;
 }
 
-/* coluna direita */
+
 .perfil-right {
   background-color: #fff;
   border-radius: 12px;
@@ -189,7 +185,6 @@
   border-radius: 6px;
 }
 
-/* cards dos integrantes */
 .integrante-card {
   display: flex;
   align-items: center;
@@ -251,7 +246,6 @@
   background-color: #ccc;
 }
 
-/* Responsivo */
 @media (max-width: 900px) {
   .perfil-grid {
     grid-template-columns: 1fr;

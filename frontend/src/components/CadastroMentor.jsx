@@ -36,8 +36,6 @@ export default function CadastroMentor() {
         </div>
 
         <h1 className="signup-title">Cadastre-se</h1>
-
-        {/* Formulário */}
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">Email</label>
           <input

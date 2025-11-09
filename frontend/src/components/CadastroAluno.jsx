@@ -66,7 +66,6 @@ export default function CadastroAluno() {
       return;
     }
 
-    // Exigir campos mínimos (ajuste conforme sua regra)
     if (!formData.nomeGrupo || !formData.sala || !formData.nomeResponsavel ||
         !formData.emailResponsavel || !formData.telefoneResponsavel ||
         !formData.raAluno1 || !formData.emailAluno1 || !formData.senha) {
@@ -74,7 +73,6 @@ export default function CadastroAluno() {
       return;
     }
 
-    // Aqui vai a lógica real de envio (fetch/axios)...
     console.log('Dados do formulário:', formData);
     alert('Cadastro realizado com sucesso!');
   };
@@ -98,7 +96,6 @@ export default function CadastroAluno() {
             <h1>8ª Edição Lideranças Empáticas</h1>
 
             <form onSubmit={handleSubmit}>
-              {/* Nome Fantasia do Grupo */}
               <div className="form-group">
                 <label>
                   Nome Fantasia do Grupo <span className="required">*</span>
@@ -172,8 +169,6 @@ export default function CadastroAluno() {
                   placeholder="email@exemplo.com"
                 />
               </div>
-
-              {/* contato/responsável do grupo */}
               <div className="form-group">
                 <label>
                   E-mail para contato/aviso do grupo <span className="required">*</span>
@@ -221,8 +216,6 @@ export default function CadastroAluno() {
                   placeholder="RA do 1º aluno"
                 />
               </div>
-
-              {/* Senha */}
               <div className="form-group">
                 <label>
                   Crie uma senha <span className="required">*</span>
@@ -250,8 +243,6 @@ export default function CadastroAluno() {
               </div>
 
               <div className="section-divider"></div>
-
-              {/* 2º ao 10º Aluno */}
               {[2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
                 <div key={num}>
                   <h2 className="section-title">{num}º Aluno</h2>
@@ -295,17 +286,15 @@ export default function CadastroAluno() {
                   <div className="section-divider"></div>
                 </div>
               ))}
-
-              {/* Botão de Cadastro */}
               <div className="form-button">
                 <button type="submit">
                   Cadastrar meu time
                 </button>
               </div>
             </form>
-          </div>{/* fim cadastro-inner */}
-        </div>{/* fim cadastro-box */}
-      </div>{/* fim scroll-wrapper */}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

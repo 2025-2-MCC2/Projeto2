@@ -1,4 +1,3 @@
-/* Reset global */
 html, body {
   height: 100%;
   margin: 0;
@@ -8,7 +7,6 @@ html, body {
   overflow: hidden;
 }
 
-/* Container principal do dashboard */
 .dashboard-page {
   display: flex;
   height: 100vh; 
@@ -16,7 +14,6 @@ html, body {
   overflow: hidden; 
 }
 
-/* Área principal que rola conteúdo */
 .dashboard-main {
   flex: 1;
   padding: 32px;
@@ -27,7 +24,6 @@ html, body {
   transition: margin-left 0.3s ease;
 }
 
-/* Linha de widgets: gráfico e ranking */
 .widgets-row {
   display: flex;
   gap: 24px;

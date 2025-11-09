@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next"; // 🟩 Importa o hook
+import { useTranslation } from "react-i18next"; 
 import "../index.css";
 
 const Hero = () => {
   const navigate = useNavigate();
-  const { t } = useTranslation(); // 🟩 Inicializa o hook de tradução
+  const { t } = useTranslation(); 
 
   const imagens = ["fundohome.png"];
 
@@ -18,7 +18,6 @@ const Hero = () => {
       </div>
 
       <div className="hero-content">
-        {/* 🟢 Textos traduzidos */}
         <h1>{t("heroTitle")}</h1>
         <p>{t("heroText")}</p>
         <p className="subtext">{t("heroSubtext")}</p>

@@ -1,9 +1,9 @@
 import React from "react";
-import { useTranslation } from "react-i18next"; // Importa o hook de tradução
+import { useTranslation } from "react-i18next"; 
 import "../index.css";
 
 export default function Footer() {
-  const { t } = useTranslation(); // Inicializa o hook
+  const { t } = useTranslation(); 
 
   return (
     <footer className="footer">
@@ -21,7 +21,6 @@ export default function Footer() {
       </div>
 
       <div className="footer-container">
-        {/* Navegação */}
         <div className="footer-section">
           <h3>{t("footerNavTitle")}</h3>
           <div className="footer-links">
@@ -56,7 +55,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Contato */}
         <div className="footer-section">
           <h3>{t("footerContatoTitle")}</h3>
           <div className="footer-links">
@@ -77,7 +75,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Redes sociais */}
+
         <div className="footer-section">
           <h3>{t("footerRedesTitle")}</h3>
           <div className="footer-links">

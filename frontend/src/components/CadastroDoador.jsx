@@ -18,7 +18,6 @@ export default function CadastroDoador() {
       <div className="doador-signup-overlay" />
 
       <div className="doador-signup-container">
-        {/* Cabeçalho */}
         <div className="doador-signup-header">
           <div className="header-left">
             <h3>Bem-vindo,</h3>
@@ -34,8 +33,6 @@ export default function CadastroDoador() {
         </div>
 
         <h1 className="signup-title">Cadastre-se</h1>
-
-        {/* Formulário */}
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">Email</label>
           <input

@@ -96,8 +96,6 @@ export default function Reports() {
             </select>
           </div>
         </div>
-
-        {/* Cards */}
         <div className="reports-cards">
           <div className="reports-card">
             <FaWeightHanging className="reports-card-icon" />
@@ -128,10 +126,7 @@ export default function Reports() {
             </div>
           </div>
         </div>
-
-        {/* Gráficos */}
         <div className="reports-graficos-container">
-          {/* Arrecadação por campanha */}
           <div className="reports-grafico-card">
             <h2>Arrecadação Total por Campanha</h2>
             <ResponsiveContainer width="100%" height={250}>
@@ -145,8 +140,6 @@ export default function Reports() {
               </BarChart>
             </ResponsiveContainer>
           </div>
-
-          {/* Tipos de alimentos */}
           <div className="reports-grafico-card">
             <h2>{`Distribuição de Alimentos (${campanhaSelecionada})`}</h2>
             <ResponsiveContainer width="100%" height={250}>
@@ -171,8 +164,6 @@ export default function Reports() {
             </ResponsiveContainer>
           </div>
         </div>
-
-        {/* Evolução */}
         <div className="reports-grafico-card full">
           <h2>Evolução de Arrecadação por Tipo de Alimento</h2>
           <ResponsiveContainer width="100%" height={300}>
