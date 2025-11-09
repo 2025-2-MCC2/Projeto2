@@ -4,7 +4,6 @@ import "../index.css";
 export default function Footer() {
   return (
     <footer className="footer">
-      {/* Logos no topo lado a lado */}
       <div className="footer-logos-top">
         <img
           src="/imagens/logo lideranças footer.png"
@@ -17,11 +16,7 @@ export default function Footer() {
           className="logo-cybersirens"
         />
       </div>
-
-      {/* Container com Navegação, Contato e Redes Sociais */}
       <div className="footer-container">
-
-        {/* Navegação */}
         <div className="footer-section">
           <h3>NAVEGAÇÃO</h3>
           <div className="footer-links">
@@ -52,8 +47,6 @@ export default function Footer() {
             </a>
           </div>
         </div>
-
-        {/* Redes Sociais */}
         <div className="footer-section">
           <h3>REDES SOCIAIS</h3>
           <div className="footer-links">
@@ -83,10 +76,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-
       </div>
-
-      {/* Copyright */}
       <div className="footer-copy">
         © 2025 Lideranças Empáticas — Todos os direitos reservados.
       </div>
