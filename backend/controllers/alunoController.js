@@ -8,7 +8,7 @@ const alunosMock = [];
   const senhaHash = await bcrypt.hash("SenhaFORTE123", 10);
   alunosMock.push({
     email: "gugu.souza1205@gmail.com",
-    nome_grupo: "Gustavo",
+    nome_grupo: "CyberSirens",
     turma: "A",
     periodo: "Noturno",
     senha: senhaHash

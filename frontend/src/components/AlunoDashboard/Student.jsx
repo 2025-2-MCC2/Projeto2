@@ -18,7 +18,7 @@ function Student() {
 
         {/* Header */}
         <div className="dashboard-header">
-          <h2>Bem-vindo(a), Katiê! 😉</h2>
+          <h2>Bem-vindo(a), Aluno(a)! 😉</h2>
           <Dashboard />
         </div>
 
