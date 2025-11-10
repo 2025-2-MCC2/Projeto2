@@ -92,11 +92,11 @@ html, body {
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 0.2rem 0.8rem;
 
-  max-height: 600px;      /* Limita a altura do container */
-  overflow-y: auto;       /* Barra de rolagem vertical quando necessário */
-  flex-shrink: 0;         /* Evita que o container encolha */
-  padding-right: 0.5rem;  /* Evita conteúdo escondido atrás da barra de rolagem */
-  box-sizing: border-box; /* Inclui padding na altura */
+  max-height: 600px;
+  overflow-y: auto;     
+  flex-shrink: 0;       
+  padding-right: 0.5rem;  
+  box-sizing: border-box; 
 }
 
 /* Cards de eventos */

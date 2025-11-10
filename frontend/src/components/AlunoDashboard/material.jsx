@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaFileUpload } from "react-icons/fa";
 import "./material.css";
-import Sidebar from "../SidebarAluno/SidebarAluno";
+import Sidebar from "./SidebarAluno/SidebarAluno";
 
 export default function Materiais() {
   const [videos, setVideos] = useState([

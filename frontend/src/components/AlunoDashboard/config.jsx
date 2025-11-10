@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Config.css";
-import Sidebar from "../SidebarAluno/SidebarAluno";
+import Sidebar from "./SidebarAluno/SidebarAluno";
 
 export default function Configuracoes() {
   const [tema, setTema] = useState("claro");
@@ -23,6 +23,7 @@ export default function Configuracoes() {
   // Alternar edição do perfil
   const toggleEditarPerfil = () => {
     if (editandoPerfil) {
+      
       // Salva o perfil
       console.log("Perfil salvo:", { nome, email });
     }

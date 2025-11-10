@@ -5,7 +5,7 @@
   font-size: 0.9rem;
   font-weight: bold;
   cursor: pointer;
-  margin-left: auto; /* canto direito */
+  margin-left: auto; 
   padding: 0;
   line-height: 1;
   transition: color 0.2s;

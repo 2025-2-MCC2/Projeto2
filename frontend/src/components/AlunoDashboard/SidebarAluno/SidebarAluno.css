@@ -105,8 +105,8 @@
 
 /* Corrige cor dos ícones e textos mesmo com links */
 .sidebar a {
-  color: white;              /* Sempre branco */
-  text-decoration: none;     /* Remove sublinhado */
+  color: white;   
+  text-decoration: none; 
   display: flex;
   align-items: center;
   width: 100%;
@@ -114,7 +114,7 @@
 
 .sidebar a:visited,
 .sidebar a:active {
-  color: white;              /* Evita azul/roxo após clicar */
+  color: white;             
 }
 
 /* Garante ícones e textos sempre brancos */
@@ -131,5 +131,5 @@
 /* Efeito hover opcional */
 .sidebar nav ul li:hover .menu-icon,
 .sidebar nav ul li:hover .menu-text {
-  color: #00ffb3; /* muda pro verde-claro ao passar o mouse, se quiser */
+  color: #00ffb3;
 }
