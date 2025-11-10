@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "./SidebarAluno/SidebarAluno";
-import "./Agenda.css";
+import "./agenda.css";
 
 export default function AgendaAluno() {
   const [eventos, setEventos] = useState(() => {
