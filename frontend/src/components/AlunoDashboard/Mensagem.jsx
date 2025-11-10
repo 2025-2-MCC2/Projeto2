@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { FaPaperPlane, FaSmile } from "react-icons/fa";
 import EmojiPicker from "emoji-picker-react";
 import Sidebar from "./SidebarAluno/SidebarAluno";
-import "./mensagem.css";
+import "./Mensagem.css";
 
 export default function MensagemAluno() {
   const [selectedChat, setSelectedChat] = useState("Mentor João");
