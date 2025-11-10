@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/AlunoAuth.css';
 
-export default function LoginAluno({ onLogin }) {
+export default function LoginAluno() {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const validateEmail = (email) => {
-    // validação simples de formato
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
@@ -33,38 +34,53 @@ export default function LoginAluno({ onLogin }) {
     setLoading(true);
 
     try {
+      // Simulando login - remova isso quando tiver backend real
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      console.log('Email:', email);
+      console.log('Senha:', password);
+      console.log('Lembrar:', remember);
 
-      if (typeof onLogin === 'function') {
-        await Promise.resolve(onLogin(email, password, { remember }));
-        setLoading(false);
-        return;
+      // Se quiser salvar o token localmente (simulação)
+      if (remember) {
+        localStorage.setItem('authToken', 'token-simulado');
+      } else {
+        sessionStorage.setItem('authToken', 'token-simulado');
       }
 
-  
+      alert('Login realizado com sucesso!');
+      
+      // Redireciona para o dashboard do aluno
+      navigate('/dashboard-aluno');
+
+      /* 
+      // Quando tiver backend, use este código:
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       });
 
-      const data = await res.json();
-
       if (!res.ok) {
+        const data = await res.json();
         throw new Error(data?.message || 'Erro ao fazer login.');
       }
+
+      const data = await res.json();
+
       if (remember && data.token) {
         localStorage.setItem('authToken', data.token);
       } else if (data.token) {
         sessionStorage.setItem('authToken', data.token);
       }
 
-      if (typeof onLogin === 'function') onLogin(email, password, data);
-
-      setLoading(false);
+      navigate('/dashboard-aluno');
+      */
 
     } catch (err) {
       console.error('Login error:', err);
       setError(err.message || 'Erro ao realizar login.');
+    } finally {
       setLoading(false);
     }
   }

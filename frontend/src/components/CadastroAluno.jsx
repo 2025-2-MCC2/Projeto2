@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/CadastroAluno.css';
 
 export default function CadastroAluno() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nomeGrupo: '',
     sala: '',
@@ -75,6 +77,9 @@ export default function CadastroAluno() {
 
     console.log('Dados do formulário:', formData);
     alert('Cadastro realizado com sucesso!');
+    
+    // Redireciona para o dashboard do aluno
+    navigate('/dashboard-aluno');
   };
 
   return (

@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/CadastroMentor.css";
 
 export default function CadastroMentor() {
+  const navigate = useNavigate();
+
   function handleSubmit(event) {
     event.preventDefault();
     const email = event.target.email.value;
@@ -12,7 +15,13 @@ export default function CadastroMentor() {
     console.log("Grupo:", grupo);
     console.log("Senha:", password);
     
+    // Aqui você pode adicionar a lógica de cadastro com backend
+    // Por enquanto, apenas simula o sucesso
+    
     alert("Cadastro realizado com sucesso!");
+    
+    // Redireciona para o dashboard do mentor
+    navigate("/dashboard-mentor");
   }
 
   return (

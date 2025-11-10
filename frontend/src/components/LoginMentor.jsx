@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/MentorAuth.css";
 
 export default function LoginMentor() {
+  const navigate = useNavigate();
+
   function handleSubmit(event) {
     event.preventDefault();
     const email = event.target.email.value;
@@ -12,7 +15,13 @@ export default function LoginMentor() {
     console.log("Grupo:", grupo);
     console.log("Senha:", password);
     
+    // Aqui você pode adicionar a lógica de autenticação com backend
+    // Por enquanto, apenas simula o sucesso
+    
     alert("Login realizado com sucesso!");
+    
+    // Redireciona para o dashboard do mentor
+    navigate("/dashboard-mentor");
   }
 
   return (
@@ -35,7 +44,6 @@ export default function LoginMentor() {
         </div>
 
         <h1 className="login-title">Entrar</h1>
-
 
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">Email</label>
