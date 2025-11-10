@@ -1,18 +1,48 @@
+// server.js
 import express from 'express';
 import cors from 'cors';
 import mysql from 'mysql2/promise';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
-// ✅ IMPORTANTE: Criar a instância do Express ANTES de usar
+// Carrega variáveis do .env
+dotenv.config();
+
+// Criar instância do Express
 const app = express();
 
-// ✅ Middlewares
+// Middlewares
 app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:5173', // porta do seu Vite
+  origin: process.env.CORS_ORIGIN || 'http://localhost:5173', // porta do Vite
   credentials: true
 }));
+
+// Tratar JSON inválido
+app.use((err, req, res, next) => {
+  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+    return res.status(400).json({ error: 'JSON inválido no body da requisição' });
+  }
+  next();
+});
+
+// -----------------------------
+// IMPORT ROTAS (ex: doador, mentor)
+// -----------------------------
+import doadorRoutes from "./routes/doadorRoutes.js";
+app.use("/api/doador", doadorRoutes);
+
+// DEBUG depois de registrar doadorRoutes
+console.log('DEBUG: doadorRoutes tipo ->', typeof doadorRoutes);
+console.log('DEBUG: app._router existe (após doadorRoutes)? ->', !!app._router);
+
+import mentorRoutes from "./routes/mentorRoutes.js";
+app.use("/api/mentor", mentorRoutes);
+
+// DEBUG depois de registrar mentorRoutes
+console.log('DEBUG: mentorRoutes tipo ->', typeof mentorRoutes);
+console.log('DEBUG: app._router existe (após mentorRoutes)? ->', !!app._router);
 
 // ✅ Conexão com o banco
 let connection;
@@ -20,10 +50,11 @@ let connection;
 async function conectarBanco() {
   try {
     connection = await mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "banco123",
-      database: "dashboard_doacoes"
+      host: process.env.DB_HOST || "localhost",
+      user: process.env.DB_USER || "root",
+      password: process.env.DB_PASSWORD || "banco123",
+      database: process.env.DB_NAME || "dashboard_doacoes",
+      port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 3306
     });
     console.log('✅ Conectado ao MySQL com sucesso!');
   } catch (err) {
@@ -45,9 +76,9 @@ app.get('/', (req, res) => {
 
 // Cadastro do aluno
 app.post('/api/aluno/cadastro-aluno', async (req, res) => {
-  const { email, nome_grupo, turma, periodo, senha } = req.body;
+  const { email, nome, turma, periodo, senha } = req.body;
 
-  if (!email || !nome_grupo || !turma || !periodo || !senha) {
+  if (!email || !nome || !turma || !periodo || !senha) {
     return res.status(400).json({ message: "Todos os campos são obrigatórios" });
   }
 
@@ -59,9 +90,10 @@ app.post('/api/aluno/cadastro-aluno', async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(senha, 10);
 
+    // ⚙️ Corrigido nome da coluna (de nome_grupo -> nome)
     await connection.query(
-      "INSERT INTO alunos (email, nome_grupo, turma, periodo, senha) VALUES (?, ?, ?, ?, ?)",
-      [email, nome_grupo, turma, periodo, hashedPassword]
+      "INSERT INTO alunos (email, nome, turma, periodo, senha) VALUES (?, ?, ?, ?, ?)",
+      [email, nome, turma, periodo, hashedPassword]
     );
 
     res.status(201).json({ message: "Aluno cadastrado com sucesso" });
@@ -92,8 +124,8 @@ app.post('/api/aluno/login-aluno', async (req, res) => {
     }
 
     const token = jwt.sign(
-      { email: aluno.email, nome_grupo: aluno.nome_grupo },
-      "segredoSuperSeguro",
+      { email: aluno.email, nome: aluno.nome },
+      process.env.JWT_SECRET || "segredoSuperSeguro",
       { expiresIn: "1h" }
     );
 
@@ -105,10 +137,9 @@ app.post('/api/aluno/login-aluno', async (req, res) => {
 });
 
 // ==========================
-// ✅ ROTAS DE EQUIPES/MENTORES
+// ✅ ROTAS DE EQUIPES / MENTORES
 // ==========================
 
-// Arrecadação Total por equipe
 app.get('/arrecadacao/:equipeId', async (req, res) => {
   const { equipeId } = req.params;
   try {
@@ -122,7 +153,6 @@ app.get('/arrecadacao/:equipeId', async (req, res) => {
   }
 });
 
-// Ranking das equipes
 app.get('/ranking', async (req, res) => {
   try {
     const [rows] = await connection.query(
@@ -134,7 +164,6 @@ app.get('/ranking', async (req, res) => {
   }
 });
 
-// Últimas atividades
 app.get('/atividades/:equipeId', async (req, res) => {
   const { equipeId } = req.params;
   try {
@@ -148,7 +177,6 @@ app.get('/atividades/:equipeId', async (req, res) => {
   }
 });
 
-// Mensagens do chat
 app.get('/mensagens/:equipeId', async (req, res) => {
   const { equipeId } = req.params;
   try {
@@ -166,25 +194,18 @@ app.get('/mensagens/:equipeId', async (req, res) => {
 // 🎁 ROTAS DE DOAÇÕES (SITE PÚBLICO)
 // ==========================
 
-// 📌 Criar nova doação
 app.post('/api/doacoes', async (req, res) => {
   try {
     const { doador_nome, doador_email, valor, campanha, forma_pagamento } = req.body;
 
-    // Validações
     if (!doador_nome || !doador_email || !valor || !campanha) {
-      return res.status(400).json({
-        error: 'Todos os campos são obrigatórios'
-      });
+      return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
     }
 
     if (parseFloat(valor) <= 0) {
-      return res.status(400).json({
-        error: 'O valor deve ser maior que zero'
-      });
+      return res.status(400).json({ error: 'O valor deve ser maior que zero' });
     }
 
-    // Inserir doação no banco
     const query = `
       INSERT INTO doacoes
       (doador_nome, doador_email, valor, campanha, status, data_doacao)
@@ -198,7 +219,6 @@ app.post('/api/doacoes', async (req, res) => {
       campanha
     ]);
 
-    // Buscar a doação recém-criada
     const [novaDoacao] = await connection.execute(
       'SELECT * FROM doacoes WHERE id = ?',
       [result.insertId]
@@ -215,303 +235,34 @@ app.post('/api/doacoes', async (req, res) => {
   }
 });
 
-// 📌 Listar todas as doações de um doador específico
-app.get('/api/doacoes/:email', async (req, res) => {
-  try {
-    const { email } = req.params;
-
-    const [doacoes] = await connection.execute(
-      `SELECT
-        id,
-        doador_nome,
-        doador_email,
-        valor,
-        campanha,
-        status,
-        DATE_FORMAT(data_doacao, '%d/%m/%Y') as data,
-        mensagem_agradecimento
-      FROM doacoes
-      WHERE doador_email = ?
-      ORDER BY data_doacao DESC`,
-      [email]
-    );
-
-    res.json(doacoes);
-
-  } catch (error) {
-    console.error('Erro ao buscar doações:', error);
-    res.status(500).json({ error: 'Erro ao buscar doações' });
-  }
-});
-
-// 📌 Listar TODAS as doações (para admin)
-app.get('/api/doacoes', async (req, res) => {
-  try {
-    const [doacoes] = await connection.execute(
-      `SELECT
-        id,
-        doador_nome,
-        doador_email,
-        valor,
-        campanha,
-        status,
-        DATE_FORMAT(data_doacao, '%d/%m/%Y') as data,
-        mensagem_agradecimento
-      FROM doacoes
-      ORDER BY data_doacao DESC`
-    );
-
-    res.json(doacoes);
-
-  } catch (error) {
-    console.error('Erro ao buscar doações:', error);
-    res.status(500).json({ error: 'Erro ao buscar doações' });
-  }
-});
-
-// 📌 Atualizar status da doação (Confirmar/Cancelar)
-app.put('/api/doacoes/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { status, mensagem_agradecimento } = req.body;
-
-    // Validar status
-    if (!['Pendente', 'Confirmada', 'Cancelada'].includes(status)) {
-      return res.status(400).json({
-        error: 'Status inválido. Use: Pendente, Confirmada ou Cancelada'
+// ==========================
+// Debug: listar rotas registradas (mais completo)
+// =========================
+console.log("\n=== ROTAS REGISTRADAS (DEBUG) ===");
+console.log('app._router =>', !!app._router);
+if (app._router && Array.isArray(app._router.stack)) {
+  app._router.stack.forEach((middleware) => {
+    if (middleware.route) {
+      console.log("ROUTE:", middleware.route.path, Object.keys(middleware.route.methods));
+    } else if (middleware.name === "router" && middleware.handle && Array.isArray(middleware.handle.stack)) {
+      middleware.handle.stack.forEach((handler) => {
+        const route = handler.route;
+        if (route) console.log("ROUTE (mounted):", route.path, Object.keys(route.methods));
       });
+    } else {
+      if (middleware.name) console.log("MIDDLEWARE:", middleware.name);
     }
-
-    // Buscar doação antes de atualizar
-    const [doacaoAnterior] = await connection.execute(
-      'SELECT * FROM doacoes WHERE id = ?',
-      [id]
-    );
-
-    if (doacaoAnterior.length === 0) {
-      return res.status(404).json({ error: 'Doação não encontrada' });
-    }
-
-    // Atualizar status
-    await connection.execute(
-      `UPDATE doacoes
-       SET status = ?, mensagem_agradecimento = ?
-       WHERE id = ?`,
-      [status, mensagem_agradecimento || null, id]
-    );
-
-    // Se a doação foi confirmada, atualizar valor_arrecadado da campanha
-    if (status === 'Confirmada' && doacaoAnterior[0].status !== 'Confirmada') {
-      await connection.execute(
-        `UPDATE campanhas
-         SET valor_arrecadado = valor_arrecadado + ?
-         WHERE nome = ?`,
-        [doacaoAnterior[0].valor, doacaoAnterior[0].campanha]
-      );
-    }
-
-    // Se a doação foi cancelada após estar confirmada, remover valor
-    if (status === 'Cancelada' && doacaoAnterior[0].status === 'Confirmada') {
-      await connection.execute(
-        `UPDATE campanhas
-         SET valor_arrecadado = valor_arrecadado - ?
-         WHERE nome = ?`,
-        [doacaoAnterior[0].valor, doacaoAnterior[0].campanha]
-      );
-    }
-
-    res.json({ message: 'Doação atualizada com sucesso!' });
-
-  } catch (error) {
-    console.error('Erro ao atualizar doação:', error);
-    res.status(500).json({ error: 'Erro ao atualizar doação' });
-  }
-});
-
-// 📌 Deletar doação
-app.delete('/api/doacoes/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    // Verificar se existe
-    const [doacao] = await connection.execute(
-      'SELECT * FROM doacoes WHERE id = ?',
-      [id]
-    );
-
-    if (doacao.length === 0) {
-      return res.status(404).json({ error: 'Doação não encontrada' });
-    }
-
-    // Se estava confirmada, remover do valor_arrecadado
-    if (doacao[0].status === 'Confirmada') {
-      await connection.execute(
-        `UPDATE campanhas 
-         SET valor_arrecadado = valor_arrecadado - ?
-         WHERE nome = ?`,
-        [doacao[0].valor, doacao[0].campanha]
-      );
-    }
-
-    // Deletar doação
-    await connection.execute('DELETE FROM doacoes WHERE id = ?', [id]);
-
-    res.json({ message: 'Doação excluída com sucesso!' });
-
-  } catch (error) {
-    console.error('Erro ao excluir doação:', error);
-    res.status(500).json({ error: 'Erro ao excluir doação' });
-  }
-});
+  });
+} else {
+  console.log("Nenhuma rota encontrada (app._router undefined ou stack inválida).");
+}
+console.log("=================================\n");
 
 // ==========================
-// 🎯 ROTAS DE CAMPANHAS
-// ==========================
-
-// 📌 Listar todas as campanhas ativas
-app.get('/api/campanhas', async (req, res) => {
-  try {
-    const [campanhas] = await connection.execute(
-      `SELECT
-        id,
-        nome,
-        descricao,
-        meta_valor,
-        valor_arrecadado,
-        ativa
-      FROM campanhas
-      WHERE ativa = TRUE
-      ORDER BY data_criacao DESC`
-    );
-
-    console.log('📊 Campanhas encontradas:', campanhas.length);
-    res.json(campanhas);
-
-  } catch (error) {
-    console.error('Erro ao buscar campanhas:', error);
-    res.status(500).json({ error: 'Erro ao buscar campanhas' });
-  }
-});
-
-// 📌 Buscar uma campanha específica
-app.get('/api/campanhas/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    const [campanha] = await connection.execute(
-      `SELECT
-        id,
-        nome,
-        descricao,
-        meta_valor,
-        valor_arrecadado,
-        ativa,
-        ROUND((valor_arrecadado / meta_valor) * 100, 2) as percentual_arrecadado,
-        data_criacao
-      FROM campanhas
-      WHERE id = ?`,
-      [id]
-    );
-
-    if (campanha.length === 0) {
-      return res.status(404).json({ error: 'Campanha não encontrada' });
-    }
-
-    res.json(campanha[0]);
-
-  } catch (error) {
-    console.error('Erro ao buscar campanha:', error);
-    res.status(500).json({ error: 'Erro ao buscar campanha' });
-  }
-});
-
-// ==========================
-// 👤 ROTAS DE PERFIL DO DOADOR
-// ==========================
-
-// 📌 Buscar perfil/resumo do doador
-app.get('/api/perfil/:email', async (req, res) => {
-  try {
-    const { email } = req.params;
-
-    // Total doado
-    const [totalDoado] = await connection.execute(
-      `SELECT
-        COUNT(*) as total_doacoes,
-        COALESCE(SUM(CASE WHEN status = 'Confirmada' THEN valor ELSE 0 END), 0) as valor_total,
-        COALESCE(SUM(CASE WHEN status = 'Pendente' THEN valor ELSE 0 END), 0) as valor_pendente
-      FROM doacoes
-      WHERE doador_email = ?`,
-      [email]
-    );
-
-    // Doações por campanha
-    const [doacoesPorCampanha] = await connection.execute(
-      `SELECT
-        campanha,
-        COUNT(*) as quantidade,
-        SUM(valor) as total
-      FROM doacoes
-      WHERE doador_email = ? AND status = 'Confirmada'
-      GROUP BY campanha`,
-      [email]
-    );
-
-    // Última doação
-    const [ultimaDoacao] = await connection.execute(
-      `SELECT
-        campanha,
-        valor,
-        DATE_FORMAT(data_doacao, '%d/%m/%Y') as data,
-        status
-      FROM doacoes
-      WHERE doador_email = ?
-      ORDER BY data_doacao DESC
-      LIMIT 1`,
-      [email]
-    );
-
-    res.json({
-      resumo: totalDoado[0],
-      campanhas: doacoesPorCampanha,
-      ultima_doacao: ultimaDoacao[0] || null
-    });
-
-  } catch (error) {
-    console.error('Erro ao buscar perfil:', error);
-    res.status(500).json({ error: 'Erro ao buscar perfil' });
-  }
-});
-
-// ==========================
-// 📰 ROTAS DE NOTÍCIAS
-// ==========================
-
-// 📌 Listar notícias
-app.get('/api/noticias', async (req, res) => {
-  try {
-    const [noticias] = await connection.execute(
-      `SELECT
-        id,
-        titulo,
-        conteudo,
-        DATE_FORMAT(created_at, '%d/%m/%Y %H:%i') as data
-      FROM noticias
-      ORDER BY created_at DESC`
-    );
-
-    res.json(noticias);
-
-  } catch (error) {
-    console.error('Erro ao buscar notícias:', error);
-    res.status(500).json({ error: 'Erro ao buscar notícias' });
-  }
-});
-
-// ✅ Iniciar servidor na porta 3001
+// ✅ Iniciar servidor
+// =========================
 const PORT = 3001;
 app.listen(PORT, () => {
   console.log(`🚀 Backend rodando na porta ${PORT}`);
-  console.log(`📍 http://localhost:${PORT}`);
-  console.log('✅ Rotas de Doações disponíveis!');
+  console.log(`📍 http://localhost:3001`);
 });

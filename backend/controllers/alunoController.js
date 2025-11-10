@@ -1,16 +1,20 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-// Dados mock para protótipo
-const alunosMock = [
-  {
+// Cria a lista e insere depois o hash
+const alunosMock = [];
+
+(async () => {
+  const senhaHash = await bcrypt.hash("SenhaFORTE123", 10);
+  alunosMock.push({
     email: "gugu.souza1205@gmail.com",
     nome_grupo: "Gustavo",
     turma: "A",
     periodo: "Noturno",
-    senha: await bcrypt.hash("SenhaFORTE123", 10)
-  }
-];
+    senha: senhaHash
+  });
+})();
+
 
 // Cadastro do aluno (mock)
 export async function cadastrarAluno(req, res) {
