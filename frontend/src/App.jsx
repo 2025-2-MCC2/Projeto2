@@ -37,25 +37,35 @@ import "./i18n";
 function App() {
   const location = useLocation();
 
+  // Mostrar Navbar e Footer apenas na home
   const showHeaderFooter = location.pathname === "/";
+  
+  // Mostrar NavbarDoacoes apenas nas rotas de doações
   const isDoacoesRoute = location.pathname.startsWith("/doacoes");
 
   return (
     <>
+      {/* Navbar principal (apenas na home) */}
       {showHeaderFooter && <Navbar />}
+      
+      {/* Navbar de doações (em todas as páginas de doações) */}
       {isDoacoesRoute && <NavbarDoacoes />}
 
       <Routes>
+        {/* Rota principal */}
         <Route path="/" element={<Hero />} />
 
+        {/* Rotas de Cadastro */}
         <Route path="/cadastro-aluno" element={<CadastroAluno />} />
         <Route path="/cadastro-mentor" element={<CadastroMentor />} />
         <Route path="/cadastro-doador" element={<CadastroDoador />} />
         
+        {/* Rotas de Login */}
         <Route path="/login-mentor" element={<LoginMentor />} />
         <Route path="/login-aluno" element={<LoginAluno />} />
         <Route path="/login-doador" element={<LoginDoador />} />
 
+        {/* Dashboard Mentor */}
         <Route path="/dashboard-mentor" element={<MentorDashboard />} />
         <Route path="/dashboard-mentor/messages" element={<Messages />} />
         <Route path="/dashboard-mentor/perfil" element={<Perfil />} />
@@ -65,6 +75,7 @@ function App() {
         <Route path="/dashboard-mentor/materials" element={<Materials />} />
         <Route path="/dashboard-mentor/config" element={<Config />} />
 
+        {/* Dashboard Aluno */}
         <Route path="/dashboard-aluno" element={<Student />} />
         <Route path="/dashboard-aluno/perfil" element={<PerfilAluno />} />
         <Route path="/dashboard-aluno/progresso" element={<ProgressoAluno />} />
@@ -74,12 +85,18 @@ function App() {
         <Route path="/dashboard-aluno/materiais" element={<MateriaisAluno />} />
         <Route path="/dashboard-aluno/configuracoes" element={<ConfiguracoesAluno />} />
 
+        {/* 
+          🎯 ROTAS DE DOAÇÕES - PROTEGIDAS
+          Estas rotas agora verificam automaticamente se o usuário está logado
+          Se não estiver, redirecionam para /login-doador
+        */}
         <Route path="/doacoes" element={<MinhasDoacoes />} />
         <Route path="/doacoes/campanhas" element={<Campanhas />} />
         <Route path="/doacoes/sobre-nos" element={<SobreNos />} />
         <Route path="/doacoes/perfil" element={<PerfilDoador />} />
       </Routes>
 
+      {/* Footer (apenas na home) */}
       {showHeaderFooter && <Footer />}
     </>
   );

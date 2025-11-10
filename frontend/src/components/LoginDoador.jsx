@@ -1,16 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/DoadorAuth.css";
 
 export default function LoginDoador() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+
   function handleSubmit(event) {
     event.preventDefault();
-    const email = event.target.email.value;
-    const password = event.target.password.value;
     
-    console.log("Email:", email);
-    console.log("Senha:", password);
-    
-    alert("Login realizado com sucesso!");
+    // Validação básica
+    if (!email || !senha) {
+      alert("Por favor, preencha todos os campos!");
+      return;
+    }
+
+    // Verificar se o usuário está cadastrado
+    const emailSalvo = localStorage.getItem('emailDoador');
+    const nomeSalvo = localStorage.getItem('nomeDoador');
+
+    if (emailSalvo && emailSalvo === email) {
+      // Login bem-sucedido
+      localStorage.setItem('doadorLogado', 'true');
+      
+      console.log("Login realizado:", { email, nome: nomeSalvo });
+      
+      alert(`Bem-vindo de volta, ${nomeSalvo || 'Doador'}!`);
+      
+      // Redirecionar para a página de doações
+      navigate('/doacoes');
+    } else {
+      // Usuário não encontrado
+      alert("Email não encontrado! Por favor, cadastre-se primeiro.");
+      
+      // Opcional: redirecionar para cadastro após confirmação
+      setTimeout(() => {
+        if (window.confirm("Deseja se cadastrar agora?")) {
+          navigate('/cadastro-doador');
+        }
+      }, 1000);
+    }
   }
 
   return (
@@ -43,6 +73,8 @@ export default function LoginDoador() {
             id="email"
             name="email"
             placeholder="Digite seu email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
             className="doador-login-input"
           />
@@ -53,6 +85,8 @@ export default function LoginDoador() {
             id="password"
             name="password"
             placeholder="Digite sua senha"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
             required
             className="doador-login-input"
           />
@@ -61,6 +95,10 @@ export default function LoginDoador() {
             Entrar
           </button>
         </form>
+
+        <div style={{ marginTop: '15px', textAlign: 'center', color: '#666' }}>
+          <small>Entre com o mesmo email usado no cadastro</small>
+        </div>
       </div>
     </div>
   );
