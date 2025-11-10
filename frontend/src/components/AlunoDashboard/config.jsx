@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Config.css";
+import "./config.css";
 import Sidebar from "./SidebarAluno/SidebarAluno";
 
 export default function Configuracoes() {
