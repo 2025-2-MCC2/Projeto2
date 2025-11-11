@@ -62,6 +62,18 @@ Raiz
 | Gestão Empresarial             | [Documento](./documentos/Entrega%201/Gestão%20Empresarial/Gestão%20Empresarial%20-%20Entrega%201.pdf) | [Fluxograma](./documentos/Entrega%202/Gestão%20Empresarial/Gestão%20Empresarial%20-%20ENTREGA%202.pdf) |
 | Desenvolvimento Web Full Stack | [Deploy](./documentos/Entrega%201/Desenvolvimento%20Web%20Full%20Stack/README.md)   | [Deploy Final](documentos/Entrega 2/Entrega Desenvolvimento Web Full Stack)   |
 | Projeto Interdisciplinar       | [Protótipo](./documentos/Entrega%201/Projeto%20Integrador/README.md) | [Documento de Extensão](./documentos/Entrega%202/Projeto%20Integrador/Documento%20-%20Projeto%20de%20Extensão%20-%20COM%20Empresa.docx.pdf) |
+## 🎥 Vídeo Demonstrativo
+
+Assista a uma demonstração do funcionamento do site:
+
+<p align="center">
+  <a href="https://drive.google.com/file/d/1uT9dgbBVMevCI0sxHbYbAH3Ywv-nWmsJ/preview" target="_blank">
+    <img src="https://img.icons8.com/ios-filled/100/000000/video.png" alt="Vídeo Demonstrativo" />
+  </a>
+</p>
+
+> Clique no ícone acima para assistir ao vídeo.
+
 
 ## ⚙  Guia de Instalação e Execução 
 Requisitos
