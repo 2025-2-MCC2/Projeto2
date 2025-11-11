@@ -1,20 +1,29 @@
-.perfil-container {
+.profile-container {
+  width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
 }
-
 .perfil-header {
   text-align: center;
   padding: 2rem;
   background: linear-gradient(135deg, #2d7a5e 0%, #3a9970 100%);
   color: white;
-  border-radius: 12px;
+  border-radius: 0; 
   margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+ 
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
+
+
 
 .perfil-avatar-wrapper {
   position: relative;
