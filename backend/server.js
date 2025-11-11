@@ -27,6 +27,27 @@ app.use((err, req, res, next) => {
   next();
 });
 
+// ✅ Conexão com o banco
+let connection;
+
+async function conectarBanco() {
+  try {
+    connection = await mysql.createConnection({
+      host: process.env.DB_HOST || "localhost",
+      user: process.env.DB_USER || "root",
+      password: process.env.DB_PASSWORD || "",
+      database: process.env.DB_NAME || "dashboard_doacoes",
+      port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 3306
+    });
+    console.log('✅ Conectado ao MySQL com sucesso!');
+  } catch (err) {
+    console.log('❌ Erro ao conectar ao MySQL:', err.message);
+    process.exit(1);
+  }
+}
+
+await conectarBanco();
+
 // -----------------------------
 // IMPORT ROTAS (ex: doador, mentor)
 // -----------------------------
@@ -44,30 +65,9 @@ app.use("/api/mentor", mentorRoutes);
 console.log('DEBUG: mentorRoutes tipo ->', typeof mentorRoutes);
 console.log('DEBUG: app._router existe (após mentorRoutes)? ->', !!app._router);
 
-// ✅ Conexão com o banco
-let connection;
-
-async function conectarBanco() {
-  try {
-    connection = await mysql.createConnection({
-      host: process.env.DB_HOST || "localhost",
-      user: process.env.DB_USER || "root",
-      password: process.env.DB_PASSWORD || "banco123",
-      database: process.env.DB_NAME || "dashboard_doacoes",
-      port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 3306
-    });
-    console.log('✅ Conectado ao MySQL com sucesso!');
-  } catch (err) {
-    console.log('Erro ao conectar ao MySQL:', err.message);
-    process.exit(1);
-  }
-}
-
-await conectarBanco();
-
 // ✅ Teste da conexão
 app.get('/', (req, res) => {
-  res.send('Backend funcionando!');
+  res.send('🚀 Backend funcionando!');
 });
 
 // ==========================
@@ -75,7 +75,7 @@ app.get('/', (req, res) => {
 // ==========================
 
 // Cadastro do aluno
-app.post('/api/aluno/cadastro-aluno', async (req, res) => {
+app.post('/api/aluno/cadastro', async (req, res) => {
   const { email, nome, turma, periodo, senha } = req.body;
 
   if (!email || !nome || !turma || !periodo || !senha) {
@@ -90,7 +90,6 @@ app.post('/api/aluno/cadastro-aluno', async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(senha, 10);
 
-    // ⚙️ Corrigido nome da coluna (de nome_grupo -> nome)
     await connection.query(
       "INSERT INTO alunos (email, nome, turma, periodo, senha) VALUES (?, ?, ?, ?, ?)",
       [email, nome, turma, periodo, hashedPassword]
@@ -104,7 +103,7 @@ app.post('/api/aluno/cadastro-aluno', async (req, res) => {
 });
 
 // Login do aluno
-app.post('/api/aluno/login-aluno', async (req, res) => {
+app.post('/api/aluno/login', async (req, res) => {
   const { email, senha } = req.body;
 
   if (!email || !senha) {
@@ -124,12 +123,22 @@ app.post('/api/aluno/login-aluno', async (req, res) => {
     }
 
     const token = jwt.sign(
-      { email: aluno.email, nome: aluno.nome },
-      process.env.JWT_SECRET || "segredoSuperSeguro",
+      { id: aluno.id, email: aluno.email, nome: aluno.nome },
+      process.env.JWT_SECRET || "seu_secret_super_seguro_aqui_12345",
       { expiresIn: "1h" }
     );
 
-    res.status(200).json({ message: "Login realizado com sucesso", token });
+    res.status(200).json({ 
+      message: "Login realizado com sucesso", 
+      token,
+      aluno: {
+        id: aluno.id,
+        email: aluno.email,
+        nome: aluno.nome,
+        turma: aluno.turma,
+        periodo: aluno.periodo
+      }
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Erro ao realizar login" });
@@ -261,8 +270,8 @@ console.log("=================================\n");
 // ==========================
 // ✅ Iniciar servidor
 // =========================
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`🚀 Backend rodando na porta ${PORT}`);
-  console.log(`📍 http://localhost:3001`);
+  console.log(`📍 http://localhost:${PORT}`);
 });

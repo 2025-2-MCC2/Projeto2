@@ -1,27 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/CadastroMentor.css";
 
 export default function CadastroMentor() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    setError("");
+    setLoading(true);
+
     const email = event.target.email.value;
     const grupo = event.target.grupo.value;
-    const password = event.target.password.value;
-    
-    console.log("Email:", email);
-    console.log("Grupo:", grupo);
-    console.log("Senha:", password);
-    
-    // Aqui você pode adicionar a lógica de cadastro com backend
-    // Por enquanto, apenas simula o sucesso
-    
-    alert("Cadastro realizado com sucesso!");
-    
-    // Redireciona para o dashboard do mentor
-    navigate("/dashboard-mentor");
+    const senha = event.target.password.value;
+
+    try {
+      const response = await fetch("http://localhost:3000/api/mentor/cadastro", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, grupo, senha }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Erro ao cadastrar");
+      }
+
+      // Salva o token no localStorage
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userType", "mentor");
+      localStorage.setItem("mentorEmail", email);
+
+      alert("Cadastro realizado com sucesso!");
+      navigate("/dashboard-mentor");
+      
+    } catch (err) {
+      console.error("Erro no cadastro:", err);
+      setError(err.message || "Erro ao realizar cadastro");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -45,6 +68,20 @@ export default function CadastroMentor() {
         </div>
 
         <h1 className="signup-title">Cadastre-se</h1>
+
+        {error && (
+          <div style={{
+            padding: "10px",
+            marginBottom: "15px",
+            backgroundColor: "#fee",
+            color: "#c33",
+            borderRadius: "5px",
+            border: "1px solid #fcc"
+          }}>
+            {error}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">Email</label>
           <input
@@ -81,8 +118,12 @@ export default function CadastroMentor() {
             className="mentor-signup-input"
           />
 
-          <button type="submit" className="mentor-signup-button">
-            Cadastrar
+          <button 
+            type="submit" 
+            className="mentor-signup-button"
+            disabled={loading}
+          >
+            {loading ? "Cadastrando..." : "Cadastrar"}
           </button>
         </form>
       </div>
