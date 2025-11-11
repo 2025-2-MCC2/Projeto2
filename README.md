@@ -91,28 +91,19 @@ git clone https://github.com/2025-2-MCC2/Projeto2.git
 
 cd Projeto2
 
-**Configuração do Backend**
-
-Entre na pasta do servidor e instale as dependências:
-cd frontend/src
-npm install
-
-Depois, inicie o servidor com:
-npm run dev
-
-**Configuração do Frontend**
-
-Vá até a pasta do cliente e instale as dependências:
-cd ../Client
-npm install
-
-Em seguida, rode o projeto com:
-npm start
 
 **Endereços locais**
 
 O frontend estará disponível em http://localhost:5173
 O backend rodará em http://localhost:5000
+
+## 🌐 Deploy
+
+O projeto está disponível online no seguinte endereço:  
+
+[**Acessar CyberSirens**](https://liderancasempaticas.vercel.app/)
+
+> Clique no link acima para abrir a versão online do projeto.
 
 ## 📋 Licença/License
 [CyberSirens](https://github.com/2025-2-MCC2) © 2025 by [Rafaela Morais, Katiê Prado, Felipe Mathey, Polianny Santos, Ana Clara Keiko, Gustavo Miranda](https://github.com/2025-2-MCC2) is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  
