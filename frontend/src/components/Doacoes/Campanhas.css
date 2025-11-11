@@ -1,16 +1,18 @@
+
 .campanhas-container {
-  width: 100vw; /* ocupa toda a largura da tela */
-  min-height: 100vh; /* ocupa toda a altura da tela */
+  width: 100vw;
+  min-height: 100vh;
   margin: 0;
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* centraliza o conteúdo verticalmente */
-  align-items: center; /* centraliza horizontalmente */
-  background-color: #f9f9f9; /* fundo leve pra destacar os cards */
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
   box-sizing: border-box;
 }
 
+/* === CABEÇALHO === */
 .campanhas-header {
   text-align: center;
   margin-bottom: 3rem;
@@ -27,6 +29,7 @@
   font-size: 1.1rem;
 }
 
+/* === GRID DE CAMPANHAS === */
 .campanhas-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -35,6 +38,7 @@
   max-width: 1200px;
 }
 
+/* === CARD === */
 .campanha-card {
   background: white;
   border-radius: 12px;
@@ -47,6 +51,7 @@
   transform: translateY(-5px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
+
 
 .campanha-icon {
   font-size: 3rem;
@@ -67,6 +72,7 @@
   min-height: 60px;
 }
 
+/* === PROGRESSO === */
 .progresso-container {
   margin: 1.5rem 0;
 }
@@ -110,6 +116,7 @@
   font-size: 0.9rem;
 }
 
+/* === ESTATÍSTICAS === */
 .campanha-stats {
   display: flex;
   justify-content: space-around;
@@ -137,6 +144,7 @@
   margin-top: 0.25rem;
 }
 
+/* === BOTÃO === */
 .btn-doar {
   width: 100%;
   padding: 1rem;
@@ -152,4 +160,46 @@
 
 .btn-doar:hover {
   background-color: #236349;
+}
+
+/* === RESPONSIVIDADE === */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .campanhas-container {
+    padding: 1.5rem;
+  }
+  .campanhas-header h1 {
+    font-size: 2rem;
+  }
+  .campanhas-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+  .campanhas-container {
+    padding: 1rem;
+  }
+  .campanhas-header h1 {
+    font-size: 1.8rem;
+  }
+  .campanhas-header p {
+    font-size: 1rem;
+  }
+  .campanhas-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .campanha-card {
+    padding: 1.5rem;
+  }
+  .campanha-descricao {
+    font-size: 0.95rem;
+  }
+  .btn-doar {
+    font-size: 0.95rem;
+    padding: 0.9rem;
+  }
 }
