@@ -3,7 +3,7 @@ import { cadastrarDoador, loginDoador } from "../controllers/doadorController.js
 
 const router = express.Router();
 
-router.post("/cadastro-doador", cadastrarDoador);
-router.post("/login-doador", loginDoador);
+router.post("/cadastro", cadastrarDoador);  // ✅ /api/doador/cadastro
+router.post("/login", loginDoador);          // ✅ /api/doador/login
 
 export default router;

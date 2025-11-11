@@ -34,48 +34,32 @@ export default function LoginAluno() {
     setLoading(true);
 
     try {
-      // Simulando login - remova isso quando tiver backend real
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      console.log('Email:', email);
-      console.log('Senha:', password);
-      console.log('Lembrar:', remember);
-
-      // Se quiser salvar o token localmente (simulação)
-      if (remember) {
-        localStorage.setItem('authToken', 'token-simulado');
-      } else {
-        sessionStorage.setItem('authToken', 'token-simulado');
-      }
-
-      alert('Login realizado com sucesso!');
-      
-      // Redireciona para o dashboard do aluno
-      navigate('/dashboard-aluno');
-
-      /* 
-      // Quando tiver backend, use este código:
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch('http://localhost:3000/api/aluno/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, senha: password })
       });
-
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data?.message || 'Erro ao fazer login.');
-      }
 
       const data = await res.json();
 
-      if (remember && data.token) {
-        localStorage.setItem('authToken', data.token);
-      } else if (data.token) {
-        sessionStorage.setItem('authToken', data.token);
+      if (!res.ok) {
+        throw new Error(data.message || 'Erro ao fazer login.');
       }
 
+      // Salva os dados do aluno
+      if (remember) {
+        localStorage.setItem('authToken', data.token);
+      } else {
+        sessionStorage.setItem('authToken', data.token);
+      }
+      
+      localStorage.setItem('userType', 'aluno');
+      localStorage.setItem('alunoId', data.aluno.id);
+      localStorage.setItem('alunoEmail', data.aluno.email);
+      localStorage.setItem('alunoNome', data.aluno.nome);
+
+      alert('Login realizado com sucesso!');
       navigate('/dashboard-aluno');
-      */
 
     } catch (err) {
       console.error('Login error:', err);
