@@ -11,4 +11,5 @@ As atividades propostas envolvem:
 - Documentação do projeto em Markdown 
 
 > ⚠️ A entrega desta disciplina está localizada na pasta **frontend**.
+> Ou pode ser localizada pelo link do deploy https://liderancasempaticas.vercel.app/.
 

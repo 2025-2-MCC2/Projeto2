@@ -60,8 +60,8 @@ Raiz
 | Banco de Dados                 | [Diagrama do Banco de Dados](./documentos/Entrega%201/Banco%20de%20Dados/diagrama.png)       | [Tabelas](./documentos/Entrega%202/Banco%20de%20Dados/README.md)       |
 | Cálculo II                     | [Polinômio de Taylor](./documentos/Entrega%201/Cálculo%20II/Polinônio%20de%20Taylor%20-%20ENTREGA%201.pdf)                        | [Máximos e Mínimos](./documentos/Entrega%202/Cálculo%20II/Maximos.e.Minimos.-.ENTREGA.2.pdf)                        |
 | Gestão Empresarial             | [Documento](./documentos/Entrega%201/Gestão%20Empresarial/Gestão%20Empresarial%20-%20Entrega%201.pdf) | [Fluxograma](./documentos/Entrega%202/Gestão%20Empresarial/Gestão%20Empresarial%20-%20ENTREGA%202.pdf) |
-| Desenvolvimento Web Full Stack | [Entrega](documentos/Entrega 1/Entrega Desenvolvimento Web Full Stack)   | [Entrega](documentos/Entrega 2/Entrega Desenvolvimento Web Full Stack)   |
-| Projeto Interdisciplinar       | [Entrega](documentos/Entrega 1/Entrega Projeto Interdisciplinar: Programação Web) | [Entrega](documentos/Entrega 2/Entrega Projeto Interdisciplinar: Programação Web) |
+| Desenvolvimento Web Full Stack | [Deploy](./documentos/Entrega%201/Desenvolvimento%20Web%20Full%20Stack/README.md)   | [Deploy Final](documentos/Entrega 2/Entrega Desenvolvimento Web Full Stack)   |
+| Projeto Interdisciplinar       | [Protótipo](./documentos/Entrega%201/Projeto%20Integrador/README.md) | [Documento de Extensão](./documentos/Entrega%202/Projeto%20Integrador/Documento%20-%20Projeto%20de%20Extensão%20-%20COM%20Empresa.docx.pdf) |
 
 ## ⚙  Guia de Instalação e Execução 
 Requisitos
