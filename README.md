@@ -57,8 +57,8 @@ Raiz
 ## Entregas
 | Disciplina                     | Entrega 1                                                                 | Entrega 2                                                                 |
 |--------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| Banco de Dados                 | [Diagrama do Banco de Dados](./diagrama.png)       | [Entrega](./documentos/Entrega%202/Banco%20de%20Dados/README.md)       |
-| Cálculo II                     | [Entrega](documentos/Entrega 1/Entrega Cálculo 2)                        | [Entrega](documentos/Entrega 2/Entrega Cálculo 2)                        |
+| Banco de Dados                 | [Diagrama do Banco de Dados](./documentos/Entrega%201/Banco%20de%20Dados/diagrama.png)       | [Tabelas](./documentos/Entrega%202/Banco%20de%20Dados/README.md)       |
+| Cálculo II                     | [Polinômio de Taylor](./documentos/Entrega%201/Cálculo%20II/Polinônio%20de%20Taylor%20-%20ENTREGA%201.pdf)                        | [Máximos e Mínimos](./documentos/Entrega%202/Cálculo%20II/Maximos.e.Minimos.-.ENTREGA.2.pdf)                        |
 | Gestão Empresarial             | [Entrega](documentos/Entrega 1/Entrega Gestão Empresarial e Dinâmicas das Organizações) | [Entrega](documentos/Entrega 2/Entrega Gestão Empresarial e Dinâmicas das Organizações) |
 | Desenvolvimento Web Full Stack | [Entrega](documentos/Entrega 1/Entrega Desenvolvimento Web Full Stack)   | [Entrega](documentos/Entrega 2/Entrega Desenvolvimento Web Full Stack)   |
 | Projeto Interdisciplinar       | [Entrega](documentos/Entrega 1/Entrega Projeto Interdisciplinar: Programação Web) | [Entrega](documentos/Entrega 2/Entrega Projeto Interdisciplinar: Programação Web) |
