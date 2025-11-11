@@ -57,7 +57,7 @@ Raiz
 ## Entregas
 | Disciplina                     | Entrega 1                                                                 | Entrega 2                                                                 |
 |--------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| Banco de Dados                 | [Entrega](documentos/Entrega 1/Entrega Projetos em Banco de Dados)       | [Entrega](documentos/Entrega 2/Entrega Projetos em Banco de Dados)       |
+| Banco de Dados                 | [Diagrama do Banco de Dados](./diagrama.png)       | [Entrega](./documentos/Entrega%202/Banco%20de%20Dados/README.md)       |
 | Cálculo II                     | [Entrega](documentos/Entrega 1/Entrega Cálculo 2)                        | [Entrega](documentos/Entrega 2/Entrega Cálculo 2)                        |
 | Gestão Empresarial             | [Entrega](documentos/Entrega 1/Entrega Gestão Empresarial e Dinâmicas das Organizações) | [Entrega](documentos/Entrega 2/Entrega Gestão Empresarial e Dinâmicas das Organizações) |
 | Desenvolvimento Web Full Stack | [Entrega](documentos/Entrega 1/Entrega Desenvolvimento Web Full Stack)   | [Entrega](documentos/Entrega 2/Entrega Desenvolvimento Web Full Stack)   |
