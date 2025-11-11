@@ -54,6 +54,14 @@ Raiz
 │   └── HTML
 └── readme.md
 ````
+## Entregas
+| Disciplina                     | Entrega 1                                                                 | Entrega 2                                                                 |
+|--------------------------------|---------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| Banco de Dados                 | [Entrega](documentos/Entrega 1/Entrega Projetos em Banco de Dados)       | [Entrega](documentos/Entrega 2/Entrega Projetos em Banco de Dados)       |
+| Cálculo II                     | [Entrega](documentos/Entrega 1/Entrega Cálculo 2)                        | [Entrega](documentos/Entrega 2/Entrega Cálculo 2)                        |
+| Gestão Empresarial             | [Entrega](documentos/Entrega 1/Entrega Gestão Empresarial e Dinâmicas das Organizações) | [Entrega](documentos/Entrega 2/Entrega Gestão Empresarial e Dinâmicas das Organizações) |
+| Desenvolvimento Web Full Stack | [Entrega](documentos/Entrega 1/Entrega Desenvolvimento Web Full Stack)   | [Entrega](documentos/Entrega 2/Entrega Desenvolvimento Web Full Stack)   |
+| Projeto Interdisciplinar       | [Entrega](documentos/Entrega 1/Entrega Projeto Interdisciplinar: Programação Web) | [Entrega](documentos/Entrega 2/Entrega Projeto Interdisciplinar: Programação Web) |
 
 ## ⚙  Guia de Instalação e Execução 
 Requisitos
