@@ -1,7 +1,14 @@
 .campanhas-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100vw; /* ocupa toda a largura da tela */
+  min-height: 100vh; /* ocupa toda a altura da tela */
+  margin: 0;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centraliza o conteúdo verticalmente */
+  align-items: center; /* centraliza horizontalmente */
+  background-color: #f9f9f9; /* fundo leve pra destacar os cards */
+  box-sizing: border-box;
 }
 
 .campanhas-header {
@@ -24,6 +31,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .campanha-card {
